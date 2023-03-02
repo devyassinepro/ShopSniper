@@ -1,0 +1,165 @@
+[24-Feb-2023 10:29:20 UTC] PHP Fatal error:  Cannot use App\Http\Controllers\Account\NicheController as NicheController because the name is already in use in /home2/zm03cqi9/public_html/routes/web.php on line 27
+[24-Feb-2023 10:29:56 UTC] PHP Fatal error:  Cannot use App\Http\Controllers\Account\NicheController as NicheController because the name is already in use in /home2/zm03cqi9/public_html/routes/web.php on line 27
+[24-Feb-2023 10:30:00 UTC] PHP Fatal error:  Cannot use App\Http\Controllers\Account\NicheController as NicheController because the name is already in use in /home2/zm03cqi9/public_html/routes/web.php on line 27
+[24-Feb-2023 10:30:02 UTC] PHP Fatal error:  Cannot use App\Http\Controllers\Account\NicheController as NicheController because the name is already in use in /home2/zm03cqi9/public_html/routes/web.php on line 27
+[24-Feb-2023 10:31:00 UTC] PHP Fatal error:  Cannot use App\Http\Controllers\Account\NicheController as NicheController because the name is already in use in /home2/zm03cqi9/public_html/routes/web.php on line 27
+[24-Feb-2023 05:30:29 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Auth" not found in /home2/zm03cqi9/public_html/app/Helpers/helpers.php:98
+Stack trace:
+#0 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(78): require()
+#1 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(61): composerRequire5caf2e88d9ee432777d2fb9ba3d4b583('d21d43db5f6e840...', '/home2/zm03cqi9...')
+#2 /home2/zm03cqi9/public_html/vendor/autoload.php(7): ComposerAutoloaderInit5caf2e88d9ee432777d2fb9ba3d4b583::getLoader()
+#3 /home2/zm03cqi9/public_html/public/index.php(34): require('/home2/zm03cqi9...')
+#4 {main}
+  thrown in /home2/zm03cqi9/public_html/app/Helpers/helpers.php on line 98
+[24-Feb-2023 05:30:29 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Auth" not found in /home2/zm03cqi9/public_html/app/Helpers/helpers.php:98
+Stack trace:
+#0 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(78): require()
+#1 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(61): composerRequire5caf2e88d9ee432777d2fb9ba3d4b583('d21d43db5f6e840...', '/home2/zm03cqi9...')
+#2 /home2/zm03cqi9/public_html/vendor/autoload.php(7): ComposerAutoloaderInit5caf2e88d9ee432777d2fb9ba3d4b583::getLoader()
+#3 /home2/zm03cqi9/public_html/public/index.php(34): require('/home2/zm03cqi9...')
+#4 {main}
+  thrown in /home2/zm03cqi9/public_html/app/Helpers/helpers.php on line 98
+[24-Feb-2023 05:32:18 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Auth" not found in /home2/zm03cqi9/public_html/app/Helpers/helpers.php:98
+Stack trace:
+#0 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(78): require()
+#1 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(61): composerRequire5caf2e88d9ee432777d2fb9ba3d4b583('d21d43db5f6e840...', '/home2/zm03cqi9...')
+#2 /home2/zm03cqi9/public_html/vendor/autoload.php(7): ComposerAutoloaderInit5caf2e88d9ee432777d2fb9ba3d4b583::getLoader()
+#3 /home2/zm03cqi9/public_html/public/index.php(34): require('/home2/zm03cqi9...')
+#4 {main}
+  thrown in /home2/zm03cqi9/public_html/app/Helpers/helpers.php on line 98
+[24-Feb-2023 05:32:25 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Auth" not found in /home2/zm03cqi9/public_html/app/Helpers/helpers.php:98
+Stack trace:
+#0 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(78): require()
+#1 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(61): composerRequire5caf2e88d9ee432777d2fb9ba3d4b583('d21d43db5f6e840...', '/home2/zm03cqi9...')
+#2 /home2/zm03cqi9/public_html/vendor/autoload.php(7): ComposerAutoloaderInit5caf2e88d9ee432777d2fb9ba3d4b583::getLoader()
+#3 /home2/zm03cqi9/public_html/public/index.php(34): require('/home2/zm03cqi9...')
+#4 {main}
+  thrown in /home2/zm03cqi9/public_html/app/Helpers/helpers.php on line 98
+[24-Feb-2023 05:33:05 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Auth" not found in /home2/zm03cqi9/public_html/app/Helpers/helpers.php:98
+Stack trace:
+#0 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(78): require()
+#1 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(61): composerRequire5caf2e88d9ee432777d2fb9ba3d4b583('d21d43db5f6e840...', '/home2/zm03cqi9...')
+#2 /home2/zm03cqi9/public_html/vendor/autoload.php(7): ComposerAutoloaderInit5caf2e88d9ee432777d2fb9ba3d4b583::getLoader()
+#3 /home2/zm03cqi9/public_html/public/index.php(34): require('/home2/zm03cqi9...')
+#4 {main}
+  thrown in /home2/zm03cqi9/public_html/app/Helpers/helpers.php on line 98
+[24-Feb-2023 05:33:08 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Auth" not found in /home2/zm03cqi9/public_html/app/Helpers/helpers.php:98
+Stack trace:
+#0 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(78): require()
+#1 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(61): composerRequire5caf2e88d9ee432777d2fb9ba3d4b583('d21d43db5f6e840...', '/home2/zm03cqi9...')
+#2 /home2/zm03cqi9/public_html/vendor/autoload.php(7): ComposerAutoloaderInit5caf2e88d9ee432777d2fb9ba3d4b583::getLoader()
+#3 /home2/zm03cqi9/public_html/public/index.php(34): require('/home2/zm03cqi9...')
+#4 {main}
+  thrown in /home2/zm03cqi9/public_html/app/Helpers/helpers.php on line 98
+[24-Feb-2023 05:34:03 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Auth" not found in /home2/zm03cqi9/public_html/app/Helpers/helpers.php:98
+Stack trace:
+#0 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(78): require()
+#1 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(61): composerRequire5caf2e88d9ee432777d2fb9ba3d4b583('d21d43db5f6e840...', '/home2/zm03cqi9...')
+#2 /home2/zm03cqi9/public_html/vendor/autoload.php(7): ComposerAutoloaderInit5caf2e88d9ee432777d2fb9ba3d4b583::getLoader()
+#3 /home2/zm03cqi9/public_html/public/index.php(34): require('/home2/zm03cqi9...')
+#4 {main}
+  thrown in /home2/zm03cqi9/public_html/app/Helpers/helpers.php on line 98
+[24-Feb-2023 05:34:04 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Auth" not found in /home2/zm03cqi9/public_html/app/Helpers/helpers.php:98
+Stack trace:
+#0 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(78): require()
+#1 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(61): composerRequire5caf2e88d9ee432777d2fb9ba3d4b583('d21d43db5f6e840...', '/home2/zm03cqi9...')
+#2 /home2/zm03cqi9/public_html/vendor/autoload.php(7): ComposerAutoloaderInit5caf2e88d9ee432777d2fb9ba3d4b583::getLoader()
+#3 /home2/zm03cqi9/public_html/public/index.php(34): require('/home2/zm03cqi9...')
+#4 {main}
+  thrown in /home2/zm03cqi9/public_html/app/Helpers/helpers.php on line 98
+[24-Feb-2023 05:34:07 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Auth" not found in /home2/zm03cqi9/public_html/app/Helpers/helpers.php:98
+Stack trace:
+#0 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(78): require()
+#1 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(61): composerRequire5caf2e88d9ee432777d2fb9ba3d4b583('d21d43db5f6e840...', '/home2/zm03cqi9...')
+#2 /home2/zm03cqi9/public_html/vendor/autoload.php(7): ComposerAutoloaderInit5caf2e88d9ee432777d2fb9ba3d4b583::getLoader()
+#3 /home2/zm03cqi9/public_html/public/index.php(34): require('/home2/zm03cqi9...')
+#4 {main}
+  thrown in /home2/zm03cqi9/public_html/app/Helpers/helpers.php on line 98
+[24-Feb-2023 05:34:08 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Auth" not found in /home2/zm03cqi9/public_html/app/Helpers/helpers.php:98
+Stack trace:
+#0 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(78): require()
+#1 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(61): composerRequire5caf2e88d9ee432777d2fb9ba3d4b583('d21d43db5f6e840...', '/home2/zm03cqi9...')
+#2 /home2/zm03cqi9/public_html/vendor/autoload.php(7): ComposerAutoloaderInit5caf2e88d9ee432777d2fb9ba3d4b583::getLoader()
+#3 /home2/zm03cqi9/public_html/public/index.php(34): require('/home2/zm03cqi9...')
+#4 {main}
+  thrown in /home2/zm03cqi9/public_html/app/Helpers/helpers.php on line 98
+[24-Feb-2023 05:34:08 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Auth" not found in /home2/zm03cqi9/public_html/app/Helpers/helpers.php:98
+Stack trace:
+#0 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(78): require()
+#1 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(61): composerRequire5caf2e88d9ee432777d2fb9ba3d4b583('d21d43db5f6e840...', '/home2/zm03cqi9...')
+#2 /home2/zm03cqi9/public_html/vendor/autoload.php(7): ComposerAutoloaderInit5caf2e88d9ee432777d2fb9ba3d4b583::getLoader()
+#3 /home2/zm03cqi9/public_html/public/index.php(34): require('/home2/zm03cqi9...')
+#4 {main}
+  thrown in /home2/zm03cqi9/public_html/app/Helpers/helpers.php on line 98
+[24-Feb-2023 05:34:09 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Auth" not found in /home2/zm03cqi9/public_html/app/Helpers/helpers.php:98
+Stack trace:
+#0 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(78): require()
+#1 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(61): composerRequire5caf2e88d9ee432777d2fb9ba3d4b583('d21d43db5f6e840...', '/home2/zm03cqi9...')
+#2 /home2/zm03cqi9/public_html/vendor/autoload.php(7): ComposerAutoloaderInit5caf2e88d9ee432777d2fb9ba3d4b583::getLoader()
+#3 /home2/zm03cqi9/public_html/public/index.php(34): require('/home2/zm03cqi9...')
+#4 {main}
+  thrown in /home2/zm03cqi9/public_html/app/Helpers/helpers.php on line 98
+[24-Feb-2023 05:35:48 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Auth" not found in /home2/zm03cqi9/public_html/app/Helpers/helpers.php:98
+Stack trace:
+#0 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(78): require()
+#1 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(61): composerRequire5caf2e88d9ee432777d2fb9ba3d4b583('d21d43db5f6e840...', '/home2/zm03cqi9...')
+#2 /home2/zm03cqi9/public_html/vendor/autoload.php(7): ComposerAutoloaderInit5caf2e88d9ee432777d2fb9ba3d4b583::getLoader()
+#3 /home2/zm03cqi9/public_html/public/index.php(34): require('/home2/zm03cqi9...')
+#4 {main}
+  thrown in /home2/zm03cqi9/public_html/app/Helpers/helpers.php on line 98
+[24-Feb-2023 05:36:01 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Auth" not found in /home2/zm03cqi9/public_html/app/Helpers/helpers.php:98
+Stack trace:
+#0 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(78): require()
+#1 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(61): composerRequire5caf2e88d9ee432777d2fb9ba3d4b583('d21d43db5f6e840...', '/home2/zm03cqi9...')
+#2 /home2/zm03cqi9/public_html/vendor/autoload.php(7): ComposerAutoloaderInit5caf2e88d9ee432777d2fb9ba3d4b583::getLoader()
+#3 /home2/zm03cqi9/public_html/public/index.php(34): require('/home2/zm03cqi9...')
+#4 {main}
+  thrown in /home2/zm03cqi9/public_html/app/Helpers/helpers.php on line 98
+[24-Feb-2023 05:36:31 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Auth" not found in /home2/zm03cqi9/public_html/app/Helpers/helpers.php:98
+Stack trace:
+#0 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(78): require()
+#1 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(61): composerRequire5caf2e88d9ee432777d2fb9ba3d4b583('d21d43db5f6e840...', '/home2/zm03cqi9...')
+#2 /home2/zm03cqi9/public_html/vendor/autoload.php(7): ComposerAutoloaderInit5caf2e88d9ee432777d2fb9ba3d4b583::getLoader()
+#3 /home2/zm03cqi9/public_html/public/index.php(34): require('/home2/zm03cqi9...')
+#4 {main}
+  thrown in /home2/zm03cqi9/public_html/app/Helpers/helpers.php on line 98
+[24-Feb-2023 05:36:32 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Auth" not found in /home2/zm03cqi9/public_html/app/Helpers/helpers.php:98
+Stack trace:
+#0 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(78): require()
+#1 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(61): composerRequire5caf2e88d9ee432777d2fb9ba3d4b583('d21d43db5f6e840...', '/home2/zm03cqi9...')
+#2 /home2/zm03cqi9/public_html/vendor/autoload.php(7): ComposerAutoloaderInit5caf2e88d9ee432777d2fb9ba3d4b583::getLoader()
+#3 /home2/zm03cqi9/public_html/public/index.php(34): require('/home2/zm03cqi9...')
+#4 {main}
+  thrown in /home2/zm03cqi9/public_html/app/Helpers/helpers.php on line 98
+[24-Feb-2023 05:36:33 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Auth" not found in /home2/zm03cqi9/public_html/app/Helpers/helpers.php:98
+Stack trace:
+#0 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(78): require()
+#1 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(61): composerRequire5caf2e88d9ee432777d2fb9ba3d4b583('d21d43db5f6e840...', '/home2/zm03cqi9...')
+#2 /home2/zm03cqi9/public_html/vendor/autoload.php(7): ComposerAutoloaderInit5caf2e88d9ee432777d2fb9ba3d4b583::getLoader()
+#3 /home2/zm03cqi9/public_html/public/index.php(34): require('/home2/zm03cqi9...')
+#4 {main}
+  thrown in /home2/zm03cqi9/public_html/app/Helpers/helpers.php on line 98
+[24-Feb-2023 05:36:33 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Auth" not found in /home2/zm03cqi9/public_html/app/Helpers/helpers.php:98
+Stack trace:
+#0 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(78): require()
+#1 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(61): composerRequire5caf2e88d9ee432777d2fb9ba3d4b583('d21d43db5f6e840...', '/home2/zm03cqi9...')
+#2 /home2/zm03cqi9/public_html/vendor/autoload.php(7): ComposerAutoloaderInit5caf2e88d9ee432777d2fb9ba3d4b583::getLoader()
+#3 /home2/zm03cqi9/public_html/public/index.php(34): require('/home2/zm03cqi9...')
+#4 {main}
+  thrown in /home2/zm03cqi9/public_html/app/Helpers/helpers.php on line 98
+[24-Feb-2023 05:36:58 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Auth" not found in /home2/zm03cqi9/public_html/app/Helpers/helpers.php:98
+Stack trace:
+#0 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(78): require()
+#1 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(61): composerRequire5caf2e88d9ee432777d2fb9ba3d4b583('d21d43db5f6e840...', '/home2/zm03cqi9...')
+#2 /home2/zm03cqi9/public_html/vendor/autoload.php(7): ComposerAutoloaderInit5caf2e88d9ee432777d2fb9ba3d4b583::getLoader()
+#3 /home2/zm03cqi9/public_html/public/index.php(34): require('/home2/zm03cqi9...')
+#4 {main}
+  thrown in /home2/zm03cqi9/public_html/app/Helpers/helpers.php on line 98
+[24-Feb-2023 05:37:10 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Auth" not found in /home2/zm03cqi9/public_html/app/Helpers/helpers.php:98
+Stack trace:
+#0 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(78): require()
+#1 /home2/zm03cqi9/public_html/vendor/composer/autoload_real.php(61): composerRequire5caf2e88d9ee432777d2fb9ba3d4b583('d21d43db5f6e840...', '/home2/zm03cqi9...')
+#2 /home2/zm03cqi9/public_html/vendor/autoload.php(7): ComposerAutoloaderInit5caf2e88d9ee432777d2fb9ba3d4b583::getLoader()
+#3 /home2/zm03cqi9/public_html/public/index.php(34): require('/home2/zm03cqi9...')
+#4 {main}
+  thrown in /home2/zm03cqi9/public_html/app/Helpers/helpers.php on line 98
