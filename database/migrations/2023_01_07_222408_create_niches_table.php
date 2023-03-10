@@ -16,6 +16,7 @@ class CreateNichesTable extends Migration
         Schema::create('niches', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

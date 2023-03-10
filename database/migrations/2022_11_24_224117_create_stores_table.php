@@ -15,11 +15,17 @@ class CreateStoresTable extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('url');
             $table->string('status');
             $table->float('revenue');
+            $table->string('city');
+            $table->string('country');
+            $table->string('currency');
+            $table->string('shopifydomain');
             $table->integer('sales');
-            $table->integer('allproducts');
+            $table->integer('allproducts'); 
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

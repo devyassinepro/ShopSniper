@@ -34,6 +34,9 @@ class ProductController extends Controller
         //     $totalstores = [-1];
         //
  //Version 1 with filtre 
+        $totalsalesmin = 0;
+        $pagination = 50;
+        $urlstore = "";
          if($request->ordreby){
              $products = Product::orderBy($request->ordreby,'desc');
 
@@ -52,8 +55,8 @@ class ProductController extends Controller
         //version 2 without filtre 
         $products->whereIn('stores_id', $totalstores);
 
-        $products = $products->withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales']);
-        $products = $products->paginate(25)->withQueryString();
+        $products = $products->withCount(['todaysales', 'yesterdaysales']);
+        $products = $products->paginate($pagination)->withQueryString();
 
         return view('account.product.index', compact('products'))
         ->with('totalproducts',Product::whereIn('stores_id', $totalstores)->count());
@@ -86,14 +89,29 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+        if(check_user_type() != 'user')
+        {
+            redirect()->route('dashboard')->with('error','You can not access this page.');
+        }
         
-    $products = Product::withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales'])
-                        ->where('stores_id',$id)
-                        ->orderBy('totalsales','desc')->paginate(100);
+    // $products = Product::withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales'])
+    //                     ->where('stores_id',$id)
+    //                     ->orderBy('totalsales','desc')->paginate(100);
 
 
-    return view('account.product.index', compact('products'))
-    ->with('totalproducts',Product::where('stores_id',$id)->count());
+    // return view('account.product.index', compact('products'))
+    // ->with('totalproducts',Product::where('stores_id',$id)->count());
+
+    $totalsalesmin = 0;
+    $pagination = 50;
+ 
+   $products = Product::orderBy('revenue','desc')
+   ->where('id', $id);
+
+    $products = $products->withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales', 'weeklysales', 'montlysales']);
+    $products = $products->get();
+
+    return view('account.product.show', compact('products'));
     
     }
 

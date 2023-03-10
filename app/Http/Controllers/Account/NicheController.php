@@ -77,7 +77,11 @@ class NicheController extends Controller
      */
     public function show($id)
     {
-        //
+        $nichesall = Niche::find($id);
+        $stores=$nichesall->stores()->withSum('products', 'totalsales')->withSum('products', 'revenue')
+        ->orderBy('products_sum_revenue','desc')
+        ->paginate(50);
+        return view('account.stores.index', compact('stores'));
     }
 
     /**

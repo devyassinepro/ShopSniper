@@ -7,7 +7,7 @@
   <div class="row">
         <main role="main" class="col-md-9 ml-sm-auto col-lg-12 pt-3 px-4">
 
-          <h2>List Niches</h2>
+          <h2>Niches</h2>
           <a class="btn btn-success" href="{{ route('admin.niches.create') }}">Add Niche</a>
 
           <!-- <a class="btn btn-success" href="/exportstores">Export Stores</a> -->

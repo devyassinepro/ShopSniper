@@ -4,13 +4,13 @@
 
 @section('content')
 <div class="container-fluid">
-  <div class="row">
+      <div class="row">
         <main role="main" class="col-md-9 ml-sm-auto col-lg-12 pt-3 px-4">
 
-          <h2> List Stores</h2><h4> Total Stores :</h4>
+          <h2> Stores</h2>
           <a class="btn btn-success" href="{{ route('admin.stores.create') }}">Add</a>
 
-          <a class="btn btn-success" href="/exportstores">Export Stores</a>
+          <!-- <a class="btn btn-success" href="/exportstores">Export Stores</a> -->
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
            Filtres
@@ -21,7 +21,6 @@
                 <p>{{ $message }}</p>
             </div>
         @endif
-
 
 
 <!-- Modal -->
@@ -74,30 +73,32 @@
                 <tr>
                     <th>Store</th>
                     <th>Products</th>
-                    <th>Start Tracking</th>
+                    <!-- <th>Start Tracking</th> -->
                     <!-- <th>Status</th> -->
                     <th>Sales</th>
                     <th>Revenue</th>
-                    <th width="280px">Action</th>
+                    <!-- <th>Show</th> -->
+                    <!-- <th>Tracking</th> -->
+                    <th>Show Details</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($stores as $store)
                     <tr>
-                        <td><a href="{{ route('admin.product.show',$store->id) }}">{{ $store->url }}</a></td>
+                        <td><a href="{{ route('admin.stores.show',$store->id) }}">{{ $store->name }}</a></td>
                         <td>{{ $store->allproducts }}</td>
-                        <td>{{ $store->created_at }}</td>
                         <!-- <td>{{ $store->status }}</td> -->
                         <td>{{ $store->products_sum_totalsales }}</td>
-                        <td>{{number_format($store->products_sum_revenue, 2, ',', ' ')}} $</td>
-                        <td>
+                        <td>$ {{ number_format($store->products_sum_revenue, 2, ',', ' ') }}</td>
+                        <td><a  class="btn btn-success" href="{{ route('admin.stores.show',$store->id) }}">Show Details</a></td>
+
                             <form action="{{ route('admin.stores.destroy',$store->id) }}" method="Post">
-                                <a class="btn btn-primary" href="{{ route('admin.product.show',$store->id) }}">Show</a>
+
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <td>  <button type="submit" class="btn btn-danger">Delete</button> </td>
                             </form>
-                        </td>
                     </tr>
                     @endforeach
             </tbody>
@@ -105,11 +106,11 @@
           </div>
 
           <div>
-        <!-- {{ $stores->links() }}  -->
         {{  $stores->links() }}
 
         </div>
         </main>
       </div>
     </div>
+    
     @endsection

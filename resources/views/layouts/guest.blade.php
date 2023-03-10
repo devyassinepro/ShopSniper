@@ -182,62 +182,16 @@
             <div class="mx-0 row no-gutters">
             
                 <!--begin col-md-4 -->
-                <div class="text-center col-md-4 footer-white-box">
-                   
-                    <i class="pe-7s-map-2"></i>
-
-                    <h5>{{ __('Get In Touch') }}</h5>
-
-                    <p>{{ __('10 Oxford Street, London, UK, E1 1EC') }}</p>
-                    
-                    <p><a href="mailto:info@knine.ml">{{ __('info@creatydev.com') }}</a></p>
-                    
-                    <p>{{ __('+1 786 749 7342') }}</p>
+                <!--end col-md-4 -->
+                
+                <!--begin col-md-4 -->
+            
                     
                 </div>
                 <!--end col-md-4 -->
                 
                 <!--begin col-md-4 -->
-                <div class="text-center col-md-4 footer-blue-box">
-                   
-                    <i class="pe-7s-comment"></i>
-
-                    <h5>{{ __('Social Media') }}</h5>
-
-                    <p>{{ __('See bellow where you can find us.') }}</p>
-                                         
-                    <!--begin footer_social -->
-                    <ul class="footer_social">
-
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-
-                        <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-
-                        <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
-
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-
-                        <li><a href="#"><i class="fab fa-skype"></i></a></li>
-
-                        <li><a href="#"><i class="fab fa-dribble"></i></a></li>
-
-                    </ul>
-                    <!--end footer_social -->
-                    
-                </div>
-                <!--end col-md-4 -->
-                
-                <!--begin col-md-4 -->
-                <div class="text-center col-md-4 footer-grey-box">
-                   
-                    <i class="pe-7s-link"></i>
-
-                    <h5>{{ __('Useful Links') }}</h5>
-
-                    <a href="#" class="footer-links">{{ __('Terms and Conditions') }}</a>
-                    
-                </div>
-                <!--end col-md-4 -->
+            
                 
             </div>
             <!--end row -->
@@ -245,12 +199,6 @@
             <!--begin row -->
             <div class="row">
             
-                <!--begin col-md-12 -->
-                <div class="text-center col-md-12 footer-bottom">
-                   
-                    <p>{{ __('Copyright') }} © {{date('Y')}} <strong>ShopSniper</strong>, {{ __('all rights reserved') }}.</p>
-                    
-                </div>
                 <!--end col-md-6 -->
                 
             </div>

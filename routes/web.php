@@ -61,8 +61,22 @@ Route::group(['middleware' => 'language'], function () {
     })->name('home');
 
     Route::get('/contact', function () {
-        return view('contact');
+        return view('pages.contact');
     })->name('contact');
+
+    Route::get('/privacypolicy', function () {
+        return view('pages.privacypolicy');
+    })->name('privacypolicy');
+
+    Route::get('/RefundPolicy', function () {
+        return view('pages.RefundPolicy');
+    })->name('RefundPolicy');
+
+    Route::get('/TermsandConditions', function () {
+        return view('pages.TermsandConditions');
+    })->name('TermsandConditions');
+
+
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [AccountDashboardController::class, 'index'])->name('dashboard');
 
@@ -78,6 +92,8 @@ Route::group(['middleware' => 'language'], function () {
         Route::resource('/product', AccountProductController::class);
         Route::resource('/stores', AccountStoresController::class);
         Route::resource('/niches', AccountNicheController::class);
+        Route::get('/stores/storeproducts/{id}', [AccountStoresController::class, 'storeproducts'])->name('stores.storeproducts');
+
     });
 
     Route::group(['namespace' => 'Subscriptions', 'middleware' => 'auth'], function () {
@@ -142,7 +158,7 @@ Route::group(['middleware' => 'language'], function () {
 
     Route::impersonate();
 
-    Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth:sanctum', 'role:admin']], function () {
+    Route::group(['prefix' => 'adminwennify23', 'as' => 'admin.', 'middleware' => ['auth:sanctum', 'role:admin']], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('index');
         Route::resource('/users', UserController::class);
         Route::get('activity', [UserController::class, 'activity'])->name('activity');
@@ -177,16 +193,18 @@ Route::group(['middleware' => 'language'], function () {
         Route::resource('/stores', StoresController::class);
         Route::resource('/dns', DnsController::class);
         Route::resource('/niches', NicheController::class);
+        Route::get('/stores/storeproducts/{id}', [StoresController::class, 'storeproducts'])->name('stores.storeproducts');
+
     });
     
 });
 
 
 //export storesXcel 
-Route::get('/exportstores', function () {
-    return Excel::download(new StoresExport, 'stores.xlsx');
+// Route::get('/exportstores', function () {
+//     return Excel::download(new StoresExport, 'stores.xlsx');
 
-});
+// });
 
 // less than 150 products update easy One Server 
 Route::get('/update-pro', function () {

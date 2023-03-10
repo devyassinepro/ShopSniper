@@ -17,27 +17,30 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        //
- //Version 1 with filtre 
-         if($request->ordreby){
-             $products = Product::orderBy($request->ordreby,'desc');
+ //conf standard 
+ $totalsalesmin = 0;
+ $pagination = 50;
+ $urlstore = "";
 
-         }else  $products = Product::orderBy('revenue','desc');
-         if( $request->title){
-              $products = $products->where('title', 'ilike', "%" . strtoupper($request->title) . "%");
-         }
-         if( $request->min_revenue && $request->max_revenue ){
-             $products = $products->where('revenue', '>=', $request->min_revenue)
-                          ->where('revenue', '<=', $request->max_revenue);
-         }
-         if( $request->min_sales && $request->max_sales ){
-             $products = $products->where('totalsales', '>=', $request->min_sales)
-                          ->where('totalsales', '<=', $request->max_sales);
-         }
-        //version 2 without filtre 
+  if($request->ordreby){
+      $products = Product::orderBy($request->ordreby,'desc');
 
-        $products = $products->withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales']);
-        $products = $products->paginate(25)->withQueryString();
+  }else  $products =  Product::orderBy('revenue','desc');
+  if( $request->title){
+       $products = $products->where('title', 'ilike', "%" . strtoupper($request->title) . "%");
+  }
+  if( $request->min_revenue && $request->max_revenue ){
+      $products = $products->where('revenue', '>=', $request->min_revenue)
+                   ->where('revenue', '<=', $request->max_revenue);
+  }
+  if( $request->min_sales && $request->max_sales ){
+      $products = $products->where('totalsales', '>=', $request->min_sales)
+                   ->where('totalsales', '<=', $request->max_sales);
+  }else  $products = $products->where('totalsales', '>=', $totalsalesmin);
+ //version 2 without filtre 
+
+ $products = $products->withCount(['todaysales', 'yesterdaysales']);
+ $products = $products->paginate($pagination)->withQueryString();
 
         return view('admin.product.index', compact('products'))
         ->with('totalproducts',Product::all()->count());
@@ -71,13 +74,24 @@ class ProductController extends Controller
     public function show($id)
     {
         
-    $products = Product::withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales'])
-                        ->where('stores_id',$id)
-                        ->orderBy('totalsales','desc')->paginate(100);
+    // $products = Product::withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales'])
+    //                     ->where('stores_id',$id)
+    //                     ->orderBy('totalsales','desc')->paginate(100);
 
 
-    return view('admin.product.index', compact('products'))
-    ->with('totalproducts',Product::where('stores_id',$id)->count());
+    // return view('admin.product.index', compact('products'))
+    // ->with('totalproducts',Product::where('stores_id',$id)->count());
+                //conf standard 
+                $totalsalesmin = 0;
+                $pagination = 50;
+             
+               $products = Product::orderBy('revenue','desc')
+               ->where('id', $id);
+   
+                $products = $products->withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales', 'weeklysales', 'montlysales']);
+                $products = $products->get();
+        
+                return view('admin.product.show', compact('products'));
     
     }
 
@@ -90,7 +104,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    
         $this->validate($request, [ // the new values should not be null
             'title' => 'required',
             'timestamp' => 'required',

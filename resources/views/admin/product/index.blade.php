@@ -4,10 +4,12 @@
 
 @section('content')
 <div class="container-fluid">
-  <div class="row">
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-12 pt-3 px-4">
+      <div class="row">
 
-          <h2>List Products</h2><h4>Total products : {{$totalproducts}}</h4>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-12 pt-3 px-4">
+       
+        <h5>All products : {{$totalproducts}}</h5>
+   
           @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>
@@ -75,39 +77,29 @@
             <thead>
                 <tr>
                     <th>Image</th>
-                    <th>Start Traking</th>
                     <th>Title</th>
                     <th>Prix</th>
                     <th>Today</th>
-                    <th>2</th>
-                    <th>3</th>
-                    <th>4</th>
-                    <th>5</th>
-                    <th>6</th>
-                    <th>Weeklysales</th>
+                    <th>Yesterday</th>
                     <!-- <th>Monthlysales</th> -->
-                    <th>Totalsales</th>
-                    <th>Revenue</th>
-                    <th>Favoris</th>
+                    <th>Total sales</th>
+                    <th>Total Revenue</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($products as $product)
                     <tr>
-                        <td><a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="100" height="100"></a></td>
-                        <td>{{ $product->created_at }}</td>
-                        <td><a href="{{ $product->url }}" target="_blank">{{ $product->title }}</a></td>
+                        <td><a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="150" height="150"></a></td>
+                        <!-- <td><a href="{{ $product->url }}" target="_blank">{{ $product->title }}</a></td> -->
+                        <td><a href="{{ route('admin.product.show',$product->id) }}">{{ $product->title }}</a></td>
                         <td>{{ $product->prix }} $</td>
-                        <td>{{ $product->todaysales_count }}</td>
-                        <td>{{ $product->yesterdaysales_count }}</td>
-                        <td>{{ $product->day3sales_count }}</td>
-                        <td>{{ $product->day4sales_count }}</td>
-                        <td>{{ $product->day5sales_count }}</td>
-                        <td>{{ $product->day6sales_count }}</td>
-                        <td>{{ $product->weeklysales }}</td>
+                        <td>{{ $product->todaysales_count }} / ${{ $product->todaysales_count * $product->prix }}</td>
+                        <td>{{ $product->yesterdaysales_count }} / ${{ $product->yesterdaysales_count * $product->prix }}</td>
                         <td>{{ $product->totalsales }}</td>
                         <td>{{number_format($product->revenue, 2, ',', ' ')}} $</td>
-                        <td>{{ $product->favoris }}</td>
+                        <td><a  class="btn btn-success" href="{{ route('admin.product.show',$product->id) }}" >View </a></td>
+
                     </tr>
                     @endforeach
             </tbody>
@@ -121,4 +113,5 @@
         </main>
       </div>
     </div>
+    
     @endsection

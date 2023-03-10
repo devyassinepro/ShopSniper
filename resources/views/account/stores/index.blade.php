@@ -79,24 +79,23 @@
                 <tr>
                     <th>Store</th>
                     <th>Products</th>
-                    <th>Start Tracking</th>
                     <!-- <th>Status</th> -->
                     <th>Sales</th>
                     <th>Revenue</th>
+                    <th>Show Details</th>
                     <th width="280px">Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($stores as $store)
                     <tr>
-                        <td><a href="{{ route('account.product.show',$store->id) }}">{{ $store->url }}</a></td>
+                        <td><a href="{{ route('account.stores.show',$store->id) }}">{{ $store->name }}</a></td>
                         <td>{{ $store->allproducts }}</td>
-                        <td>{{ $store->created_at }}</td>
                         <td>{{ $store->products_sum_totalsales }}</td>
                         <td>{{number_format($store->products_sum_revenue, 2, ',', ' ')}} $</td>
+                        <td><a  class="btn btn-success" href="{{ route('account.stores.show',$store->id) }}">Show Details</a></td>
                         <td>
                             <form action="{{ route('account.stores.destroy',$store->id) }}" method="Post">
-                                <a class="btn btn-primary" href="{{ route('account.product.show',$store->id) }}">Show</a>
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Untrack</button>
@@ -109,7 +108,6 @@
           </div>
 
           <div>
-        <!-- {{ $stores->links() }}  -->
         {{  $stores->links() }}
 
         </div>

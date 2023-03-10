@@ -44,11 +44,7 @@ class StoresController extends Controller
          }
 
  
-          $stores = $stores->paginate(50);
-        //  $stores =  $stores->paginate(25)->withQueryString();
-        //  $stores = stores::orderBy('id','desc')->paginate(25);
-        // $stores = $stores->paginate(25)->withQueryString();
-        // $stores = stores::orderBy('sales','desc')->paginate(25);
+          $stores = $stores->paginate(10);
         return view('admin.stores.index', compact('stores'))
         ->with('totalstores',stores::all()->count());
     }
@@ -71,210 +67,64 @@ class StoresController extends Controller
     */
     public function store(Request $request)
     {
-                $request->validate([
-                    'url' => 'required',
-                    'nicheid' =>'required'
-                ]);
+        $request->validate([
+            'url' => 'required',
+            'nicheid' =>'required'
+        ]);
 
-                         $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
-                         $context = stream_context_create($opts);
-                         $meta = file_get_contents($request->url.'meta.json',false,$context);
-                         $metas = json_decode($meta);
-                         $totalproducts = $metas->published_products_count;
-                       
-                         $productId = DB::table('stores')->insertGetId(
-                            ['url' => $request->url,
-                            'status' => 1,
-                            'sales' => 0,
-                            'revenue' => 0,
-                            'allproducts' =>$totalproducts,
-                            'created_at' => now(),
-                            'updated_at' => now()
-                             ]
-                        );
-                            Nichestore::create([
-                             "stores_id" => $productId,
-                             "niche_id" => $request->nicheid,
-                             "created_at" => now(),
-                             "updated_at" => now()
-                         ]);  
-                         if($totalproducts<=250){
-                          
-                        $html = file_get_contents($request->url.'products.json?page=1&limit=250',false,$context);
-                        $products = json_decode($html)->products;
-                        foreach ($products as $product) {
+                 $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
+                 $context = stream_context_create($opts);
+                 $meta = file_get_contents($request->url.'meta.json',false,$context);
+                 $metas = json_decode($meta);
+                 $totalproducts = $metas->published_products_count;
+               
+                 $store_id = DB::table('stores')->insertGetId(
+                    ['url' => $request->url,
+                    'name' => $metas->name,
+                    'status' => 1,
+                    'sales' => 0,
+                    'revenue' => 0,
+                    'city' => $metas->city,
+                    'country' => $metas->country,
+                    'currency' => $metas->currency,
+                    'shopifydomain' => $metas->myshopify_domain,
+                    'allproducts' => $metas->published_products_count,
+                    'user_id' => null,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                     ]
+                );
+                    Nichestore::create([
+                     "stores_id" => $store_id,
+                     "niche_id" => $request->nicheid,
+                     "created_at" => now(),
+                     "updated_at" => now()
+                 ]);  
+                 if($totalproducts<=250){
+                  
+                    createstore($request->url,$store_id,1);
 
-                            if(isset($product->variants[0]->price)){
-                                $price= $product->variants[0]->price;
-                            }else{
-                                $price=0;
-                            }
-                            if(isset($product->images[0]->src)){
-                                $image= $product->images[0]->src;
-                            }else{
-                                $image="default";
-                            }
+                  
+                 }else if($totalproducts<=500){
+                    for ($i = 1; $i <= 2; $i++) {
+                        createstore($request->url,$store_id,$i);
 
-                            $timeconvert = strtotime($product->updated_at);
-                            $totalsales = 0;
-                            $urlproduct = $request->url.'products/'.$product->handle;
-                            Product::firstOrCreate([
-                                "id" => $product->id,
-                                "title" => $product->title,
-                                "timesparam" => $timeconvert,
-                                "prix" => $price,
-                                "revenue" => 0,
-                                "stores_id" => $productId,
-                                "url" => $urlproduct,
-                                "imageproduct" => $image,
-                                "favoris" => 0,
-                                "totalsales" => $totalsales,
-                            ]);
-                        }
-                          
-                         }else if($totalproducts<=500){
-                            for ($i = 1; $i <= 2; $i++) {
-                                        
-                        $html = file_get_contents($request->url.'products.json?page='.$i.'&limit=250',false,$context);
-                        $products = json_decode($html)->products;
-                        foreach ($products as $product) {
+                    }
+                 }else if($totalproducts<=750){
+                    for ($i = 1; $i <= 3; $i++) {
+                        createstore($request->url,$store_id,$i);
 
-                            if(isset($product->variants[0]->price)){
-                                $price= $product->variants[0]->price;
-                            }else{
-                                $price=0;
-                            }
-                            if(isset($product->images[0]->src)){
-                                $image= $product->images[0]->src;
-                            }else{
-                                $image="default";
-                            }
+                    }}
+                else if($totalproducts<=1000 || $totalproducts>1000){
+                    for ($i = 1; $i <= 4; $i++) {
+                        createstore($request->url,$store_id,$i);
+                    }  
+                }
 
-                            $timeconvert = strtotime($product->updated_at);
-                            $totalsales = 0;
-                            $urlproduct = $request->url.'products/'.$product->handle;
-                            Product::firstOrCreate([
-                                "id" => $product->id,
-                                "title" => $product->title,
-                                "timesparam" => $timeconvert,
-                                "prix" => $price,
-                                "revenue" => 0,
-                                "stores_id" => $productId,
-                                "url" => $urlproduct,
-                                "imageproduct" => $image,
-                                "favoris" => 0,
-                                "totalsales" => $totalsales,
-                            ]);
-                        }
-                            }
-                         }else if($totalproducts<=750){
-                            for ($i = 1; $i <= 3; $i++) {
-                                $html = file_get_contents($request->url.'products.json?page='.$i.'&limit=250',false,$context);
-                                $products = json_decode($html)->products;
-                                foreach ($products as $product) {
-        
-                                    if(isset($product->variants[0]->price)){
-                                        $price= $product->variants[0]->price;
-                                    }else{
-                                        $price=0;
-                                    }
-                                    if(isset($product->images[0]->src)){
-                                        $image= $product->images[0]->src;
-                                    }else{
-                                        $image="default";
-                                    }
-        
-                                    $timeconvert = strtotime($product->updated_at);
-                                    $totalsales = 0;
-                                    $urlproduct = $request->url.'products/'.$product->handle;
-                                    Product::firstOrCreate([
-                                        "id" => $product->id,
-                                        "title" => $product->title,
-                                        "timesparam" => $timeconvert,
-                                        "prix" => $price,
-                                        "revenue" => 0,
-                                        "stores_id" => $productId,
-                                        "url" => $urlproduct,
-                                        "imageproduct" => $image,
-                                        "favoris" => 0,
-                                        "totalsales" => $totalsales,
-                                    ]);
-                                }
-                            }}
-                        else if($totalproducts<=1000 || $totalproducts>1000){
-                            for ($i = 1; $i <= 4; $i++) {
-                                $html = file_get_contents($request->url.'products.json?page='.$i.'&limit=250',false,$context);
-                                $products = json_decode($html)->products;
-                                foreach ($products as $product) {
-        
-                                    if(isset($product->variants[0]->price)){
-                                        $price= $product->variants[0]->price;
-                                    }else{
-                                        $price=0;
-                                    }
-                                    if(isset($product->images[0]->src)){
-                                        $image= $product->images[0]->src;
-                                    }else{
-                                        $image="default";
-                                    }
-        
-                                    $timeconvert = strtotime($product->updated_at);
-                                    $totalsales = 0;
-                                    $urlproduct = $request->url.'products/'.$product->handle;
-                                    Product::firstOrCreate([
-                                        "id" => $product->id,
-                                        "title" => $product->title,
-                                        "timesparam" => $timeconvert,
-                                        "prix" => $price,
-                                        "revenue" => 0,
-                                        "stores_id" => $productId,
-                                        "url" => $urlproduct,
-                                        "imageproduct" => $image,
-                                        "favoris" => 0,
-                                        "totalsales" => $totalsales,
-                                    ]);
-                                } 
-                            }  
-                        }
-  
-                          
+                  
 
         return redirect()->route('admin.stores.index')->with('success','Company has been created successfully.');
     }
-                        // foreach ($products as $product) {
-                        //     $timeconvert = strtotime($product->updated_at);
-                        //     $totalsales = 0;
-                        //     $urlproduct = $request->url.'products/'.$product->handle;
-                        //     Product::firstOrCreate([
-                        //         "id" => $product->id,
-                        //         "title" => $product->title,
-                        //         "timesparam" => $timeconvert,
-                        //         "vendor" => $product->vendor,
-                        //         "store" => $urlproduct,
-                        //         "totalsales" => $totalsales
-                        //     ]);
-
-                        // }    
-    // function createproduct($products,$productId){
-    //     foreach ($products as $product) {
-    //         $price= $product->variants[0]->price;
-    //         $timeconvert = strtotime($product->updated_at);
-    //         $totalsales = 0;
-    //         $urlproduct = $request->url.'products/'.$product->handle;
-    //         Product::firstOrCreate([
-    //             "id" => $product->id,
-    //             "title" => $product->title,
-    //             "timesparam" => $timeconvert,
-    //             "vendor" => $product->vendor,
-    //             "prix" => $price,
-    //             "revenue" => 0,
-    //             "stores_id" => "1",
-    //             "url" => $urlproduct,
-    //             "totalsales" => $totalsales
-    //         ]);
-
-    //     }   
-    // }
 
 
     /**
@@ -286,11 +136,27 @@ class StoresController extends Controller
     public function show($id)
     {
 
-        $nichesall = Niche::find($id);
-        $stores=$nichesall->stores()->withSum('products', 'totalsales')->withSum('products', 'revenue')
-        ->orderBy('products_sum_revenue','desc')
-        ->paginate(50);
-        return view('admin.stores.index', compact('stores'));
+        // $nichesall = Niche::find($id);
+        // $stores=$nichesall->stores()->withSum('products', 'totalsales')->withSum('products', 'revenue')
+        // ->orderBy('products_sum_revenue','desc')
+        // ->paginate(50);
+        // return view('admin.stores.index', compact('stores'));
+
+        $storedata = DB::table('stores')->where('id', $id)->get();
+        $storesrevenue = stores::withSum('products', 'totalsales')
+        ->withSum('products', 'revenue')
+        ->where('id', $id)
+        ->get();
+
+        $totalsalesmin = 0;
+        // $pagination = 50;
+        $products = Product::withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales', 'weeklysales', 'montlysales'])
+                        ->where('stores_id',$id)
+                        ->where('totalsales', '>=', $totalsalesmin)
+                        ->orderBy('totalsales','desc')->take(10)->get();
+
+    return view('admin.stores.show', compact('products','storedata','storesrevenue'))
+    ->with('totalproducts',Product::where('stores_id',$id)->count());
     
     }
 
@@ -342,39 +208,64 @@ class StoresController extends Controller
         }
 
     }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function storeproducts($id)
+    {
 
-    public function addmoreproducts($request, $productId, $context , $i){
-        $html = file_get_contents($request->url.'products.json?page='.$i.'&limit=250',false,$context);
-        $products = json_decode($html)->products;
-        foreach ($products as $product) {
+        $storedata = DB::table('stores')->where('id', $id)->get();
 
-            if(isset($product->variants[0]->price)){
-                $price= $product->variants[0]->price;
-            }else{
-                $price=0;
-            }
-            if(isset($product->images[0]->src)){
-                $image= $product->images[0]->src;
-            }else{
-                $image="default";
-            }
+        $totalsalesmin = 0;
+         $pagination = 50;
+        $products = Product::withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales', 'weeklysales', 'montlysales'])
+                        ->where('stores_id',$id)
+                        ->where('totalsales', '>=', $totalsalesmin)
+                        ->orderBy('totalsales','desc')->paginate($pagination);
 
-            $timeconvert = strtotime($product->updated_at);
-            $totalsales = 0;
-            $urlproduct = $request->url.'products/'.$product->handle;
-            Product::firstOrCreate([
-                "id" => $product->id,
-                "title" => $product->title,
-                "timesparam" => $timeconvert,
-                "prix" => $price,
-                "revenue" => 0,
-                "stores_id" => $productId,
-                "url" => $urlproduct,
-                "imageproduct" => $image,
-                "favoris" => 0,
-                "totalsales" => $totalsales,
-            ]);
-        }
+    return view('admin.stores.storeproducts', compact('products','storedata'))
+    ->with('totalproducts',Product::where('stores_id',$id)->count());
+    
     }
+    
 
+}
+
+function createstore ($store ,$store_id, $i){
+    $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
+    $context = stream_context_create($opts);
+    $html = file_get_contents($store.'products.json?page='.$i.'&limit=250',false,$context);
+    $products = json_decode($html)->products;
+    foreach ($products as $product) {
+
+        if(isset($product->variants[0]->price)){
+            $price= $product->variants[0]->price;
+        }else{
+            $price=0;
+        }
+        if(isset($product->images[0]->src)){
+            $image= $product->images[0]->src;
+        }else{
+            $image="default";
+        }
+
+        $timeconvert = strtotime($product->updated_at);
+        $totalsales = 0;
+        $urlproduct = $store.'products/'.$product->handle;
+        Product::firstOrCreate([
+            "id" => $product->id,
+            "title" => $product->title,
+            "timesparam" => $timeconvert,
+            "prix" => $price,
+            "revenue" => 0,
+            "stores_id" => $store_id,
+            "url" => $urlproduct,
+            "imageproduct" => $image,
+            "favoris" => 0,
+            "totalsales" => $totalsales,
+        ]);
+    } 
 }

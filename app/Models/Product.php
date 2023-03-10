@@ -70,10 +70,27 @@ class Product extends Model
         return $this->hasMany(Sales::class)->where('created_at', '=', Carbon::now()->subDays(4)->format('Y-m-d'));
     }
 
+
     public function day6sales()
     {
         return $this->hasMany(Sales::class)->where('created_at', '=', Carbon::now()->subDays(5)->format('Y-m-d'));
     }
+    public function weeklysales()
+    {
+        $now= Carbon::now()->format('Y-m-d');
+        $Week= Carbon::now()->subDays(7)->format('Y-m-d');
+
+        return $this->hasMany(Sales::class)
+        ->whereBetween('created_at', [$now, $Week]);
+    }
+
+    public function montlysales()
+    {
+        $now= Carbon::now()->format('Y-m-d');
+        $montly= Carbon::now()->subDays(30)->format('Y-m-d');
+
+        return $this->hasMany(Sales::class)
+        ->whereBetween('created_at', [$now, $montly]);    }
 
      protected $table = 'products';
 }

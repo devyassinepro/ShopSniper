@@ -21,11 +21,17 @@ class stores extends Model
     use HasFactory;
     protected $fillable = [
         'id',
+        'name',
         'url',
         'status',
         'revenue',
-        'allproducts',
+        'city',
+        'country',
+        'currency',
+        'shopifydomain',
         'sales',
+        'allproducts',
+        'user_id'
     ];
     public function niches(){
         return $this->belongsToMany(Niche::class);

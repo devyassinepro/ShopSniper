@@ -48,6 +48,7 @@ class NicheController extends Controller
 
         $nichesId = DB::table('niches')->insertGetId(
             ['name' => $request->name,
+            'user_id' => 1,
             'created_at' => now(),
             'updated_at' => now()
              ]
@@ -64,7 +65,11 @@ class NicheController extends Controller
      */
     public function show($id)
     {
-        //
+        $nichesall = Niche::find($id);
+        $stores=$nichesall->stores()->withSum('products', 'totalsales')->withSum('products', 'revenue')
+        ->orderBy('products_sum_revenue','desc')
+        ->paginate(50);
+        return view('admin.stores.index', compact('stores'));
     }
 
     /**
