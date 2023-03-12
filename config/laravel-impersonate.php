@@ -28,7 +28,7 @@ return [
      * Only used in the built-in controller.
      * * Use 'back' to redirect to the previous page
      */
-    'take_redirect_to' => '/user/profile',
+    'take_redirect_to' => '/dashboard',
 
     /**
      * The URI to redirect after leaving an impersonation.

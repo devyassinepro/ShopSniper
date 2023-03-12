@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\stores;
 use App\Models\Storeuser;
 use DB;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
@@ -102,16 +103,20 @@ class ProductController extends Controller
     // return view('account.product.index', compact('products'))
     // ->with('totalproducts',Product::where('stores_id',$id)->count());
 
+    $dates = [];
+    for ($i = 6; $i >= 0; $i--) {
+        $dates[] = Carbon::now()->subDays($i)->format('Y-m-d');
+    }
     $totalsalesmin = 0;
     $pagination = 50;
  
    $products = Product::orderBy('revenue','desc')
    ->where('id', $id);
 
-    $products = $products->withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales', 'weeklysales', 'montlysales']);
-    $products = $products->get();
+   $products = $products->withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales', 'day7sales', 'weeklysales', 'montlysales']);
+   $products = $products->get();
 
-    return view('account.product.show', compact('products'));
+    return view('account.product.show', compact('products','dates'));
     
     }
 

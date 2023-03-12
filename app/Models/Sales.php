@@ -13,6 +13,8 @@ class Sales extends Model
     protected $fillable = [
         'id',
         'products_id',
+        'stores_id',
+        'prix'
     ];
 
 
@@ -23,7 +25,11 @@ class Sales extends Model
         
     }
 
-
+    public function stores(): HasMany
+    {
+        return $this->hasMany(stores::class);
+        
+    }
 
      protected $table = 'sales';
 }

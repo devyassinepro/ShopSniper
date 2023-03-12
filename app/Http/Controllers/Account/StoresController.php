@@ -134,6 +134,7 @@ class StoresController extends Controller
                 }
                 else
                 {
+                    try {
                         $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
                         $context = stream_context_create($opts);
                         $meta = file_get_contents($request->url.'meta.json',false,$context);
@@ -188,12 +189,16 @@ class StoresController extends Controller
                         else if($totalproducts<=1000 || $totalproducts>1000){
                             for ($i = 1; $i <= 4; $i++) {
                                 createstore($request->url,$store_id,$i);   
-
                             }  
                         }
+                    } catch(\Exception $exception) {
+                        return redirect()->route('account.stores.index')->with('error','This Store not Supported by Weenify');
+    
+                        // Log::error($exception->getMessage());
+                    }
                 }
         
-        return redirect()->route('account.stores.index')->with('success','Company has been created successfully.');
+        return redirect()->route('account.stores.index')->with('success','Store has been created successfully.');
     }
   
 
@@ -213,6 +218,11 @@ class StoresController extends Controller
         $user_id = Auth::user()->id;
         $storeuser = Storeuser::where('user_id', $user_id)->count();
         
+        
+    $dates = [];
+    for ($i = 6; $i >= 0; $i--) {
+        $dates[] = Carbon::now()->subDays($i)->format('Y-m-d');
+    }
         if(check_store_limit() <= $storeuser)
         {
             return redirect()->route('account.stores.index')->with('error','You can not add stores more than '.check_store_limit());
@@ -220,17 +230,18 @@ class StoresController extends Controller
         $storedata = DB::table('stores')->where('id', $id)->get();
         $storesrevenue = stores::withSum('products', 'totalsales')
         ->withSum('products', 'revenue')
+        ->withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales','day7sales'])
         ->where('id', $id)
         ->get();
 
         $totalsalesmin = 0;
         // $pagination = 50;
-        $products = Product::withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales', 'weeklysales', 'montlysales'])
+        $products = Product::withCount(['todaysales', 'yesterdaysales' , 'weeklysales', 'montlysales'])
                         ->where('stores_id',$id)
                         ->where('totalsales', '>=', $totalsalesmin)
                         ->orderBy('totalsales','desc')->take(10)->get();
 
-    return view('account.stores.show', compact('products','storedata','storesrevenue'))
+    return view('account.stores.show', compact('products','storedata','storesrevenue','dates'))
     ->with('totalproducts',Product::where('stores_id',$id)->count());
     
     }

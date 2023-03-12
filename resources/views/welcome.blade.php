@@ -68,7 +68,7 @@
 
                  <img src="https://cdn.shopify.com/s/files/1/1338/0845/products/Easy-Livin-Single-Stylized.jpg?v=1678311092"
                    class="card-img-top" alt="Laptop" />
-                   <div class="d-flex justify-content-between mb-1" style="background-color:#225aea">
+                   <div class="d-flex justify-content-between mb-1" style="background-color:#ff7a41">
                      <p class="mb-0"  style="color: #fff;";>easy livin'</p>
                      <p class="mb-0"style="color: #fff;";>$12.99</p>
                    </div>
@@ -77,7 +77,7 @@
                      <h5 class="mb-1">Sales</h5>
                    </div>
                    <div class="d-flex justify-content-between mb-1">
-                     <h3 class="mb-0" >$6.000</h3>
+                     <h3 class="mb-0" >$6,000.00</h3>
                      <h3 class="mb-0">500</h3>
                    </div>
               
@@ -98,7 +98,7 @@
                    </div>
 
                    <div class="d-flex justify-content-between mb-1">
-                     <h3 class="mb-0" >$14.184</h3>
+                     <h3 class="mb-0" >$14,184.00</h3>
                      <h3 class="mb-0">394</h3>
                    </div>
          
@@ -263,7 +263,7 @@
                                 <h3 class="wow fadeInUp">Track The Daily Revenue Of Stores </h3>
                             </div>
                             <h6 class="color-666 wow fadeInUp"> Weenify enables real-time access to a store's product offerings and revenue data, empowering you to identify winning products and minimize the risk of selling low-performing items.
-</h6>
+                            </h6>
                         </div>
                     </div>
                 </div>
@@ -280,7 +280,7 @@
                        
                                 <h3> Join 3000+ Merchants Using Weenify </h3>
                             </div><div></div>
-                            <p4>Take advantage of Dropship's tools to make your selling journey easier while increasing your chances of success.
+                            <p4>Take advantage of Weenify tools to make your selling journey easier while increasing your chances of success.
                             </p4>
                             <div class="d-flex align-items-center mt-40 wow fadeInUp">
                                 <a href="/register" class="butn bg-orange1 border-0 rounded-pill hover-shadow flex-shrink-0" type="submit">
@@ -389,8 +389,8 @@
         <livewire:plan-list />
 
           <!-- ====== start faq ====== -->
-          <section class="faq section-padding style-4 pt-50">
-            <div class="container">
+          <section class="faq section-padding style-4 pt-50" id="faq" >
+            <div class="container" >
                 <div class="section-head text-center style-4">
                     <small class="title_small"></small>
                     <h2 class="mb-30">Frequently Asked Question</h2>
@@ -497,7 +497,7 @@
                         <div class="col-lg-6">
                             <div class="foot-logo">
                                 <a href="#"> 
-                                    <img src="assets/img/logo_home8.png" alt="">    
+                                <img src="{{ asset('saas/img/logo.png') }}" class="navbar-brand-img"> 
                                 </a>
                             </div>
                         </div>
@@ -536,8 +536,9 @@
                             <div class="links">
                                 <h6 class="foot-title"> Learn More </h6>
                                 <ul>
+
                                     <li>
-                                        <a href="/RefundPolicy"> Refund Policy </a>
+                                        <a href="/contact"> Contact </a>
                                     </li>
                                     <li>
                                         <a href="/TermsandConditions"> Terms and Conditions </a>
@@ -546,14 +547,13 @@
                                         <a href="/privacypolicy">Privacy Policy</a>
                                     </li>
                                     <li>
-                                        <a href="/contact"> Contact </a>
+                                        <a href="/"> Affiliate Program </a>
                                     </li>
                                     <li>
-                                        <a href="#"> Affiliate Program </a>
+                                        <a href="/RefundPolicy"> Refund Policy </a>
                                     </li>
-
                                     <li>
-                                        <a href="#"> Pricing Plan </a>
+                                        <a href=""> Pricing Plan </a>
                                     </li>
                                 </ul>
                             </div>
@@ -566,8 +566,9 @@
                                     <span class="icon"> <i class="fas fa-envelope-open"></i> </span>
                                     <input type="text" class="form-control" placeholder="Email address">
                                 </div>
-                                <a href="#" class="butn bg-main border-0 rounded-pill hover-shadow flex-shrink-0 mt-20 w-100 py-3" type="submit">
+                                <a href="/register" class="butn bg-orange1 border-0 rounded-pill hover-shadow flex-shrink-0" type="submit">
                                     <span class="text-white"> Subscribe Now <i class="fal fa-long-arrow-right ms-2"></i> </span>
+                                    
                                 </a>
                             </div>
                         </div>

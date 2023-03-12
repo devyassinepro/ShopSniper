@@ -41,7 +41,7 @@ class ContactForm extends Component
             $message
                     ->from(config('mail.from.address'))
                     ->to(config('saas.admin_mail'))
-                    ->subject(__('Your Site Contact Form'));
+                    ->subject(__('Weenify contact Form'));
         });
 
         $this->alert('success', __('Thank you for reaching out to us!'));

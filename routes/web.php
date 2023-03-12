@@ -207,207 +207,250 @@ Route::group(['middleware' => 'language'], function () {
 // });
 
 // less than 150 products update easy One Server 
+// Route::get('/update-pro', function () {
+
+//     $stores = DB::table('stores')->get();
+//     collect($stores)->map(function ($store) {
+
+//         try {
+//             if($store->allproducts<=250 ){
+                            
+//                         $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
+//                         $context = stream_context_create($opts);
+//                         $html = file_get_contents($store->url.'products.json?page=1&limit=250',false,$context);
+                        
+//                         DB::table('apistatuses')->insert([
+//                             "store" => $store->url,
+//                             "status" => $http_response_header[0],
+//                             'created_at' => Carbon::now()->format('Y-m-d'),
+//                             'updated_at' => Carbon::now()->format('Y-m-d')
+//                         ]);
+
+//                         // echo $responsecode;
+//                         $products = json_decode($html)->products;
+//                         collect($products)->map(function ($product) {
+
+//                             echo time().'<br />';
+//                             $productbd = DB::table('products')->where('id', $product->id)->where('timesparam', '!=', strtotime($product->updated_at))->first();
+//                             if($productbd) {
+                    
+//                                 $sales = $productbd->totalsales;
+//                                 $revenuenow = $productbd->revenue + $productbd->prix;
+//                                 $sales ++ ; 
+//                                 //echo $sales;
+//                                 $timestt = strtotime($product->updated_at); 
+//                                 $productreq = array(
+//                                     'title' => $productbd->title,
+//                                     'timesparam' => $timestt,
+//                                     'prix' => $productbd->prix,
+//                                     'revenue' => $revenuenow,
+//                                     'stores_id' => $productbd->stores_id,
+//                                     'imageproduct' => $productbd->imageproduct,
+//                                     'favoris' => $productbd->favoris,
+//                                     'totalsales' => $sales,
+//                                 );
+                    
+//                                 DB::table('products')->where('id', $productbd->id)->update($productreq);
+
+//                                 DB::table('sales')->insert([
+//                                     "product_id" => $productbd->id,
+//                                     'created_at' => Carbon::now()->format('Y-m-d'),
+//                                     'updated_at' => Carbon::now()->format('Y-m-d')
+//                                 ]);
+//                             }
+//                         });
+
+//             }else if($store->allproducts<=500){
+
+//                 for ($i = 1; $i <= 2; $i++) {
+     
+//                     $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
+//                     $context = stream_context_create($opts);
+//                     $html = file_get_contents($store->url.'products.json?page='.$i.'&limit=250',false,$context);
+                    
+//                     DB::table('apistatuses')->insert([
+//                         "store" => $store->url,
+//                         "status" => $http_response_header[0],
+//                         'created_at' => Carbon::now()->format('Y-m-d'),
+//                         'updated_at' => Carbon::now()->format('Y-m-d')
+//                     ]);
+
+//                     // echo $responsecode;
+//                     $products = json_decode($html)->products;
+//                     collect($products)->map(function ($product) {
+
+//                         echo time().'<br />';
+//                         $productbd = DB::table('products')->where('id', $product->id)->where('timesparam', '!=', strtotime($product->updated_at))->first();
+//                         if($productbd) {
+                
+//                             $sales = $productbd->totalsales;
+//                             $revenuenow = $productbd->revenue + $productbd->prix;
+//                             $sales ++ ; 
+//                             //echo $sales;
+//                             $timestt = strtotime($product->updated_at); 
+//                             $productreq = array(
+//                                 'title' => $productbd->title,
+//                                 'timesparam' => $timestt,
+//                                 'prix' => $productbd->prix,
+//                                 'revenue' => $revenuenow,
+//                                 'stores_id' => $productbd->stores_id,
+//                                 'imageproduct' => $productbd->imageproduct,
+//                                 'favoris' => $productbd->favoris,
+//                                 'totalsales' => $sales,
+//                             );
+                
+//                             DB::table('products')->where('id', $productbd->id)->update($productreq);
+
+//                             DB::table('sales')->insert([
+//                                 "product_id" => $productbd->id,
+//                                 'created_at' => Carbon::now()->format('Y-m-d'),
+//                                 'updated_at' => Carbon::now()->format('Y-m-d')
+//                             ]);
+//                         }
+//                     });
+
+//                 }
+//             }else if($store->allproducts<=750){
+//                 for ($i = 1; $i <= 3; $i++) {
+
+//                     $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
+//                     $context = stream_context_create($opts);
+//                     $html = file_get_contents($store->url.'products.json?page='.$i.'&limit=250',false,$context);
+                    
+//                     DB::table('apistatuses')->insert([
+//                         "store" => $store->url,
+//                         "status" => $http_response_header[0],
+//                         'created_at' => Carbon::now()->format('Y-m-d'),
+//                         'updated_at' => Carbon::now()->format('Y-m-d')
+//                     ]);
+
+//                     // echo $responsecode;
+//                     $products = json_decode($html)->products;
+//                     collect($products)->map(function ($product) {
+
+//                         echo time().'<br />';
+//                         $productbd = DB::table('products')->where('id', $product->id)->where('timesparam', '!=', strtotime($product->updated_at))->first();
+//                         if($productbd) {
+                
+//                             $sales = $productbd->totalsales;
+//                             $revenuenow = $productbd->revenue + $productbd->prix;
+//                             $sales ++ ; 
+//                             //echo $sales;
+//                             $timestt = strtotime($product->updated_at); 
+//                             $productreq = array(
+//                                 'title' => $productbd->title,
+//                                 'timesparam' => $timestt,
+//                                 'prix' => $productbd->prix,
+//                                 'revenue' => $revenuenow,
+//                                 'stores_id' => $productbd->stores_id,
+//                                 'imageproduct' => $productbd->imageproduct,
+//                                 'favoris' => $productbd->favoris,
+//                                 'totalsales' => $sales,
+//                             );
+                
+//                             DB::table('products')->where('id', $productbd->id)->update($productreq);
+
+//                             DB::table('sales')->insert([
+//                                 "product_id" => $productbd->id,
+//                                 "stores_id" => $productbd->stores_id,
+//                                 "prix" => $productbd->prix,
+//                                 'created_at' => Carbon::now()->format('Y-m-d'),
+//                                 'updated_at' => Carbon::now()->format('Y-m-d')
+//                             ]);
+//                         }
+//                     });
+
+//                 }
+//             }
+
+//             else if($store->allproducts<=1000){
+//                 for ($i = 1; $i <= 4; $i++) {
+//                     $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
+//                     $context = stream_context_create($opts);
+//                     $html = file_get_contents($store->url.'products.json?page='.$i.'&limit=250',false,$context);
+                    
+//                     DB::table('apistatuses')->insert([
+//                         "store" => $store->url,
+//                         "status" => $http_response_header[0],
+//                         'created_at' => Carbon::now()->format('Y-m-d'),
+//                         'updated_at' => Carbon::now()->format('Y-m-d')
+//                     ]);
+
+//                     // echo $responsecode;
+//                     $products = json_decode($html)->products;
+//                     collect($products)->map(function ($product) {
+
+//                         echo time().'<br />';
+//                         $productbd = DB::table('products')->where('id', $product->id)->where('timesparam', '!=', strtotime($product->updated_at))->first();
+//                         if($productbd) {
+                
+//                             $sales = $productbd->totalsales;
+//                             $revenuenow = $productbd->revenue + $productbd->prix;
+//                             $sales ++ ; 
+//                             //echo $sales;
+//                             $timestt = strtotime($product->updated_at); 
+//                             $productreq = array(
+//                                 'title' => $productbd->title,
+//                                 'timesparam' => $timestt,
+//                                 'prix' => $productbd->prix,
+//                                 'revenue' => $revenuenow,
+//                                 'stores_id' => $productbd->stores_id,
+//                                 'imageproduct' => $productbd->imageproduct,
+//                                 'favoris' => $productbd->favoris,
+//                                 'totalsales' => $sales,
+//                             );
+                
+//                             DB::table('products')->where('id', $productbd->id)->update($productreq);
+
+//                             DB::table('sales')->insert([
+//                                 "product_id" => $productbd->id,
+//                                 'created_at' => Carbon::now()->format('Y-m-d'),
+//                                 'updated_at' => Carbon::now()->format('Y-m-d')
+//                             ]);
+//                         }
+//                     });
+
+//                 }
+//             }
+
+//           //  sleep(1);//sleep 1 second
+//         } catch(\Exception $exception) {
+
+//             echo "Error:".$exception->getMessage().'<br />';
+//         }
+//     });
+// });
+
+
+
+// less than 150 products update easy One Server 
 Route::get('/update-pro', function () {
 
-    $stores = DB::table('stores')->get();
+    // $stores = DB::table('stores')->get();
+    $stores = DB::table('stores')->where('status', '1')->get();
+
     collect($stores)->map(function ($store) {
 
         try {
             if($store->allproducts<=250 ){
                             
-                        $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
-                        $context = stream_context_create($opts);
-                        $html = file_get_contents($store->url.'products.json?page=1&limit=250',false,$context);
-                        
-                        DB::table('apistatuses')->insert([
-                            "store" => $store->url,
-                            "status" => $http_response_header[0],
-                            'created_at' => Carbon::now()->format('Y-m-d'),
-                            'updated_at' => Carbon::now()->format('Y-m-d')
-                        ]);
-
-                        // echo $responsecode;
-                        $products = json_decode($html)->products;
-                        collect($products)->map(function ($product) {
-
-                            echo time().'<br />';
-                            $productbd = DB::table('products')->where('id', $product->id)->where('timesparam', '!=', strtotime($product->updated_at))->first();
-                            if($productbd) {
-                    
-                                $sales = $productbd->totalsales;
-                                $revenuenow = $productbd->revenue + $productbd->prix;
-                                $sales ++ ; 
-                                //echo $sales;
-                                $timestt = strtotime($product->updated_at); 
-                                $productreq = array(
-                                    'title' => $productbd->title,
-                                    'timesparam' => $timestt,
-                                    'prix' => $productbd->prix,
-                                    'revenue' => $revenuenow,
-                                    'stores_id' => $productbd->stores_id,
-                                    'imageproduct' => $productbd->imageproduct,
-                                    'favoris' => $productbd->favoris,
-                                    'totalsales' => $sales,
-                                );
-                    
-                                DB::table('products')->where('id', $productbd->id)->update($productreq);
-
-                                DB::table('sales')->insert([
-                                    "product_id" => $productbd->id,
-                                    'created_at' => Carbon::now()->format('Y-m-d'),
-                                    'updated_at' => Carbon::now()->format('Y-m-d')
-                                ]);
-                            }
-                        });
+                updatesales($store->url, 1);
 
             }else if($store->allproducts<=500){
 
                 for ($i = 1; $i <= 2; $i++) {
      
-                    $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
-                    $context = stream_context_create($opts);
-                    $html = file_get_contents($store->url.'products.json?page='.$i.'&limit=250',false,$context);
-                    
-                    DB::table('apistatuses')->insert([
-                        "store" => $store->url,
-                        "status" => $http_response_header[0],
-                        'created_at' => Carbon::now()->format('Y-m-d'),
-                        'updated_at' => Carbon::now()->format('Y-m-d')
-                    ]);
-
-                    // echo $responsecode;
-                    $products = json_decode($html)->products;
-                    collect($products)->map(function ($product) {
-
-                        echo time().'<br />';
-                        $productbd = DB::table('products')->where('id', $product->id)->where('timesparam', '!=', strtotime($product->updated_at))->first();
-                        if($productbd) {
-                
-                            $sales = $productbd->totalsales;
-                            $revenuenow = $productbd->revenue + $productbd->prix;
-                            $sales ++ ; 
-                            //echo $sales;
-                            $timestt = strtotime($product->updated_at); 
-                            $productreq = array(
-                                'title' => $productbd->title,
-                                'timesparam' => $timestt,
-                                'prix' => $productbd->prix,
-                                'revenue' => $revenuenow,
-                                'stores_id' => $productbd->stores_id,
-                                'imageproduct' => $productbd->imageproduct,
-                                'favoris' => $productbd->favoris,
-                                'totalsales' => $sales,
-                            );
-                
-                            DB::table('products')->where('id', $productbd->id)->update($productreq);
-
-                            DB::table('sales')->insert([
-                                "product_id" => $productbd->id,
-                                'created_at' => Carbon::now()->format('Y-m-d'),
-                                'updated_at' => Carbon::now()->format('Y-m-d')
-                            ]);
-                        }
-                    });
-
+                    updatesales($store->url , $i);
                 }
             }else if($store->allproducts<=750){
                 for ($i = 1; $i <= 3; $i++) {
-
-                    $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
-                    $context = stream_context_create($opts);
-                    $html = file_get_contents($store->url.'products.json?page='.$i.'&limit=250',false,$context);
-                    
-                    DB::table('apistatuses')->insert([
-                        "store" => $store->url,
-                        "status" => $http_response_header[0],
-                        'created_at' => Carbon::now()->format('Y-m-d'),
-                        'updated_at' => Carbon::now()->format('Y-m-d')
-                    ]);
-
-                    // echo $responsecode;
-                    $products = json_decode($html)->products;
-                    collect($products)->map(function ($product) {
-
-                        echo time().'<br />';
-                        $productbd = DB::table('products')->where('id', $product->id)->where('timesparam', '!=', strtotime($product->updated_at))->first();
-                        if($productbd) {
-                
-                            $sales = $productbd->totalsales;
-                            $revenuenow = $productbd->revenue + $productbd->prix;
-                            $sales ++ ; 
-                            //echo $sales;
-                            $timestt = strtotime($product->updated_at); 
-                            $productreq = array(
-                                'title' => $productbd->title,
-                                'timesparam' => $timestt,
-                                'prix' => $productbd->prix,
-                                'revenue' => $revenuenow,
-                                'stores_id' => $productbd->stores_id,
-                                'imageproduct' => $productbd->imageproduct,
-                                'favoris' => $productbd->favoris,
-                                'totalsales' => $sales,
-                            );
-                
-                            DB::table('products')->where('id', $productbd->id)->update($productreq);
-
-                            DB::table('sales')->insert([
-                                "product_id" => $productbd->id,
-                                'created_at' => Carbon::now()->format('Y-m-d'),
-                                'updated_at' => Carbon::now()->format('Y-m-d')
-                            ]);
-                        }
-                    });
-
+                    updatesales($store->url , $i);
                 }
             }
 
             else if($store->allproducts<=1000){
                 for ($i = 1; $i <= 4; $i++) {
-                    $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
-                    $context = stream_context_create($opts);
-                    $html = file_get_contents($store->url.'products.json?page='.$i.'&limit=250',false,$context);
-                    
-                    DB::table('apistatuses')->insert([
-                        "store" => $store->url,
-                        "status" => $http_response_header[0],
-                        'created_at' => Carbon::now()->format('Y-m-d'),
-                        'updated_at' => Carbon::now()->format('Y-m-d')
-                    ]);
-
-                    // echo $responsecode;
-                    $products = json_decode($html)->products;
-                    collect($products)->map(function ($product) {
-
-                        echo time().'<br />';
-                        $productbd = DB::table('products')->where('id', $product->id)->where('timesparam', '!=', strtotime($product->updated_at))->first();
-                        if($productbd) {
-                
-                            $sales = $productbd->totalsales;
-                            $revenuenow = $productbd->revenue + $productbd->prix;
-                            $sales ++ ; 
-                            //echo $sales;
-                            $timestt = strtotime($product->updated_at); 
-                            $productreq = array(
-                                'title' => $productbd->title,
-                                'timesparam' => $timestt,
-                                'prix' => $productbd->prix,
-                                'revenue' => $revenuenow,
-                                'stores_id' => $productbd->stores_id,
-                                'imageproduct' => $productbd->imageproduct,
-                                'favoris' => $productbd->favoris,
-                                'totalsales' => $sales,
-                            );
-                
-                            DB::table('products')->where('id', $productbd->id)->update($productreq);
-
-                            DB::table('sales')->insert([
-                                "product_id" => $productbd->id,
-                                'created_at' => Carbon::now()->format('Y-m-d'),
-                                'updated_at' => Carbon::now()->format('Y-m-d')
-                            ]);
-                        }
-                    });
-
+                    updatesales($store->url , $i);
                 }
             }
 
@@ -418,8 +461,6 @@ Route::get('/update-pro', function () {
         }
     });
 });
-
-
 // more than 150 Stores
 Route::get('/postnoeud',function (){
     //all DNS
@@ -442,3 +483,55 @@ Route::get('/postnoeud',function (){
     }
  
 });
+
+
+function updatesales ($store , $i){
+         
+    $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
+    $context = stream_context_create($opts);
+    $html = file_get_contents($store.'products.json?page='.$i.'&limit=250',false,$context);
+    
+    DB::table('apistatuses')->insert([
+        "store" => $store,
+        "status" => $http_response_header[0],
+        'created_at' => Carbon::now()->format('Y-m-d'),
+        'updated_at' => Carbon::now()->format('Y-m-d')
+    ]);
+
+    // echo $responsecode;
+    $products = json_decode($html)->products;
+    collect($products)->map(function ($product) {
+
+        echo time().'<br />';
+        $productbd = DB::table('products')->where('id', $product->id)->where('timesparam', '!=', strtotime($product->updated_at))->first();
+        if($productbd) {
+
+            $sales = $productbd->totalsales;
+            $revenuenow = $productbd->revenue + $productbd->prix;
+            $sales ++ ; 
+            //echo $sales;
+            $timestt = strtotime($product->updated_at); 
+            $productreq = array(
+                'title' => $productbd->title,
+                'timesparam' => $timestt,
+                'prix' => $productbd->prix,
+                'revenue' => $revenuenow,
+                'stores_id' => $productbd->stores_id,
+                'imageproduct' => $productbd->imageproduct,
+                'favoris' => $productbd->favoris,
+                'totalsales' => $sales,
+            );
+
+            DB::table('products')->where('id', $productbd->id)->update($productreq);
+
+            DB::table('sales')->insert([
+                "product_id" => $productbd->id,
+                "stores_id" => $productbd->stores_id,
+                "prix" => $productbd->prix,
+                'created_at' => Carbon::now()->format('Y-m-d'),
+                'updated_at' => Carbon::now()->format('Y-m-d')
+            ]);
+        }
+    });
+
+}

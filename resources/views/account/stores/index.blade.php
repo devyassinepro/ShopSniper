@@ -7,13 +7,13 @@
   <div class="row">
         <main role="main" class="col-md-9 ml-sm-auto col-lg-12 pt-3 px-4">
 
-          <h2> List Stores</h2><h4> Total Stores :</h4>
+          <h2>Stores</h2>
           <a class="btn btn-success" href="{{ route('account.stores.create') }}">Add</a>
 
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-           Filtres
-      </button>
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                Filtres
+            </button> -->
         </br></br>
           @if ($message = Session::get('success'))
             <div class="alert alert-success">
@@ -77,28 +77,26 @@
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
-                    <th>Store</th>
-                    <th>Products</th>
-                    <!-- <th>Status</th> -->
-                    <th>Sales</th>
-                    <th>Revenue</th>
-                    <th>Show Details</th>
-                    <th width="280px">Action</th>
+                    <th><h6>Name</h6></th>
+                    <th><h6>Products</h6></th>
+                    <th><h6>Sales</h6></th>
+                    <th><h6>Revenue</h6></th>
+                    <th><h6>Expand</h6></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($stores as $store)
                     <tr>
-                        <td><a href="{{ route('account.stores.show',$store->id) }}">{{ $store->name }}</a></td>
-                        <td>{{ $store->allproducts }}</td>
-                        <td>{{ $store->products_sum_totalsales }}</td>
-                        <td>{{number_format($store->products_sum_revenue, 2, ',', ' ')}} $</td>
-                        <td><a  class="btn btn-success" href="{{ route('account.stores.show',$store->id) }}">Show Details</a></td>
+                        <td><p><a href="{{ route('account.stores.show',$store->id) }}">{{ $store->name }}</a></p></td>
+                        <td><p>{{ $store->allproducts }}</p></td>
+                        <td><p>{{ $store->products_sum_totalsales }}</p></td>
+                        <td><p>{{number_format($store->products_sum_revenue, 2, ',', ' ')}} $</p></td>
+                        <td><a  class="btn btn-primary" href="{{ route('account.stores.show',$store->id) }}">Show Charts</a></td>
                         <td>
                             <form action="{{ route('account.stores.destroy',$store->id) }}" method="Post">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Untrack</button>
+                                <button type="submit" class="btn btn-warning">Untrack Store</button>
                             </form>
                         </td>
                     </tr>

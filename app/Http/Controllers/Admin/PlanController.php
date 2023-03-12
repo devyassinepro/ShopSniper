@@ -254,6 +254,6 @@ class PlanController extends Controller
     }
 
     public function demoMode(){
-        abort_if(config('saas.demo_mode'),403,'Unauthorized action on demo mode! Please Buy ShopSniper to test that feature');
+        abort_if(config('saas.demo_mode'),403,'Unauthorized action on demo mode! Please Buy Weenify to test that feature');
     }
 }

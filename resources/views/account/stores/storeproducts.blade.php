@@ -22,9 +22,9 @@
         @endif
         </main>
         <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+      <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
       Filtres
-      </button>
+      </button> -->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -76,49 +76,67 @@
         <div>       
         </div>
 </br></br>
-
-          <div class="table-responsive">
-            <table class="table table-striped table-sm">
-            <thead>
-                <tr>
-                    <th>Image</th>
-                    <th>Title</th>
-                    <th>Prix</th>
-                    <th>Today</th>
-                    <th>2</th>
-                    <th>3</th>
-                    <th>4</th>
-                    <th>5</th>
-                    <th>6</th>
-                    <th>Weeklysales</th>
-                    <th>Monthlysales</th>
-                    <!-- <th>Monthlysales</th> -->
-                    <th>Totalsales</th>
-                    <th>Revenue</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($products as $product)
-                    <tr>
-                        <td><a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="150" height="150"></a></td>
-                        <td><a href="{{ route('account.product.show',$product->id) }}">{{ $product->title }}</a></td>
-                        <td>{{ $product->prix }} $</td>
-                        <td>{{ $product->todaysales_count }}</td>
-                        <td>{{ $product->yesterdaysales_count }}</td>
-                        <td>{{ $product->day3sales_count }}</td>
-                        <td>{{ $product->day4sales_count }}</td>
-                        <td>{{ $product->day5sales_count }}</td>
-                        <td>{{ $product->day6sales_count }}</td>
-                        <td>{{ $product->weeklysales_count }}</td>
-                        <td>{{ $product->montlysales_count }}</td>
-                        <td>{{ $product->totalsales }}</td>
-                        <td>{{number_format($product->revenue, 2, ',', ' ')}} $</td>
-                    </tr>
-                    @endforeach
-            </tbody>
-            </table>
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <i class="fas fa-table"></i>
+                    All Products
+                  </h4>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Image</th>
+                          <th>Title</th>
+                          <th>Price</th>
+                          <th>Today</th>
+                          <th>Yesterday</th>
+                          <th>Weekly</th>
+                          <th>Monthly</th>
+                          <th>Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      @foreach ($products as $product)
+                        <tr>
+                          <td class="font-weight-bold">
+                              <a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="200" height="200"></a>
+                          </td>
+                          <td class="font-weight-bold">
+                              <a href="{{ route('account.product.show',$product->id) }}">{{ $product->title }}</a>
+                          </td>                          
+                          <td>$ {{ $product->prix }}</td>
+                          <td>
+                          <label class="badgepro badge-success badge-pill">${{ $product->todaysales_count * $product->prix }}</label>
+                            <label class="badgepro badge-info badge-pill">{{ $product->todaysales_count }}</label>
+                          </td>
+                          <td>
+                          <label class="badge badge-success badge-pill">${{ $product->yesterdaysales_count * $product->prix }}</label>
+                            <label class="badgepro badge-info badge-pill">{{ $product->yesterdaysales_count }}</label>
+                          </td>
+                          <td>
+                          <label class="badgepro badge-success badge-pill">${{ $product->weeklysales_count * $product->prix }}</label>
+                            <label class="badgepro badge-info badge-pill">{{ $product->weeklysales_count }}</label>
+                          </td>
+                          <td>
+                          <label class="badgepro badge-success badge-pill">${{ $product->montlysales_count * $product->prix }}</label>
+                            <label class="badgepro badge-info badge-pill">{{ $product->montlysales_count }}</label>
+                          </td>
+                          <td>
+                          <label class="badgepro badge-success badge-pill">${{ $product->totalsales * $product->prix }}</label>
+                            <label class="badgepro badge-info badge-pill">{{ $product->totalsales }}</label>
+                          </td>
+                        </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
         {{ $products->links() }}
 
 

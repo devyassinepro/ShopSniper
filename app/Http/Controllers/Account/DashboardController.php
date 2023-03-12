@@ -25,7 +25,7 @@ class DashboardController extends Controller
         }
 
         $user_id = Auth::user()->id;
-
+        $storelimit = check_store_limit();
         // get user's stores
         $totalstores = Storeuser::where('user_id', $user_id)->pluck('store_id');
 
@@ -38,7 +38,7 @@ class DashboardController extends Controller
             $totalproducts = Product::whereIn('stores_id', $totalstores)->count();
             $totalsales = Product::whereIn('stores_id', $totalstores)->sum('totalsales');
             $totalRevenue = Product::whereIn('stores_id', $totalstores)->sum('revenue');
-            $products = Product::whereIn('stores_id', $totalstores)->withCount(['todaysales'])->orderBy('revenue','desc')->take(5)->get();
+            $products = Product::whereIn('stores_id', $totalstores)->withCount(['todaysales'])->orderBy('totalsales','desc')->take(5)->get();
 
             
         }
@@ -46,6 +46,6 @@ class DashboardController extends Controller
 
 
         
-        return view('account.index', compact('products','totalproducts' , 'totalstores' , 'totalsales' , 'totalRevenue'));
+        return view('account.index', compact('products','totalproducts' , 'totalstores' , 'totalsales' , 'totalRevenue','storelimit'));
     }
 }

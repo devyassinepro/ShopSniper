@@ -73,13 +73,14 @@
                     <!--begin navbar-nav -->
                     <ul class="ml-auto navbar-nav">
                         @if(Request::is('/'))
-                            <li class="link"><a href="#home">{{ __('Home') }}</a></li>
+                            <li class="link"><a href="/">{{ __('Home') }}</a></li>
 
-                            <li class="link"><a href="#about">{{ __('About') }}</a></li>
+                            <!-- <li class="link"><a href="#about">{{ __('About') }}</a></li> -->
+                            <li class="link"><a href="#faq">{{ __('FAQ') }}</a></li>
 
                             <li class="link"><a href="#pricing">{{ __('Pricing') }}</a></li>
 
-                            <li class="link"><a href="#contact">{{ __('Contact') }}</a></li>
+                            <li class="link"><a href="/contact">{{ __('Contact') }}</a></li>
                         @endif
 
             @guest

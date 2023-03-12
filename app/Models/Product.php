@@ -75,6 +75,10 @@ class Product extends Model
     {
         return $this->hasMany(Sales::class)->where('created_at', '=', Carbon::now()->subDays(5)->format('Y-m-d'));
     }
+    public function day7sales()
+    {
+        return $this->hasMany(Sales::class)->where('created_at', '=', Carbon::now()->subDays(6)->format('Y-m-d'));
+    }
     public function weeklysales()
     {
         $now= Carbon::now()->format('Y-m-d');

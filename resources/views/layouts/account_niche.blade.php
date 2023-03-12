@@ -13,7 +13,9 @@
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&amp;display=swap" rel="stylesheet">
   <!-- Styles -->
-  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  <!-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> -->
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
    <!-- CSS font-awesome Plugins -->
    <link rel="stylesheet" href="{{ asset('saas/admin/vendor/font-awesome/css/all.min.css')}}">
    <link rel="stylesheet" href="{{ asset('saas/vendor/select2/dist/css/select2.min.css') }}">

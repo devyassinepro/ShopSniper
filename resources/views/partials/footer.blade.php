@@ -180,7 +180,7 @@
 
       <!-- Copyright -->
       <div class="w-md-75 text-lg-center mx-lg-auto">
-        <p class="text-white opacity-sm small">&copy; ShopSniper. {{ date('Y') }} {{ __('All rights reserved.') }}</p>
+        <p class="text-white opacity-sm small">&copy; Weenify. {{ date('Y') }} {{ __('All rights reserved.') }}</p>
         <p class="text-white opacity-sm small">{{ __('When you visit or interact with our sites, services or tools, we or our authorised service providers may use cookies for storing information to help provide you with a better, faster and safer experience and for marketing purposes.') }}</p>
       </div>
       <!-- End Copyright -->

@@ -96,42 +96,7 @@
         </div>
         <!-- End Body -->
         @if(currentTeam()->subscribed())
-          <div class="text-center">
-            <span class="divider divider-text">{{ __('Plan usage') }}</span>
-          </div>
 
-          <!-- Body -->
-          <div class="card-body">
-            <div class="mb-2 row align-items-center flex-grow-1">
-              <div class="col">
-                <h4 class="card-header-title">{{ __('Storage usage') }}</h4>
-              </div>
-
-              <div class="col-auto">
-                <strong class="text-dark">{{ __('4.27 GB') }}</strong> {{ __('used of 6 GB') }}
-              </div>
-            </div>
-
-            <!-- Progress -->
-            <div class="mb-3 progress rounded-pill">
-              <div class="progress-bar" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
-              <div class="progress-bar opacity" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <!-- End Progress -->
-
-            <!-- Legend Indicators -->
-            <div class="list-inline">
-              <div class="list-inline-item">
-                <span class="legend-indicator bg-danger"></span>{{ __('Personal usage space') }}
-              </div>
-              <div class="list-inline-item">
-                <span class="legend-indicator bg-primary opacity"></span>{{ __('Shared space') }}
-              </div>
-              <div class="list-inline-item">
-                <span class="legend-indicator"></span>{{ __('Unused space') }}
-              </div>
-            </div>
-          </div>
         @endif
         <!-- End Body -->
       </div>

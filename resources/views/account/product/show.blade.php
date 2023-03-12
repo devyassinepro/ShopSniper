@@ -10,41 +10,174 @@
         <div><h5>Store Name : {{$products->first()->title}}</h5></div>
 
         <td><img src="{{ $products->first()->imageproduct }}" width="300" height="300"></a></td>
-        <td><a  class="btn btn-success" href="{{$products->first()->url}}" target="_blank">View </a></td>
+        <!-- <td><a  class="btn btn-success"  target="_blank">View </a></td> -->
+        <div class="d-grid gap-2 col-6 mx-auto">
+        <a  class="btn btn-primary"  target="_blank" href="{{$products->first()->url}}">View on Shopify</a>
+        <a  class="btn btn-primary"   target="_blank" href="https://www.aliexpress.com/wholesale?SearchText={{urldecode($products->first()->title)}}">Search on AliExpress</a>
+        <a  class="btn btn-primary"   target="_blank" href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&q={{urldecode($products->first()->title)}}&search_type=keyword_unordered&media_type=all">Search on Facebook</a>
 
+</div>
+
+        <canvas id="sales-chartaffiche"  height="50px"></canvas>
+
+          <!-- ALl Affiche -->
+
+          <div class="col-md-20 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <i class="fas fa-table"></i>
+                    Sales Details
+                  </h4>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Title</th>
+                          <th>Price</th>
+                          <th>Today</th>
+                          <th>Yesterday</th>
+                          <th>3</th>
+                          <th>4</th>
+                          <th>5</th>
+                          <th>6</th>
+                          <th>Weekly</th>
+                          <th>Monthly</th>
+                          <th>Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="font-weight-bold">
+                              <a href="{{ route('account.product.show',$products->first()->id) }}">{{ $products->first()->title }}</a>
+                          </td>                          
+                          <td>$ {{ $products->first()->prix }}</td>
+                             <td>
+                            <label class="badgepro badge-success badge-pill">${{ $products->first()->todaysales_count * $products->first()->prix }}</label>
+                              <label class="badgepro badge-info badge-pill">{{ $products->first()->todaysales_count }}</label>
+                            </td>
+                          <td>
+                          <label class="badgepro badge-success badge-pill">${{ $products->first()->yesterdaysales_count * $products->first()->prix }}</label>
+                            <label class="badgepro badge-info badge-pill">{{ $products->first()->yesterdaysales_count }}</label>
+                          </td>  
+
+                          <td>
+                          <label class="badgepro badge-success badge-pill">${{ $products->first()->day3sales_count * $products->first()->prix }}</label>
+                            <label class="badgepro badge-info badge-pill">{{ $products->first()->day3sales_count }}</label>
+                          </td>                          
                         
-          <div class="table-responsive">
-            <table class="table table-striped table-sm">
-            <thead>
-                <tr>
-                    <th>Today</th>
-                    <th>2</th>
-                    <th>3</th>
-                    <th>4</th>
-                    <th>5</th>
-                    <th>6</th>
-                    <th>Weeklysales</th>
-                    <th>Monthlysales</th>
-                </tr>
-            </thead>
-            <tbody>
-                    <tr>
-                    <td>{{ $products->first()->todaysales_count }}</td>
-
-                    <td>{{ $products->first()->yesterdaysales_count }}</td>
-                        <td>{{ $products->first()->day3sales_count }}</td>
-                        <td>{{ $products->first()->day4sales_count }}</td>
-                        <td>{{ $products->first()->day5sales_count }}</td>
-                        <td>{{ $products->first()->day6sales_count }}</td>
-                        <td>{{ $products->first()->weeklysales_count }}</td>
-                        <td>{{ $products->first()->montlysales_count }}</td>
-
-                    </tr>
-            </tbody>
-            </table>
+                          <td>
+                          <label class="badgepro badge-success badge-pill">${{ $products->first()->day4sales_count * $products->first()->prix }}</label>
+                            <label class="badgepro badge-info badge-pill">{{ $products->first()->day4sales_count }}</label>
+                          </td>
+                          <td>
+                          <label class="badgepro badge-success badge-pill">${{ $products->first()->day5sales_count * $products->first()->prix }}</label>
+                            <label class="badgepro badge-info badge-pill">{{ $products->first()->day5sales_count }}</label>
+                          </td>  
+                          <td>
+                          <label class="badgepro badge-success badge-pill">${{ $products->first()->day6sales_count * $products->first()->prix }}</label>
+                            <label class="badgepro badge-info badge-pill">{{ $products->first()->day6sales_count }}</label>
+                          </td>  
+                          <td>
+                          <label class="badgepro badge-success badge-pill">${{ $products->first()->weeklysales_count * $products->first()->prix }}</label>
+                            <label class="badgepro badge-info badge-pill">{{ $products->first()->weeklysales_count }}</label>
+                          </td>
+                          <td>
+                          <label class="badgepro badge-success badge-pill">${{ $products->first()->montlysales_count * $products->first()->prix }}</label>
+                            <label class="badgepro badge-info badge-pill">{{ $products->first()->montlysales_count }}</label>
+                          </td>
+                          <td>
+                          <label class="badgepro badge-success badge-pill">${{ $products->first()->totalsales * $products->first()->prix }}</label>
+                            <label class="badgepro badge-info badge-pill">{{ $products->first()->totalsales }}</label>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+
         </main>
       </div>
     </div>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script> 
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<!-- Plugins -->
+      <script>  
+              var todaysales_count =  {!! json_encode($products->first()->todaysales_count)!!};
+              var yesterdaysales_count =   {!! json_encode($products->first()->yesterdaysales_count)!!};
+              var day3sales_count =  {!! json_encode($products->first()->day3sales_count)!!};
+              var day4sales_count =   {!! json_encode($products->first()->day4sales_count)!!};
+              var day5sales_count =   {!! json_encode($products->first()->day5sales_count)!!};
+              var day6sales_count =  {!! json_encode($products->first()->day6sales_count)!!};
+              var day7sales_count =   {!! json_encode($products->first()->day7sales_count)!!};
+
+              var todaysales_revenue =  {!! json_encode($products->first()->todaysales_count * $products->first()->prix )!!};
+              var yesterdaysales_revenue =  {!! json_encode($products->first()->yesterdaysales_count * $products->first()->prix )!!};
+              var day3sales_revenue =  {!! json_encode($products->first()->day3sales_count * $products->first()->prix )!!};
+              var day4sales_revenue =   {!! json_encode($products->first()->day4sales_count * $products->first()->prix )!!};
+              var day5sales_revenue =  {!! json_encode($products->first()->day5sales_count * $products->first()->prix)!!};
+              var day6sales_revenue =   {!! json_encode($products->first()->day6sales_count * $products->first()->prix)!!};
+              var day7sales_revenue =  {!! json_encode($products->first()->day7sales_count * $products->first()->prix)!!};
+              var dates =   {!! json_encode($dates)!!};
+              var lineChartCanvas = document.getElementById('sales-chartaffiche').getContext('2d');
+      var data = {
+         labels: dates,
+        datasets: [
+          {
+            label: 'Revenue',
+            data: [day7sales_revenue,day6sales_revenue,day5sales_revenue,day4sales_revenue,day3sales_revenue,yesterdaysales_revenue,todaysales_revenue],
+            borderColor: [
+              '#392c70'
+            ],
+            borderWidth: 3,
+            fill: false
+          },
+          {
+            label: 'Sales',
+            data: [day7sales_count,day6sales_count,day5sales_count,day4sales_count,day3sales_count,yesterdaysales_count,todaysales_count],
+            borderColor: [
+              '#d1cede'
+            ],
+            borderWidth: 3,
+            fill: false
+          }
+        ]
+      };
+      var options = {
+        scales: {
+          yAxes: [{
+            gridLines: {
+              drawBorder: false
+            },
+            ticks: {
+              stepSize: 2000,
+              fontColor: "#686868"
+            }
+          }],
+          xAxes: [{
+            display: false,
+            gridLines: {
+              drawBorder: false
+            }
+          }]
+        },
+        legend: {
+          display: false
+        },
+        elements: {
+          point: {
+            radius: 3
+          }
+        },
+        stepsize: 1
+      };
+      var lineChart = new Chart(lineChartCanvas, {
+        type: 'line',
+        data: data,
+        options: options
+      });
+          </script>   
     @endsection

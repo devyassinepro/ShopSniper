@@ -17,6 +17,8 @@ class CreateSalesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->foreignId('stores_id')->constrained()->onDelete('cascade');
+            $table->float('prix');
 
         });
     }

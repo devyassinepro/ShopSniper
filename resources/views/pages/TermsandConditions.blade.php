@@ -177,7 +177,7 @@
                         <div class="col-lg-6">
                             <div class="foot-logo">
                                 <a href="#"> 
-                                    <img src="assets/img/logo_home8.png" alt="">    
+                                <img src="{{ asset('saas/img/logo.png') }}" class="navbar-brand-img">  
                                 </a>
                             </div>
                         </div>
