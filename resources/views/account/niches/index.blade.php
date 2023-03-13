@@ -22,15 +22,15 @@
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
-                    <th>Niches</th>
-                    <th>Start Added</th>
+                    <th><h6>Niches</h6></th>
+                    <th><h6>Start Added</h6></th>
                     <th width="280px">Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($nicheall as $niche)
                     <tr>
-                        <td><a href="{{ route('account.stores.show',$niche->id) }}">{{ $niche->name }}</a></td>
+                        <td><h6><a href="{{ route('account.stores.index',$niche->id) }}">{{ $niche->name }}</a></h6></td>
                         <td>{{ $niche->created_at }}</td>
                         <td>
                             <form action="{{ route('account.niches.destroy',$niche->id) }}" method="Post">

@@ -75,10 +75,10 @@
       </button> -->
                   </h4>
                   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-  <button class="btn btn-primary me-md-2" type="button">Day</button>
-  <button class="btn btn-primary" type="button">Week</button>
-  <button class="btn btn-primary" type="button">Month</button>
-</div>
+          <button class="btn btn-primary me-md-2" type="button">Day</button>
+          <button class="btn btn-primary" type="button">Week</button>
+          <button class="btn btn-primary" type="button">Month</button>
+        </div>
 
         <!-- Button trigger modal -->
       

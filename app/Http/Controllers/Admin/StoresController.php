@@ -67,12 +67,20 @@ class StoresController extends Controller
     */
     public function store(Request $request)
     {
+       
         $request->validate([
             'url' => 'required',
             'nicheid' =>'required'
         ]);
+        // check if store already added
+        $stores = stores::where('url', $request->url)->first();
+        if($stores){
 
-                 $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
+     return redirect()->route('admin.stores.index')->with('success','Company has been created successfully.');
+
+        }else{
+        try {
+          $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
                  $context = stream_context_create($opts);
                  $meta = file_get_contents($request->url.'meta.json',false,$context);
                  $metas = json_decode($meta);
@@ -89,9 +97,9 @@ class StoresController extends Controller
                     'currency' => $metas->currency,
                     'shopifydomain' => $metas->myshopify_domain,
                     'allproducts' => $metas->published_products_count,
-                    'user_id' => null,
                     'created_at' => now(),
-                    'updated_at' => now()
+                    'updated_at' => now(),
+                    'user_id' => 1
                      ]
                 );
                     Nichestore::create([
@@ -120,9 +128,12 @@ class StoresController extends Controller
                         createstore($request->url,$store_id,$i);
                     }  
                 }
+        } catch(\Exception $exception) {
+            return redirect()->route('admin.stores.index')->with('error','This Store not Supported by Weenify');
 
-                  
-
+            // Log::error($exception->getMessage());
+        }
+    }       
         return redirect()->route('admin.stores.index')->with('success','Company has been created successfully.');
     }
 

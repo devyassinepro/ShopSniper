@@ -30,7 +30,7 @@
             <tbody>
                 @foreach ($nicheall as $niche)
                     <tr>
-                        <td><a href="{{ route('admin.stores.show',$niche->id) }}">{{ $niche->name }}</a></td>
+                        <td><a href="{{ route('admin.stores.index',$niche->id) }}">{{ $niche->name }}</a></td>
                         <td>{{ $niche->created_at }}</td>
                         <td>
                             <form action="{{ route('admin.niches.destroy',$niche->id) }}" method="Post">

@@ -5,18 +5,18 @@
 @section('content')  <div class="container-fluid">
       <div class="row">
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-12 pt-3 px-4">
-        <div><h4>View Product</h4></div>
-        <div><h5>Store Name : {{$products->first()->title}}</h5></div>
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-12 pt-3 px-4">
+    <div><h4>View Product</h4></div>
+    <div><h5>Store Name : {{$products->first()->title}}</h5></div>
 
-        <td><img src="{{ $products->first()->imageproduct }}" width="300" height="300"></a></td>
-        <!-- <td><a  class="btn btn-success"  target="_blank">View </a></td> -->
-        <div class="d-grid gap-2 col-6 mx-auto">
-        <a  class="btn btn-primary"  target="_blank" href="{{$products->first()->url}}">View on Shopify</a>
-        <a  class="btn btn-primary"   target="_blank" href="https://www.aliexpress.com/wholesale?SearchText={{urldecode($products->first()->title)}}">Search on AliExpress</a>
-        <a  class="btn btn-primary"   target="_blank" href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&q={{urldecode($products->first()->title)}}&search_type=keyword_unordered&media_type=all">Search on Facebook</a>
+    <td><img src="{{ $products->first()->imageproduct }}" width="300" height="300"></a></td>
+    <!-- <td><a  class="btn btn-success"  target="_blank">View </a></td> -->
+    <div class="d-grid gap-2 col-6 mx-auto">
+    <a  class="btn btn-primary"  target="_blank" href="{{$products->first()->url}}">View on Shopify</a>
+    <a  class="btn btn-primary"   target="_blank" href="https://www.aliexpress.com/wholesale?SearchText={{urldecode($products->first()->title)}}">Search on AliExpress</a>
+    <a  class="btn btn-primary"   target="_blank" href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&q={{urldecode($products->first()->title)}}&search_type=keyword_unordered&media_type=all">Search on Facebook</a>
 
-</div>
+    </div>
 
         <canvas id="sales-chartaffiche"  height="50px"></canvas>
 

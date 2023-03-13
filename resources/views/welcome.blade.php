@@ -35,6 +35,16 @@
     <link rel="stylesheet" href="assets/css/lib/swiper.min.css" />
     <!-- ====== global style ====== -->
     <link rel="stylesheet" href="assets/css/style.css" />
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M19EWRS3EN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M19EWRS3EN');
+</script>
 </head>
 
 <body class="home-style-8">
