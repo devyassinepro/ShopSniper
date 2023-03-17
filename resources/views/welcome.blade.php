@@ -7,12 +7,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="keywords" content="Weenify , store shopify tracking , spy store shopify" />
+    <meta name="keywords" content="Weenify , store shopify tracking ,store shopify,product spying, keyword research, search engine optimization, search engine marketing" />
     <meta name="description" content="Iteck - Multi-Purpose HTML5 Template" />
     <meta name="author" content="" />
 
     <!-- Title  -->
-    <title>Weenify</title>
+    <title>Weenify - Track winning stores Shopify</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/img/fav.png" title="Favicon" sizes="16x16" />
