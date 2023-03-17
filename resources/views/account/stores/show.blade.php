@@ -59,7 +59,7 @@
                         <h2 class="revenue">{{$storesrevenue->first()->products_sum_totalsales}}</h2>
                         <label class="badge badge-outline-success badge-pill">10% increase</label>
                       </div>
-                      @if($storesrevenue->first()->products_sum_revenue != null )
+                      @if($storesrevenue->first()->products_sum_revenue != 0 )
                   <div class="statistics-item">
                         <p>
                           <i class="icon-sm fas fa-hourglass-half mr-2"></i>
