@@ -24,8 +24,8 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Store store:</strong>
-                        <input type="text" name="url" class="form-control" placeholder="Store">
+                        <!-- <strong>Store :</strong> -->
+                        <input type="text" name="url" class="form-control" placeholder="Store Shopify">
                         @error('store')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror

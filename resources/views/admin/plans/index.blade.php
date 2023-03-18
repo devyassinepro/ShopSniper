@@ -30,7 +30,6 @@
                             <td>{{ $plan->interval }}</td>
                             <td>{{ $plan->price }}</td>
                             <td>{{ $plan->teams_limit }}</td>
-
                             <td>{{ $plan->created_at->diffForHumans() }}</td>
                             <td>{{ $plan->store_access_count }}</td>
                             

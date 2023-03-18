@@ -223,10 +223,7 @@ class StoresController extends Controller
     for ($i = 6; $i >= 0; $i--) {
         $dates[] = Carbon::now()->subDays($i)->format('Y-m-d');
     }
-        if(check_store_limit() <= $storeuser)
-        {
-            return redirect()->route('account.stores.index')->with('error','You can not add stores more than '.check_store_limit());
-        }
+
         $storedata = DB::table('stores')->where('id', $id)->get();
         $storesrevenue = stores::withSum('products', 'totalsales')
         ->withSum('products', 'revenue')

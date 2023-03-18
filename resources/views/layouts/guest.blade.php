@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Weenify , store shopify tracking ,store shopify,product spying, keyword research, search engine optimization, search engine marketing" />
     <meta name="description" content="">
 
         <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name') }}</title>
+    <title>{{ config('app.name') }} - Track winning stores Shopify</title>
     
     <!-- Loading Bootstrap -->
     <link href="{{ asset('saas/home/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -38,6 +38,12 @@
             color: #5f6468 !important;
         }
     </style>
+
+<script>(function(w){w.fpr=w.fpr||function(){w.fpr.q = w.fpr.q||[];w.fpr.q[arguments[0]=='set'?'unshift':'push'](arguments);};})(window);
+fpr("init", {cid:"uhjjfvck"}); 
+fpr("click");
+</script>
+<script src="https://cdn.firstpromoter.com/fpr.js" async></script>
 </head>
 
 <body>
@@ -85,8 +91,8 @@
 
             @guest
             {{-- <a href="/login" role="button" class="btn-1">Login</a> --}}
-            <li class="discover-link"><a href="/register" class="external">{{ __('Register') }}</a></li>
-            <li class="discover-link"><a href="/login" class="external discover-btn">{{ __('Login') }}</a></li>
+            <li class="discover-link"><a href="/login" class="external">{{ __('Login') }}</a></li>
+            <li class="discover-link"><a href="/register" class="external discover-btn">{{ __('Start Now') }}</a></li>
             @else
             <div>
                 <span class="nav-item dropdown">

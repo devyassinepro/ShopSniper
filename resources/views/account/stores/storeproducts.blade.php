@@ -102,7 +102,7 @@
                       @foreach ($products as $product)
                         <tr>
                           <td class="font-weight-bold">
-                              <a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="200" height="200"></a>
+                              <a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="150" height="150"></a>
                           </td>
                           <td class="font-weight-bold">
                               <a href="{{ route('account.product.show',$product->id) }}">{{ $product->title }}</a>

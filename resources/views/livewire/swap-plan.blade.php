@@ -3,16 +3,16 @@
         <!-- Title -->
         <div class="mb-0 text-center w-md-10 w-lg-10 mx-md-auto">
             <h3 class="h3">{{ __('Flexible and transparent pricing') }}</h3>
-            <p>{{ __('Whatever your status, our offers evolve according to your needs.') }}</p>
+            <p>{{ __('Whatever your status, our offers evolve according to your needs. ok') }}</p>
         </div>
         <!-- End Title -->
-        <div class="pricing">
+        <!-- <div class="pricing">
             <div class="switch align-self-center">
                 <label>{{ __('Monthly') }}</label>
                 <input type="checkbox" wire:model="month" wire:change="switchPlan" class="switch" id="switch-id" checked>
                 <label for="switch-id">{{ __('Yearly') }}</label><span class="mb-2 ml-2 badge badge-primary">{{ __('Save up to 10%') }}</span>
             </div>
-        </div>
+        </div> -->
         <!-- End Toggle Switch -->
         <!-- Pricing Section -->
         <div class="container">
@@ -37,7 +37,7 @@
                         </span>
                         <span class="col-sm-9 order-sm-1">
                             <span class="mb-1 d-block h3">{{ $plan->title }}</span>
-                            <span class="d-block">{{ __('99GB storage in launch accounts') }}</span>
+                            <span class="d-block">{{ $plan->store_access_count }} Stores</span>
                         </span>
                     </span>
                 </label>
@@ -45,11 +45,10 @@
             @endif
             @endforeach
             <!-- End Pricing -->
-            <!-- End Pricing -->
             <div class="mt-5 text-center">
                 <div class="mb-5">
                     <p class="font-size-1">{{ __('Need a custom price ?') }} <a class="font-weight-bold"
-                            href="#">{{ __('Contact us for custom pricing') }}</a></p>
+                            href="https://weenify.io/contact">{{ __('Contact us for custom pricing') }}</a></p>
                 </div>
                 <button type="submit"
                     class="btn btn-primary btn-wide transition-3d-hover">{{ __('Swap plan') }}

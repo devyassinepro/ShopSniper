@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Title -->
-  <title>{{ config('app.name', 'Saasify') }}</title>
+  <title>{{ config('app.name', 'Weenify') }}</title>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="{{ asset('saas/img/favicon.png') }}">
@@ -13,8 +13,8 @@
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&amp;display=swap" rel="stylesheet">
   <!-- Styles -->
-  <!-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> -->
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  <!-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> -->
 
    <!-- CSS font-awesome Plugins -->
    <link rel="stylesheet" href="{{ asset('saas/admin/vendor/font-awesome/css/all.min.css')}}">
@@ -25,6 +25,12 @@
   <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" type="text/css">
   @livewireStyles
   @stack('styles')
+
+  <script>(function(w){w.fpr=w.fpr||function(){w.fpr.q = w.fpr.q||[];w.fpr.q[arguments[0]=='set'?'unshift':'push'](arguments);};})(window);
+fpr("init", {cid:"uhjjfvck"}); 
+fpr("click");
+</script>
+<script src="https://cdn.firstpromoter.com/fpr.js" async></script>
 </head>
 <body>
   <!-- Sidenav -->

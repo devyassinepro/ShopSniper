@@ -5,13 +5,13 @@
 @section('content')
 <div class="container-fluid">
   <div class="row">
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-12 pt-3 px-4">
+        <main role="main" class="col-md-12">
 
           @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>
             </div>
-        @endif
+          @endif
 
 
 <!-- Modal -->
@@ -74,32 +74,32 @@
       Filtres
       </button> -->
                   </h4>
-                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <button class="btn btn-primary me-md-2" type="button">Day</button>
-          <button class="btn btn-primary" type="button">Week</button>
-          <button class="btn btn-primary" type="button">Month</button>
-        </div>
-
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <button class="btn btn-primary me-md-2" type="button">Day</button>
+                  <button class="btn btn-primary" type="button">Week</button>
+                  <button class="btn btn-primary" type="button">Month</button>
+                </div>
+                </div>
         <!-- Button trigger modal -->
       
                   <div class="table-responsive">
                     <table class="table">
                       <thead>
                         <tr>
-                    <th width="200" height="100">Image</th>
-                    <th>Title</th>
-                    <th>Price</th>
-                    <th>Today</th>
-                    <th>Yesterday</th>
-                    <th>Total sales</th>
+                    <th><h6>Image</h6></th>
+                    <th><h6>Title</h6></th>
+                    <th><h6>Price</h6></th>
+                    <th><h6>Today</h6></th>
+                    <th><h6>Yesterday</h6></th>
+                    <th><h6>Total sales</h6></th>
                         </tr>
                       </thead>
                       <tbody>
                       @foreach ($products as $product)
                         <tr>
-                        <td><a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="500" height="500"></a></td>
-                        <td><a href="{{ route('account.product.show',$product->id) }}">{{ $product->title }}</a></td>                     
-                          <td>$ {{ $product->prix }}</td>
+                        <td><a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="150" height="150"></a></td>
+                        <td><a href="{{ route('account.product.show',$product->id) }}">{{ $product->title }} - $ {{ $product->prix }}</a></td>                     
+                          <!-- <td></td> -->
                           <td>
                           <label class="badgepro badge-success badge-pill">${{ $product->todaysales_count * $product->prix }}</label>
                             <label class="badgepro badge-info badge-pill">{{ $product->todaysales_count }}</label>
@@ -124,10 +124,9 @@
             </div>
           <div>
         {{ $products->links() }}
-
-
         </div>
         </main>
       </div>
     </div>
+  
     @endsection

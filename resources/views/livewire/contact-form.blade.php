@@ -42,7 +42,7 @@
                     <div class="js-form-message">
                         <label class="input-label">{{ __('Subject') }}</label>
                         <input type="text" wire:model="subject" class="form-control contact-input white-input" name="subject" placeholder="Web design"
-                            aria-label="Web design" required="" data-msg="Please enter a subject.">
+                            aria-label="Weenify Subject" required="" data-msg="Please enter a subject.">
                     </div>
                 </div>
                 <!-- End Input -->

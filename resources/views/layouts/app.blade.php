@@ -14,6 +14,12 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         @livewireStyles
+
+        <script>(function(w){w.fpr=w.fpr||function(){w.fpr.q = w.fpr.q||[];w.fpr.q[arguments[0]=='set'?'unshift':'push'](arguments);};})(window);
+fpr("init", {cid:"uhjjfvck"}); 
+fpr("click");
+</script>
+<script src="https://cdn.firstpromoter.com/fpr.js" async></script>
     </head>
     <body class="bg-light">
         <nav class="bg-white navbar navbar-expand-md navbar-light border-bottom sticky-top">

@@ -50,8 +50,6 @@
 
       <!-- ENd Dashboard  -->
         
-
-
 <!-- Table >Top Products  -->
  <!-- Affiche //// -->
  <div class="row">
@@ -66,26 +64,26 @@
                     <table class="table">
                       <thead>
                         <tr>
-                        <th>Image</th>
-                        <th>Title</th>
-                        <th>Price</th>
-                        <th>Today Sales</th>
+                        <th><h6>Image</h6></th>
+                        <th><h6>Title</h6></th>
+                        <th><h6>Price</h6></th>
+                        <th><h6>Today Sales</h6></th>
                         </tr>
                       </thead>
                       <tbody>
                         @foreach ($products as $product)
                         <tr>
                         <td class="font-weight-bold">
-                              <a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="200" height="200"></a>
+                              <a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="150" height="150"></a>
                           </td>
                           <td class="font-weight-bold">
                               <a href="{{ route('account.product.show',$product->id) }}">{{ $product->title }}</a>
                           </td>          
                           <td class="font-weight-bold">${{ $product->prix }}</td>  
                           <td>
-                          <label class="badgepro badge-success badge-pill">${{ number_format($product->todaysales_count * $product->prix, 2, ',', ' ') }}</label>
+                        <h5><label class="badgepro badge-success badge-pill">${{ number_format($product->todaysales_count * $product->prix, 2, ',', ' ') }}</label>
                             <label class="badgepro badge-info badge-pill">{{ $product->todaysales_count }}</label>
-                          </td>                
+                        </h5></td>                
                         </tr>
                         @endforeach
                       </tbody>

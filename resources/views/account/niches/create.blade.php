@@ -18,8 +18,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Add Niche:</strong>
-                        <input type="text" name="name" class="form-control" placeholder="niche">
+                        <input type="text" name="name" class="form-control" placeholder="Niche">
                         @error('niche')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
