@@ -54,7 +54,7 @@ class SubscriptionCancelController extends Controller
                 ->subject(__('Subscription Cancelled'));
         });
 
-        notify()->success(__('Subscription has been canceled !'));
+        // notify()->success(__('Subscription has been canceled !'));
 
         return redirect()->route('account.subscriptions');
     }

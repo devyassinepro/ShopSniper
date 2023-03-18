@@ -44,7 +44,7 @@ class SubscriptionResumeController extends Controller
                 ->subject(__('Subscription Resumed'));
         });
 
-        notify()->success(__('Subscription has been resumed !'));
+        // notify()->success(__('Subscription has been resumed !'));
 
         return redirect()->route('account.subscriptions');
     }

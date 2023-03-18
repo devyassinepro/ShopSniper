@@ -113,7 +113,7 @@ class PlanController extends Controller
 
         $plan->save();
 
-        notify()->success(__('Your plan has been created.'));
+        // notify()->success(__('Your plan has been created.'));
        
 
          return back();

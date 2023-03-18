@@ -166,7 +166,7 @@ class UserController extends Controller
             $user->roles()->detach(); //If no role is selected remove exisiting role associated to a user
         }
 
-        notify()->success('User has been updated');
+        // notify()->success('User has been updated');
 
         return redirect(route('admin.users.index'));
     }
@@ -196,7 +196,7 @@ class UserController extends Controller
         } else {
             $user->delete();
 
-            notify()->success('User has been deleted');
+            // notify()->success('User has been deleted');
 
             return redirect(route('admin.users.index'));
         }

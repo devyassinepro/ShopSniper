@@ -1,5 +1,10 @@
 @extends('layouts.account_niche')
 @section('content')
+
+<script>
+fpr("referral",{email:"{{ Auth::user()->email }}"})
+</script>
+
 <div class="u-body">
     <!-- Doughnut Chart -->
     <div class="row">

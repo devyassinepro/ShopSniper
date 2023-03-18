@@ -41,7 +41,7 @@ class SubscriptionSwapController extends Controller
         ]);
         // test if user chose the current plan
         if ($request->plan == currentTeam()->plan->slug) {
-            notify()->error(__('You already subscribed to this plan !'));
+            // notify()->error(__('You already subscribed to this plan !'));
 
             return redirect()->back();
         }
@@ -67,7 +67,7 @@ class SubscriptionSwapController extends Controller
                 ->subject(__('Subscription Plan Changed'));
         });
 
-        notify()->success(__('Your plan has been changed !'));
+        // notify()->success(__('Your plan has been changed !'));
 
         return redirect()->route('account.subscriptions');
     }

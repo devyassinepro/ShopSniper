@@ -65,7 +65,7 @@ class SubscriptionCardController extends Controller
                 ->subject(__('New payment method added'));
         });
 
-        notify()->success(__('Payment method has been added'));
+        // notify()->success(__('Payment method has been added'));
 
         return redirect()->back();
     }
