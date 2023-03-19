@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
 
   <!-- CSS Implementing Plugins -->
-  <link rel="stylesheet" href="{{asset('css/app.css?v=').time()}}">
+  <link rel="stylesheet" href="{{asset('css/weenifyapp.css?v=').time()}}">
 
   <!-- CSS Front Template -->
   <link rel="stylesheet" href="{{ asset('saas/css/theme.css') }}">

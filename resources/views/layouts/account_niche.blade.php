@@ -13,7 +13,7 @@
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&amp;display=swap" rel="stylesheet">
   <!-- Styles -->
-  <link rel="stylesheet" href="{{asset('css/app.css?v=').time()}}">
+  <link rel="stylesheet" href="{{asset('css/weenifyapp.css?v=').time()}}">
   <!-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> -->
 
    <!-- CSS font-awesome Plugins -->
