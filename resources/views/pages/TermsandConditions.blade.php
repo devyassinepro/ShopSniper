@@ -42,12 +42,10 @@
             <div class="container">
                 <div class="blog-details-slider mb-100">
                     <div class="section-head text-center mb-60 style-5">
-                        <h2 class="mb-20 color-000"> Privacy Policy</h2>
+                        <h2 class="mb-20 color-000"> Terms and Conditions</h2>
                         <small class="d-block date text">
                         </small>
-                    </div>     <h2 class="title">
-                                           Privacy Policy
-                                        </h2>
+                    </div>  
             
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
@@ -65,7 +63,7 @@
 			
 			<p>
 
-			These Terms and Conditions (“Terms”, “Terms and Conditions”) govern your relationship with http://sniperfy.com/ website (the “Service”) operated by SniperFy (“us”, “we”, or “our”).
+			These Terms and Conditions (“Terms”, “Terms and Conditions”) govern your relationship with http://weenify.io/ website (the “Service”) operated by SniperFy (“us”, “we”, or “our”).
 
 			Please read these Terms and Conditions carefully before using the Service.
 
@@ -152,6 +150,7 @@
             </section>
     <!--End-Contents-->
 
+
     <!-- ====== start footer ====== -->
     <footer class="style-8 bg-gray2">
         <div class="wrapper bg-pale-primary py-4 text-dark">
@@ -176,39 +175,47 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6">
                             <div class="foot-logo">
-                                <a href="#"> 
-                                <img src="{{ asset('saas/img/logo.png') }}" class="navbar-brand-img">  
-                                </a>
+
                             </div>
                         </div>
-                        <div class="col-lg-6 text-lg-end">
-                            <div class="socials">
-                                <a href="#">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fab fa-youtube"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div class="links-content">
                     <div class="row justify-content-between">
                         <div class="col-lg-4">
                             <div class="foot-info">
-                                <h6 class="foot-title"> About Us </h6>
-                                <p>71-75 Shelton Street, London, Greater London, WC2H 9JQ, UNITED KINGDOM </p>
+
+
+                                                           <a href="#"> 
+                                <img src="{{ asset('saas/img/logo.png') }}" class="navbar-brand-img"> 
+                                </a>
+                                <h6 class="foot-title"> About Us </h6> 
+                                <p> Track winning stores Shopify</p>
                                 <ul class="mt-20">
-                                    <li> 
-                                        <a href="#"> <i class="fas fa-envelope-open me-2 color-main"></i> contact@wennify.io </a>    
-                                    </li>
+                             <li> 
+                            <a href="#"> <i class="fas fa-envelope-open me-2 color-main"></i>contact@wennify.io                         </a>                             
+                                   
+                        </li>
+                      <li>  <div class="col-lg-6 text-lg-end">
+                            <div class="socials">
+                                <a href="#">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://www.tiktok.com/@weenify">
+                                    <i class="fab fa-tiktok"></i>
+                                </a>
+                                <a href="https://www.instagram.com/weenifyio">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://www.youtube.com/channel/UCBuzUBYeBY1NemZE5DFXuaw">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <!-- <a href="#">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a> -->
+                            </div>
+                        </div></li>
                                 </ul>
                             </div>
                         </div>
@@ -216,8 +223,9 @@
                             <div class="links">
                                 <h6 class="foot-title"> Learn More </h6>
                                 <ul>
+
                                     <li>
-                                        <a href="/RefundPolicy"> Refund Policy </a>
+                                        <a href="/contact"> Contact </a>
                                     </li>
                                     <li>
                                         <a href="/TermsandConditions"> Terms and Conditions </a>
@@ -226,14 +234,13 @@
                                         <a href="/privacypolicy">Privacy Policy</a>
                                     </li>
                                     <li>
-                                        <a href="/contact"> Contact </a>
+                                        <a href="https://weenify.firstpromoter.com/"> Affiliate Program </a>
                                     </li>
                                     <li>
-                                        <a href="#"> Affiliate Program </a>
+                                        <a href="/RefundPolicy"> Refund Policy </a>
                                     </li>
-
                                     <li>
-                                        <a href="#"> Pricing Plan </a>
+                                        <a href="#pricing"> Pricing</a>
                                     </li>
                                 </ul>
                             </div>
@@ -246,8 +253,9 @@
                                     <span class="icon"> <i class="fas fa-envelope-open"></i> </span>
                                     <input type="text" class="form-control" placeholder="Email address">
                                 </div>
-                                <a href="#" class="butn bg-main border-0 rounded-pill hover-shadow flex-shrink-0 mt-20 w-100 py-3" type="submit">
+                                <a href="/register" class="butn bg-orange1 border-0 rounded-pill hover-shadow flex-shrink-0" type="submit">
                                     <span class="text-white"> Subscribe Now <i class="fal fa-long-arrow-right ms-2"></i> </span>
+                                    
                                 </a>
                             </div>
                         </div>
@@ -255,7 +263,7 @@
                 </div>
             </div>
             <div class="foot py-4 border-1 border-top brd-gray text-center">
-                <p> Weenify - 2023 </p>
+                <p>Copyright © 2023 Weenfiy. All Rights Reserved.</p>
             </div>
         </div>
     </footer>

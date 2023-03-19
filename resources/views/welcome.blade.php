@@ -659,39 +659,47 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6">
                             <div class="foot-logo">
-                                <a href="#"> 
-                                <img src="{{ asset('saas/img/logo.png') }}" class="navbar-brand-img"> 
-                                </a>
+
                             </div>
                         </div>
-                        <div class="col-lg-6 text-lg-end">
-                            <div class="socials">
-                                <a href="#">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fab fa-youtube"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div class="links-content">
                     <div class="row justify-content-between">
                         <div class="col-lg-4">
                             <div class="foot-info">
-                                <h6 class="foot-title"> About Us </h6>
-                                <p>71-75 Shelton Street, London, Greater London, WC2H 9JQ, UNITED KINGDOM </p>
+
+
+                                                           <a href="#"> 
+                                <img src="{{ asset('saas/img/logo.png') }}" class="navbar-brand-img"> 
+                                </a>
+                                <h6 class="foot-title"> About Us </h6> 
+                                <p> Track winning stores Shopify</p>
                                 <ul class="mt-20">
-                                    <li> 
-                                        <a href="#"> <i class="fas fa-envelope-open me-2 color-main"></i> contact@wennify.io </a>    
-                                    </li>
+                             <li> 
+                            <a href="#"> <i class="fas fa-envelope-open me-2 color-main"></i>contact@wennify.io                         </a>                             
+                                   
+                        </li>
+                      <li>  <div class="col-lg-6 text-lg-end">
+                            <div class="socials">
+                                <a href="#">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://www.tiktok.com/@weenify">
+                                    <i class="fab fa-tiktok"></i>
+                                </a>
+                                <a href="https://www.instagram.com/weenifyio">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://www.youtube.com/channel/UCBuzUBYeBY1NemZE5DFXuaw">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <!-- <a href="#">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a> -->
+                            </div>
+                        </div></li>
                                 </ul>
                             </div>
                         </div>
@@ -710,13 +718,13 @@
                                         <a href="/privacypolicy">Privacy Policy</a>
                                     </li>
                                     <li>
-                                        <a href="/"> Affiliate Program </a>
+                                        <a href="https://weenify.firstpromoter.com/"> Affiliate Program </a>
                                     </li>
                                     <li>
                                         <a href="/RefundPolicy"> Refund Policy </a>
                                     </li>
                                     <li>
-                                        <a href=""> Pricing Plan </a>
+                                        <a href="#pricing"> Pricing</a>
                                     </li>
                                 </ul>
                             </div>
@@ -739,7 +747,7 @@
                 </div>
             </div>
             <div class="foot py-4 border-1 border-top brd-gray text-center">
-                <p> Weenify - 2023 </p>
+                <p>Copyright © 2023 Weenfiy. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
