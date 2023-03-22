@@ -64,7 +64,7 @@
         <div>       
         </div>
           <!-- affiche Table  -->
-
+ 
           <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
@@ -80,6 +80,8 @@
                   <button class="btn btn-primary" type="button">Month</button>
                 </div>
                 </div>
+
+                @if (currentTeam()->subscribed('default'))
         <!-- Button trigger modal -->
       
                   <div class="table-responsive">
@@ -125,6 +127,7 @@
           <div>
         {{ $products->links() }}
         </div>
+        @endif
         </main>
       </div>
     </div>

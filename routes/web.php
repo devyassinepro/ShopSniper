@@ -99,7 +99,8 @@ Route::group(['middleware' => 'language'], function () {
     Route::group(['namespace' => 'Subscriptions', 'middleware' => 'auth'], function () {
         Route::get('plans', [PlanController::class, 'index'])->name('subscription.plans')->middleware('not.subscribed');
         Route::get('/subscriptions', ['App\Http\Controllers\Subscriptions\SubscriptionController', 'index'])->name('subscriptions');
-        Route::post('/subscriptions', ['App\Http\Controllers\Subscriptions\SubscriptionController', 'store'])->name('subscriptions.store');
+        Route::post('/subscriptions', ['App\Http\Controllers\Subscriptions\SubscriptionController', 'store'])->name('subscriptions.store');        
+
     });
     Route::get('/test', function () {
         $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
@@ -119,6 +120,7 @@ Route::group(['middleware' => 'language'], function () {
 
         Route::group(['namespace' => 'Subscriptions',['middleware' => 'subscribed'], 'prefix' => 'subscriptions'], function () {
             Route::get('/', [SubscriptionController::class, 'index'])->name('account.subscriptions');
+            Route::get('/endtrial', [SubscriptionController::class, 'updatetrial'])->name('account.subscriptions.updatetrial');
 
             Route::get('/cancel', [SubscriptionCancelController::class, 'index'])->name('account.subscriptions.cancel');
             Route::post('/cancel', [SubscriptionCancelController::class, 'store']);
@@ -138,7 +140,7 @@ Route::group(['middleware' => 'language'], function () {
 
             Route::get('/invoices', [SubscriptionInvoiceController::class, 'index'])->name('account.subscriptions.invoices');
             Route::get('/invoices/{id}', [SubscriptionInvoiceController::class, 'show'])->name('account.subscriptions.invoice');
-
+            // Route::get('/subscriptions/trial', ['App\Http\Controllers\Subscriptions\SubscriptionController', 'updatetrial'])->name('subscriptions.updatetrial');        
        
         });
     });

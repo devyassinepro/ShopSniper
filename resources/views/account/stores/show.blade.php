@@ -20,7 +20,9 @@
               <form action="{{ route('account.stores.destroy',$storedata->first()->id) }}" method="Post">
                       @csrf
                       @method('DELETE')
+                      @if (!currentTeam()->onTrial())
                       <button type="submit" class="btn btn-warning">Untrack Store</button>
+                      @endif
                   </form>
            </div>  
 

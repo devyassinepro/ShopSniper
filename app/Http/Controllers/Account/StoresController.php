@@ -24,6 +24,8 @@ class StoresController extends Controller
      */
     public function index(Request $request)
     {
+
+        
         if(check_user_type() != 'user')
         {
             redirect()->route('dashboard')->with('error','You can not access this page.');
@@ -78,12 +80,20 @@ class StoresController extends Controller
 
         $user_id = Auth::user()->id;
         $storeuser = Storeuser::where('user_id', $user_id)->count();
-        
-        if(check_store_limit() <= $storeuser)
+
+        if(currentTeam()->onTrial()){
+
+            if($storeuser >=3 ){
+                return redirect()->route('account.stores.index')->with('error','You can not add more stores on trial');
+
+            }
+        } 
+        else if(check_store_limit() <= $storeuser)
         {
             return redirect()->route('account.stores.index')->with('error','You can not add stores more than '.check_store_limit());
         }
 
+        //to add niche to store 
         $allniches = Niche::where('user_id', $user_id)->get();
         return view('account.stores.create', compact('allniches'));
     }

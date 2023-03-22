@@ -7,6 +7,9 @@ use App\Models\Plan;
 use App\Rules\ValidCoupon;
 use Illuminate\Http\Request;
 use Laravel\Cashier\Exceptions\PaymentActionRequired;
+use Laravel\Cashier\Cashier;
+use Stripe\Coupon as StripeCoupon;
+use Stripe\Exception\InvalidRequestException;
 
 class SubscriptionController extends Controller
 {
@@ -38,13 +41,23 @@ class SubscriptionController extends Controller
          */
         $this->validate($request, [
             'token' => 'required',
-            'coupon' => [
-                'nullable',
-                new ValidCoupon(),
-            ],
             'plan' => 'required|exists:plans,slug',
         ]);
 
+        if(!$request->coupon == null){
+            try {
+                $coupon = StripeCoupon::retrieve($request->coupon, Cashier::stripeOptions());
+    
+                if (! $coupon->valid) {
+                    redirect()->route('subscriptions')->with('error','Coupon is invalid.');
+
+                    return false;
+                }
+            } catch (InvalidRequestException $e) {
+                redirect()->route('subscriptions')->with('error','Coupon does not exist.');    
+                return false;
+            }
+        }
         $plan = Plan::where('slug', $request->get('plan', 'monthly'))
                 ->first();
 
@@ -65,4 +78,5 @@ class SubscriptionController extends Controller
 
         return back();
     }
+
 }

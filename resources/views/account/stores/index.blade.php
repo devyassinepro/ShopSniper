@@ -73,6 +73,9 @@
 </div>
         <div>       
         </div>
+
+
+        @if (currentTeam()->subscribed('default'))
         <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
@@ -96,7 +99,11 @@
                             <form action="{{ route('account.stores.destroy',$store->id) }}" method="Post">
                                 @csrf
                                 @method('DELETE')
+
+                                @if (!currentTeam()->onTrial())
                                 <button type="submit" class="btn btn-warning">Untrack Store</button>
+                                @endif
+                              
                             </form>
                         </td>
                     </tr>
@@ -109,6 +116,7 @@
         {{  $stores->links() }}
 
         </div>
+        @endif
         </main>
       </div>
     </div>

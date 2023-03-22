@@ -29,6 +29,13 @@ class Team extends JetstreamTeam
         );
     }
 
+    public function skiptrialnow($name = 'default')
+    {
+       $subscription = $this->subscription($name);
+            return $subscription->endTrial();
+        
+    }
+
     public function presentSubscription()
     {
         if (!$subscription = $this->subscription('default')) {
@@ -38,6 +45,7 @@ class Team extends JetstreamTeam
         return new SubscriptionPresenter($subscription->asStripeSubscription());
     }
 
+    
     public function presentUpcomingInvoice()
     {
         if (!$invoice = $this->upcomingInvoice()) {

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Account\Subscriptions;
+use Laravel\Cashier\Exceptions\PaymentActionRequired;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -26,5 +27,22 @@ class SubscriptionController extends Controller
             'customer' => currentTeam()->presentCustomer(),
 
         ]);
+    }
+
+    public function updatetrial(Request $request)
+    {
+        try {   
+            currentTeam()->skiptrialnow('default');
+            redirect()->route('account.subscriptions');
+        } catch (PaymentActionRequired $e) {
+            return redirect()->route(
+                'cashier.payment',
+                [
+                    $e->payment->id,
+                    'redirect' => route('account.subscriptions'),
+                ]
+            );
+        }
+        return back();
     }
 }

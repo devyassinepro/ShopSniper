@@ -153,6 +153,13 @@
                                 </ul>
 
                             </div>
+                            @if (currentTeam()->onTrial())
+                            <li class="nav-item">
+                        <a class="nav-link {{ return_if(on_page('account.subscriptions') OR on_page('account.product.create') OR on_page('account.product.edit'), ' active') }}" href="{{ route('account.subscriptions') }}">
+                            <span class="nav-link-text">{{ __('Skip Trial Now ') }}</span>
+                        </a>
+                        @endif
+                    </li>
 
                     </li>
 

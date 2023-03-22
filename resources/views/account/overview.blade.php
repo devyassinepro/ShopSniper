@@ -5,24 +5,24 @@
             </h1>
         </div>
     </x-slot>
-
+    @if ($message = Session::get('error'))
+            <div class="alert alert-danger">
+                <p>{{ $message }}</p>
+            </div>
+        @endif
     <div class="mb-3 card mb-lg-5">
         <!-- Header -->
         <div class="card-header">
           <h5 class="card-header-title">{{ __('Subscriptions overview') }}</h5>
         </div>
         <!-- End Header -->
-
         <!-- Body -->
         <div class="card-body">
-              @if (currentTeam()->onTrial() && !currentTeam()->subscribed())
-                <h6 class="text-cap">{{ __('Your are on trial') }}:</h6>
-                <h5>
-                      {{ __('Your trial will end on: ') }} <span class="text-danger">{{ currentTeam()->trialEndsAt('main')->toFormattedDateString() }}</span>
-
+              @if (currentTeam()->onTrial())
+                <h5 class="text-cap">{{ __('Your are on trial') }}:          
+                         <a href="{{ route('account.subscriptions.updatetrial') }}" class="mt-3 btn btn-primary">{{ __('GET FULL ACCESS NOW') }}</a>
                 </h5>
-                <p>{{ __('Please subscribe to a plan to continue using our app after trial period ends') }}</p>
-                <a href="{{ route('subscription.plans') }}" class="mt-3 btn btn-soft-indigo">{{ __('Subscribe') }}</a>
+
               @endif
           @if (currentTeam()->subscribed('default'))
           <div class="row">
