@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Subscriptions;
 
 use App\Http\Controllers\Controller;
 use App\Models\Plan;
-use App\Rules\ValidCoupon;
 use Illuminate\Http\Request;
 use Laravel\Cashier\Exceptions\PaymentActionRequired;
 use Laravel\Cashier\Cashier;
@@ -26,7 +25,10 @@ class SubscriptionController extends Controller
          * @name('subscriptions')
          * @middlewares(web, auth, not.subscribed)
          */
-        return view('subscriptions.checkout', [
+        // $plan = $request->plan;
+        $plans = Plan::where('slug', '=', $request->plan)->get();
+
+        return view('subscriptions.checkout',compact('plans'), [
             'intent' => currentTeam()->createSetupIntent(),
         ]);
     }
