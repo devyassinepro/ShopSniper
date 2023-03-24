@@ -34,9 +34,9 @@
                         <li class="price-subtitle">{{ __('Per Year') }}</li>
                         @endif
 
-                        <li class="price-text"><i class="fas fa-check blue"></i>Track Stores</li>
+                        <!-- <li class="price-text"><i class="fas fa-check blue"></i>Track Stores</li> -->
 
-                        <li class="price-text"><i class="fas fa-check blue"></i><b> {{$plan->store_access_count}} Stores</b></li>
+                        <li class="price-text"><i class="fas fa-check blue"></i><b>Track {{$plan->store_access_count}} Stores</b></li>
 
                         <li class="price-text"><i class="fas fa-check blue"></i><b> Change Store Any Time</b></li>
 
@@ -44,10 +44,9 @@
 
                         <li class="price-text"><i class="fas fa-check blue"></i><b>1000 Products Per 1 Store</b></li>
 
-
                         <li class="price-text"><i class="fas fa-check blue"></i>Every Minute</li>
 
-                        <li class="price-tag-line"><a href="{{ route('subscriptions',['plan' => $plan->slug]) }}">{{ __('Subscribe') }}</a></li>
+                        <li class="price-tag-line"><a href="{{ route('subscriptions',['plan' => $plan->slug]) }}">{{ __('Start Free Trial') }}</a></li>
 
                     </ul>
 

@@ -4,7 +4,11 @@
 <script>
 fpr("referral",{email:"{{ Auth::user()->email }}"})
 </script>
-
+@if(!currentTeam()->subscribed())
+<div class="alert alert-warning" role="alert">
+Welcome to Weenify. Visit the <a href="{{ route('subscription.plans') }}">billing page</a> to activate a Trial plan.
+</div>
+@endif
 <div class="u-body">
     <!-- Doughnut Chart -->
     <div class="row">

@@ -64,7 +64,7 @@
                                 <h5><br> Subscribe & Get 7-Days Trial </h5><span>
                                     <div class="d-flex align-items-center mt-40 wow fadeInUp">
                                 <a href="/register" class="butn bg-orange1 border-0 rounded-pill hover-shadow flex-shrink-0" type="submit">
-                                    <span class="text-white"> Start spying Now <i class="fal fa-long-arrow-right ms-2"></i> </span>
+                                    <span class="text-white">Start Free Trial<i class="fal fa-long-arrow-right ms-2"></i> </span>
                                 </a>
                             </div>
                             </div>

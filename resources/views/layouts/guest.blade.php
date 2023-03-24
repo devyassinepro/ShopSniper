@@ -102,7 +102,7 @@ fpr("click");
             @guest
             {{-- <a href="/login" role="button" class="btn-1">Login</a> --}}
             <li class="discover-link"><a href="/login" class="external">{{ __('Login') }}</a></li>
-            <li class="discover-link"><a href="/register" class="external discover-btn">{{ __('Start Now') }}</a></li>
+            <li class="discover-link"><a href="/register" class="external discover-btn">{{ __('Start Free Trial') }}</a></li>
             @else
             <div>
                 <span class="nav-item dropdown">

@@ -12,7 +12,11 @@
                 <p>{{ $message }}</p>
             </div>
           @endif
-
+          @if(!currentTeam()->subscribed())
+<div class="alert alert-warning" role="alert">
+Welcome to Weenify. Visit the <a href="{{ route('subscription.plans') }}">billing page</a> to activate a Trial plan.
+</div>
+@endif
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
