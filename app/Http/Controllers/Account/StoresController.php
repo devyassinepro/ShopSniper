@@ -58,10 +58,6 @@ class StoresController extends Controller
 
  
           $stores = $stores->paginate(50);
-        //  $stores =  $stores->paginate(25)->withQueryString();
-        //  $stores = stores::orderBy('id','desc')->paginate(25);
-        // $stores = $stores->paginate(25)->withQueryString();
-        // $stores = stores::orderBy('sales','desc')->paginate(25);
         return view('account.stores.index', compact('stores'))
         ->with('totalstores',stores::all()->count());
     }
@@ -208,7 +204,7 @@ class StoresController extends Controller
                     }
                 }
         
-        return redirect()->route('account.stores.index')->with('success','Store has been created successfully.');
+        return redirect()->route('account.stores.index')->with('success','Store has been Added successfully , wait Between 2h To 24h to get All Sales');
     }
   
 

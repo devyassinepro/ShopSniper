@@ -163,7 +163,12 @@
 
                     </li>
 
-
+                    <li class="nav-item">
+                        <a class="nav-link {{ return_if(on_page('account.tuto.index') OR on_page('account.tuto.index') OR on_page('account.tuto.index'), ' active') }}" href="{{ route('account.tuto.index') }}">
+                            <i class="fas fa-book-open"></i>
+                            <span class="nav-link-text">{{ __('Tutorial') }}</span>
+                        </a>
+                    </li>
 
                     <!-- End List -->
 
