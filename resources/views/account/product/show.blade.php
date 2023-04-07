@@ -18,7 +18,7 @@
 
     </div>
 
-        <canvas id="sales-chartaffiche"  height="50px"></canvas>
+        <canvas id="sales-chartaffiche"  height="100px"></canvas>
 
           <!-- ALl Affiche -->
 
