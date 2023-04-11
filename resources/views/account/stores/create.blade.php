@@ -7,7 +7,7 @@
   <div class="row">
         <main role="main" class="col-md-9 ml-sm-auto col-lg-12 pt-3 px-4">
 
-          <h2>Add Store</h2>
+          <h3>Shopify Store URL</h3>
           @if(session('status'))
         <div class="alert alert-success mb-1 mt-1">
             {{ session('status') }}
@@ -25,13 +25,13 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <!-- <strong>Store :</strong> -->
-                        <input type="text" name="url" class="form-control" placeholder="Store Shopify">
+                        <input type="text" name="url" class="form-control" placeholder="Url Store Shopify">
                         @error('store')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Niches</label>
+                        <label for="exampleFormControlSelect1">Niche</label>
                         <select class="form-control"  name="nicheid">
                           @foreach ($allniches as $niche)
                           <option value="{{ $niche->id }}">{{ $niche->name }}</option>
@@ -40,7 +40,7 @@
                       </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary ml-3">Submit</button>
+                <button type="submit" class="btn btn-primary ml-3">Add Shop</button>
             </div>
         </form>
           </div>

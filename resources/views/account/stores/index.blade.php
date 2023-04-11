@@ -8,7 +8,7 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-12 pt-3 px-4">
 
           <h2>Stores</h2>
-          <a class="btn btn-success" href="{{ route('account.stores.create') }}">Add</a>
+          <a class="btn btn-success" href="{{ route('account.stores.create') }}">Add Shop</a>
 
             <!-- Button trigger modal -->
             <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">

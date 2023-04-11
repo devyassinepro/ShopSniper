@@ -27,6 +27,7 @@ use App\Http\Controllers\Account\Subscriptions\SubscriptionController;
 use App\Http\Controllers\Account\NicheController as AccountNicheController;
 use App\Http\Controllers\Account\ProductController as AccountProductController;
 use App\Http\Controllers\Account\TutoController as AccountTutoController;
+use App\Http\Controllers\Account\TopstoresController as AccountopstoresController;
 use App\Http\Controllers\Account\StoresController as AccountStoresController;
 use App\Http\Controllers\Account\DashboardController as AccountDashboardController;
 use JoelButcher\Socialstream\Http\Controllers\Inertia\PasswordController;
@@ -94,6 +95,8 @@ Route::group(['middleware' => 'language'], function () {
         Route::resource('/stores', AccountStoresController::class);
         Route::resource('/niches', AccountNicheController::class);
         Route::resource('/tuto', AccountTutoController::class);
+        Route::resource('/topstores', AccountopstoresController::class);
+
 
         Route::get('/stores/storeproducts/{id}', [AccountStoresController::class, 'storeproducts'])->name('stores.storeproducts');
 

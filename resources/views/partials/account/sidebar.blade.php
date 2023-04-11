@@ -59,8 +59,13 @@
                         </a>
 
                     </li>
-
-
+                    <li class="nav-item">
+                        <a class="nav-link {{ return_if(on_page('account.tuto.index') OR on_page('account.tuto.index') OR on_page('account.tuto.index'), ' active') }}" href="{{ route('account.topstores.index') }}">
+                            <i class="fas fa-store"></i>
+                            <span class="nav-link-text">{{ __('Top Stores') }}</span>
+                        </a>
+                    </li>
+                    <hr class="my-2">
                     <li class="nav-item">
                         <a class="nav-link {{ return_if(on_page('account.niches.index') OR on_page('account.niches.create') OR on_page('account.niches.edit'), ' active') }}" href="{{ route('account.niches.index') }}">
                             <i class="fas fa-tag"></i>
@@ -231,6 +236,7 @@
                 <!-- Divider -->
 
                 <hr class="my-3">
+                
 
                 <!-- Heading -->
 
