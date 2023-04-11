@@ -126,7 +126,8 @@ class StoresController extends Controller
                     $storeuser = Storeuser::where('user_id', $user_id)->where('store_id', $stores->id)->count();
                     if($storeuser > 0)
                     {
-                        redirect()->route('account.stores.create')->with('error','You have already created that store.');
+                        // redirect()->route('account.stores.create')->with('error','You have already created that store.');
+                        return redirect()->route('account.stores.show',$stores->id);
                     }
                     else
                     {
