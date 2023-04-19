@@ -199,13 +199,14 @@ class StoresController extends Controller
                             }  
                         }
                     } catch(\Exception $exception) {
-                        return redirect()->route('account.stores.index')->with('error','This Store not Supported by Weenify');
+                        return redirect()->route('account.stores.create')->with('error','This Store not Supported by Weenify');
     
                         // Log::error($exception->getMessage());
                     }
                 }
         
-        return redirect()->route('account.stores.index')->with('success','Store has been Added successfully , wait Between 2h To 24h to get All Sales');
+        // return redirect()->route('account.stores.index');
+        return redirect()->route('account.stores.show',$store_id)->with('success','Store has been Added successfully , wait Between 2h To 24h to get All Sales');
     }
   
 
