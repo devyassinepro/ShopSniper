@@ -45,13 +45,23 @@ fpr("click");
 </script>
 <script src="https://cdn.firstpromoter.com/fpr.js" async></script>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-975957367"></script>
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-975957367"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'AW-975957367');
+</script> -->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11151238615"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-11151238615');
 </script>
 <!-- Hotjar Tracking Code for my site -->
 <script>
@@ -72,7 +82,14 @@ fpr("click");
     <!-- ======== End Navbar ======== -->
 <!--begin header -->
 <header class="header">
-
+      <div class="alert bg-primary text-white fade show rounded-0 mb-1 text-center  text-capitalize" role="alert">
+        <div class="container">
+          <a href="/register" class="alert-inner d-flex justify-content-center align-items-center p-0 text-light">
+            <span class="badge badge-lg  rounded-pill bg-white text-primary text-uppercase rounded me-2">weenify30</span>Special Offer 30% discount! </a>
+          <!-- /.alert-inner -->
+        </div>
+        <!-- /.container -->
+      </div>
     <!--begin navbar-fixed-top -->
     <nav class="navbar navbar-default navbar-fixed-top">
         
