@@ -45,24 +45,24 @@ fpr("click");
 </script>
 <script src="https://cdn.firstpromoter.com/fpr.js" async></script>
 <!-- Google tag (gtag.js) -->
-<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-975957367"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-975957367"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'AW-975957367');
-</script> -->
+</script>
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11151238615"></script>
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11151238615"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'AW-11151238615');
-</script>
+</script> -->
 <!-- Hotjar Tracking Code for my site -->
 <script>
     (function(h,o,t,j,a,r){
