@@ -182,6 +182,9 @@ class PlanController extends Controller
             'name' => 'required',
             'price' => 'required',
             'interval' => 'required',
+            // 'max_domain' => 'required',
+            // 'mailboxes' => 'required',
+            // 'quota' => 'required',
             'teams_limit' => 'required',
             'store_access_count' => 'required',
         ]);

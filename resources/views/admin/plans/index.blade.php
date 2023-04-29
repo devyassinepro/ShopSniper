@@ -42,7 +42,9 @@
                             </td>
                             <td class="float-right">
                                 <div class="btn-group" role="group" aria-label="User Actions">
-                                    <a href="{{ URL::to('admin/plans/' . $plan->id . '/edit') }}" data-toggle="tooltip" data-placement="top" title="" class="btn btn-primary mr-2" data-original-title="Edit"><i class="fa fa-edit "></i></a>
+                                    <!-- <a href="{{ URL::to('admin/plans/' . $plan->id . '/edit') }}" data-toggle="tooltip" data-placement="top" title="" class="btn btn-primary mr-2" data-original-title="Edit"><i class="fa fa-edit "></i></a> -->
+                                    <a href="{{ route('admin.plans.edit', $plan->id)}}" data-toggle="tooltip" data-placement="top" title="" class="btn btn-primary mr-2" data-original-title="Edit"><i class="fa fa-edit "></i></a>
+
                                     <form action="{{ route('admin.plans.destroy', $plan->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
