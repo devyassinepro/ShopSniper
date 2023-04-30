@@ -82,14 +82,7 @@ fpr("click");
     <!-- ======== End Navbar ======== -->
 <!--begin header -->
 <header class="header">
-      <div class="alert bg-primary text-white fade show rounded-0 mb-1 text-center  text-capitalize" role="alert">
-        <div class="container">
-          <a href="/register" class="alert-inner d-flex justify-content-center align-items-center p-0 text-light">
-            <span class="badge badge-lg  rounded-pill bg-white text-primary text-uppercase rounded me-2">weenify30</span>Special Offer 30% discount! </a>
-          <!-- /.alert-inner -->
-        </div>
-        <!-- /.container -->
-      </div>
+ 
     <!--begin navbar-fixed-top -->
     <nav class="navbar navbar-default navbar-fixed-top">
         
