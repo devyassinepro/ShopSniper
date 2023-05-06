@@ -127,6 +127,18 @@ class StoresController extends Controller
                     if($storeuser > 0)
                     {
                         // redirect()->route('account.stores.create')->with('error','You have already created that store.');
+                        Storeuser::create([
+                            "store_id" => $stores->id,
+                            "user_id" => $user_id,
+                            "created_at" => now(),
+                            "updated_at" => now()
+                        ]); 
+                        Nichestore::create([
+                            "stores_id" => $stores->id,
+                            "niche_id" => $request->nicheid,
+                            "created_at" => now(),
+                            "updated_at" => now()
+                       ]);  
                         return redirect()->route('account.stores.show',$stores->id);
                     }
                     else
@@ -137,6 +149,13 @@ class StoresController extends Controller
                             "created_at" => now(),
                             "updated_at" => now()
                         ]);
+
+                        Nichestore::create([
+                             "stores_id" => $stores->id,
+                             "niche_id" => $request->nicheid,
+                             "created_at" => now(),
+                             "updated_at" => now()
+                        ]); 
                     }
                 }
                 else
