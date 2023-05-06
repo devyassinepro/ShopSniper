@@ -16,13 +16,13 @@ class PlanList extends Component
     public function mount()
     {
         // $this->plans = Plan::get();
-        $this->plans = Plan::where('interval', $this->show)->get();
+        $this->plans = Plan::where('active', 1)->where('interval', $this->show)->get();
     }
 
     public function changePlan()
     {
         $this->show = $this->month ? 'year' : 'month';
-        $this->plans = Plan::where('interval', $this->show)->get();
+        $this->plans = Plan::where('active', 1)->where('interval', $this->show)->get();
     }
 
     public function render()
