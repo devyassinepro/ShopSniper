@@ -329,10 +329,13 @@ class StoresController extends Controller
                 $store_added_by_total_users = Storeuser::where('store_id', $id)->count();
                 if($store_added_by_total_users == 1)
                 {
-                    Storeuser::where('store_id', $id)->delete();
-                    DB::table('products')->where('stores_id', $id)->delete();
-                    $store->delete();
+                    // Storeuser::where('store_id', $id)->delete();
+                    // DB::table('products')->where('stores_id', $id)->delete();
+                    // $store->delete();
+                    // return redirect()->route('account.stores.index')->with('success','deleted successfully');
+                    Storeuser::where('user_id', $user_id)->where('store_id', $id)->delete();
                     return redirect()->route('account.stores.index')->with('success','deleted successfully');
+             
                 }
                 else
                 {
