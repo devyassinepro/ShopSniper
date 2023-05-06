@@ -156,6 +156,7 @@ class StoresController extends Controller
                              "created_at" => now(),
                              "updated_at" => now()
                         ]); 
+                        return redirect()->route('account.stores.show',$stores->id);
                     }
                 }
                 else
