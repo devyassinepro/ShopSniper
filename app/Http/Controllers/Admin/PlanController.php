@@ -33,7 +33,7 @@ class PlanController extends Controller
          */
         // $this->authorize('create', Plan::class);
 
-        $plans = Plan::paginate(10);
+        $plans = Plan::where('active', 1)->paginate(10);
 
         return view('admin.plans.index', compact('plans'));
     }
@@ -182,9 +182,6 @@ class PlanController extends Controller
             'name' => 'required',
             'price' => 'required',
             'interval' => 'required',
-            // 'max_domain' => 'required',
-            // 'mailboxes' => 'required',
-            // 'quota' => 'required',
             'teams_limit' => 'required',
             'store_access_count' => 'required',
         ]);
@@ -198,8 +195,8 @@ class PlanController extends Controller
         $price = (float) $request->input('price') * 100;
         // Delete the plan on stripe
         if ($plan->price != $request->input('price') || $plan->interval != $request->input('interval') || $plan->trial_period_days != $request->input('trial')) {
-            $stripe_plan = \Stripe\Plan::retrieve($plan->stripe_id);
-            $stripe_plan->delete();
+            // $stripe_plan = \Stripe\Plan::retrieve($plan->stripe_id);
+            // $stripe_plan->delete();
             // Recrete a new plan on stripe
             \Stripe\Plan::create([
                 'amount' => $price,
@@ -221,10 +218,6 @@ class PlanController extends Controller
         $plan->slug = $slug;
         $plan->store_access_count = $request->input('store_access_count');
 
-        // $plan->max_domain = $request->input('max_domain');
-        // $plan->trial_period_days = $request->input('trial');
-        // $plan->mailboxes = $request->input('mailboxes');
-        // $plan->quota = $request->input('quota');
         $plan->save();
 
         return redirect()->back()->with('status', 'Your plan has been updated.');
