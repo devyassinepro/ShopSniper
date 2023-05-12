@@ -95,13 +95,18 @@ Welcome to Weenify. Visit the <a href="{{ route('subscription.plans') }}">billin
                 @foreach ($stores as $store)
                     <tr>
                         <td><p>
-                          <a href="{{ route('account.stores.show',$store->id) }}">{{ $store->name }}</a>
+                          <a href="{{ route('account.stores.show',$store->id) }}">{{ $store->name }} - {{ $store->currency }}</a>
                           <a  target="_blank" href="{{$store->url}}"><img src="https://cdn3.iconfinder.com/data/icons/social-media-2068/64/_shopping-512.png" width="30" height="30"></a> 
 
                         </p></td>
                         <td><p>{{ $store->allproducts }}</p></td>
                         <td><p>{{ $store->products_sum_totalsales }}</p></td>
-                        <td><p>{{number_format($store->products_sum_revenue, 2, ',', ' ')}} $</p></td>
+                        @if($store->currency == "EUR" )
+                        <td><p>{{number_format($store->products_sum_revenue, 2, ',', ' ')}} €</p></td>
+                        @endif
+                        @if($store->currency != "EUR" )
+                        <td><p> $ {{number_format($store->products_sum_revenue, 2, ',', ' ')}}</p></td>
+                        @endif
                         <td><a  class="btn btn-primary" href="{{ route('account.stores.show',$store->id) }}">Show Charts</a></td>
                         <td>
                             <form action="{{ route('account.stores.destroy',$store->id) }}" method="Post">

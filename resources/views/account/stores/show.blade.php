@@ -34,9 +34,8 @@
         </main>
 <!-- Dashboard Affiche Store Data -->
 <main role="main" class="col-md-9 ml-sm-auto col-lg-12 pt-2 px-3">
-
-
-<!-- ENd Dashboard  -->
+<!-- For EUR Stores -->
+@if($storedata->first()->currency == "EUR" )  
 
 <!-- DAshboard  -->
 <div class="row grid-margin">
@@ -49,8 +48,129 @@
                         <p>
                           <i class="icon-sm fas fa-check-circle mr-2"></i>
                           Revenue
+                        </p>                         
+                        <h2 class="revenue"> {{ number_format($storesrevenue->first()->products_sum_revenue, 2, ',', ' ') }} €</h2>
+                    
+                        <label class="badge badge-outline-success badge-pill">57% increase</label>
+                      </div>
+                      <div class="statistics-item">
+                        <p>
+                          <i class="icon-sm fas fa-chart-line mr-2"></i>
+                          Sales
                         </p>
-                        <h2 class="revenue">$ {{ number_format($storesrevenue->first()->products_sum_revenue, 2, ',', ' ') }}</h2>
+                        <h2 class="revenue">{{$storesrevenue->first()->products_sum_totalsales}}</h2>
+                        <label class="badge badge-outline-success badge-pill">10% increase</label>
+                      </div>
+                      @if($storesrevenue->first()->products_sum_revenue != 0 )
+                  <div class="statistics-item">
+                        <p>
+                          <i class="icon-sm fas fa-hourglass-half mr-2"></i>
+                          AOV
+                        </p>
+                         <h2 class="revenue"> {{number_format($storesrevenue->first()->products_sum_revenue / $storesrevenue->first()->products_sum_totalsales, 2, ',', ' ')}} €</h2>
+                        <label class="badge badge-outline-danger badge-pill">30% decrease</label>
+                      </div>
+                      @endif
+                      <div class="statistics-item">
+                        <p>
+                          <i class="icon-sm fas fa-circle-notch mr-2"></i>
+                          <a href="{{ route('account.stores.storeproducts',$storedata->first()->id) }}">Products</a>
+                        </p>
+                        <h2 class="revenue">{{$storedata->first()->allproducts}}</h2>
+                        <label class="badge badge-outline-danger badge-pill">16% decrease</label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      <!-- ENd Dashboard  -->
+
+      <!-- <canvas id="product-sales-chart"  height="50px"></canvas> -->
+      <canvas id="sales-chartaffiche"  height="100px"></canvas>
+</br></br>
+<!-- Table >Top Products  -->
+ <!-- Affiche //// -->
+ <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <i class="fas fa-table"></i>
+                    Top 10 Products
+                  </h4>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Image</th>
+                          <th>Title</th>
+                          <th>Price</th>
+                          <th>Today</th>
+                          <th>Yesterday</th>
+                          <th>Weekly</th>
+                          <th>Monthly</th>
+                          <th>Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      @foreach ($products as $product)
+                        <tr>
+                          <td class="font-weight-bold">
+                              <a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="200" height="200"></a>
+                          </td>
+                          <td class="font-weight-bold">
+                              <a href="{{ route('account.product.show',$product->id) }}">{{ $product->title }}</a>
+                          </td>                          
+                          <td>{{ $product->prix }} €</td>
+                          <td>
+                          <label class="badgepro badge-success badge-pill">{{ $product->todaysales_count * $product->prix }}€</label>
+                            <label class="badgepro badge-info badge-pill">{{ $product->todaysales_count }}</label>
+                          </td>
+                          <td>
+                          <label class="badge badge-success badge-pill">{{ $product->yesterdaysales_count * $product->prix }}€</label>
+                            <label class="badgepro badge-info badge-pill">{{ $product->yesterdaysales_count }}</label>
+                          </td>
+                          <td>
+                          <label class="badgepro badge-success badge-pill">{{ $product->weeklysales_count * $product->prix }}€</label>
+                            <label class="badgepro badge-info badge-pill">{{ $product->weeklysales_count }}</label>
+                          </td>
+                          <td>
+                          <label class="badgepro badge-success badge-pill">{{ $product->montlysales_count * $product->prix }}€</label>
+                            <label class="badgepro badge-info badge-pill">{{ $product->montlysales_count }}</label>
+                          </td>
+                          <td>
+                          <label class="badgepro badge-success badge-pill">{{ $product->totalsales * $product->prix }} €</label>
+                            <label class="badgepro badge-info badge-pill">{{ $product->totalsales }}</label>
+                          </td>
+                        </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+     </main>
+     @endif
+@if($storedata->first()->currency != "EUR" )  
+
+<!-- DAshboard  -->
+<div class="row grid-margin">
+            <div class="col-12">
+              <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+
+                      <div class="statistics-item">
+                        <p>
+                          <i class="icon-sm fas fa-check-circle mr-2"></i>
+                          Revenue
+                        </p>                         
+                        <h2 class="revenue">${{ number_format($storesrevenue->first()->products_sum_revenue, 2, ',', ' ') }}</h2>
+                    
                         <label class="badge badge-outline-success badge-pill">57% increase</label>
                       </div>
                       <div class="statistics-item">
@@ -154,6 +274,7 @@
             </div>
           </div>
      </main>
+     @endif
         </div>
       
       </div>
