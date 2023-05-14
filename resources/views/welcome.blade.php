@@ -550,7 +550,6 @@
         </section> -->
         <!-- ====== end testimonials ====== -->
         <livewire:plan-list />
-
           <!-- ====== start faq ====== -->
           <section class="faq section-padding style-4 pt-50" id="faq" >
             <div class="container" >

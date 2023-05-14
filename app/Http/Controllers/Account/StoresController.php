@@ -30,36 +30,7 @@ class StoresController extends Controller
         {
             redirect()->route('dashboard')->with('error','You can not access this page.');
         }
-
-        $user_id = Auth::user()->id;
-        // get stores of this user
-        $storeuser = Storeuser::where('user_id', $user_id)->pluck('store_id');
-
-        $stores = stores::whereIn('id', $storeuser)
-        ->withSum('products', 'totalsales')
-        ->withSum('products', 'revenue')
-        ->with('products');
-
-         if($request->ordreby){
-             $stores = $stores::orderBy($request->ordreby,'desc');
-
-         }else  $stores = $stores->orderBy('products_sum_revenue','desc');
-         if( $request->title){
-              $stores = $stores->where('url', 'ilike', "%" . strtoupper($request->url) . "%");
-         }
-         if( $request->min_revenue && $request->max_revenue ){
-             $stores = $stores->where('products_sum_revenue', '>=', $request->min_revenue)
-                          ->where('products_sum_revenue', '<=', $request->max_revenue);
-         }
-         if( $request->min_sales && $request->max_sales ){
-             $stores = $stores->where('products_sum_totalsales', '>=', $request->min_sales)
-                          ->where('products_sum_totalsales', '<=', $request->max_sales);
-         }
-
- 
-          $stores = $stores->paginate(50);
-        return view('account.stores.index', compact('stores'))
-        ->with('totalstores',stores::all()->count());
+         return view('account.stores.index');
     }
 
       /**
