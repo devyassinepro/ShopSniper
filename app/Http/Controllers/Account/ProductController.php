@@ -29,37 +29,33 @@ class ProductController extends Controller
 
         // get user's stores
         $totalstores = Storeuser::where('user_id', $user_id)->pluck('store_id')->ToArray();
-        // dd($totalstores);
 
-        // if(!$totalstores)
-        //     $totalstores = [-1];
-        //
  //Version 1 with filtre 
-        $totalsalesmin = 0;
-        $pagination = 50;
-        $urlstore = "";
-         if($request->ordreby){
-             $products = Product::orderBy($request->ordreby,'desc');
+        // $totalsalesmin = 0;
+        // $pagination = 50;
+        // $urlstore = "";
+        //  if($request->ordreby){
+        //      $products = Product::orderBy($request->ordreby,'desc');
 
-         }else  $products = Product::orderBy('revenue','desc');
-         if( $request->title){
-              $products = $products->where('title', 'ilike', "%" . strtoupper($request->title) . "%");
-         }
-         if( $request->min_revenue && $request->max_revenue ){
-             $products = $products->where('revenue', '>=', $request->min_revenue)
-                          ->where('revenue', '<=', $request->max_revenue);
-         }
-         if( $request->min_sales && $request->max_sales ){
-             $products = $products->where('totalsales', '>=', $request->min_sales)
-                          ->where('totalsales', '<=', $request->max_sales);
-         }
+        //  }else  $products = Product::orderBy('revenue','desc');
+        //  if( $request->title){
+        //       $products = $products->where('title', 'ilike', "%" . strtoupper($request->title) . "%");
+        //  }
+        //  if( $request->min_revenue && $request->max_revenue ){
+        //      $products = $products->where('revenue', '>=', $request->min_revenue)
+        //                   ->where('revenue', '<=', $request->max_revenue);
+        //  }
+        //  if( $request->min_sales && $request->max_sales ){
+        //      $products = $products->where('totalsales', '>=', $request->min_sales)
+        //                   ->where('totalsales', '<=', $request->max_sales);
+        //  }
         //version 2 without filtre 
-        $products->whereIn('stores_id', $totalstores);
+        // $products->whereIn('stores_id', $totalstores);
 
-        $products = $products->withCount(['todaysales', 'yesterdaysales']);
-        $products = $products->paginate($pagination)->withQueryString();
+        // $products = $products->withCount(['todaysales', 'yesterdaysales']);
+        // $products = $products->paginate($pagination)->withQueryString();
 
-        return view('account.product.index', compact('products'))
+        return view('account.product.index')
         ->with('totalproducts',Product::whereIn('stores_id', $totalstores)->count());
     }
 
