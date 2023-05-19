@@ -110,6 +110,8 @@ class StoresController extends Controller
                             "created_at" => now(),
                             "updated_at" => now()
                        ]);  
+                       //make status On 
+                       DB::table('stores')->where('id', $stores->id)->update(array('status' => 1));
                         return redirect()->route('account.stores.show',$stores->id);
                     }
                     else
@@ -127,6 +129,8 @@ class StoresController extends Controller
                              "created_at" => now(),
                              "updated_at" => now()
                         ]); 
+                        DB::table('stores')->where('id', $stores->id)->update(array('status' => 1));
+
                         return redirect()->route('account.stores.show',$stores->id);
                     }
                 }
@@ -299,7 +303,7 @@ class StoresController extends Controller
             else
             {
                 $store_added_by_total_users = Storeuser::where('store_id', $id)->count();
-                if($store_added_by_total_users == 1)
+                if($store_added_by_total_users > 1)
                 {
                     // Storeuser::where('store_id', $id)->delete();
                     // DB::table('products')->where('stores_id', $id)->delete();
@@ -312,6 +316,7 @@ class StoresController extends Controller
                 else
                 {
                     Storeuser::where('user_id', $user_id)->where('store_id', $id)->delete();
+                    DB::table('stores')->where('id', $id)->update(array('status' => 0));
                     return redirect()->route('account.stores.index')->with('success','deleted successfully');
                 }
             }
