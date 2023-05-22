@@ -8,16 +8,14 @@ use Livewire\WithPagination;
 use App\Models\Storeuser;
 use App\Models\stores;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Niche;
 class StoreSearch extends Component
 {
 
     use WithPagination;
     public $name;
-    public $price;
-    public $selectedProductId;
     public $search = "";
-    public $filter = '';
+    public $filtreCurrency = "", $filtreNiche = "", $filtrePagination = "";
   
     protected $paginationTheme = 'bootstrap';
 
@@ -32,18 +30,45 @@ class StoreSearch extends Component
         $user_id = Auth::user()->id;
         // get stores of this user
         $storeuser = Storeuser::where('user_id', $user_id)->pluck('store_id');
-
         $stores = stores::whereIn('id', $storeuser);
+      
         if($this->search != ""){
             $this->resetPage();
             $stores->where("name", "LIKE",  "%". $this->search ."%")
                          ->orWhere("url","LIKE",  "%". $this->search ."%");
         }
+        
+        //by niche & by Currency 
+
+        if($this->filtreCurrency != ""){
+            $stores->where('currency', $this->filtreCurrency);
+            // dd($this->filtreCurrency);
+        }
+        if($this->filtreNiche != ""){
+            $this->resetPage();
+            $stores->where("name", "LIKE",  "%". $this->filtreNiche ."%")
+                         ->orWhere("url","LIKE",  "%". $this->filtreNiche ."%");
+        }
+
+        if($this->filtrePagination != ""){
         $stores = $stores->withSum('products', 'totalsales')
             ->withSum('products', 'revenue')
             ->orderBy('products_sum_revenue','desc')
+            ->paginate($this->filtrePagination);
+        }else{
+            $stores = $stores->withSum('products', 'totalsales')
+            ->withSum('products', 'revenue')
+            ->orderBy('products_sum_revenue','desc')
             ->paginate(10);
-        return view('livewire.store-search',compact('stores'));
+        }
+       
+         $niches = Niche::where('user_id', $user_id)->orderBy('id','asc')->get();
+        // return view('livewire.store-search', compact('stores','niches'));
+        return view('livewire.store-search', [
+            "stores" => $stores,
+            "niches"=> $niches
+        ]);
+
     }
 
     public function updated($property)

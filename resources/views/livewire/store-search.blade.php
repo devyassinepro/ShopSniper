@@ -1,12 +1,47 @@
 <div>
-<div class="mb-4">
-<input
-                type="search"
-                wire:model.debounce.500ms="search"
-                placeholder="Search products"
-                class="border-gray-400 rounded w-full py-2 pr-10 pl-4"
-            >
-    </div>     
+              <div class="card-body table-responsive p-0 table-striped" >
+                <div class="d-flex justify-content-end p-4">
+
+                <div class="form-group mr-3">
+                        <label for="filtreType">Search</label>
+                        <input
+                            type="search"
+                            wire:model.debounce.500ms="search"
+                            placeholder="Search products"
+                            class="form-control"
+                        >
+                    </div>
+                    <div class="form-group mr-3">
+                        <label for="filtreType">filter By Niches</label>
+                        <select  id="filtreNiche" wire:model="filtreNiche" class="form-control">
+                                <option value=""></option>
+                                @foreach ($niches as $niche)
+                                    <option value="{{$niche->id}}">{{ $niche->name }}</option>
+                                @endforeach
+
+                        </select>
+                    </div>
+
+                    <div class="form-group mr-3">
+                        <label for="filtreCurrency">filter By Currency</label>
+                        <select  id="filtreCurrency" wire:model="filtreCurrency" class="form-control">
+                            <option value=""></option>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mr-3">
+                        <label for="filtrePagination">Pages</label>
+                        <select  id="filtrePagination" wire:model="filtrePagination" class="form-control">
+                            <option value="">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                </div>
+              </div>
+
      <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
@@ -53,6 +88,6 @@
           </div>
         <div class="my-4">
         {{ $stores->links() }}
-            </div>
+        </div>
   
 </div>
