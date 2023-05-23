@@ -277,6 +277,15 @@ function createstore ($store ,$store_id, $i){
             "imageproduct" => $image,
             "favoris" => 0,
             "totalsales" => $totalsales,
+            "todaysales" => 0,
+            "yesterdaysales" => 0,
+            "day3sales" => 0,
+            "day4sales" => 0,
+            "day5sales" => 0,
+            "day6sales" => 0,
+            "day7sales" => 0,
+            "weeksales" => 0,
+            "monthsales" => 0
         ]);
     } 
 }
