@@ -245,11 +245,12 @@
                           <label class="badge badge-success badge-pill">${{ $product->yesterdaysales_count * $product->prix }}</label>
                             <label class="badgepro badge-info badge-pill">{{ $product->yesterdaysales_count }}</label>
                           </td>
+                          <td>
                           <label class="badgepro badge-success badge-pill">${{ $product->totalsales * $product->prix }}</label>
                             <label class="badgepro badge-info badge-pill">{{ $product->totalsales }}</label>
                           </td>
                           <td><a  class="btn btn-success" href="{{ route('account.product.show',$product->id) }}" >View </a></td>
-                          <td>
+</td>
                         </tr>
                         @endforeach
                       </tbody>
