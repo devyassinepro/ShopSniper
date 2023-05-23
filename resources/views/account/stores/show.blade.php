@@ -109,9 +109,8 @@
                           <th>Price</th>
                           <th>Today</th>
                           <th>Yesterday</th>
-                          <th>Weekly</th>
-                          <th>Monthly</th>
                           <th>Total</th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -133,16 +132,11 @@
                             <label class="badgepro badge-info badge-pill">{{ $product->yesterdaysales_count }}</label>
                           </td>
                           <td>
-                          <label class="badgepro badge-success badge-pill">{{ $product->weeklysales_count * $product->prix }}€</label>
-                            <label class="badgepro badge-info badge-pill">{{ $product->weeklysales_count }}</label>
-                          </td>
-                          <td>
-                          <label class="badgepro badge-success badge-pill">{{ $product->montlysales_count * $product->prix }}€</label>
-                            <label class="badgepro badge-info badge-pill">{{ $product->montlysales_count }}</label>
-                          </td>
-                          <td>
-                          <label class="badgepro badge-success badge-pill">{{ $product->totalsales * $product->prix }} €</label>
+                          <label class="badgepro badge-success badge-pill">{{ $product->totalsales * $product->prix }}€</label>
                             <label class="badgepro badge-info badge-pill">{{ $product->totalsales }}</label>
+                          </td>
+                     
+                          <td><a  class="btn btn-success" href="{{ route('account.product.show',$product->id) }}" >View </a></td>
                           </td>
                         </tr>
                         @endforeach
@@ -229,9 +223,8 @@
                           <th>Price</th>
                           <th>Today</th>
                           <th>Yesterday</th>
-                          <th>Weekly</th>
-                          <th>Monthly</th>
                           <th>Total</th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -252,18 +245,11 @@
                           <label class="badge badge-success badge-pill">${{ $product->yesterdaysales_count * $product->prix }}</label>
                             <label class="badgepro badge-info badge-pill">{{ $product->yesterdaysales_count }}</label>
                           </td>
-                          <td>
-                          <label class="badgepro badge-success badge-pill">${{ $product->weeklysales_count * $product->prix }}</label>
-                            <label class="badgepro badge-info badge-pill">{{ $product->weeklysales_count }}</label>
-                          </td>
-                          <td>
-                          <label class="badgepro badge-success badge-pill">${{ $product->montlysales_count * $product->prix }}</label>
-                            <label class="badgepro badge-info badge-pill">{{ $product->montlysales_count }}</label>
-                          </td>
-                          <td>
                           <label class="badgepro badge-success badge-pill">${{ $product->totalsales * $product->prix }}</label>
                             <label class="badgepro badge-info badge-pill">{{ $product->totalsales }}</label>
                           </td>
+                          <td><a  class="btn btn-success" href="{{ route('account.product.show',$product->id) }}" >View </a></td>
+                          <td>
                         </tr>
                         @endforeach
                       </tbody>

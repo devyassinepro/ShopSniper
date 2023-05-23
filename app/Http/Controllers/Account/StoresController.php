@@ -236,7 +236,7 @@ class StoresController extends Controller
 
         $totalsalesmin = 0;
         // $pagination = 50;
-        $products = Product::withCount(['todaysales', 'yesterdaysales' , 'weeklysales', 'montlysales'])
+        $products = Product::withCount(['todaysales', 'yesterdaysales'])
                         ->where('stores_id',$id)
                         ->where('totalsales', '>=', $totalsalesmin)
                         ->orderBy('totalsales','desc')->take(10)->get();
