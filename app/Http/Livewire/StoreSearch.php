@@ -50,15 +50,13 @@ class StoreSearch extends Component
                          ->orWhere("url","LIKE",  "%". $this->filtreNiche ."%");
         }
 
+
+        
         if($this->filtrePagination != ""){
-        $stores = $stores->withSum('products', 'totalsales')
-            ->withSum('products', 'revenue')
-            ->orderBy('products_sum_revenue','desc')
+        $stores = $stores->orderBy('revenue','desc')
             ->paginate($this->filtrePagination);
         }else{
-            $stores = $stores->withSum('products', 'totalsales')
-            ->withSum('products', 'revenue')
-            ->orderBy('products_sum_revenue','desc')
+            $stores = $stores->orderBy('revenue','desc')
             ->paginate(10);
         }
        
@@ -76,6 +74,22 @@ class StoreSearch extends Component
         if ($property === 'search') {
             $this->resetPage();
         }
+    }
+
+
+    public function draft(){
+                // if($this->filtrePagination != ""){
+        // $stores = $stores->withSum('products', 'totalsales')
+        //     ->withSum('products', 'revenue')
+        //     ->orderBy('products_sum_revenue','desc')
+        //     ->paginate($this->filtrePagination);
+        // }else{
+        //     $stores = $stores->withSum('products', 'totalsales')
+        //     ->withSum('products', 'revenue')
+        //     ->orderBy('products_sum_revenue','desc')
+        //     ->paginate(10);
+        // }
+
     }
 
 }

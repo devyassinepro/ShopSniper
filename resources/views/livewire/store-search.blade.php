@@ -41,9 +41,11 @@
                     </div>
                 </div>
               </div>
-
+    <div wire:loading.delay>
+        Loading...
+    </div>
      <div class="table-responsive">
-        <table class="table table-striped table-sm">
+        <table wire:loading.class="invisible" class="table table-striped table-sm">
             <thead>
                 <tr>
                     <th><h6>Name</h6></th>
@@ -62,12 +64,12 @@
 
                         </p></td>
                         <td><p>{{ $store->allproducts }}</p></td>
-                        <td><p>{{ $store->products_sum_totalsales }}</p></td>
+                        <td><p>{{ $store->sales }}</p></td>
                         @if($store->currency == "EUR" )
-                        <td><p>{{number_format($store->products_sum_revenue, 2, ',', ' ')}} €</p></td>
+                        <td><p>{{number_format($store->revenue, 2, ',', ' ')}} €</p></td>
                         @endif
                         @if($store->currency != "EUR" )
-                        <td><p> $ {{number_format($store->products_sum_revenue, 2, ',', ' ')}}</p></td>
+                        <td><p> $ {{number_format($store->revenue, 2, ',', ' ')}}</p></td>
                         @endif
                         <td><a  class="btn btn-primary" href="{{ route('account.stores.show',$store->id) }}">Show Charts</a></td>
                         <td>
@@ -86,7 +88,7 @@
             </tbody>
             </table>
           </div>
-        <div class="my-4">
+        <div  wire:loading.class="invisible" class="my-4">
         {{ $stores->links() }}
         </div>
   
