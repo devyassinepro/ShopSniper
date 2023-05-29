@@ -25,7 +25,7 @@ class StoresController extends Controller
     public function index(Request $request)
     {
 
-        
+
         if(check_user_type() != 'user')
         {
             redirect()->route('dashboard')->with('error','You can not access this page.');
@@ -54,13 +54,13 @@ class StoresController extends Controller
                 return redirect()->route('account.stores.index')->with('error','You can not add more stores on trial');
 
             }
-        } 
+        }
         else if(check_store_limit() <= $storeuser)
         {
             return redirect()->route('account.stores.index')->with('error','You can not add stores more than '.check_store_limit());
         }
 
-        //to add niche to store 
+        //to add niche to store
         $allniches = Niche::where('user_id', $user_id)->get();
         return view('account.stores.create', compact('allniches'));
     }
@@ -79,7 +79,7 @@ class StoresController extends Controller
 
         $user_id = Auth::user()->id;
         $storeuser = Storeuser::where('user_id', $user_id)->count();
-        
+
         if(check_store_limit() <= $storeuser)
         {
             return redirect()->route('account.stores.index')->with('error','You can not add stores more than '.check_store_limit());
@@ -103,14 +103,14 @@ class StoresController extends Controller
                             "user_id" => $user_id,
                             "created_at" => now(),
                             "updated_at" => now()
-                        ]); 
+                        ]);
                         Nichestore::create([
                             "stores_id" => $stores->id,
                             "niche_id" => $request->nicheid,
                             "created_at" => now(),
                             "updated_at" => now()
-                       ]);  
-                       //make status On 
+                       ]);
+                       //make status On
                        DB::table('stores')->where('id', $stores->id)->update(array('status' => 1));
                         return redirect()->route('account.stores.show',$stores->id);
                     }
@@ -128,7 +128,7 @@ class StoresController extends Controller
                              "niche_id" => $request->nicheid,
                              "created_at" => now(),
                              "updated_at" => now()
-                        ]); 
+                        ]);
                         DB::table('stores')->where('id', $stores->id)->update(array('status' => 1));
 
                         return redirect()->route('account.stores.show',$stores->id);
@@ -137,12 +137,12 @@ class StoresController extends Controller
                 else
                 {
                     try {
-                        $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
+                        $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n"));
                         $context = stream_context_create($opts);
                         $meta = file_get_contents($request->url.'meta.json',false,$context);
                         $metas = json_decode($meta);
                         $totalproducts = $metas->published_products_count;
-                       
+
                         $store_id = DB::table('stores')->insertGetId(
                             ['url' => $request->url,
                             'name' => $metas->name,
@@ -159,7 +159,7 @@ class StoresController extends Controller
                             'user_id' => $user_id
                             ]
                         );
-                        
+
                         Storeuser::create([
                             "store_id" => $store_id,
                             "user_id" => $user_id,
@@ -172,38 +172,38 @@ class StoresController extends Controller
                              "niche_id" => $request->nicheid,
                              "created_at" => now(),
                              "updated_at" => now()
-                        ]);  
+                        ]);
                         if($totalproducts<=250){
                             createstore($request->url,$store_id,1);
 
-                          
+
                         }else if($totalproducts<=500){
                             for ($i = 1; $i <= 2; $i++) {
-                                createstore($request->url,$store_id,$i);   
-                             
+                                createstore($request->url,$store_id,$i);
+
                             }
                          }else if($totalproducts<=750){
                             for ($i = 1; $i <= 3; $i++) {
-                                createstore($request->url,$store_id,$i);   
+                                createstore($request->url,$store_id,$i);
 
                             }
                         }
                         else if($totalproducts<=1000 || $totalproducts>1000){
                             for ($i = 1; $i <= 4; $i++) {
-                                createstore($request->url,$store_id,$i);   
-                            }  
+                                createstore($request->url,$store_id,$i);
+                            }
                         }
                     } catch(\Exception $exception) {
                         return redirect()->route('account.stores.create')->with('error','This Store not Supported by Weenify');
-    
+
                         // Log::error($exception->getMessage());
                     }
                 }
-        
+
         // return redirect()->route('account.stores.index');
         return redirect()->route('account.stores.show',$store_id)->with('success','Store has been Added successfully , wait Between 2h To 24h to get All Sales');
     }
-  
+
 
     /**
      * Display the specified resource.
@@ -220,8 +220,8 @@ class StoresController extends Controller
 
         $user_id = Auth::user()->id;
         $storeuser = Storeuser::where('user_id', $user_id)->count();
-        
-        
+
+
     $dates = [];
     for ($i = 6; $i >= 0; $i--) {
         $dates[] = Carbon::now()->subDays($i)->format('Y-m-d');
@@ -236,14 +236,13 @@ class StoresController extends Controller
 
         $totalsalesmin = 0;
         // $pagination = 50;
-        $products = Product::withCount(['todaysales', 'yesterdaysales'])
-                        ->where('stores_id',$id)
+        $products = Product::where('stores_id',$id)
                         ->where('totalsales', '>=', $totalsalesmin)
                         ->orderBy('totalsales','desc')->take(10)->get();
 
     return view('account.stores.show', compact('products','storedata','storesrevenue','dates'))
     ->with('totalproducts',Product::where('stores_id',$id)->count());
-    
+
     }
 
     /**
@@ -263,7 +262,7 @@ class StoresController extends Controller
             'store' => 'required',
             'totalsales' => 'required',
         ]);
-  
+
         $product = Product::findorFail($id); // uses the id to search values that need to be updated.
         $product->title = $request->input('title'); //retrieves user input
         $product->timestamp = $request->input('timestamp'); //retrieves user input
@@ -284,7 +283,7 @@ class StoresController extends Controller
     public function destroy($id)
     {
         $store = stores::findorFail($id); //searching for object in database using ID
-        
+
         if(check_user_type() != 'user')
         {
             return redirect()->route('dashboard')->with('error','You can not access this page.');
@@ -311,7 +310,7 @@ class StoresController extends Controller
                     // return redirect()->route('account.stores.index')->with('success','deleted successfully');
                     Storeuser::where('user_id', $user_id)->where('store_id', $id)->delete();
                     return redirect()->route('account.stores.index')->with('success','deleted successfully');
-             
+
                 }
                 else
                 {
@@ -343,21 +342,20 @@ class StoresController extends Controller
 
         $totalsalesmin = 0;
          $pagination = 50;
-        $products = Product::withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales', 'weeklysales', 'montlysales'])
-                        ->where('stores_id',$id)
+        $products = Product::where('stores_id',$id)
                         ->where('totalsales', '>=', $totalsalesmin)
                         ->orderBy('totalsales','desc')->paginate($pagination);
 
     return view('account.stores.storeproducts', compact('products','storedata'))
     ->with('totalproducts',Product::where('stores_id',$id)->count());
-    
+
     }
 
 }
 
 
 function createstore ($store ,$store_id, $i){
-    $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
+    $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n"));
     $context = stream_context_create($opts);
     $html = file_get_contents($store.'products.json?page='.$i.'&limit=250',false,$context);
     $products = json_decode($html)->products;
@@ -398,5 +396,5 @@ function createstore ($store ,$store_id, $i){
             "weeksales" => 0,
             "monthsales" => 0
         ]);
-    } 
+    }
 }

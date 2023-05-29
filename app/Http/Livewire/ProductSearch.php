@@ -11,14 +11,14 @@ use Illuminate\Support\Facades\Auth;
 class ProductSearch extends Component
 {
 
-    
+
     use WithPagination;
     public $name;
     public $price;
     public $selectedProductId;
     public $search = "";
     public $filter = '';
-  
+
     protected $paginationTheme = 'bootstrap';
     public $currentPage = 1;
 
@@ -41,17 +41,10 @@ class ProductSearch extends Component
             $products->where("title", "LIKE",  "%". $this->search ."%")
                          ->orWhere("url","LIKE",  "%". $this->search ."%");
         }
-        $products = $products->withCount(['todaysales', 'yesterdaysales'])
-            ->paginate(10);
+        $products =$products->paginate(10);
         return view('livewire.product-search',compact('products'));
     }
 
-    // public function updated($property)
-    // {
-    //     if ($property === 'search') {
-    //         $this->resetPage();
-    //     }
-    // }
 
     public function updatingQuery(){
         $this->resetPage();

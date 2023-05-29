@@ -30,7 +30,7 @@ class ProductController extends Controller
         // get user's stores
         $totalstores = Storeuser::where('user_id', $user_id)->pluck('store_id')->ToArray();
 
- //Version 1 with filtre 
+ //Version 1 with filtre
         // $totalsalesmin = 0;
         // $pagination = 50;
         // $urlstore = "";
@@ -49,7 +49,7 @@ class ProductController extends Controller
         //      $products = $products->where('totalsales', '>=', $request->min_sales)
         //                   ->where('totalsales', '<=', $request->max_sales);
         //  }
-        //version 2 without filtre 
+        //version 2 without filtre
         // $products->whereIn('stores_id', $totalstores);
 
         // $products = $products->withCount(['todaysales', 'yesterdaysales']);
@@ -70,7 +70,7 @@ class ProductController extends Controller
         //
 
         $products = $request->json()->all();
-    
+
     foreach ($products as $product) {
         Product::create($product);
     }
@@ -90,7 +90,7 @@ class ProductController extends Controller
         {
             redirect()->route('dashboard')->with('error','You can not access this page.');
         }
-        
+
     // $products = Product::withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales'])
     //                     ->where('stores_id',$id)
     //                     ->orderBy('totalsales','desc')->paginate(100);
@@ -105,7 +105,7 @@ class ProductController extends Controller
     }
     $totalsalesmin = 0;
     $pagination = 50;
- 
+
    $products = Product::orderBy('revenue','desc')
    ->where('id', $id);
 
@@ -113,7 +113,7 @@ class ProductController extends Controller
    $products = $products->get();
 
     return view('account.product.show', compact('products','dates'));
-    
+
     }
 
     /**
@@ -133,7 +133,7 @@ class ProductController extends Controller
             'store' => 'required',
             'totalsales' => 'required',
         ]);
-  
+
         $product = Product::findorFail($id); // uses the id to search values that need to be updated.
         $product->title = $request->input('title'); //retrieves user input
         $product->timestamp = $request->input('timestamp'); //retrieves user input

@@ -9,7 +9,7 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-12 pt-3 px-4">
         <div><h2>View Products</h2></div>
         <div><h5>Store Name : {{$storedata->first()->name}}</h5></div>
-   
+
           @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>
@@ -61,7 +61,7 @@
           <option value="totalsales">Total Sales</option>
           <option value="todaysales">Best Selling Today</option>
           <option value="sales2">Best Selling Yesterday</option>
-         </select>         
+         </select>
 
       </div>
       <div class="modal-footer">
@@ -73,7 +73,7 @@
     </div>
   </div>
 </div>
-        <div>       
+        <div>
         </div>
 </br></br>
           <div class="row">
@@ -93,8 +93,6 @@
                           <th>Price</th>
                           <th>Today</th>
                           <th>Yesterday</th>
-                          <th>Weekly</th>
-                          <th>Monthly</th>
                           <th>Total</th>
                         </tr>
                       </thead>
@@ -106,23 +104,15 @@
                           </td>
                           <td class="font-weight-bold">
                               <a href="{{ route('account.product.show',$product->id) }}">{{ $product->title }}</a>
-                          </td>                          
+                          </td>
                           <td>$ {{ $product->prix }}</td>
                           <td>
-                          <label class="badgepro badge-success badge-pill">${{ $product->todaysales_count * $product->prix }}</label>
-                            <label class="badgepro badge-info badge-pill">{{ $product->todaysales_count }}</label>
+                          <label class="badgepro badge-success badge-pill">${{ $product->todaysales * $product->prix }}</label>
+                            <label class="badgepro badge-info badge-pill">{{ $product->todaysales }}</label>
                           </td>
                           <td>
-                          <label class="badge badge-success badge-pill">${{ $product->yesterdaysales_count * $product->prix }}</label>
-                            <label class="badgepro badge-info badge-pill">{{ $product->yesterdaysales_count }}</label>
-                          </td>
-                          <td>
-                          <label class="badgepro badge-success badge-pill">${{ $product->weeklysales_count * $product->prix }}</label>
-                            <label class="badgepro badge-info badge-pill">{{ $product->weeklysales_count }}</label>
-                          </td>
-                          <td>
-                          <label class="badgepro badge-success badge-pill">${{ $product->montlysales_count * $product->prix }}</label>
-                            <label class="badgepro badge-info badge-pill">{{ $product->montlysales_count }}</label>
+                          <label class="badge badge-success badge-pill">${{ $product->yesterdaysales * $product->prix }}</label>
+                            <label class="badgepro badge-info badge-pill">{{ $product->yesterdaysales }}</label>
                           </td>
                           <td>
                           <label class="badgepro badge-success badge-pill">${{ $product->totalsales * $product->prix }}</label>
@@ -144,6 +134,6 @@
         </main>
       </div>
     </div>
-    
-    
+
+
     @endsection

@@ -6,7 +6,7 @@
 <div class="container-fluid">
       <div class="row">
         <main role="main" class="col-md-9 ml-sm-auto col-lg-12 pt-3 px-4">
-       
+
         <div><h5>Store Name : {{$storedata->first()->name}}</h5></div>
         <div><h6>{{$storedata->first()->shopifydomain}}</h6></div>
           @if ($message = Session::get('success'))
@@ -24,7 +24,7 @@
                       <button type="submit" class="btn btn-warning">Untrack Store</button>
                       @endif
                   </form>
-           </div>  
+           </div>
 
         @if ($message = Session::get('error'))
             <div class="alert alert-danger">
@@ -35,7 +35,7 @@
 <!-- Dashboard Affiche Store Data -->
 <main role="main" class="col-md-9 ml-sm-auto col-lg-12 pt-2 px-3">
 <!-- For EUR Stores -->
-@if($storedata->first()->currency == "EUR" )  
+@if($storedata->first()->currency == "EUR" )
 
 <!-- DAshboard  -->
 <div class="row grid-margin">
@@ -48,9 +48,9 @@
                         <p>
                           <i class="icon-sm fas fa-check-circle mr-2"></i>
                           Revenue
-                        </p>                         
+                        </p>
                         <h2 class="revenue"> {{ number_format($storesrevenue->first()->products_sum_revenue, 2, ',', ' ') }} €</h2>
-                    
+
                         <label class="badge badge-outline-success badge-pill">57% increase</label>
                       </div>
                       <div class="statistics-item">
@@ -121,7 +121,7 @@
                           </td>
                           <td class="font-weight-bold">
                               <a href="{{ route('account.product.show',$product->id) }}">{{ $product->title }}</a>
-                          </td>                          
+                          </td>
                           <td>{{ $product->prix }} €</td>
                           <td>
                           <label class="badgepro badge-success badge-pill">{{ $product->todaysales_count * $product->prix }}€</label>
@@ -135,7 +135,7 @@
                           <label class="badgepro badge-success badge-pill">{{ $product->totalsales * $product->prix }}€</label>
                             <label class="badgepro badge-info badge-pill">{{ $product->totalsales }}</label>
                           </td>
-                     
+
                           <td><a  class="btn btn-success" href="{{ route('account.product.show',$product->id) }}" >View </a></td>
                           </td>
                         </tr>
@@ -149,7 +149,7 @@
           </div>
      </main>
      @endif
-@if($storedata->first()->currency != "EUR" )  
+@if($storedata->first()->currency != "EUR" )
 
 <!-- DAshboard  -->
 <div class="row grid-margin">
@@ -162,9 +162,9 @@
                         <p>
                           <i class="icon-sm fas fa-check-circle mr-2"></i>
                           Revenue
-                        </p>                         
+                        </p>
                         <h2 class="revenue">${{ number_format($storesrevenue->first()->products_sum_revenue, 2, ',', ' ') }}</h2>
-                    
+
                         <label class="badge badge-outline-success badge-pill">57% increase</label>
                       </div>
                       <div class="statistics-item">
@@ -235,15 +235,15 @@
                           </td>
                           <td class="font-weight-bold">
                               <a href="{{ route('account.product.show',$product->id) }}">{{ $product->title }}</a>
-                          </td>                          
+                          </td>
                           <td>$ {{ $product->prix }}</td>
                           <td>
-                          <label class="badgepro badge-success badge-pill">${{ $product->todaysales_count * $product->prix }}</label>
-                            <label class="badgepro badge-info badge-pill">{{ $product->todaysales_count }}</label>
+                          <label class="badgepro badge-success badge-pill">${{ $product->todaysales * $product->prix }}</label>
+                            <label class="badgepro badge-info badge-pill">{{ $product->todaysales }}</label>
                           </td>
                           <td>
-                          <label class="badge badge-success badge-pill">${{ $product->yesterdaysales_count * $product->prix }}</label>
-                            <label class="badgepro badge-info badge-pill">{{ $product->yesterdaysales_count }}</label>
+                          <label class="badge badge-success badge-pill">${{ $product->yesterdaysales * $product->prix }}</label>
+                            <label class="badgepro badge-info badge-pill">{{ $product->yesterdaysales }}</label>
                           </td>
                           <td>
                           <label class="badgepro badge-success badge-pill">${{ $product->totalsales * $product->prix }}</label>
@@ -263,7 +263,7 @@
      </main>
      @endif
         </div>
-      
+
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
@@ -343,6 +343,6 @@
         data: data,
         options: options
       });
-        </script> 
-    
+        </script>
+
     @endsection
