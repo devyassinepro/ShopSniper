@@ -1,12 +1,27 @@
 <div>
-<div class="mb-4">
-            <input
-                type="search"
-                wire:model.debounce.500ms="search"
-                placeholder="Search products"
-                class="border-gray-400 rounded w-full py-2 pr-10 pl-4"
-            >
-    </div>
+    <div>
+        <div class="card-body table-responsive p-0 table-striped" >
+          <div class="d-flex justify-content-end p-4">
+
+          <div class="form-group mr-3">
+                  <label for="filtreType">Search</label>
+                  <input
+                      type="search"
+                      wire:model.debounce.500ms="search"
+                      placeholder="Search products"
+                      class="form-control"
+                  >
+              </div>
+              <div class="form-group mr-3">
+                  <label for="filtrePagination">Pages</label>
+                  <select  id="filtrePagination" wire:model="filtrePagination" class="form-control">
+                      <option value="">10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                  </select>
+              </div>
+          </div>
+        </div>
      <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>

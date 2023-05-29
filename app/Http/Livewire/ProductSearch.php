@@ -18,9 +18,10 @@ class ProductSearch extends Component
     public $selectedProductId;
     public $search = "";
     public $filter = '';
+    public $filtrePagination = "";
+
 
     protected $paginationTheme = 'bootstrap';
-    public $currentPage = 1;
 
     public function render()
     {
@@ -41,7 +42,14 @@ class ProductSearch extends Component
             $products->where("title", "LIKE",  "%". $this->search ."%")
                          ->orWhere("url","LIKE",  "%". $this->search ."%");
         }
-        $products =$products->paginate(10);
+
+        if($this->filtrePagination != ""){
+
+                $products =$products->paginate($this->filtrePagination);
+            }else{
+                $products =$products->paginate(10);
+            }
+
         return view('livewire.product-search',compact('products'));
     }
 
