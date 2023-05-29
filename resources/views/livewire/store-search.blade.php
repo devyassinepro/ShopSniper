@@ -58,11 +58,11 @@
             <tbody>
                 @foreach ($stores as $store)
                     <tr>
-                        <td><p>
+                        <td><h3>
                           <a href="{{ route('account.stores.show',$store->id) }}">{{ $store->name }} - {{ $store->currency }}</a>
-                          <a  target="_blank" href="{{$store->url}}"><img src="https://cdn3.iconfinder.com/data/icons/social-media-2068/64/_shopping-512.png" width="30" height="30"></a> 
-
-                        </p></td>
+                          <a  target="_blank" href="{{$store->url}}"><img src="https://cdn3.iconfinder.com/data/icons/social-media-2068/64/_shopping-512.png" width="30" height="30"></a>
+                          <h6>{{ $store->created_at }}</h6>
+                        </h3></td>
                         <td><p>{{ $store->allproducts }}</p></td>
                         <td><p>{{ $store->sales }}</p></td>
                         @if($store->currency == "EUR" )
@@ -80,7 +80,7 @@
                                 @if (!currentTeam()->onTrial())
                                 <button type="submit" class="btn btn-warning">Untrack Store</button>
                                 @endif
-                              
+
                             </form>
                         </td>
                     </tr>
@@ -91,5 +91,5 @@
         <div  wire:loading.class="invisible" class="my-4">
         {{ $stores->links() }}
         </div>
-  
+
 </div>
