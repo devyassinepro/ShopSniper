@@ -112,7 +112,7 @@ class StoresController extends Controller
                        ]);
                        //make status On
                        DB::table('stores')->where('id', $stores->id)->update(array('status' => 1));
-                       return redirect()->route('account.stores');
+                       return redirect()->route('account.stores.index');
                         // return redirect()->route('account.stores.show',$stores->id);
                     }
                     else
@@ -132,7 +132,7 @@ class StoresController extends Controller
                         ]);
                         DB::table('stores')->where('id', $stores->id)->update(array('status' => 1));
 
-                        return redirect()->route('account.stores');
+                        return redirect()->route('account.stores.index');
                     }
                 }
                 else
@@ -202,7 +202,7 @@ class StoresController extends Controller
                 }
 
         // return redirect()->route('account.stores.index');
-        return redirect()->route('account.stores')->with('success','Store has been Added successfully , wait Between 2h To 24h to get All Sales');
+        return redirect()->route('account.stores.index')->with('success','Store has been Added successfully , wait Between 2h To 24h to get All Sales');
     }
 
 
