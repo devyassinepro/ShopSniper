@@ -23,6 +23,14 @@
                     </div>
 
                     <div class="form-group mr-3">
+                        <label for="filtreorderby">Order By </label>
+                        <select  id="filtreorderby" wire:model="filtreorderby" class="form-control">
+                            <option value="revenue">Revenue</option>
+                            <option value="created_at">New Added</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mr-3">
                         <label for="filtreCurrency">filter By Currency</label>
                         <select  id="filtreCurrency" wire:model="filtreCurrency" class="form-control">
                             <option value=""></option>
