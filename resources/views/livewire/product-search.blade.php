@@ -13,6 +13,14 @@
                   >
               </div>
               <div class="form-group mr-3">
+                <label for="filtreorder">Order By</label>
+                <select  id="filtreorder" wire:model="filtreorder" class="form-control">
+                    <option value="totalsales">Total sales</option>
+                    <option value="todaysales">Today sales</option>
+                    <option value="yesterdaysales">Yesterday sales</option>
+                </select>
+            </div>
+              <div class="form-group mr-3">
                   <label for="filtrePagination">Pages</label>
                   <select  id="filtrePagination" wire:model="filtrePagination" class="form-control">
                       <option value="">10</option>
@@ -21,6 +29,9 @@
                   </select>
               </div>
           </div>
+        </div>
+        <div wire:loading.delay>
+            Loading...
         </div>
      <div class="table-responsive">
         <table class="table table-striped table-sm">

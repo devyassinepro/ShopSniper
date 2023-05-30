@@ -19,6 +19,7 @@ class ProductSearch extends Component
     public $search = "";
     public $filter = '';
     public $filtrePagination = "";
+    public $filtreorder = "";
 
 
     protected $paginationTheme = 'bootstrap';
@@ -36,19 +37,27 @@ class ProductSearch extends Component
         // get user's stores
         $totalstores = Storeuser::where('user_id', $user_id)->pluck('store_id')->ToArray();
         // get stores of this user
-        $products = Product::orderBy('revenue','desc')->whereIn('stores_id', $totalstores);
+        $products = Product::whereIn('stores_id', $totalstores);
         if($this->search != ""){
             $this->resetPage();
             $products->where("title", "LIKE",  "%". $this->search ."%")
                          ->orWhere("url","LIKE",  "%". $this->search ."%");
         }
+        if($this->filtreorder != ""){
+
+            $products =$products->orderBy($this->filtreorder,'desc');
+        }else{
+            $products =$products->orderBy('revenue','desc');
+        }
 
         if($this->filtrePagination != ""){
 
                 $products =$products->paginate($this->filtrePagination);
-            }else{
-                $products =$products->paginate(10);
-            }
+        }else{
+            $products =$products->paginate(10);
+        }
+
+
 
         return view('livewire.product-search',compact('products'));
     }
