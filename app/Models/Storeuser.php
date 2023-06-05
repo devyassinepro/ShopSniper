@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model;
+
 
 class Storeuser extends Model
 {
@@ -13,6 +15,6 @@ class Storeuser extends Model
         'user_id',
         'store_id'
     ];
-    
+
     protected $table = 'store_users';
 }

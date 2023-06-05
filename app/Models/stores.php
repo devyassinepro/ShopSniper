@@ -9,7 +9,9 @@ use Carbon\Carbon;
 
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model;
+
 //use Jenssegers\Mongodb\Eloquent\Model;
 
 
@@ -41,12 +43,12 @@ class stores extends Model
     public function products()
     {
         return $this->hasMany(Product::class);
-        
+
     }
     public function sales()
     {
         return $this->hasMany(Sales::class);
-        
+
     }
     public function todaysales()
     {
@@ -85,5 +87,5 @@ class stores extends Model
 
     protected $table = 'stores';
 
-    
+
 }

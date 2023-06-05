@@ -3,7 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model;
 
 
 class Apistatus extends Model
@@ -15,8 +16,9 @@ class Apistatus extends Model
         'store',
         'status',
     ];
-     protected $table = 'apistatuses';
-
+    //  protected $table = 'apistatuses';
+	protected $connection = 'mongodb';
+	protected $collection = 'apistatuses';
 
 
 }

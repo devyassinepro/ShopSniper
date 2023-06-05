@@ -3,9 +3,13 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+
 
 class CreateStoresTable extends Migration
 {
+    use DatabaseMigrations;
+
     /**
      * Run the migrations.
      *
@@ -24,7 +28,7 @@ class CreateStoresTable extends Migration
             $table->string('currency');
             $table->string('shopifydomain');
             $table->integer('sales');
-            $table->integer('allproducts'); 
+            $table->integer('allproducts');
             $table->integer('user_id');
             $table->timestamps();
         });

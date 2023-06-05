@@ -15,6 +15,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use JoelButcher\Socialstream\HasConnectedAccounts;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Jenssegers\Mongodb\Eloquent\Model;
+
 
 class User extends Authenticatable implements MustVerifyEmail
 {

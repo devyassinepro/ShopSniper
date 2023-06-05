@@ -1,9 +1,13 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+
 
 class AddLocaleColumn extends Migration
 {
+    use DatabaseMigrations;
+
     /**
      * Run the migrations.
      *

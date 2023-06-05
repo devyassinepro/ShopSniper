@@ -86,17 +86,15 @@ Route::group(['middleware' => 'language'], function () {
         Route::view('security', 'account.security')->name('security');
         Route::view('password', 'account.password')->name('password');
         Route::view('social', 'profile.social')->name('social');
+
         Route::get('plan', function () {
             $team = Auth::user()->personalTeam();
-            return view('account.plan', ['team' => $team]);
-        })->name('plan');
-
+            return view('account.plan', ['team' => $team]);})->name('plan');
         Route::resource('/product', AccountProductController::class);
         Route::resource('/stores', AccountStoresController::class);
         Route::resource('/niches', AccountNicheController::class);
         Route::resource('/tuto', AccountTutoController::class);
         Route::resource('/topstores', AccountopstoresController::class);
-
 
         Route::get('/stores/storeproducts/{id}', [AccountStoresController::class, 'storeproducts'])->name('stores.storeproducts');
 
@@ -105,7 +103,7 @@ Route::group(['middleware' => 'language'], function () {
     Route::group(['namespace' => 'Subscriptions', 'middleware' => 'auth'], function () {
         Route::get('plans', [PlanController::class, 'index'])->name('subscription.plans')->middleware('not.subscribed');
         Route::get('/subscriptions', ['App\Http\Controllers\Subscriptions\SubscriptionController', 'index'])->name('subscriptions');
-        Route::post('/subscriptions', ['App\Http\Controllers\Subscriptions\SubscriptionController', 'store'])->name('subscriptions.store');        
+        Route::post('/subscriptions', ['App\Http\Controllers\Subscriptions\SubscriptionController', 'store'])->name('subscriptions.store');
 
     });
     Route::get('/test', function () {
@@ -146,8 +144,8 @@ Route::group(['middleware' => 'language'], function () {
 
             Route::get('/invoices', [SubscriptionInvoiceController::class, 'index'])->name('account.subscriptions.invoices');
             Route::get('/invoices/{id}', [SubscriptionInvoiceController::class, 'show'])->name('account.subscriptions.invoice');
-            // Route::get('/subscriptions/trial', ['App\Http\Controllers\Subscriptions\SubscriptionController', 'updatetrial'])->name('subscriptions.updatetrial');        
-       
+            // Route::get('/subscriptions/trial', ['App\Http\Controllers\Subscriptions\SubscriptionController', 'updatetrial'])->name('subscriptions.updatetrial');
+
         });
     });
     Route::group(['middleware' => ['auth:sanctum', 'verified'], 'prefix' => 'account', 'as' => 'ticket.'], function () {
@@ -204,17 +202,17 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/stores/storeproducts/{id}', [StoresController::class, 'storeproducts'])->name('stores.storeproducts');
 
     });
-    
+
 });
 
 
-//export storesXcel 
+//export storesXcel
 // Route::get('/exportstores', function () {
 //     return Excel::download(new StoresExport, 'stores.xlsx');
 
 // });
 
-// less than 150 products update easy One Server 
+// less than 150 products update easy One Server
 // Route::get('/update-pro', function () {
 
 //     $stores = DB::table('stores')->get();
@@ -222,11 +220,11 @@ Route::group(['middleware' => 'language'], function () {
 
 //         try {
 //             if($store->allproducts<=250 ){
-                            
-//                         $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
+
+//                         $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n"));
 //                         $context = stream_context_create($opts);
 //                         $html = file_get_contents($store->url.'products.json?page=1&limit=250',false,$context);
-                        
+
 //                         DB::table('apistatuses')->insert([
 //                             "store" => $store->url,
 //                             "status" => $http_response_header[0],
@@ -241,12 +239,12 @@ Route::group(['middleware' => 'language'], function () {
 //                             echo time().'<br />';
 //                             $productbd = DB::table('products')->where('id', $product->id)->where('timesparam', '!=', strtotime($product->updated_at))->first();
 //                             if($productbd) {
-                    
+
 //                                 $sales = $productbd->totalsales;
 //                                 $revenuenow = $productbd->revenue + $productbd->prix;
-//                                 $sales ++ ; 
+//                                 $sales ++ ;
 //                                 //echo $sales;
-//                                 $timestt = strtotime($product->updated_at); 
+//                                 $timestt = strtotime($product->updated_at);
 //                                 $productreq = array(
 //                                     'title' => $productbd->title,
 //                                     'timesparam' => $timestt,
@@ -257,7 +255,7 @@ Route::group(['middleware' => 'language'], function () {
 //                                     'favoris' => $productbd->favoris,
 //                                     'totalsales' => $sales,
 //                                 );
-                    
+
 //                                 DB::table('products')->where('id', $productbd->id)->update($productreq);
 
 //                                 DB::table('sales')->insert([
@@ -271,11 +269,11 @@ Route::group(['middleware' => 'language'], function () {
 //             }else if($store->allproducts<=500){
 
 //                 for ($i = 1; $i <= 2; $i++) {
-     
-//                     $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
+
+//                     $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n"));
 //                     $context = stream_context_create($opts);
 //                     $html = file_get_contents($store->url.'products.json?page='.$i.'&limit=250',false,$context);
-                    
+
 //                     DB::table('apistatuses')->insert([
 //                         "store" => $store->url,
 //                         "status" => $http_response_header[0],
@@ -290,12 +288,12 @@ Route::group(['middleware' => 'language'], function () {
 //                         echo time().'<br />';
 //                         $productbd = DB::table('products')->where('id', $product->id)->where('timesparam', '!=', strtotime($product->updated_at))->first();
 //                         if($productbd) {
-                
+
 //                             $sales = $productbd->totalsales;
 //                             $revenuenow = $productbd->revenue + $productbd->prix;
-//                             $sales ++ ; 
+//                             $sales ++ ;
 //                             //echo $sales;
-//                             $timestt = strtotime($product->updated_at); 
+//                             $timestt = strtotime($product->updated_at);
 //                             $productreq = array(
 //                                 'title' => $productbd->title,
 //                                 'timesparam' => $timestt,
@@ -306,7 +304,7 @@ Route::group(['middleware' => 'language'], function () {
 //                                 'favoris' => $productbd->favoris,
 //                                 'totalsales' => $sales,
 //                             );
-                
+
 //                             DB::table('products')->where('id', $productbd->id)->update($productreq);
 
 //                             DB::table('sales')->insert([
@@ -321,10 +319,10 @@ Route::group(['middleware' => 'language'], function () {
 //             }else if($store->allproducts<=750){
 //                 for ($i = 1; $i <= 3; $i++) {
 
-//                     $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
+//                     $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n"));
 //                     $context = stream_context_create($opts);
 //                     $html = file_get_contents($store->url.'products.json?page='.$i.'&limit=250',false,$context);
-                    
+
 //                     DB::table('apistatuses')->insert([
 //                         "store" => $store->url,
 //                         "status" => $http_response_header[0],
@@ -339,12 +337,12 @@ Route::group(['middleware' => 'language'], function () {
 //                         echo time().'<br />';
 //                         $productbd = DB::table('products')->where('id', $product->id)->where('timesparam', '!=', strtotime($product->updated_at))->first();
 //                         if($productbd) {
-                
+
 //                             $sales = $productbd->totalsales;
 //                             $revenuenow = $productbd->revenue + $productbd->prix;
-//                             $sales ++ ; 
+//                             $sales ++ ;
 //                             //echo $sales;
-//                             $timestt = strtotime($product->updated_at); 
+//                             $timestt = strtotime($product->updated_at);
 //                             $productreq = array(
 //                                 'title' => $productbd->title,
 //                                 'timesparam' => $timestt,
@@ -355,7 +353,7 @@ Route::group(['middleware' => 'language'], function () {
 //                                 'favoris' => $productbd->favoris,
 //                                 'totalsales' => $sales,
 //                             );
-                
+
 //                             DB::table('products')->where('id', $productbd->id)->update($productreq);
 
 //                             DB::table('sales')->insert([
@@ -373,10 +371,10 @@ Route::group(['middleware' => 'language'], function () {
 
 //             else if($store->allproducts<=1000){
 //                 for ($i = 1; $i <= 4; $i++) {
-//                     $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
+//                     $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n"));
 //                     $context = stream_context_create($opts);
 //                     $html = file_get_contents($store->url.'products.json?page='.$i.'&limit=250',false,$context);
-                    
+
 //                     DB::table('apistatuses')->insert([
 //                         "store" => $store->url,
 //                         "status" => $http_response_header[0],
@@ -391,12 +389,12 @@ Route::group(['middleware' => 'language'], function () {
 //                         echo time().'<br />';
 //                         $productbd = DB::table('products')->where('id', $product->id)->where('timesparam', '!=', strtotime($product->updated_at))->first();
 //                         if($productbd) {
-                
+
 //                             $sales = $productbd->totalsales;
 //                             $revenuenow = $productbd->revenue + $productbd->prix;
-//                             $sales ++ ; 
+//                             $sales ++ ;
 //                             //echo $sales;
-//                             $timestt = strtotime($product->updated_at); 
+//                             $timestt = strtotime($product->updated_at);
 //                             $productreq = array(
 //                                 'title' => $productbd->title,
 //                                 'timesparam' => $timestt,
@@ -407,7 +405,7 @@ Route::group(['middleware' => 'language'], function () {
 //                                 'favoris' => $productbd->favoris,
 //                                 'totalsales' => $sales,
 //                             );
-                
+
 //                             DB::table('products')->where('id', $productbd->id)->update($productreq);
 
 //                             DB::table('sales')->insert([
@@ -431,7 +429,7 @@ Route::group(['middleware' => 'language'], function () {
 
 
 
-// less than 150 products update easy One Server 
+// less than 150 products update easy One Server
 Route::get('/update-pro', function () {
 
     // $stores = DB::table('stores')->get();
@@ -441,13 +439,13 @@ Route::get('/update-pro', function () {
 
         try {
             if($store->allproducts<=250 ){
-                            
+
                 updatesales($store->url, 1);
 
             }else if($store->allproducts<=500){
 
                 for ($i = 1; $i <= 2; $i++) {
-     
+
                     updatesales($store->url , $i);
                 }
             }else if($store->allproducts<=750){
@@ -472,7 +470,7 @@ Route::get('/update-pro', function () {
 // more than 150 Stores
 Route::get('/postnoeud',function (){
     //all DNS
-    $dnsall = DB::table('dns')->get();      
+    $dnsall = DB::table('dns')->get();
     $storeslength = DB::table('stores')->count();
     $offset = 0;
     foreach($dnsall as $dns){
@@ -489,16 +487,16 @@ Route::get('/postnoeud',function (){
         $offset +=100;
 
     }
- 
+
 });
 
 
 function updatesales ($store , $i){
-         
-    $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
+
+    $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n"));
     $context = stream_context_create($opts);
     $html = file_get_contents($store.'products.json?page='.$i.'&limit=250',false,$context);
-    
+
     DB::table('apistatuses')->insert([
         "store" => $store,
         "status" => $http_response_header[0],
@@ -516,9 +514,9 @@ function updatesales ($store , $i){
 
             $sales = $productbd->totalsales;
             $revenuenow = $productbd->revenue + $productbd->prix;
-            $sales ++ ; 
+            $sales ++ ;
             //echo $sales;
-            $timestt = strtotime($product->updated_at); 
+            $timestt = strtotime($product->updated_at);
             $productreq = array(
                 'title' => $productbd->title,
                 'timesparam' => $timestt,

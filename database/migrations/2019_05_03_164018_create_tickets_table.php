@@ -3,9 +3,13 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+
 
 class CreateTicketsTable extends Migration
 {
+    use DatabaseMigrations;
+
     /**
      * Run the migrations.
      *

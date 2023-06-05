@@ -13,26 +13,25 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
         \DB::table('categories')->delete();
-        
+
         \DB::table('categories')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'name' => 'Billing',
                 'created_at' => '2020-10-22 19:25:08',
                 'updated_at' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'name' => 'Support',
                 'created_at' => '2020-10-22 19:25:08',
                 'updated_at' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'name' => 'Sales',
@@ -40,7 +39,7 @@ class CategoriesTableSeeder extends Seeder
                 'updated_at' => NULL,
             ),
         ));
-        
-        
+
+
     }
 }

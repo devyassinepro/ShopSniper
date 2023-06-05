@@ -5,10 +5,12 @@ use App\Models\Sales;
 use App\Models\stores;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Carbon\Carbon;
+use Jenssegers\Mongodb\Eloquent\Model;
+
 
 
 class Product extends Model
@@ -41,17 +43,17 @@ class Product extends Model
         'monthsales',
 
     ];
-    
+
     public function stores(): HasMany
     {
         return $this->hasMany(stores::class);
-        
+
     }
-    
+
     public function sales(): HasMany
     {
         return $this->hasMany(Sales::class);
-        
+
     }
 
     public function todaysales()

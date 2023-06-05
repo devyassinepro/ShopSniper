@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Laravel\Jetstream\Membership as JetstreamMembership;
+use Jenssegers\Mongodb\Eloquent\Model;
+
 
 class Membership extends JetstreamMembership
 {

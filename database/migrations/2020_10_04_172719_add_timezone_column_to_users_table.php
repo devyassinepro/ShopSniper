@@ -2,9 +2,13 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+
 
 class AddTimezoneColumnToUsersTable extends Migration
 {
+    use DatabaseMigrations;
+
     /**
      * Run the migrations.
      *

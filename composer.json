@@ -23,6 +23,7 @@
         "hisorange/browser-detect": "^4.4",
         "jamesmills/laravel-timezone": "^1.9",
         "jantinnerezo/livewire-alert": "^2.2",
+        "jenssegers/mongodb": "^3.9",
         "joedixon/laravel-translation": "^1.1",
         "joelbutcher/socialstream": "^1.1",
         "lab404/laravel-impersonate": "^1.7",

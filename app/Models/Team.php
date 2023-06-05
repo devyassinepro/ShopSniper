@@ -12,6 +12,8 @@ use Laravel\Jetstream\Events\TeamCreated;
 use Laravel\Jetstream\Events\TeamDeleted;
 use Laravel\Jetstream\Events\TeamUpdated;
 use Laravel\Jetstream\Team as JetstreamTeam;
+use Jenssegers\Mongodb\Eloquent\Model;
+
 
 class Team extends JetstreamTeam
 {
@@ -33,7 +35,7 @@ class Team extends JetstreamTeam
     {
        $subscription = $this->subscription($name);
             return $subscription->endTrial();
-        
+
     }
 
     public function presentSubscription()
@@ -45,7 +47,7 @@ class Team extends JetstreamTeam
         return new SubscriptionPresenter($subscription->asStripeSubscription());
     }
 
-    
+
     public function presentUpcomingInvoice()
     {
         if (!$invoice = $this->upcomingInvoice()) {
