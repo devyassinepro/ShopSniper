@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name') }} - Track winning stores Shopify</title>
-    
+
     <!-- Loading Bootstrap -->
     <link href="{{ asset('saas/home/css/bootstrap.min.css')}}" rel="stylesheet">
 
@@ -40,10 +40,10 @@
     </style>
 
 <script>(function(w){w.fpr=w.fpr||function(){w.fpr.q = w.fpr.q||[];w.fpr.q[arguments[0]=='set'?'unshift':'push'](arguments);};})(window);
-fpr("init", {cid:"uhjjfvck"}); 
+fpr("init", {cid:"uhjjfvck"});
 fpr("click");
 </script>
-<script src="https://cdn.firstpromoter.com/fpr.js" async></script>
+{{-- <script src="https://cdn.firstpromoter.com/fpr.js" async></script> --}}
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-975957367"></script>
 <script>
@@ -54,15 +54,6 @@ fpr("click");
   gtag('config', 'AW-975957367');
 </script>
 
-<!-- Google tag (gtag.js) -->
-<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11151238615"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-11151238615');
-</script> -->
 <!-- Hotjar Tracking Code for my site -->
 <script>
     (function(h,o,t,j,a,r){
@@ -82,10 +73,10 @@ fpr("click");
     <!-- ======== End Navbar ======== -->
 <!--begin header -->
 <header class="header">
- 
+
     <!--begin navbar-fixed-top -->
     <nav class="navbar navbar-default navbar-fixed-top">
-        
+
         <!--begin container -->
         <div class="container">
 
@@ -106,7 +97,7 @@ fpr("click");
 
                 <!--begin navbar-collapse -->
                 <div class="navbar-collapse collapse" id="navbarCollapse" style="">
-                    
+
                     <!--begin navbar-nav -->
                     <ul class="ml-auto navbar-nav">
                         @if(Request::is('/'))
@@ -129,7 +120,7 @@ fpr("click");
                 <span class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" style="padding-top: 0;" href="#" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        
+
                         <span class="avatar rounded-circle">
                             <img alt="Image placeholder" class="rounded-circle" width="35" src="{{ Auth::user()->profile_photo_url }}">
                         </span>
@@ -201,50 +192,50 @@ fpr("click");
 
         </div>
         <!--end container -->
-        
+
     </nav>
     <!--end navbar-fixed-top -->
-    
+
 </header>
 <!--end header -->
         {{ $slot }}
-    
+
     <!--begin footer -->
     <div class="footer">
-            
+
         <!--begin container -->
         <div class="px-0 container-fluid">
-        
+
             <!--begin row -->
             @if (\Request::is('/'))
             <div class="mx-0 row no-gutters">
-            
+
                 <!--begin col-md-4 -->
                 <!--end col-md-4 -->
-                
+
                 <!--begin col-md-4 -->
-            
-                    
+
+
                 </div>
                 <!--end col-md-4 -->
-                
+
                 <!--begin col-md-4 -->
-            
-                
+
+
             </div>
             <!--end row -->
             @endif
             <!--begin row -->
             <div class="row">
-            
+
                 <!--end col-md-6 -->
-                
+
             </div>
             <!--end row -->
-            
+
         </div>
         <!--end container -->
-                
+
     </div>
     <!--end footer -->
 
