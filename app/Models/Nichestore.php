@@ -10,6 +10,7 @@ use Jenssegers\Mongodb\Eloquent\Model;
 class Nichestore extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'id',
         'stores_id',
@@ -18,4 +19,5 @@ class Nichestore extends Model
 
 
      protected $table = 'niche_stores';
+     protected $connection="mongodb_second";
 }

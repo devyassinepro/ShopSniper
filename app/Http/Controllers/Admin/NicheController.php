@@ -18,8 +18,10 @@ class NicheController extends Controller
     {
         //
 
-        $nicheall = Niche::orderBy('id','desc')->paginate(10);
-        return view('admin.niches.index', compact('nicheall'));
+        $niches = DB::connection('mongodb_second')->table('niches')->paginate(10);
+        // $niches = Niches::get();
+        // $niches = DB::connection('mongodb_second')->table('niches')::all();
+        return view('admin.niches.index', compact('niches'));
     }
 
     /**
@@ -46,13 +48,18 @@ class NicheController extends Controller
             'name' => 'required',
         ]);
 
-        $nichesId = DB::table('niches')->insertGetId(
-            ['name' => $request->name,
-            'user_id' => 1,
-            'created_at' => now(),
-            'updated_at' => now()
-             ]
-        );
+        // $nichesId = DB::connection('mongodb_second')->table('niches')->insertGetId(
+        //     ['name' => $request->name,
+        //     'user_id' => 1,
+        //     'created_at' => now(),
+        //     'updated_at' => now()
+        //      ]
+        // );
+
+        $niches = new Niche();
+        $niches->name = $request->name;
+        $niches->user_id = 1; // Assuming the user ID is 1
+        $niches->save();
 
         return redirect()->route('admin.niches.index')->with('success','Niche has been created successfully.');
     }

@@ -12,6 +12,8 @@ use Jenssegers\Mongodb\Eloquent\Model;
 class Sales extends Model
 {
     use HasFactory;
+    // protected $primaryKey = 'id';
+
     protected $fillable = [
         'id',
         'products_id',
@@ -21,10 +23,14 @@ class Sales extends Model
 
 
 
-    public function products(): HasMany
-    {
-        return $this->hasMany(Product::class);
+    // public function products(): HasMany
+    // {
+    //     return $this->hasMany(Product::class);
 
+    // }
+    public function product()
+    {
+        return $this->hasMany(Product::class, 'products_id', 'id');
     }
 
     public function stores(): HasMany
@@ -34,4 +40,5 @@ class Sales extends Model
     }
 
      protected $table = 'sales';
+     protected $connection="mongodb_second";
 }

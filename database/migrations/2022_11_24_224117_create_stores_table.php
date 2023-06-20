@@ -17,20 +17,19 @@ class CreateStoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('stores', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('url');
-            $table->string('status');
-            $table->float('revenue');
-            $table->string('city');
-            $table->string('country');
-            $table->string('currency');
-            $table->string('shopifydomain');
-            $table->integer('sales');
-            $table->integer('allproducts');
-            $table->integer('user_id');
-            $table->timestamps();
+        Schema::connection('mongodb_second')->create('stores', function (Blueprint $collection) {
+            $collection->index('_id');
+            $collection->string('name');
+            $collection->string('url');
+            $collection->string('status');
+            $collection->float('revenue');
+            $collection->string('city');
+            $collection->string('country');
+            $collection->string('currency');
+            $collection->string('shopifydomain');
+            $collection->integer('sales');
+            $collection->integer('allproducts');
+            $collection->integer('user_id');
         });
     }
 

@@ -17,11 +17,11 @@ class CreateApistatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('apistatuses', function (Blueprint $table) {
-            $table->id();
-            $table->string('store');
-            $table->string('status');
-            $table->timestamps();
+        Schema::connection('mongodb_second')->create('apistatuses', function (Blueprint $collection) {
+            $collection->id();
+            $collection->string('store');
+            $collection->string('status');
+            // $collection->timestamps();
         });
     }
 

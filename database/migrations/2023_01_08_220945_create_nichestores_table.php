@@ -17,12 +17,13 @@ class CreateNichestoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('niche_stores', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('stores_id')->constrained()->onDelete('cascade');
-            $table->foreignId('niche_id')->constrained()->onDelete('cascade');
-            $table->timestamps();
+        Schema::connection('mongodb_second')->create('niche_stores', function (Blueprint $collection) {
+            $collection->index('_id');
+            $collection->foreignId('stores_id')->constrained()->onDelete('cascade');
+            $collection->foreignId('niche_id')->constrained()->onDelete('cascade');
+            $collection->timestamps();
         });
+
     }
 
     /**

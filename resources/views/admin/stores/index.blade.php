@@ -53,7 +53,7 @@
           <option value="products_sum_totalsales">Sales</option>
           <!-- <option value="stasc">Start Traking ASC</option> -->
           <option value="created_at">Start Tracking Desc</option>
-         </select>         
+         </select>
 
       </div>
       <div class="modal-footer">
@@ -65,7 +65,7 @@
     </div>
   </div>
 </div>
-        <div>       
+        <div>
         </div>
         <div class="table-responsive">
         <table class="table table-striped table-sm">
@@ -86,7 +86,7 @@
             <tbody>
                 @foreach ($stores as $store)
                     <tr>
-                        <td><a href="{{ route('admin.stores.show',$store->id) }}">{{ $store->name }}</a></td>
+                        <td><a href="{{ route('admin.stores.show',$store->_id) }}">{{ $store->name }}</a></td>
                         <td>{{ $store->allproducts }}</td>
                         <!-- <td>{{ $store->status }}</td> -->
                         <td>{{ $store->products_sum_totalsales }}</td>
@@ -112,5 +112,5 @@
         </main>
       </div>
     </div>
-    
+
     @endsection

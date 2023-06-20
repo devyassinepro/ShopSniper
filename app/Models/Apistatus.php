@@ -11,14 +11,15 @@ class Apistatus extends Model
 {
 
     use HasFactory;
+
     protected $fillable = [
         'id',
         'store',
         'status',
     ];
     //  protected $table = 'apistatuses';
-	protected $connection = 'mongodb';
-	protected $collection = 'apistatuses';
+    protected $connection="mongodb_second";
+    protected $collection = 'apistatuses';
 
 
 }

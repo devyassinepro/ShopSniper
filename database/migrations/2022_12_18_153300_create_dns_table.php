@@ -17,11 +17,11 @@ class CreateDnsTable extends Migration
      */
     public function up()
     {
-        Schema::create('dns', function (Blueprint $table) {
-            $table->id();
-            $table->string('url');
-            $table->string('status');
-            $table->timestamps();
+        Schema::connection('mongodb_second')->create('dns', function (Blueprint $collection) {
+            $collection->index('id');
+            $collection->string('url');
+            $collection->string('status');
+            // $table->timestamps();
         });
     }
 

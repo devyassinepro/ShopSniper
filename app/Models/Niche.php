@@ -17,9 +17,13 @@ class Niche extends Model
         'user_id'
     ];
 
-
-    public function stores(){
-        return $this->belongsToMany(stores::class);
+    // public function stores(){
+    //     return $this->belongsToMany(stores::class);
+    // }
+    public function stores()
+    {
+        return $this->belongsToMany(Store::class, 'niche_stores', 'niche_id', 'store_id');
     }
      protected $table = 'niches';
+     protected $connection="mongodb_second";
 }

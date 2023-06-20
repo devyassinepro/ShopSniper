@@ -16,9 +16,8 @@ use Jenssegers\Mongodb\Eloquent\Model;
 class Product extends Model
 {
 
-    // protected $connection = 'mongodb';
-    // protected $collection = 'products';
-
+    public $incrementing = false;
+    protected $primaryKey = 'id';
     use HasFactory;
     protected $fillable = [
         'id',
@@ -44,11 +43,21 @@ class Product extends Model
 
     ];
 
-    public function stores(): HasMany
-    {
-        return $this->hasMany(stores::class);
+    // public function stores(): HasMany
+    // {
+    //     return $this->hasMany(stores::class);
 
-    }
+    // }
+    // public function store()
+    // {
+    //     return $this->belongsTo(Store::class, 'stores_id');
+    // }
+    public function store()
+{
+    // return $this->belongsTo(Store::class, 'stores_id', '_id');
+    return $this->belongsTo(Store::class);
+
+}
 
     public function sales(): HasMany
     {
@@ -108,4 +117,6 @@ class Product extends Model
         ->whereBetween('created_at', [$now, $montly]);    }
 
      protected $table = 'products';
+
+     protected $connection="mongodb_second";
 }

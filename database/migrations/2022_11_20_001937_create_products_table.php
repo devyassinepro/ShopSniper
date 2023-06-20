@@ -18,28 +18,27 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->string('title',500);
-            $table->string('timesparam',500);
-            $table->float('prix');
-            $table->float('revenue');
-            // $table->integer('stores_id');
-            $table->foreignId('stores_id');
-            $table->string('url',500);
-            $table->string('imageproduct',500);
-            $table->integer('totalsales');
-            $table->integer('favoris');
-            $table->integer('todaysales');
-            $table->integer('yesterdaysales');
-            $table->integer('day3sales');
-            $table->integer('day4sales');
-            $table->integer('day5sales');
-            $table->integer('day6sales');
-            $table->integer('day7sales');
-            $table->integer('weeksales');
-            $table->integer('monthsales');
-            $table->timestamps();
+        Schema::connection('mongodb_second')->create('products', function (Blueprint $collection) {
+            $collection->id();
+            $collection->string('title',500);
+            $collection->string('timesparam',500);
+            $collection->float('prix');
+            $collection->float('revenue');
+            // $collection->foreignId('stores_id');
+            $collection->foreignId('store_id')->constrained()->cascadeOnDelete();
+            $collection->string('url',500);
+            $collection->string('imageproduct',500);
+            $collection->integer('totalsales');
+            $collection->integer('favoris');
+            $collection->integer('todaysales');
+            $collection->integer('yesterdaysales');
+            $collection->integer('day3sales');
+            $collection->integer('day4sales');
+            $collection->integer('day5sales');
+            $collection->integer('day6sales');
+            $collection->integer('day7sales');
+            $collection->integer('weeksales');
+            $collection->integer('monthsales');
         });
     }
 

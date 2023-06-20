@@ -8,7 +8,6 @@ use JoelButcher\Socialstream\ConnectedAccount as SocialstreamConnectedAccount;
 use JoelButcher\Socialstream\Events\ConnectedAccountCreated;
 use JoelButcher\Socialstream\Events\ConnectedAccountDeleted;
 use JoelButcher\Socialstream\Events\ConnectedAccountUpdated;
-use Jenssegers\Mongodb\Eloquent\Model;
 
 class ConnectedAccount extends SocialstreamConnectedAccount
 {

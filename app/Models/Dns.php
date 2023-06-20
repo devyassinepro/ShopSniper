@@ -17,4 +17,5 @@ class Dns extends Model
 
     ];
     protected $table = 'dns';
+    protected $connection="mongodb_second";
 }

@@ -17,12 +17,12 @@ class CreateSalesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sales', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->foreignId('stores_id')->constrained()->onDelete('cascade');
-            $table->float('prix');
+        Schema::connection('mongodb_second')->create('sales', function (Blueprint $collection) {
+            $collection->id();
+            $collection->timestamps();
+            $collection->foreignId('product_id')->constrained()->onDelete('cascade');
+            $collection->foreignId('stores_id')->constrained()->onDelete('cascade');
+            $collection->float('prix');
 
         });
     }

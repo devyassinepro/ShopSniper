@@ -10,6 +10,8 @@ use Jenssegers\Mongodb\Eloquent\Model;
 class Storeuser extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'id',
         'user_id',
@@ -17,4 +19,5 @@ class Storeuser extends Model
     ];
 
     protected $table = 'store_users';
+    protected $connection="mongodb_second";
 }

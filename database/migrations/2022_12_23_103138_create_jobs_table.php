@@ -17,14 +17,14 @@ class CreateJobsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jobs', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('queue')->index();
-            $table->longText('payload');
-            $table->unsignedTinyInteger('attempts');
-            $table->unsignedInteger('reserved_at')->nullable();
-            $table->unsignedInteger('available_at');
-            $table->unsignedInteger('created_at');
+        Schema::connection('mongodb_second')->create('jobs', function (Blueprint $collection) {
+            $collection->index('id');
+            $collection->string('queue')->index();
+            $collection->longText('payload');
+            $collection->unsignedTinyInteger('attempts');
+            $collection->unsignedInteger('reserved_at')->nullable();
+            $collection->unsignedInteger('available_at');
+            $collection->unsignedInteger('created_at');
         });
     }
 

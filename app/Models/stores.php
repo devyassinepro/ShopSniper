@@ -18,10 +18,8 @@ use Jenssegers\Mongodb\Eloquent\Model;
 class stores extends Model
 {
 
-    // protected $connection = 'mongodb';
-    // protected $collection = 'stores';
-
     use HasFactory;
+
     protected $fillable = [
         'id',
         'name',
@@ -36,15 +34,35 @@ class stores extends Model
         'allproducts',
         'user_id'
     ];
-    public function niches(){
-        return $this->belongsToMany(Niche::class);
-    }
+    // public function niches(){
+    //     return $this->belongsToMany(Niche::class);
+    // }
 
-    public function products()
+    public function niches()
     {
-        return $this->hasMany(Product::class);
-
+        return $this->belongsToMany(Niche::class, 'niche_stores', 'stores_id', 'niche_id');
     }
+
+    // public function products()
+    // {
+    //     return $this->hasMany(Product::class);
+
+    // }
+    // public function products()
+    // {
+    //     return $this->hasMany(Product::class, 'stores_id', 'id');
+    // }
+
+    // public function products()
+    // {
+    //     return $this->hasMany(Product::class, 'stores_id');
+    // }
+    public function products()
+{
+    // return $this->hasMany(Product::class, 'stores_id', '_id');
+    return $this->embedsMany(Product::class);
+
+}
     public function sales()
     {
         return $this->hasMany(Sales::class);
@@ -86,6 +104,6 @@ class stores extends Model
 
 
     protected $table = 'stores';
-
+    protected $connection="mongodb_second";
 
 }

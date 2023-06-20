@@ -28,7 +28,7 @@
                         <label for="exampleFormControlSelect1">Niches</label>
                         <select class="form-control"  name="nicheid">
                           @foreach ($allniches as $niche)
-                          <option value="{{ $niche->id }}">{{ $niche->name }}</option>
+                          <option value="{{ $niche['_id'] }}">{{ $niche['name'] }}</option>
                           @endforeach
                         </select>
                       </div>

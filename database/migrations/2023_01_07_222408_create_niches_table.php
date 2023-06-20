@@ -17,11 +17,18 @@ class CreateNichesTable extends Migration
      */
     public function up()
     {
-        Schema::create('niches', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->integer('user_id');
-            $table->timestamps();
+        // Schema::connection('mongodb_second')->create('niches', function (Blueprint $table) {
+        //     // $table->increments('id');
+        //     $table->string('name');
+        //     $table->integer('user_id');
+        //     $table->timestamps();
+        // });
+        Schema::connection('mongodb_second')->create('niches', function (Blueprint $collection) {
+            // $collection->id();
+            $collection->index('_id');
+            $collection->string('name');
+            $collection->integer('user_id');
+            // Add more fields if needed
         });
     }
 
@@ -30,8 +37,12 @@ class CreateNichesTable extends Migration
      *
      * @return void
      */
+    // public function down()
+    // {
+    //     Schema::dropIfExists('niches');
+    // }
     public function down()
     {
-        Schema::dropIfExists('niches');
+        Schema::connection('mongodb')->dropIfExists('niches');
     }
 }

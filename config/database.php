@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mongodb'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -90,10 +90,10 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
         ],
-        'mongodb' => [
+        'mongodb_second' => [
             'driver' => 'mongodb',
-            'dsn' => env('DB_DSN'),
-            'database' => env('DB_DATABASE', 'homestead'),
+            'dsn' => env('DB_DSN_second'),
+            'database' => env('DB_DATABASE_second', 'homestead'),
         ],
 
     ],

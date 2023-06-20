@@ -28,12 +28,11 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($nicheall as $niche)
+                @foreach ($niches as $niche)
                     <tr>
-                        <td><a href="{{ route('admin.niches.show',$niche->id) }}">{{ $niche->name }}</a></td>
-                        <td>{{ $niche->created_at }}</td>
+                        <td><a href="{{ route('admin.niches.show',$niche['_id']) }}">{{ $niche['name'] }}</a></td>
                         <td>
-                            <form action="{{ route('admin.niches.destroy',$niche->id) }}" method="Post">
+                            <form action="{{ route('admin.niches.destroy',$niche['_id']) }}" method="Post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
@@ -46,7 +45,6 @@
           </div>
 
           <div>
-        {{  $nicheall->links() }}
 
         </div>
         </main>
