@@ -49,7 +49,7 @@
                           <i class="icon-sm fas fa-check-circle mr-2"></i>
                           Revenue
                         </p>
-                        <h2 class="revenue"> {{ number_format($storesrevenue->first()->products_sum_revenue, 2, ',', ' ') }} €</h2>
+                        <h2 class="revenue"> {{ number_format($storedata->first()->revenue, 2, ',', ' ') }} €</h2>
 
                         <label class="badge badge-outline-success badge-pill">57% increase</label>
                       </div>
@@ -58,16 +58,16 @@
                           <i class="icon-sm fas fa-chart-line mr-2"></i>
                           Sales
                         </p>
-                        <h2 class="revenue">{{$storesrevenue->first()->products_sum_totalsales}}</h2>
+                        <h2 class="sales">{{$storedata->first()->sales}}</h2>
                         <label class="badge badge-outline-success badge-pill">10% increase</label>
                       </div>
-                      @if($storesrevenue->first()->products_sum_revenue != 0 )
+                      @if($storedata->first()->revenue != 0 )
                   <div class="statistics-item">
                         <p>
                           <i class="icon-sm fas fa-hourglass-half mr-2"></i>
                           AOV
                         </p>
-                         <h2 class="revenue"> {{number_format($storesrevenue->first()->products_sum_revenue / $storesrevenue->first()->products_sum_totalsales, 2, ',', ' ')}} €</h2>
+                         <h2 class="revenue"> {{number_format($storedata->first()->revenue / $storedata->first()->sales, 2, ',', ' ')}} €</h2>
                         <label class="badge badge-outline-danger badge-pill">30% decrease</label>
                       </div>
                       @endif
@@ -163,7 +163,7 @@
                           <i class="icon-sm fas fa-check-circle mr-2"></i>
                           Revenue
                         </p>
-                        <h2 class="revenue">${{ number_format($storesrevenue->first()->products_sum_revenue, 2, ',', ' ') }}</h2>
+                        <h2 class="revenue">${{ number_format($storedata->first()->revenue, 2, ',', ' ') }}</h2>
 
                         <label class="badge badge-outline-success badge-pill">57% increase</label>
                       </div>
@@ -172,16 +172,16 @@
                           <i class="icon-sm fas fa-chart-line mr-2"></i>
                           Sales
                         </p>
-                        <h2 class="revenue">{{$storesrevenue->first()->products_sum_totalsales}}</h2>
+                        <h2 class="revenue">{{$storedata->first()->sales}}</h2>
                         <label class="badge badge-outline-success badge-pill">10% increase</label>
                       </div>
-                      @if($storesrevenue->first()->products_sum_revenue != 0 )
+                      @if($storedata->first()->revenue != 0 )
                   <div class="statistics-item">
                         <p>
                           <i class="icon-sm fas fa-hourglass-half mr-2"></i>
                           AOV
                         </p>
-                         <h2 class="revenue">$ {{number_format($storesrevenue->first()->products_sum_revenue / $storesrevenue->first()->products_sum_totalsales, 2, ',', ' ')}}</h2>
+                         <h2 class="revenue">$ {{number_format($storedata->first()->revenue / $storedata->first()->sales, 2, ',', ' ')}}</h2>
                         <label class="badge badge-outline-danger badge-pill">30% decrease</label>
                       </div>
                       @endif
@@ -270,22 +270,22 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- storesrevenue Chart -->
 <script>
-              var todaysales_count =  {!! json_encode($storesrevenue->first()->todaysales_count)!!};
-              var yesterdaysales_count =   {!! json_encode($storesrevenue->first()->yesterdaysales_count)!!};
-              var day3sales_count =  {!! json_encode($storesrevenue->first()->day3sales_count)!!};
-              var day4sales_count =   {!! json_encode($storesrevenue->first()->day4sales_count)!!};
-              var day5sales_count =   {!! json_encode($storesrevenue->first()->day5sales_count)!!};
-              var day6sales_count =  {!! json_encode($storesrevenue->first()->day6sales_count)!!};
-              var day7sales_count =   {!! json_encode($storesrevenue->first()->day7sales_count)!!};
+              var todaysales_count =  {!! json_encode($storedata->first()->todaysales)!!};
+              var yesterdaysales_count =   {!! json_encode($storedata->first()->yesterdaysales)!!};
+              var day3sales_count =  {!! json_encode($storedata->first()->day3sales)!!};
+              var day4sales_count =   {!! json_encode($storedata->first()->day4sales)!!};
+              var day5sales_count =   {!! json_encode($storedata->first()->day5sales)!!};
+              var day6sales_count =  {!! json_encode($storedata->first()->day6sales)!!};
+              var day7sales_count =   {!! json_encode($storedata->first()->day7sales)!!};
 
-              var todaysales_revenue =  {!! json_encode($storesrevenue->first()->todaysales_count * $products->first()->prix )!!};
-              var yesterdaysales_revenue =  {!! json_encode($storesrevenue->first()->yesterdaysales_count * $products->first()->prix )!!};
-              var day3sales_revenue =  {!! json_encode($storesrevenue->first()->day3sales_count * $products->first()->prix )!!};
-              var day4sales_revenue =   {!! json_encode($storesrevenue->first()->day4sales_count * $products->first()->prix )!!};
-              var day5sales_revenue =  {!! json_encode($storesrevenue->first()->day5sales_count * $products->first()->prix)!!};
-              var day6sales_revenue =   {!! json_encode($storesrevenue->first()->day6sales_count * $products->first()->prix)!!};
-              var day7sales_revenue =  {!! json_encode($storesrevenue->first()->day7sales_count * $products->first()->prix)!!};
-              var dates =   {!! json_encode($dates)!!};
+              var todaysales_revenue =  {!! json_encode($storedata->first()->todaysales * $products->first()->prix )!!};
+              var yesterdaysales_revenue =  {!! json_encode($storedata->first()->yesterdaysales * $products->first()->prix )!!};
+              var day3sales_revenue =  {!! json_encode($storedata->first()->day3sales * $products->first()->prix )!!};
+              var day4sales_revenue =   {!! json_encode($storedata->first()->day4sales * $products->first()->prix )!!};
+              var day5sales_revenue =  {!! json_encode($storedata->first()->day5sales * $products->first()->prix)!!};
+              var day6sales_revenue =   {!! json_encode($storedata->first()->day6sales * $products->first()->prix)!!};
+              var day7sales_revenue =  {!! json_encode($storedata->first()->day7sales * $products->first()->prix)!!};
+            var dates =   {!! json_encode($dates)!!};
     var lineChartCanvas = document.getElementById('sales-chartaffiche').getContext('2d');
       var data = {
          labels: dates,

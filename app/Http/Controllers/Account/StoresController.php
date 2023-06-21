@@ -229,11 +229,6 @@ class StoresController extends Controller
     }
 
         $storedata = DB::table('stores')->where('id', $id)->get();
-        $storesrevenue = stores::withSum('products', 'totalsales')
-        ->withSum('products', 'revenue')
-        ->withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales','day7sales'])
-        ->where('id', $id)
-        ->get();
 
         $totalsalesmin = 0;
         // $pagination = 50;
@@ -241,7 +236,7 @@ class StoresController extends Controller
                         ->where('totalsales', '>=', $totalsalesmin)
                         ->orderBy('totalsales','desc')->take(10)->get();
 
-    return view('account.stores.show', compact('products','storedata','storesrevenue','dates'))
+    return view('account.stores.show', compact('products','storedata','dates'))
     ->with('totalproducts',Product::where('stores_id',$id)->count());
 
     }
