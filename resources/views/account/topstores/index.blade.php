@@ -24,8 +24,8 @@
                 @foreach ($stores as $store)
                     <tr>
                         <td><p>{{ $store->name }}</p></td>
-                        <td><p>{{ $store->products_sum_totalsales }}</p></td>
-                        <td><p>{{number_format($store->products_sum_revenue, 2, ',', ' ')}} $</p></td>
+                        <td><p>{{ $store->sales }}</p></td>
+                        <td><p>{{number_format($store->revenue, 2, ',', ' ')}} $</p></td>
                         <td><a  class="btn btn-primary" href="{{ route('account.topstores.show',$store->id) }}">Start Tracking</a></td>
 
                     </tr>

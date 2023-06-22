@@ -270,7 +270,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- storesrevenue Chart -->
 <script>
-              var todaysales_count =  {!! json_encode($storedata->first()->todaysales)!!};
+      var todaysales_count =  {!! json_encode($storedata->first()->todaysales)!!};
               var yesterdaysales_count =   {!! json_encode($storedata->first()->yesterdaysales)!!};
               var day3sales_count =  {!! json_encode($storedata->first()->day3sales)!!};
               var day4sales_count =   {!! json_encode($storedata->first()->day4sales)!!};

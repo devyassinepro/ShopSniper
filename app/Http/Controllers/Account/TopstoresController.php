@@ -23,9 +23,7 @@ class TopstoresController extends Controller
         {
             redirect()->route('account.tuto.index')->with('error','You can not access this page.');
         }
-        $stores = stores::withSum('products', 'totalsales')
-        ->withSum('products', 'revenue')
-        ->orderBy('products_sum_revenue','desc')
+        $stores = stores::orderBy('revenue','desc')
         ->with('products');
         $stores = $stores->take(50)->get();
         return view('account.topstores.index', compact('stores'));
@@ -49,7 +47,7 @@ class TopstoresController extends Controller
      */
     public function store(Request $request)
     {
-       
+
     }
 
     /**
@@ -68,7 +66,7 @@ class TopstoresController extends Controller
 
         $user_id = Auth::user()->id;
         $storeuser = Storeuser::where('user_id', $user_id)->count();
-        
+
         if(check_store_limit() <= $storeuser)
         {
             return redirect()->route('subscription.plans');

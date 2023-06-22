@@ -2,7 +2,7 @@
               <div class="card-body table-responsive p-0 table-striped" >
                 <div class="d-flex justify-content-end p-4">
 
-                <div class="form-group mr-3">
+                  <div class="form-group mr-3">
                         <label for="filtreType">Search</label>
                         <input
                             type="search"

@@ -50,7 +50,7 @@ Welcome to Weenify. Visit the <a href="{{ route('subscription.plans') }}">billin
                         <h2 class="revenue">$ {{number_format($totalRevenue, 2, ',', ' ')}}</h2>
                         <label class="badge badge-outline-success badge-pill">57% increase</label>
                       </div>
-                      
+
                   </div>
                 </div>
               </div>
@@ -58,11 +58,11 @@ Welcome to Weenify. Visit the <a href="{{ route('subscription.plans') }}">billin
           </div>
 
       <!-- ENd Dashboard  -->
-        
+
 <!-- Table >Top Products  -->
  <!-- Affiche //// -->
 
- 
+
  <div class="row">
  @if (currentTeam()->subscribed('default'))
             <div class="col-md-12 grid-margin stretch-card">
@@ -90,12 +90,12 @@ Welcome to Weenify. Visit the <a href="{{ route('subscription.plans') }}">billin
                           </td>
                           <td class="font-weight-bold">
                               <a href="{{ route('account.product.show',$product->id) }}">{{ $product->title }}</a>
-                          </td>          
-                          <td class="font-weight-bold">${{ $product->prix }}</td>  
+                          </td>
+                          <td class="font-weight-bold">${{ $product->prix }}</td>
                           <td>
-                        <h5><label class="badgepro badge-success badge-pill">${{ number_format($product->todaysales_count * $product->prix, 2, ',', ' ') }}</label>
-                            <label class="badgepro badge-info badge-pill">{{ $product->todaysales_count }}</label>
-                        </h5></td>                
+                        <h5><label class="badgepro badge-success badge-pill">${{ number_format($product->todaysales * $product->prix, 2, ',', ' ') }}</label>
+                            <label class="badgepro badge-info badge-pill">{{ $product->todaysales }}</label>
+                        </h5></td>
                         </tr>
                         @endforeach
                       </tbody>

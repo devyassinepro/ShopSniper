@@ -73,7 +73,7 @@
                         </a>
                     </li>
 
-                    
+
                     <li class="nav-item">
                         <a class="nav-link {{ return_if(on_page('account.stores.index') OR on_page('account.stores.create') OR on_page('account.stores.edit'), ' active') }}" href="{{ route('account.stores.index') }}">
                             <i class="fas fa-shopping-bag"></i>
@@ -81,14 +81,14 @@
                         </a>
                     </li>
 
-                    
+
                     <li class="nav-item">
                         <a class="nav-link {{ return_if(on_page('account.product.index') OR on_page('account.product.create') OR on_page('account.product.edit'), ' active') }}" href="{{ route('account.product.index') }}">
                             <i class="fas fa-database"></i>
                             <span class="nav-link-text">{{ __('Products') }}</span>
                         </a>
                     </li>
-                
+
                     <li class="nav-item">
 
                         <a class="nav-link {{ return_if(on_page('account.subscriptions') or on_page('account.subscriptions.card') or on_page('account.subscriptions.invoices') or on_page('subscription.plans'), ' active') }}" href="#navbar-plans" data-toggle="collapse" role="button"
@@ -131,7 +131,7 @@
 
                                     <li class="nav-item">
 
-                                        <a href="{{ route('account.subscriptions.invoices') }}" class="nav-link {{ return_if(on_page('account.subscriptions.invoices'), ' active') }}"> 
+                                        <a href="{{ route('account.subscriptions.invoices') }}" class="nav-link {{ return_if(on_page('account.subscriptions.invoices'), ' active') }}">
 
                                         {{ __('Invoices') }}
 
@@ -145,18 +145,13 @@
 
                                     <li class="nav-item">
 
-                                        <a href="{{ route('subscription.plans') }}" class="nav-link {{ return_if(on_page('subscription.plans'), ' active') }}"> 
+                                        <a href="{{ route('subscription.plans') }}" class="nav-link {{ return_if(on_page('subscription.plans'), ' active') }}">
 
                                         {{ __('Plans') }}
-
                                         </a>
-
                                     </li>
-
                                     @endif
-
                                 </ul>
-
                             </div>
                             @if (currentTeam()->onTrial())
                             <li class="nav-item">
@@ -176,8 +171,6 @@
                     </li>
 
                     <!-- End List -->
-
-                   
 
                     <li class="nav-item">
 
@@ -236,7 +229,7 @@
                 <!-- Divider -->
 
                 <hr class="my-3">
-                
+
 
                 <!-- Heading -->
 

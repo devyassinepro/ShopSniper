@@ -27,9 +27,9 @@
   @stack('styles')
 
   <script>(function(w){w.fpr=w.fpr||function(){w.fpr.q = w.fpr.q||[];w.fpr.q[arguments[0]=='set'?'unshift':'push'](arguments);};})(window);
-fpr("init", {cid:"uhjjfvck"});
-fpr("click");
-</script>
+        fpr("init", {cid:"uhjjfvck"});
+        fpr("click");
+        </script>
 {{-- <script src="https://cdn.firstpromoter.com/fpr.js" async></script> --}}
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-975957367"></script>
