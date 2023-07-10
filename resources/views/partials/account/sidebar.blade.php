@@ -1,244 +1,106 @@
-<nav class="bg-white sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light" id="sidenav-main">
-
-    <div class="scrollbar-inner">
-
-        <!-- Brand -->
-
-        <div class="sidenav-header d-flex align-items-center">
-
-            <a class="navbar-brand" href="{{ route('home') }}">
-
-                <img src="{{ asset('saas/img/logo.png') }}" class="navbar-brand-img" alt="knine" style="max-height: 4rem;padding-left: 12px;">
-
-            </a>
-
-            <div class="ml-auto">
-
-                <!-- Sidenav toggler -->
-
-                <div class="sidenav-toggler d-none d-xl-block" data-action="sidenav-unpin"
-
-                    data-target="#sidenav-main">
-
-                    <div class="sidenav-toggler-inner">
-
-                        <i class="sidenav-toggler-line"></i>
-
-                        <i class="sidenav-toggler-line"></i>
-
-                        <i class="sidenav-toggler-line"></i>
-
+ <!-- sidebar @s -->
+ <div class="nk-sidebar nk-sidebar-fixed is-light " data-content="sidebarMenu">
+                <div class="nk-sidebar-element nk-sidebar-head">
+                    <div class="nk-sidebar-brand">
+                        <a href="html/index.html" class="logo-link nk-sidebar-logo">
+                            <!-- <img class="logo-small logo-img logo-img-small" src="{{ asset('images/logo-small.png') }}" srcset="{{ asset('images/logo-small2x.png ') }}" alt="logo-small"> -->
+                            <img class="logo-light logo-img" src="{{ asset('images/logo.png') }}"  srcset="{{ asset('images/logo2x.png 2x') }}" alt="logo">
+                            <img class="logo-dark logo-img" src="{{ asset('images/logo-dark.png') }}"  srcset="{{ asset('images/logo-dark2x.png 2x') }}" alt="logo-dark">
+                            <img class="logo-small logo-img logo-img-small" src="{{ asset('images/logo-small.png') }}"  srcset="{{ asset('images/logo-small2x.png 2x') }}" alt="logo-small">
+                          </a>
                     </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="navbar-inner">
-
-            <!-- Collapse -->
-
-            <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-
-                <!-- Nav items -->
-
-                <ul class="navbar-nav">
-
-                    <li class="nav-item">
-
-                        <a class="nav-link {{ return_if(on_page('/dashboard'), ' active') }}"
-
-                            href="/dashboard">
-
-                            <i class="fas fa-tachometer-alt"></i>
-
-                            <span class="nav-link-text">{{ __('Dashboard') }}</span>
-
-                        </a>
-
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ return_if(on_page('account.tuto.index') OR on_page('account.tuto.index') OR on_page('account.tuto.index'), ' active') }}" href="{{ route('account.topstores.index') }}">
-                            <i class="fas fa-store"></i>
-                            <span class="nav-link-text">{{ __('Top Stores') }}</span>
-                        </a>
-                    </li>
-                    <hr class="my-2">
-                    <li class="nav-item">
-                        <a class="nav-link {{ return_if(on_page('account.niches.index') OR on_page('account.niches.create') OR on_page('account.niches.edit'), ' active') }}" href="{{ route('account.niches.index') }}">
-                            <i class="fas fa-tag"></i>
-                            <span class="nav-link-text">{{ __('Niches') }}</span>
-                        </a>
-                    </li>
-
-
-                    <li class="nav-item">
-                        <a class="nav-link {{ return_if(on_page('account.stores.index') OR on_page('account.stores.create') OR on_page('account.stores.edit'), ' active') }}" href="{{ route('account.stores.index') }}">
-                            <i class="fas fa-shopping-bag"></i>
-                            <span class="nav-link-text">{{ __('Stores') }}</span>
-                        </a>
-                    </li>
-
-
-                    <li class="nav-item">
-                        <a class="nav-link {{ return_if(on_page('account.product.index') OR on_page('account.product.create') OR on_page('account.product.edit'), ' active') }}" href="{{ route('account.product.index') }}">
-                            <i class="fas fa-database"></i>
-                            <span class="nav-link-text">{{ __('Products') }}</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-
-                        <a class="nav-link {{ return_if(on_page('account.subscriptions') or on_page('account.subscriptions.card') or on_page('account.subscriptions.invoices') or on_page('subscription.plans'), ' active') }}" href="#navbar-plans" data-toggle="collapse" role="button"
-
-                        aria-expanded="false" aria-controls="navbar-forms">
-
-                        <i class="fas fa-money-check-alt nav-icon"></i>
-
-                            <span class="nav-link-text">{{ __('Billing') }}</span>
-
-                        </a>
-
-                        <div class="collapse" id="navbar-plans">
-
-                                <ul class="nav nav-sm flex-column">
-
-                                    <li class="nav-item">
-
-                                        <a class="nav-link {{ return_if(on_page('account.subscriptions'), ' active') }}"
-
-                                            href="{{ route('account.subscriptions') }}">
-
-                                            {{ __('Subscriptions') }}
-
-                                        </a>
-
-                                    </li>
-
-                                    @if(currentTeam()->subscribed())
-
-                                    <li class="nav-item">
-
-                                        <a class="nav-link {{ return_if(on_page('account.subscriptions.card'), ' active') }}" href="{{ route('account.subscriptions.card') }}">
-
-                                        {{ __('Payment') }}
-
-                                        </a>
-
-                                    </li>
-
-                                    <li class="nav-item">
-
-                                        <a href="{{ route('account.subscriptions.invoices') }}" class="nav-link {{ return_if(on_page('account.subscriptions.invoices'), ' active') }}">
-
-                                        {{ __('Invoices') }}
-
-                                        </a>
-
-                                    </li>
-
-                                    @endif
-
-                                    @if(!currentTeam()->subscribed())
-
-                                    <li class="nav-item">
-
-                                        <a href="{{ route('subscription.plans') }}" class="nav-link {{ return_if(on_page('subscription.plans'), ' active') }}">
-
-                                        {{ __('Plans') }}
-                                        </a>
-                                    </li>
-                                    @endif
-                                </ul>
-                            </div>
-                            @if (currentTeam()->onTrial())
-                            <li class="nav-item">
-                        <a class="nav-link {{ return_if(on_page('account.subscriptions') OR on_page('account.product.create') OR on_page('account.product.edit'), ' active') }}" href="{{ route('account.subscriptions') }}">
-                            <span class="nav-link-text">{{ __('Skip Trial Now ') }}</span>
-                        </a>
-                        @endif
-                    </li>
-
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link {{ return_if(on_page('account.tuto.index') OR on_page('account.tuto.index') OR on_page('account.tuto.index'), ' active') }}" href="{{ route('account.tuto.index') }}">
-                            <i class="fas fa-book-open"></i>
-                            <span class="nav-link-text">{{ __('Tutorial') }}</span>
-                        </a>
-                    </li>
-
-                    <!-- End List -->
-
-                    <li class="nav-item">
-
-                        <a class="nav-link{{ return_if(on_page('ticket.index') or on_page('ticket.create'), ' active') }}" href="#navbar-tickets" data-toggle="collapse" role="button"
-
-                            aria-expanded="false" aria-controls="navbar-forms">
-
-                            <i class="fas fa-ticket-alt"></i>
-
-                            <span class="nav-link-text">{{ __('Ticket') }}</span>
-
-                        </a>
-
-                        <div class="collapse" id="navbar-tickets">
-
-                            <ul class="nav nav-sm flex-column">
-
-                                <li class="nav-item">
-
-                                    <a class="nav-link{{ return_if(on_page('ticket.index'), ' active') }}"
-
-                                        href="{{ route('ticket.index') }}">
-
-                                        <i class="fas fa-clipboard-check"></i>
-
-                                        {{ __('Support') }}
-
+                    <div class="nk-menu-trigger me-n2">
+                        <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em class="icon ni ni-arrow-left"></em></a>
+                        <a href="#" class="nk-nav-compact nk-quick-nav-icon d-none d-xl-inline-flex" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
+                    </div>
+                </div><!-- .nk-sidebar-element -->
+                <div class="nk-sidebar-element">
+                    <div class="nk-sidebar-content">
+                        <div class="nk-sidebar-menu" data-simplebar>
+                            <ul class="nk-menu">
+                                <li class="nk-menu-item">
+                                    <a href="/dashboard" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-dashboard-fill"></em></span>
+                                        <span class="nk-menu-text">{{ __('Dashboard') }}</span>
                                     </a>
-
-                                </li>
-
-                                <li class="nav-item">
-
-                                    <a class="nav-link{{ return_if(on_page('ticket.create'), ' active') }}"
-
-                                        href="{{ route('ticket.create') }}">
-
-                                        <i class="far fa-plus-square"></i>
-
-                                        {{ __('New ticket') }}
-
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="{{ route('account.topstores.index') }}" class="nk-menu-link {{ return_if(on_page('account.tuto.index') OR on_page('account.tuto.index') OR on_page('account.tuto.index'), ' active') }}">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-chart-up"></em></span>
+                                        <span class="nk-menu-text">{{ __('Top Stores') }}</span>
                                     </a>
-
-                                </li>
-
-                            </ul>
-
-                        </div>
-
-                    </li>
-
-
-
-                </ul>
-
-                <!-- Divider -->
-
-                <hr class="my-3">
-
-
-                <!-- Heading -->
-
-                <!-- Navigation -->
-
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="{{ route('account.niches.index') }}" class="nk-menu-link {{ return_if(on_page('account.niches.index') OR on_page('account.niches.create') OR on_page('account.niches.edit'), ' active') }}">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-tag-fill"></em></span>
+                                        <span class="nk-menu-text">{{ __('Niches') }}</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="{{ route('account.stores.index') }}" class="nk-menu-link {{ return_if(on_page('account.stores.index') OR on_page('account.stores.create') OR on_page('account.stores.edit'), ' active') }}">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-bag-fill"></em></span>
+                                        <span class="nk-menu-text">{{ __('Stores') }}</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="{{ route('account.product.index') }}" class="nk-menu-link {{ return_if(on_page('account.product.index') OR on_page('account.product.create') OR on_page('account.product.edit'), ' active') }}">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-package-fill"></em></span>
+                                        <span class="nk-menu-text">{{ __('Products') }}</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item has-sub">
+                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-credit-card"></em></span>
+                                        <span class="nk-menu-text">{{ __('Billing') }}</span>
+                                    </a>
+                                    <ul class="nk-menu-sub">
+                                        <li class="nk-menu-item">
+                                            <a href="{{ route('account.subscriptions') }}" class="nk-menu-link  {{ return_if(on_page('account.subscriptions'), ' active') }}"><span class="nk-menu-text">  {{ __('Subscriptions') }}</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a href="{{ route('account.subscriptions.card') }}" class="nk-menu-link {{ return_if(on_page('account.subscriptions.card'), ' active') }}"><span class="nk-menu-text">  {{ __('Payment') }}</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a href="{{ route('account.subscriptions.invoices') }}" class="nk-menu-link {{ return_if(on_page('account.subscriptions.invoices'), ' active') }}"><span class="nk-menu-text">{{ __('Invoices') }}</span></a>
+                                        </li>
+                                        @if(!currentTeam()->subscribed())
+                                        <li class="nk-menu-item">
+                                            <a href="{{ route('subscription.plans') }}" class="nk-menu-link {{ return_if(on_page('subscription.plans'), ' active') }}"><span class="nk-menu-text">    {{ __('Plans') }}</span></a>
+                                        </li>
+                                        @endif
+                                        @if (currentTeam()->onTrial())
+                                        <li class="nk-menu-item">
+                                            <a href="{{ route('account.subscriptions') }}" class="nk-menu-link {{ return_if(on_page('account.subscriptions') OR on_page('account.product.create') OR on_page('account.product.edit'), ' active') }}"><span class="nk-menu-text"> {{ __('Skip Trial Now ') }}</span></a>
+                                        </li>
+                                        @endif
+                                    </ul><!-- .nk-menu-sub -->
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-heading">
+                                    <h6 class="overline-title text-primary-alt">Return to</h6>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="{{ route('account.tuto.index') }}" class="nk-menu-link {{ return_if(on_page('account.tuto.index') OR on_page('account.tuto.index') OR on_page('account.tuto.index'), ' active') }}">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-package-fill"></em></span>
+                                        <span class="nk-menu-text">{{ __('Tutorial') }}</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item has-sub">
+                                    <a href="{{ route('ticket.index') }}" class="nk-menu-link nk-menu-toggle {{ return_if(on_page('ticket.index') or on_page('ticket.create'), ' active') }}">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-chat-fill"></em></span>
+                                        <span class="nk-menu-text">  {{ __('Ticket') }}</span>
+                                    </a>
+                                    <ul class="nk-menu-sub">
+                                        <li class="nk-menu-item">
+                                            <a href="{{ route('ticket.index') }}" class="nk-menu-link"><span class="nk-menu-text"> {{ __('Support') }}</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a href="{{ route('ticket.create') }}" class="nk-menu-link"><span class="nk-menu-text"> {{ __('New ticket') }}</span></a>
+                                        </li>
+                                    </ul><!-- .nk-menu-sub -->
+                                </li><!-- .nk-menu-item -->
+                            </ul><!-- .nk-menu -->
+                        </div><!-- .nk-sidebar-menu -->
+                    </div><!-- .nk-sidebar-content -->
+                </div><!-- .nk-sidebar-element -->
             </div>
-
-        </div>
-
-    </div>
-
-</nav>
+            <!-- sidebar @e -->

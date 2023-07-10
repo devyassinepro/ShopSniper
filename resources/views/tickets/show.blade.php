@@ -4,6 +4,10 @@
             <h1 class="h2 text-white">{{ __('My tickets') }}</h1>
         </div>
     </x-slot>
+    <div class="nk-content ">
+        <div class="container-fluid">
+            <div class="nk-content-inner">
+                <div class="nk-content-body">
 <div class="card">
         <!-- Card header -->
         <div class="card-header">
@@ -45,6 +49,10 @@
             </form>
         </div>
 </div>
+</div>
+    </div>
+      </div>    
+    </div>    
 
 @push('styles')
     <style>

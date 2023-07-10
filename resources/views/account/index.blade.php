@@ -1,18 +1,28 @@
 @extends('layouts.account_niche')
+
+@section('title', '| Stores')
+
 @section('content')
 
 <script>
 fpr("referral",{email:"{{ Auth::user()->email }}"})
 </script>
-@if(!currentTeam()->subscribed())
-<div class="alert alert-warning" role="alert">
-Welcome to Weenify. Visit the <a href="{{ route('subscription.plans') }}">billing page</a> to activate a Trial plan.
-</div>
-@endif
-<div class="u-body">
-    <!-- Doughnut Chart -->
-    <div class="row">
+
+<div class="nk-content ">
+                    <div class="container-fluid">
+                        <div class="nk-content-inner">
+                            <div class="nk-content-body">
+
+                            @if(!currentTeam()->subscribed())
+                    <div class="alert alert-warning" role="alert">
+                    Welcome to Weenify. Visit the <a href="{{ route('subscription.plans') }}">billing page</a> to activate a Trial plan.
+                    </div>
+                    @endif
+                    <div></div>   <br> <br>
+
+                              
                 <!-- DAshboard  -->
+                <div class="row grid-margin">
             <div class="col-12">
               <div class="card card-statistics">
                 <div class="card-body">
@@ -56,6 +66,8 @@ Welcome to Weenify. Visit the <a href="{{ route('subscription.plans') }}">billin
               </div>
             </div>
           </div>
+          </div>
+
 
       <!-- ENd Dashboard  -->
 
@@ -105,9 +117,11 @@ Welcome to Weenify. Visit the <a href="{{ route('subscription.plans') }}">billin
               </div>
             </div>
             @endif
-          </div>
+            </div>
+                </div>
+            </div>    
+          </div>     
 
-</div>
 @endsection
 @push('styles')
     <style>

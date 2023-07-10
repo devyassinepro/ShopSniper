@@ -4,6 +4,10 @@
             <h1 class="h2 text-white">{{ __('Create a new ticket') }}</h1>
         </div>
     </x-slot>
+    <div class="nk-content ">
+        <div class="container-fluid">
+            <div class="nk-content-inner">
+                <div class="nk-content-body">
 <div class="card">
         <!-- Card header -->
         <div class="card-header">
@@ -89,4 +93,8 @@
             </form>
         </div>
 </div>
+</div>
+    </div>
+      </div>    
+    </div>    
 </x-account-layout>

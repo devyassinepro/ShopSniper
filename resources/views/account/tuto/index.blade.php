@@ -3,9 +3,11 @@
 @section('title', '| Niches')
 
 @section('content')
-<div class="container-fluid">
-  <div class="row">
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-12 pt-3 px-4">
+
+<div class="nk-content ">
+                    <div class="container-fluid">
+                        <div class="nk-content-inner">
+                            <div class="nk-content-body">
 
           <h2>How to Use Weenify</h2>
         </br></br>
@@ -16,7 +18,10 @@
           <div>
 
         </div>
-        </main>
-      </div>
-    </div>
+
+        </div>
+                </div>
+            </div>    
+          </div>   
+
     @endsection

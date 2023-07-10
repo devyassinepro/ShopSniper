@@ -1,103 +1,189 @@
-<div>
-              <div class="card-body table-responsive p-0 table-striped" >
-                <div class="d-flex justify-content-end p-4">
+<div class="nk-content ">
+                    <div class="container-fluid">
+                        <div class="nk-content-inner">
+                            <div class="nk-content-body">
+                                <div class="nk-block-head nk-block-head-sm">
+                                    <div class="nk-block-between">
+                                        <div class="nk-block-head-content">
+                                            <h3 class="nk-block-title page-title">Stores</h3>
+                                            </br></br>
+                            @if ($message = Session::get('success'))
+                              <div class="alert alert-success">
+                                  <p>{{ $message }}</p>
+                              </div>
+                          @endif
 
-                  <div class="form-group mr-3">
-                        <label for="filtreType">Search</label>
-                        <input
-                            type="search"
-                            wire:model.debounce.500ms="search"
-                            placeholder="Search products"
-                            class="form-control"
-                        >
-                    </div>
-                    <div class="form-group mr-3">
-                        <label for="filtreType">filter By Niches</label>
-                        <select  id="filtreNiche" wire:model="filtreNiche" class="form-control">
-                                <option value=""></option>
-                                @foreach ($niches as $niche)
-                                    <option value="{{$niche->id}}">{{ $niche->name }}</option>
-                                @endforeach
+                          @if ($message = Session::get('error'))
+                              <div class="alert alert-danger">
+                                  <p>{{ $message }}</p>
+                              </div>
+                          @endif
 
-                        </select>
-                    </div>
+                        @if(!currentTeam()->subscribed())
+                        <div class="alert alert-warning" role="alert">
+                        Welcome to Weenify. Visit the <a href="{{ route('subscription.plans') }}">billing page</a> to activate a Trial plan.
+                        </div>
+                        @endif
+                        </div><!-- .nk-block-head-content -->
 
-                    <div class="form-group mr-3">
-                        <label for="filtreorderby">Order By </label>
-                        <select  id="filtreorderby" wire:model="filtreorderby" class="form-control">
-                            <option value="revenue">Revenue</option>
-                            <option value="created_at">New Added</option>
-                        </select>
-                    </div>
+                      
+                      
+                                  <div class="nk-block-head-content">
+                                            <div class="toggle-wrap nk-block-tools-toggle">
+                                                <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+                                                <div class="toggle-expand-content" data-content="pageMenu">
+                                                    <ul class="nk-block-tools g-3">
+                                                        <li>
+                                                            <div class="form-control-wrap">
+                                                                <div class="form-icon form-icon-right">
+                                                                    <em class="icon ni ni-search"></em>
+                                                                </div>
+                                                                <!-- <input type="text" class="form-control" id="default-04" placeholder="Quick search by id"> -->
+                                                                <input
+                                                                        type="search"
+                                                                        wire:model.debounce.500ms="search"
+                                                                        placeholder="Search Stores"
+                                                                        class="form-control"
+                                                                    >
+                                                            </div>
+                                                        </li>
+                            
+                                                        <li>
+                                                            <div class="drodown">
+                                                                    <select  id="filtreNiche" wire:model="filtreNiche" class="form-control">
+                                                                    <option value="">filter By Niches</option>
+                                                                    @foreach ($niches as $niche)
+                                                                        <option value="{{$niche->id}}">{{ $niche->name }}</option>
+                                                                    @endforeach
 
-                    <div class="form-group mr-3">
-                        <label for="filtreCurrency">filter By Currency</label>
-                        <select  id="filtreCurrency" wire:model="filtreCurrency" class="form-control">
-                            <option value=""></option>
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
-                        </select>
-                    </div>
+                                                                  </select>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="drodown">
+                                                           
+                                                            <select  id="filtreorderby" wire:model="filtreorderby" class="form-control">
+                                                            <option value="">Order By</option>
+                                                                <option value="revenue">Revenue</option>
+                                                                <option value="created_at">New Added</option>
+                                                            </select>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="drodown">
+                                                            <select  id="filtreCurrency" wire:model="filtreCurrency" class="form-control">
+                                                                <option value="">filter By Currency</option>
+                                                                <option value="USD">USD</option>
+                                                                <option value="EUR">EUR</option>
+                                                            </select>
+                                                            </div>
+                     
+                                                        </li>
+                                                        <li>
+                                                            <div class="drodown">
+                                                            <select  id="filtrePagination" wire:model="filtrePagination" class="form-control">
+                                                            <option value="">10</option>
+                                                            <option value="25">25</option>
+                                                            <option value="50">50</option>
+                                                        </select>
+                                                            </div>
+                     
+                                                        </li>
 
-                    <div class="form-group mr-3">
-                        <label for="filtrePagination">Pages</label>
-                        <select  id="filtrePagination" wire:model="filtrePagination" class="form-control">
-                            <option value="">10</option>
-                            <option value="25">25</option>
-                            <option value="50">50</option>
-                        </select>
+                                                        <li >
+                                                        <a href="{{ route('account.stores.create') }}" class="btn btn-round btn-primary"><em class="icon ni ni-plus"></em><span>Add Store</span> </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div><!-- .nk-block-head-content -->
+                                    </div><!-- .nk-block-between -->
+                                </div><!-- .nk-block-head -->
+                             
+                                <div wire:loading.delay>
+                                <div class="text-center">
+                                    <div class="spinner-border" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="nk-block">
+                                    <div class="nk-tb-list is-separate mb-3">
+                                        <div class="nk-tb-item nk-tb-head">
+                                            <div class="nk-tb-col nk-tb-col-check">
+                                                <div class="custom-control custom-control-sm custom-checkbox notext">
+                                                    <input type="checkbox" class="custom-control-input" id="pid">
+                                                    <label class="custom-control-label" for="pid"></label>
+                                                </div>
+                                            </div>
+                                           
+                                            <div class="nk-tb-col tb-col-sm"><span>Name</span></div>
+                                            <div class="nk-tb-col"><span>Products</span></div>
+                                            <div class="nk-tb-col"><span>Sales</span></div>
+                                            <div class="nk-tb-col"><span>Revenue</span></div>
+                                            <div class="nk-tb-col tb-col-md"><span>Expand</span></div>
+                                          
+                                        </div><!-- .nk-tb-item -->
+                                        @foreach ($stores as $store)
+                                        <div class="nk-tb-item">
+                                            <div class="nk-tb-col nk-tb-col-check">
+                                                <div class="custom-control custom-control-sm custom-checkbox notext">
+                                                    <input type="checkbox" class="custom-control-input" id="pid1">
+                                                    <label class="custom-control-label" for="pid1"></label>
+                                                </div>
+                                            </div>
+                                         
+                                            <div class="nk-tb-col tb-col-sm">
+                                                <span class="tb-product">
+                                                    <img src="./images/product/a.png" alt="" class="thumb">
+                                                    <span  href="{{ route('account.stores.show',$store->id) }}"class="title">{{ $store->name }} - {{ $store->currency }}</span>
+                                                    <a  target="_blank" href="{{$store->url}}"><img src="https://cdn3.iconfinder.com/data/icons/social-media-2068/64/_shopping-512.png" width="30" height="30"></a>
+                                                    <h6>{{ $store->created_at }}</h6>
+                                                </span>
+                                            </div>
+                                            <div class="nk-tb-col">
+                                                   <span class="title">{{ $store->allproducts }}</span>
+                                            </div>
+                                            <div class="nk-tb-col">
+                                                  <label class="badgepro badge-info badge-pill">{{ $store->sales }}</label>
+                                            </div>
+                                            @if($store->currency == "EUR" )
+                                            <div class="nk-tb-col">
+                                                <label class="badgepro badge-success badge-pill">{{number_format($store->revenue, 2, ',', ' ')}} €</label>
+                                            </div>
+                                            @endif
+                                            @if($store->currency != "EUR" )
+                                            <div class="nk-tb-col">
+                                                <label class="badgepro badge-success badge-pill">$ {{number_format($store->revenue, 2, ',', ' ')}}</label>
+                                            </div>
+                                            @endif
+                                            <div class="nk-tb-col tb-col-md">
+                                                <div class="asterisk tb-asterisk">
+                                                <a href="{{ route('account.stores.show',$store->id) }}" class="btn btn-info">Show Charts</a>
+                                                <form action="{{ route('account.stores.destroy',$store->id) }}" method="Post">
+                                                            @csrf
+                                                            @method('DELETE')
+
+                                                            @if (!currentTeam()->onTrial())
+                                                            <button type="submit" class="btn btn-danger">Untrack Store</button>
+                                                            @endif
+
+                                                        </form>                                              
+                                                      </div>
+                                            </div>
+                                         
+                                        </div><!-- .nk-tb-item -->
+                                        @endforeach
+                                    </div><!-- .nk-tb-list -->
+                               
+                                </div><!-- .nk-block -->
+                        <div  wire:loading.class="invisible" class="my-4">
+                            {{ $stores->links() }}
+                            </div>
+                             
+                            </div>
+                        </div>
                     </div>
                 </div>
-              </div>
-    <div wire:loading.delay>
-        Loading...
-    </div>
-     <div class="table-responsive">
-        <table wire:loading.class="invisible" class="table table-striped table-sm">
-            <thead>
-                <tr>
-                    <th><h6>Name</h6></th>
-                    <th><h6>Products</h6></th>
-                    <th><h6>Sales</h6></th>
-                    <th><h6>Revenue</h6></th>
-                    <th><h6>Expand</h6></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($stores as $store)
-                    <tr>
-                        <td><h3>
-                          <a href="{{ route('account.stores.show',$store->id) }}">{{ $store->name }} - {{ $store->currency }}</a>
-                          <a  target="_blank" href="{{$store->url}}"><img src="https://cdn3.iconfinder.com/data/icons/social-media-2068/64/_shopping-512.png" width="30" height="30"></a>
-                          <h6>{{ $store->created_at }}</h6>
-                        </h3></td>
-                        <td><p>{{ $store->allproducts }}</p></td>
-                        <td><p>{{ $store->sales }}</p></td>
-                        @if($store->currency == "EUR" )
-                        <td><p>{{number_format($store->revenue, 2, ',', ' ')}} €</p></td>
-                        @endif
-                        @if($store->currency != "EUR" )
-                        <td><p> $ {{number_format($store->revenue, 2, ',', ' ')}}</p></td>
-                        @endif
-                        <td><a  class="btn btn-primary" href="{{ route('account.stores.show',$store->id) }}">Show Charts</a></td>
-                        <td>
-                            <form action="{{ route('account.stores.destroy',$store->id) }}" method="Post">
-                                @csrf
-                                @method('DELETE')
-
-                                @if (!currentTeam()->onTrial())
-                                <button type="submit" class="btn btn-warning">Untrack Store</button>
-                                @endif
-
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-            </tbody>
-            </table>
-          </div>
-        <div  wire:loading.class="invisible" class="my-4">
-        {{ $stores->links() }}
-        </div>
-
-</div>
+                               

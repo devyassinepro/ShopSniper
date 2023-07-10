@@ -2,23 +2,79 @@
 
 @section('title', '| Products')
 
-@section('content')  <div class="container-fluid">
-      <div class="row">
+@section('content')  
+<div class="nk-content ">
+                    <div class="container-fluid">
+                        <div class="nk-content-inner">
+                            <div class="nk-content-body">
+                            <div class="nk-block">
+                                  
+                                  <div class="row g-gs">
+                                            <div class="col-md-6">
+                                                <div class="card card-bordered card-preview">
+                                                    <div class="card-inner">
+                                                        <div class="card-head">
+                                                            <h6 class="title">Image</h6>
+                                                        </div>
+                                                        <div class="nk-ck-sm">
+                                                        <td><img src="{{ $products->first()->imageproduct }}" width="200" height="200"></a></td>
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-12 pt-3 px-4">
-    <div><h4>View Product</h4></div>
-    <div><h5>Store Name : {{$products->first()->title}}</h5></div>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- .card-preview -->
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="card card-bordered card-preview">
+                                                    <div class="card-inner">
+                                                        <div class="card-head">
+                                                            <h6 class="title">Product Name : {{$products->first()->title}}</h6>
+                                                        </div>
+                                                        <div class="nk-ck-sm">
+                                                        <a  class="btn btn-primary"  target="_blank" href="{{$products->first()->url}}">View on Shopify</a>
+                                                        <a  class="btn btn-primary"   target="_blank" href="https://www.aliexpress.com/wholesale?SearchText={{urldecode($products->first()->title)}}">Search on AliExpress</a>
+                                                        <a  class="btn btn-primary"   target="_blank" href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&q={{urldecode($products->first()->title)}}&search_type=keyword_unordered&media_type=all">Search on Facebook</a>
+   
+                                                        </div>
+                                                    </div>
+                                                </div><!-- .card-preview -->
+                                            </div>
+                                          
+                                           
+                                        </div>
 
-    <td><img src="{{ $products->first()->imageproduct }}" width="300" height="300"></a></td>
-    <!-- <td><a  class="btn btn-success"  target="_blank">View </a></td> -->
-    <div class="d-grid gap-2 col-6 mx-auto">
-    <a  class="btn btn-primary"  target="_blank" href="{{$products->first()->url}}">View on Shopify</a>
-    <a  class="btn btn-primary"   target="_blank" href="https://www.aliexpress.com/wholesale?SearchText={{urldecode($products->first()->title)}}">Search on AliExpress</a>
-    <a  class="btn btn-primary"   target="_blank" href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&q={{urldecode($products->first()->title)}}&search_type=keyword_unordered&media_type=all">Search on Facebook</a>
 
-    </div>
+                                  <div class="row g-gs">
+                                            <div class="col-md-6">
+                                                <div class="card card-bordered card-preview">
+                                                    <div class="card-inner">
+                                                        <div class="card-head">
+                                                            <h6 class="title">Revenue Chart ($)</h6>
+                                                        </div>
+                                                        <div class="nk-ck-sm">
+                                                        <canvas class="line-chart"  id="revenue-chartaffiche" height="200px" ></canvas>
 
-        <canvas id="sales-chartaffiche"  height="100px"></canvas>
+
+                                                        </div>
+                                                    </div>
+                                                </div><!-- .card-preview -->
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="card card-bordered card-preview">
+                                                    <div class="card-inner">
+                                                        <div class="card-head">
+                                                            <h6 class="title">Sales Chart</h6>
+                                                        </div>
+                                                        <div class="nk-ck-sm">
+                                                        <canvas class="line-chart"  id="sales-chartaffiche" height="200px" ></canvas>
+
+                                                        </div>
+                                                    </div>
+                                                </div><!-- .card-preview -->
+                                            </div>
+                                          
+                                           
+                                        </div>
+
 
           <!-- ALl Affiche -->
 
@@ -99,21 +155,18 @@
             </div>
           </div>
 
-        </main>
-      </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script> 
-     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          </div>
+                </div>
+            </div>    
+          </div>     
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ asset('assets/js/example-chart.js?ver=3.2.0') }}"></script>
+<script src="{{ asset('assets/js/bundle.js?ver=3.2.0') }}"></script>
+<script src="{{ asset('assets/js/scripts.js?ver=3.2.0') }}"></script>
 		<!-- Plugins -->
       <script>  
-              var todaysales_count =  {!! json_encode($products->first()->todaysales_count)!!};
-              var yesterdaysales_count =   {!! json_encode($products->first()->yesterdaysales_count)!!};
-              var day3sales_count =  {!! json_encode($products->first()->day3sales_count)!!};
-              var day4sales_count =   {!! json_encode($products->first()->day4sales_count)!!};
-              var day5sales_count =   {!! json_encode($products->first()->day5sales_count)!!};
-              var day6sales_count =  {!! json_encode($products->first()->day6sales_count)!!};
-              var day7sales_count =   {!! json_encode($products->first()->day7sales_count)!!};
-
+        
               var todaysales_revenue =  {!! json_encode($products->first()->todaysales_count * $products->first()->prix )!!};
               var yesterdaysales_revenue =  {!! json_encode($products->first()->yesterdaysales_count * $products->first()->prix )!!};
               var day3sales_revenue =  {!! json_encode($products->first()->day3sales_count * $products->first()->prix )!!};
@@ -122,7 +175,7 @@
               var day6sales_revenue =   {!! json_encode($products->first()->day6sales_count * $products->first()->prix)!!};
               var day7sales_revenue =  {!! json_encode($products->first()->day7sales_count * $products->first()->prix)!!};
               var dates =   {!! json_encode($dates)!!};
-              var lineChartCanvas = document.getElementById('sales-chartaffiche').getContext('2d');
+              var lineChartCanvas = document.getElementById('revenue-chartaffiche').getContext('2d');
       var data = {
          labels: dates,
         datasets: [
@@ -130,16 +183,66 @@
             label: 'Revenue',
             data: [day7sales_revenue,day6sales_revenue,day5sales_revenue,day4sales_revenue,day3sales_revenue,yesterdaysales_revenue,todaysales_revenue],
             borderColor: [
-              '#392c70'
+              '#6465f1'
             ],
             borderWidth: 3,
             fill: false
-          },
+          }
+        ]
+      };
+      var options = {
+        scales: {
+          yAxes: [{
+            gridLines: {
+              drawBorder: false
+            },
+            ticks: {
+              stepSize: 2000,
+              fontColor: "#686868"
+            }
+          }],
+          xAxes: [{
+            display: false,
+            gridLines: {
+              drawBorder: false
+            }
+          }]
+        },
+        legend: {
+          display: false
+        },
+        elements: {
+          point: {
+            radius: 3
+          }
+        },
+        stepsize: 1
+      };
+      var lineChart = new Chart(lineChartCanvas, {
+        type: 'line',
+        data: data,
+        options: options
+      });
+          </script>   
+           <script>  
+              var todaysales_count =  {!! json_encode($products->first()->todaysales_count)!!};
+              var yesterdaysales_count =   {!! json_encode($products->first()->yesterdaysales_count)!!};
+              var day3sales_count =  {!! json_encode($products->first()->day3sales_count)!!};
+              var day4sales_count =   {!! json_encode($products->first()->day4sales_count)!!};
+              var day5sales_count =   {!! json_encode($products->first()->day5sales_count)!!};
+              var day6sales_count =  {!! json_encode($products->first()->day6sales_count)!!};
+              var day7sales_count =   {!! json_encode($products->first()->day7sales_count)!!};
+
+              var dates =   {!! json_encode($dates)!!};
+              var lineChartCanvas = document.getElementById('sales-chartaffiche').getContext('2d');
+      var data = {
+         labels: dates,
+        datasets: [
           {
             label: 'Sales',
             data: [day7sales_count,day6sales_count,day5sales_count,day4sales_count,day3sales_count,yesterdaysales_count,todaysales_count],
             borderColor: [
-              '#d1cede'
+              '#6465f1'
             ],
             borderWidth: 3,
             fill: false
