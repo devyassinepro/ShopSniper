@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="keywords" content="Weenify , store shopify tracking ,store shopify,product spying, keyword research, search engine optimization, search engine marketing" />
     <meta name="description" content="Iteck - Multi-Purpose HTML5 Template" />
-    <meta name="author" content="Touzani" />
+    <meta name="author" content="TouzaniYassine" />
 
     <!-- Title  -->
     <title>Weenify - Track winning stores Shopify</title>
@@ -24,8 +24,7 @@
     <link rel="stylesheet" href="assets/css/lib/bootstrap.min.css">
 
     <!-- ====== font family ====== -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"rel="stylesheet">
 
     <link rel="stylesheet" href="assets/css/lib/all.min.css" />
     <link rel="stylesheet" href="assets/css/lib/animate.css" />
@@ -33,18 +32,26 @@
     <link rel="stylesheet" href="assets/css/lib/jquery.fancybox.css" />
     <link rel="stylesheet" href="assets/css/lib/lity.css" />
     <link rel="stylesheet" href="assets/css/lib/swiper.min.css" />
+
+        <!--build:css-->
+        <link rel="stylesheet" href="assets/css/main.css">
+    <!-- endbuild -->
+
+    <!--custom css start-->
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <!--custom css end-->
     <!-- ====== global style ====== -->
     <link rel="stylesheet" href="assets/css/style.css" />
 
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-M19EWRS3EN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M19EWRS3EN"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-  gtag('config', 'G-M19EWRS3EN');
-</script>
+        gtag('config', 'G-M19EWRS3EN');
+        </script>
 </head>
 
 <body class="home-style-8">
@@ -57,9 +64,9 @@
                     <div class="col-lg-6">
                         <div class="info">
                             <!-- <p class="fw-bold color-main text-decoration-underline text-uppercase wow fadeInUp"> We Bring Ideas To Life </p> -->
-                            <h1 class="wow fadeInUp"> Track Any Shopify Store</h1> <br> <h4>Maximize Your Sales Potential</h4>
+                            <h1 class="wow fadeInUp">Track the Hottest Winning Products in Real-Time</h1> <br> <h4></h4>
                             <h3 class="wow fadeInUp"> </h3>
-                            <h5> Find winning products effortlessly by monitoring stores and gaining insights into their revenue, sales, products, apps, and more.</h5>
+                            <h5> Time is Money: Trust Us to Find the Proven Winning Products</h5>
                             <div class="form wow fadeInUp">
                                 <h5><br> Subscribe & Get 7-Days Trial </h5><span>
                                     <div class="d-flex align-items-center mt-40 wow fadeInUp">
@@ -270,15 +277,51 @@
                     <div class="col-lg-5">
                         <div class="info">
                             <div class="section-head style-8 mb-40">
-                                <h3 class="wow fadeInUp">Track The Daily Revenue Of Stores </h3>
+                                <h3 class="wow fadeInUp">Track the Daily Store Revenue in Real-Time</h3>
                             </div>
-                            <h6 class="color-666 wow fadeInUp"> Weenify enables real-time access to a store's product offerings and revenue data, empowering you to identify winning products and minimize the risk of selling low-performing items.
+                            <h6 class="color-666 wow fadeInUp">Unlock Real-Time Access to Store Product Offerings and Revenue Data with Dropship, Empowering You to Identify Winning Products and Mitigate the Risk of Selling Low-Performing Items.
                             </h6>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <!--feature promo section start-->
+        <section class="feature-promo ptb-120 bg-light-subtle">
+            <div class="container">
+                <div class="row pt-lg-5 pt-3">
+                    <div class="col-lg-6 mt-4">
+                        <div class="position-relative d-flex flex-column h-100 flex-wrap bg-danger-soft p-5 rounded-custom">
+                            <div class="cta-left-info mb-2">
+                                <h5>Top 100 lists Stores</h5>
+                                <p>Explore an Extensive List of Trending Products and Stores Tracked Across Tens of Thousands of Retailers, Providing You with a Wealth of Unlimited Ideas.</p>
+                            </div>
+                            <div class="mt-auto">
+                                <a href="/register" class="btn btn-outline-primary btn-sm">Start For Free</a>
+                            </div>
+                            <div class="cta-img position-absolute right-0 bottom-0">
+                                <img src="assets/img/cta-img-1.png" alt="cta img" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mt-4">
+                        <div class="position-relative d-flex flex-column h-100 flex-wrap bg-primary-soft p-5 rounded-custom">
+                            <div class="cta-left-info mb-2">
+                                <h5>Daily Revenue of Stores with Real-Time Monitoring</h5>
+                                <p>Supercharge Your Sales Tracking: Add Stores and Products to the Sales Tracker to Monitor Performance Over Time, Track Sales, and Uncover the Next Big Opportunity Ahead of the Competition.</p>
+                            </div>
+                            <div class="mt-auto">
+                                <a href="/register" class="btn btn-outline-primary btn-sm">Start For Free</a>
+                            </div>
+                            <div class="cta-img position-absolute right-0 bottom-0">
+                                <img src="assets/img/cta-img-2.png" alt="cta img" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> <!--feature promo section end-->
         <!-- ====== end about ====== -->
         <!-- ====== start choose-us ====== -->
         <section class="choose-us style-8 section-padding">
@@ -634,6 +677,111 @@
     </main>
     <!--End-Contents-->
 
+    
+        <!-- ====== start blog ======
+        <section class="blog style-8 bg-gray2">
+            <div class="container">
+                <div class="content section-padding wow fadeInUp">
+                    <div class="section-head text-center style-8 mb-80">
+                        <h6> News & Insights </h6>
+                        <h3> our News & Insights </h3>
+                    </div>
+                    <div class="blog-content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="main-post wow fadeInUp">
+                                    <div class="img img-cover">
+                                        <img src="assets/img/blog/18.jpg" alt="">
+                                        <div class="tags">
+                                            <a href="#"> Analysis </a>
+                                        </div>
+                                    </div>
+                                    <div class="info pt-30">
+                                        <div class="date-author">
+                                            <a href="#" class="date">
+                                                Nov 21, 2022 
+                                            </a>
+                                            <span class="color-999 mx-3"> | </span>
+                                            <a href="#" class="author color-999">
+                                                By <span class="color-000 fw-bold"> Admin </span>
+                                            </a>
+                                        </div>
+                                        <h4 class="title">
+                                            <a href="#"> Create Live Segments & Target The Right People For Your Amazing Team. </a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="side-posts">
+                                    <div class="item wow fadeInUp">
+                                        <div class="img img-cover">
+                                            <img src="assets/img/blog/19.jpg" alt="">
+                                        </div>
+                                        <div class="info">
+                                            <div class="date-author">
+                                                <a href="#" class="date">
+                                                    Nov 21, 2022 
+                                                </a>
+                                                <span class="color-999 mx-3"> | </span>
+                                                <a href="#" class="author color-999">
+                                                    By <span class="color-000 fw-bold"> Admin </span>
+                                                </a>
+                                            </div>
+                                            <h4 class="title">
+                                                <a href="#"> Best unlocked me an striking perceive. </a>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div class="item wow fadeInUp" data-wow-delay="0.2s">
+                                        <div class="img img-cover">
+                                            <img src="assets/img/blog/20.jpg" alt="">
+                                        </div>
+                                        <div class="info">
+                                            <div class="date-author">
+                                                <a href="#" class="date">
+                                                    Nov 21, 2022 
+                                                </a>
+                                                <span class="color-999 mx-3"> | </span>
+                                                <a href="#" class="author color-999">
+                                                    By <span class="color-000 fw-bold"> Admin </span>
+                                                </a>
+                                            </div>
+                                            <h4 class="title">
+                                                <a href="#"> Me in resolution pianoforte continuing we. </a>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div class="item wow fadeInUp" data-wow-delay="0.4s">
+                                        <div class="img img-cover">
+                                            <img src="assets/img/blog/21.jpg" alt="">
+                                        </div>
+                                        <div class="info">
+                                            <div class="date-author">
+                                                <a href="#" class="date">
+                                                    Nov 21, 2022 
+                                                </a>
+                                                <span class="color-999 mx-3"> | </span>
+                                                <a href="#" class="author color-999">
+                                                    By <span class="color-000 fw-bold"> Admin </span>
+                                                </a>
+                                            </div>
+                                            <h4 class="title">
+                                                <a href="#"> Most my no spot felt by no he in forfeited. </a>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+         ====== end blog ====== 
+    </main> 
+    End-Contents-->
+
     <!-- ====== start footer ====== -->
     <footer class="style-8 bg-gray2">
         <div class="wrapper bg-pale-primary py-4 text-dark">
@@ -772,6 +920,21 @@
     <script src="assets/js/lib/pace.js"></script>
     <script src="assets/js/lib/scrollIt.min.js"></script>
     <script src="assets/js/main.js"></script>
+
+        <!--build:js-->
+     <!-- <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>
+     <script src="assets/js/vendors/bootstrap.bundle.min.js"></script>
+     <script src="assets/js/vendors/swiper-bundle.min.js"></script>
+     <script src="assets/js/vendors/jquery.magnific-popup.min.js"></script>
+     <script src="assets/js/vendors/parallax.min.js"></script>
+     <script src="assets/js/vendors/aos.js"></script>
+     <script src="assets/js/vendors/massonry.min.js"></script>
+     <script src="assets/js/app.js"></script>
+	 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	 <script src="https://codepen.io/steveg3003/pen/zBVakw.js"></script>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script> -->
+
+    <!--endbuild-->
 
     
 

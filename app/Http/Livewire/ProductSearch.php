@@ -19,7 +19,7 @@ class ProductSearch extends Component
     public $search = "";
     public $filter = '';
     public $filtrePagination = "";
-    // public $filtreorder = "";
+    public $filtreorder = "";
 
 
     protected $paginationTheme = 'bootstrap';
@@ -37,19 +37,19 @@ class ProductSearch extends Component
         // get user's stores
         $totalstores = Storeuser::where('user_id', $user_id)->pluck('store_id')->ToArray();
         // get stores of this user
-        $products = Product::whereIn('stores_id', $totalstores)->orderBy('revenue','desc');
+        $products = Product::whereIn('stores_id', $totalstores)->where("title", ">=", 10);
         if($this->search != ""){
             $this->resetPage();
             $products->where("title", "LIKE",  "%". $this->search ."%")
                      ->orWhere("url","LIKE",  "%". $this->search ."%");
 
         }
-        // if($this->filtreorder != ""){
-
-        //     $products =$products->orderBy($this->filtreorder,'desc');
-        // }else{
-        //     $products =$products->orderBy('todaysales','desc');
-        // }
+        if($this->filtreorder != ""){
+        // var_dump($this->filtreorder) ;
+            $products =$products->orderBy($this->filtreorder,'desc');
+        }else{
+            $products =$products->orderBy('revenue','desc');
+        }
         // $products =$products->orderBy('todaysales','desc');
 
         if($this->filtrePagination != ""){

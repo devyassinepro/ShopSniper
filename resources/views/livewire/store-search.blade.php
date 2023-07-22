@@ -136,11 +136,15 @@
                                          
                                             <div class="nk-tb-col tb-col-sm">
                                                 <span class="tb-product">
-                                                    <img src="./images/product/a.png" alt="" class="thumb">
+                                                    <!-- <img src="./images/product/a.png" alt="" class="thumb"> -->
                                                     <span  href="{{ route('account.stores.show',$store->id) }}"class="title">{{ $store->name }} - {{ $store->currency }}</span>
                                                     <a  target="_blank" href="{{$store->url}}"><img src="https://cdn3.iconfinder.com/data/icons/social-media-2068/64/_shopping-512.png" width="30" height="30"></a>
-                                                    <h6>{{ $store->created_at }}</h6>
+                                                    
                                                 </span>
+                                                <span class="tb-product">
+                                                <span>{{ $store->created_at }}</span>
+                                                </span>
+                                               
                                             </div>
                                             <div class="nk-tb-col">
                                                    <span class="title">{{ $store->allproducts }}</span>
