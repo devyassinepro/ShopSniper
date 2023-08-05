@@ -8,7 +8,7 @@
 fpr("referral",{email:"{{ Auth::user()->email }}"})
 </script>
 
-<div class="nk-content ">
+<div class="nk-content" >
                     <div class="container-fluid">
                         <div class="nk-content-inner">
                             <div class="nk-content-body">
@@ -84,26 +84,27 @@ fpr("referral",{email:"{{ Auth::user()->email }}"})
                     <i class="fas fa-table"></i>
                     Top 5 Products (Sales)
                   </h4>
+                 
                   <div class="table-responsive">
-                    <table class="table">
+                  <table class="table table-fixed">
                       <thead>
                         <tr>
-                        <th><h6>Image</h6></th>
-                        <th><h6>Title</h6></th>
-                        <th><h6>Price</h6></th>
-                        <th><h6>Today Sales</h6></th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Today Sales</th>
                         </tr>
                       </thead>
                       <tbody>
                         @foreach ($products as $product)
                         <tr>
-                        <td class="font-weight-bold">
-                              <a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="150" height="150"></a>
+                        <td>
+                              <a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="100" height="100"></a>
                           </td>
-                          <td class="font-weight-bold">
+                          <td>
                               <a href="{{ route('account.product.show',$product->id) }}">{{ $product->title }}</a>
                           </td>
-                          <td class="font-weight-bold">${{ $product->prix }}</td>
+                          <td>${{ $product->prix }}</td>
                           <td>
                         <h5><label class="badgepro badge-success badge-pill">${{ number_format($product->todaysales * $product->prix, 2, ',', ' ') }}</label>
                             <label class="badgepro badge-info badge-pill">{{ $product->todaysales }}</label>
@@ -113,6 +114,8 @@ fpr("referral",{email:"{{ Auth::user()->email }}"})
                       </tbody>
                     </table>
                   </div>
+
+
                 </div>
               </div>
             </div>

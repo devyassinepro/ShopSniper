@@ -15,42 +15,51 @@
                                         
                                     </div><!-- .nk-block-between -->
                                 </div><!-- .nk-block-head -->
-                                <div class="nk-block">
-                                    <div class="nk-tb-list is-separate mb-3">
-                                        <div class="nk-tb-item nk-tb-head">
-                                         <div class="nk-tb-col tb-col-sm"><span>Name</span></div>
-                                            <div class="nk-tb-col tb-col-sm"><span>Sales</span></div>
-                                            <div class="nk-tb-col tb-col-sm"><span>Revenue</span></div>
-                                            <div class="nk-tb-col tb-col-sm"><span>Expand</span></div>
-                                            
-                                        </div><!-- .nk-tb-item -->
-                                        @foreach ($stores as $store)
-                                        <div class="nk-tb-item">
-                                            <div class="nk-tb-col tb-col-sm">
-                                                <span class="tb-product">
-                                                    <!-- <img src="./images/product/a.png" alt="" class="thumb"> -->
-                                                    <span class="title">{{ $store->name }}</span>
-                                                </span>
-                                            </div>
-                                            <div class="nk-tb-col tb-col-sm">
-                                            <span class="tb-product">
-                                            <span class="title">   {{ $store->sales }}</span></span>
-                                            </div>
-                                            <div class="nk-tb-col tb-col-sm">
-                                            <span class="tb-product">
-                                            <span class="title">  {{number_format($store->revenue, 2, ',', ' ')}} $</span></span>
-                                            </div>
-                                            <div class="nk-tb-col tb-col-sm">
-                                            <span class="tb-product">
-                                                  <a  class="btn btn-primary" href="{{ route('account.topstores.show',$store->id) }}">Start Tracking</a></span>
-                                            </div>
+
+                            <div class="table-responsive">
+                                    <table class="table table-fixed">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col"></th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Sales</th>
+                                            <th scope="col">Revenue</th>
+                                            <th scope="col">Expand</th>
                                           
+                                            <!-- Add more columns as needed -->
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach ($stores as $store)
+                                        <tr>
+                                            <td>
+                                                
+                                                <div class="custom-control custom-control-sm custom-checkbox notext">
+                                                    <input type="checkbox" class="custom-control-input" id="pid1">
+                                                    <label class="custom-control-label" for="pid1"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                            <span class="title">{{ $store->name }}</span>
+                                            </td>
                                            
-                                        </div><!-- .nk-tb-item -->
+                                            <td> 
+                                                 <span class="title">   {{ $store->sales }}</span>
+                                            </td>
+                                            
+                                            <td> {{number_format($store->revenue, 2, ',', ' ')}} $</td>
+
+                                            <td>                   
+                                            <a  class="btn btn-primary" href="{{ route('account.topstores.show',$store->id) }}">Start Tracking</a></span>
+                                            </td>
+                                            <!-- Add more data rows as needed -->
+                                        </tr>
                                         @endforeach
-                                    </div><!-- .nk-tb-list -->
+                                        </tbody>
+                                    </table>
                                     </div>
-                                </div><!-- .nk-block -->
+
+
                             </div>
                         </div>
                     </div>

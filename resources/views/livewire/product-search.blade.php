@@ -88,73 +88,57 @@
                                 </div>
                                 
 
-                                <!--  -->
+                                <!-- table sales  -->
 
-                                <div class="nk-block">
-                                    <div class="nk-tb-list is-separate mb-3">
-                                        <div class="nk-tb-item nk-tb-head">
-                                            <div class="nk-tb-col nk-tb-col-check">
-                                                <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                    <input type="checkbox" class="custom-control-input" id="pid">
-                                                    <label class="custom-control-label" for="pid"></label>
-                                                </div>
-                                            </div>
-                                           
-                                            <!-- <div class="nk-tb-col tb-col-sm"><span>Image</span></div> -->
-                                            <div class="nk-tb-col"><span>Title</span></div>
-                                            <div class="nk-tb-col"><span>Today</span></div>
-                                            <div class="nk-tb-col"><span>Yesterday</span></div>
-                                            <div class="nk-tb-col tb-col-md"><span>Total sales</span></div>
-                                            <div class="nk-tb-col tb-col-md"><span></span></div>
 
-                                          
-                                        </div><!-- .nk-tb-item -->
+                                <div class="table-responsive">
+                                    <table class="table table-fixed">
+                                        <thead>
+                                        <tr>
+                                             <th scope="col"></th>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Today</th>
+                                            <th scope="col">Yesterday</th>
+                                            <th scope="col">Total sales</th>
+                                            <th scope="col"></th>
+                                            <!-- Add more columns as needed -->
+                                        </tr>
+                                        </thead>
+                                        <tbody>
                                         @foreach ($products as $product)
-                                        <div class="nk-tb-item">
-                                            <div class="nk-tb-col nk-tb-col-check">
+                                        <tr>
+                                            <td>
+                                                
                                                 <div class="custom-control custom-control-sm custom-checkbox notext">
                                                     <input type="checkbox" class="custom-control-input" id="pid1">
                                                     <label class="custom-control-label" for="pid1"></label>
                                                 </div>
-                                            </div>
-                                         
-                                            <div class="nk-tb-col tb-col-sm">
-                                               
-                                                <span class="tb-product">
-                                                    <!-- <img src="./images/product/a.png" alt="" class="thumb"> -->
-                                                       <a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="150" height="150"></a>
+                                            </td>
+                                            <td>
+                                            <a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="100" height="100"></a>
                                                        <a href="{{ route('account.product.show',$product->id) }}"><span class="title">{{ $product->title }} - $ {{ $product->prix }}</span>    </a>
                                                        <a  target="_blank" href="{{$product->url}}"><img src="https://cdn3.iconfinder.com/data/icons/social-media-2068/64/_shopping-512.png" width="30" height="30"></a>
                                                        <a  target="_blank" href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&q={{urldecode($product->title)}}&search_type=keyword_unordered&media_type=all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/1024px-2021_Facebook_icon.svg.png" width="30" height="30"></a>
                                                        <a  target="_blank" href="https://www.aliexpress.com/wholesale?SearchText={{urldecode($product->title)}}"> <img src="https://img.icons8.com/color/512/aliexpress.png" width="30" height="30"></a>
                                                   
-                                                </span>
-                                            </div>
-                                      
-                                            <div class="nk-tb-col">
-                                                   <!-- <span class="title">${{ $product->todaysales * $product->prix }}</span>
-                                                   <span class="title">{{ $product->todaysales }}</span> -->
-                                                   <label class="badgepro badge-success badge-pill">${{ $product->todaysales * $product->prix }}</label>
-                                                  <label class="badgepro badge-info badge-pill">{{ $product->todaysales }}</label>
-                                            </div>
-                                            <div class="nk-tb-col">
-                                                   <label class="badgepro badge-success badge-pill">${{ $product->yesterdaysales * $product->prix }}</label>
-                                                   <label class="badgepro badge-info badge-pill">{{ $product->yesterdaysales }}</label>
-                                            </div>
-                                            <div class="nk-tb-col">
-                                                   <label class="badgepro badge-success badge-pill">${{ $product->totalsales * $product->prix }}</label>
-                                                   <label class="badgepro badge-info badge-pill">{{ $product->totalsales }}</label>
-                                            </div>
-                                            <div class="nk-tb-col">
-                                            <a  class="btn btn-success" href="{{ route('account.product.show',$product->id) }}" >View </a>
-                                            </div>
-                                        
-                                         
-                                        </div><!-- .nk-tb-item -->
+                                            </td>
+                                            <td> <label class="badgepro badge-success badge-pill">${{ $product->todaysales * $product->prix }}</label>
+                                                  <label class="badgepro badge-info badge-pill">{{ $product->todaysales }}</label></td>
+                                            <td>  <label class="badgepro badge-success badge-pill">${{ $product->yesterdaysales * $product->prix }}</label>
+                                                   <label class="badgepro badge-info badge-pill">{{ $product->yesterdaysales }}</label></td>
+                                            <td>     <label class="badgepro badge-success badge-pill">${{ $product->totalsales * $product->prix }}</label>
+                                                   <label class="badgepro badge-info badge-pill">{{ $product->totalsales }}</label></td>
+                                            <!-- Add more data rows as needed -->
+                                            <td>                         
+                                                <a  class="btn btn-success" href="{{ route('account.product.show',$product->id) }}" >View </a>
+                                            </td>
+                                            <!-- Add more data rows as needed -->
+                                        </tr>
                                         @endforeach
-                                    </div><!-- .nk-tb-list -->
-                               
-                                </div><!-- .nk-block -->
+                                        </tbody>
+                                    </table>
+                                    </div>
+
                         <div  wire:loading.class="invisible" class="my-4">
                         {{ $products->links() }}
                             </div>

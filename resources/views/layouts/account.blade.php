@@ -57,7 +57,7 @@ fpr("click");
                 <div class="nk-footer">
                     <div class="container-fluid">
                         <div class="nk-footer-wrap">
-                            <div class="nk-footer-copyright"> &copy; 2023 Weenify. Template by <a href="https://weenify.io" target="_blank">Softnio</a>
+                            <div class="nk-footer-copyright"> &copy; 2023 Weenify. Template by <a href="https://weenify.io" target="_blank">Weenify</a>
                             </div>
                         </div>
                     </div>

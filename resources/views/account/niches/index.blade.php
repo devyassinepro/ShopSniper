@@ -26,56 +26,42 @@
             </div>
         @endif
 
+                            <div class="table-responsive">
+                                    <table class="table table-fixed">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Niche</th>
+                                            <th scope="col">Start Added</th>
+                                            <th scope="col"></th>
 
-        <div class="nk-block nk-block-lg">
-                                        <div class="nk-block-head">
-                                        
-                                        </div>
-                                        <div class="card card-preview">
-                                            <table class="table table-orders">
-                                                <thead class="tb-odr-head">
-                                                    <tr class="tb-odr-item">
-                                                        <th class="tb-odr-info">
-                                                            <span class="tb-odr-id">Niche</span>
-                                                        </th>
-                                                        <th class="tb-odr-amount">
-                                                            <span class="tb-odr-total">Start Added</span>
-                                                        </th>
-                                                        <th class="tb-odr-action">&nbsp;</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="tb-odr-body">
-                                                @foreach ($nicheall as $niche)
-                                                    <tr class="tb-odr-item">
-                                                        <td class="tb-odr-info">
-                                                            <span class="tb-odr-id"><a href="#">{{ $niche->name }}</a></span>
-                                                        </td>
-                                                        <td class="tb-odr-amount">
-                                                            <span class="tb-odr-total">
-                                                                <span class="amount">{{ $niche->created_at }}</span>
-                                                            </span>
-                                                        </td>
-                                                        <td class="tb-odr-action">
-                                                            <div class="tb-odr-btns d-none d-md-inline">
-                                                            <form action="{{ route('account.niches.destroy',$niche->id) }}" method="Post">
+                                          
+                                            <!-- Add more columns as needed -->
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach ($nicheall as $niche)
+                                        <tr>
+                                            <td>
+                                                 <span class="tb-odr-id"><a href="#">{{ $niche->name }}</a></span>
+                                            </td>
+                                           
+                                            <td> 
+                                            <span class="amount">{{ $niche->created_at }}</span>
+                                            </td>
+                                            
+                                            <td>                   
+                                            <form action="{{ route('account.niches.destroy',$niche->id) }}" method="Post">
                                                                   @csrf
                                                                   @method('DELETE')
                                                                   <button type="submit" class="btn btn-danger">Delete</button>
-                                                              </form>                                                            
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    @endforeach
+                                                              </form>                                               </td>
+                                            <!-- Add more data rows as needed -->
+                                        </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                    </div>
 
-                                                   
-                                                </tbody>
-                                            </table>
-                                            <div>
-                                          {{  $nicheall->links() }}
-
-                                          </div>
-                                        </div><!-- .card -->
-                                    </div><!-- nk-block -->
 
     </div>
                         </div>

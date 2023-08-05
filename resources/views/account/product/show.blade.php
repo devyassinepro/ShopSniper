@@ -44,32 +44,33 @@
 
 
                                   <div class="row g-gs">
-                                            <div class="col-md-6">
-                                                <div class="card card-bordered card-preview">
-                                                    <div class="card-inner">
-                                                        <div class="card-head">
+                                  <div class="col-md-6">
+                                                <div class="card h-100">
+                                                <div class="card-inner">
+                                                    <div class="card-title-group align-start gx-3 mb-3">
+                                                        <div class="card-title">
                                                             <h6 class="title">Revenue Chart ($)</h6>
                                                         </div>
-                                                        <div class="nk-ck-sm">
-                                                        <canvas class="line-chart"  id="revenue-chartaffiche" height="200px" ></canvas>
-
-
-                                                        </div>
                                                     </div>
-                                                </div><!-- .card-preview -->
+                                                    <div class="nk-sales-ck large pt-4">
+                                                        <canvas class="sales-overview-chart" id="revenueOvervieweenify"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div><!-- .card -->
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="card card-bordered card-preview">
-                                                    <div class="card-inner">
-                                                        <div class="card-head">
-                                                            <h6 class="title">Sales Chart</h6>
-                                                        </div>
-                                                        <div class="nk-ck-sm">
-                                                        <canvas class="line-chart"  id="sales-chartaffiche" height="200px" ></canvas>
-
+                                            <div class="card h-100">
+                                                <div class="card-inner">
+                                                    <div class="card-title-group align-start gx-3 mb-3">
+                                                        <div class="card-title">
+                                                            <h6 class="title">Sales Overview</h6>
                                                         </div>
                                                     </div>
-                                                </div><!-- .card-preview -->
+                                                    <div class="nk-sales-ck large pt-4">
+                                                        <canvas class="sales-overview-chart" id="salesOvervieweenify"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div><!-- .card -->
                                             </div>
                                           
                                            
@@ -283,4 +284,177 @@
         options: options
       });
           </script>   
+
+<script>
+
+              var todaysales_count =  {!! json_encode($products->first()->todaysales_count)!!};
+              var yesterdaysales_count =   {!! json_encode($products->first()->yesterdaysales_count)!!};
+              var day3sales_count =  {!! json_encode($products->first()->day3sales_count)!!};
+              var day4sales_count =   {!! json_encode($products->first()->day4sales_count)!!};
+              var day5sales_count =   {!! json_encode($products->first()->day5sales_count)!!};
+              var day6sales_count =  {!! json_encode($products->first()->day6sales_count)!!};
+              var day7sales_count =   {!! json_encode($products->first()->day7sales_count)!!};
+
+              var dates =   {!! json_encode($dates)!!};
+
+var salesOvervieweenify = {
+labels: dates,
+dataUnit: 'Sales',
+lineTension: 0.1,
+datasets: [{
+label: "Sales Overview",
+color: "#9d72ff",
+background: NioApp.hexRGB('#9d72ff', .3),
+data: [day7sales_count,day6sales_count,day5sales_count,day4sales_count,day3sales_count,yesterdaysales_count,todaysales_count],
+
+}]
+};
+function lineSalesOverview(selector, set_data) {
+var $selector = selector ? $(selector) : $('.sales-overview-chart');
+$selector.each(function () {
+var $self = $(this),
+_self_id = $self.attr('id'),
+_get_data = typeof set_data === 'undefined' ? eval(_self_id) : set_data;
+var selectCanvas = document.getElementById(_self_id).getContext("2d");
+var chart_data = [];
+for (var i = 0; i < _get_data.datasets.length; i++) {
+chart_data.push({
+label: _get_data.datasets[i].label,
+tension: _get_data.lineTension,
+backgroundColor: _get_data.datasets[i].background,
+borderWidth: 2,
+borderColor: _get_data.datasets[i].color,
+pointBorderColor: "transparent",
+pointBackgroundColor: "transparent",
+pointHoverBackgroundColor: "#fff",
+pointHoverBorderColor: _get_data.datasets[i].color,
+pointBorderWidth: 2,
+pointHoverRadius: 3,
+pointHoverBorderWidth: 2,
+pointRadius: 3,
+pointHitRadius: 3,
+data: _get_data.datasets[i].data
+});
+}
+var chart = new Chart(selectCanvas, {
+type: 'line',
+data: {
+labels: _get_data.labels,
+datasets: chart_data
+},
+options: {
+legend: {
+display: _get_data.legend ? _get_data.legend : false,
+rtl: NioApp.State.isRTL,
+labels: {
+boxWidth: 30,
+padding: 20,
+fontColor: '#6783b8'
+}
+},
+maintainAspectRatio: false,
+tooltips: {
+enabled: true,
+rtl: NioApp.State.isRTL,
+callbacks: {
+title: function title(tooltipItem, data) {
+  return data['labels'][tooltipItem[0]['index']];
+},
+label: function label(tooltipItem, data) {
+  return data.datasets[tooltipItem.datasetIndex]['data'][tooltipItem['index']] + ' ' + _get_data.dataUnit;
+}
+},
+backgroundColor: '#1c2b46',
+titleFontSize: 13,
+titleFontColor: '#fff',
+titleMarginBottom: 6,
+bodyFontColor: '#fff',
+bodyFontSize: 12,
+bodySpacing: 4,
+yPadding: 10,
+xPadding: 10,
+footerMarginTop: 0,
+displayColors: false
+},
+scales: {
+yAxes: [{
+display: true,
+stacked: _get_data.stacked ? _get_data.stacked : false,
+position: NioApp.State.isRTL ? "right" : "left",
+ticks: {
+  beginAtZero: true,
+  fontSize: 11,
+  fontColor: '#9eaecf',
+  padding: 10,
+  callback: function callback(value, index, values) {
+    return '$ ' + value;
+  },
+  min: 100,
+  stepSize: 3000
+},
+gridLines: {
+  color: NioApp.hexRGB("#526484", .2),
+  tickMarkLength: 0,
+  zeroLineColor: NioApp.hexRGB("#526484", .2)
+}
+}],
+xAxes: [{
+display: true,
+stacked: _get_data.stacked ? _get_data.stacked : false,
+ticks: {
+  fontSize: 9,
+  fontColor: '#9eaecf',
+  source: 'auto',
+  padding: 10,
+  reverse: NioApp.State.isRTL
+},
+gridLines: {
+  color: "transparent",
+  tickMarkLength: 0,
+  zeroLineColor: 'transparent'
+}
+}]
+}
+}
+});
+});
+}
+
+// init chart
+NioApp.coms.docReady.push(function () {
+lineSalesOverview();
+});
+</script>
+
+<script>
+             var todaysales_revenue =  {!! json_encode($products->first()->todaysales_count * $products->first()->prix )!!};
+              var yesterdaysales_revenue =  {!! json_encode($products->first()->yesterdaysales_count * $products->first()->prix )!!};
+              var day3sales_revenue =  {!! json_encode($products->first()->day3sales_count * $products->first()->prix )!!};
+              var day4sales_revenue =   {!! json_encode($products->first()->day4sales_count * $products->first()->prix )!!};
+              var day5sales_revenue =  {!! json_encode($products->first()->day5sales_count * $products->first()->prix)!!};
+              var day6sales_revenue =   {!! json_encode($products->first()->day6sales_count * $products->first()->prix)!!};
+              var day7sales_revenue =  {!! json_encode($products->first()->day7sales_count * $products->first()->prix)!!};
+              var dates =   {!! json_encode($dates)!!};
+var dates =   {!! json_encode($dates)!!};
+
+var revenueOvervieweenify = {
+labels: dates,
+
+dataUnit: '$',
+lineTension: 0.1,
+datasets: [{
+label: "Revenue Overview",
+color: "#9d72ff",
+background: NioApp.hexRGB('#9d72ff', .3),
+data: [day7sales_revenue,day6sales_revenue,day5sales_revenue,day4sales_revenue,day3sales_revenue,yesterdaysales_revenue,todaysales_revenue],
+
+
+}]
+};
+// init chart
+NioApp.coms.docReady.push(function () {
+lineSalesOverview();
+});
+</script>
+
     @endsection
