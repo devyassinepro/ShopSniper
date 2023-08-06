@@ -61,7 +61,7 @@
       @if($storedata->first()->currency == "EUR" )
 <div class="nk-block">
 <!-- DAshboard  -->
-<div class="row grid-margin">
+<!-- <div class="row grid-margin">
             <div class="col-12">
               <div class="card card-statistics">
                 <div class="card-body">
@@ -106,7 +106,125 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
+
+
+          <div class="nk-block">
+                 <div class="row g-gs">
+                       <div class="col-xxl-6">
+                                            <div class="row g-gs">
+                                                <div class="col-lg-6 col-xxl-12">
+                                                    <div class="row g-gs">
+                                                        <div class="col-sm-6 col-lg-12 col-xxl-6">
+                                                            <div class="card">
+                                                                <div class="card-inner">
+                                                                    <div class="card-title-group align-start mb-2">
+                                                                        <div class="card-title">
+                                                                            <h6 class="title"> Revenue</h6>
+                                                                        </div>
+                                                                        <div class="card-tools">
+                                                                            <em class="card-hint icon ni ni-help-fill" data-bs-toggle="tooltip" data-bs-placement="left" title="Total active Stores"></em>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="align-end flex-sm-wrap g-4 flex-md-nowrap">
+                                                                        <div class="nk-sale-data">
+                                                                            <span class="amount"> {{ number_format($storedata->first()->revenue, 2, ',', ' ') }} €</span>
+                                                                            <span class="sub-title"><span class="change down text-danger"><em class="icon ni ni-arrow-long-down"></em>1.93%</span>since last month</span>
+                                                                        </div>
+                                                                        <div class="nk-sales-ck">
+                                                                            <canvas class="sales-bar-chart" id="activeSubscription"></canvas>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div><!-- .card -->
+                                                        </div><!-- .col -->
+                                                        <div class="col-sm-6 col-lg-12 col-xxl-6">
+                                                            <div class="card">
+                                                                <div class="card-inner">
+                                                                    <div class="card-title-group align-start mb-2">
+                                                                        <div class="card-title">
+                                                                            <h6 class="title">Sales</h6>
+                                                                        </div>
+                                                                        <div class="card-tools">
+                                                                            <em class="card-hint icon ni ni-help-fill" data-bs-toggle="tooltip" data-bs-placement="left" title="Total Products"></em>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="align-end flex-sm-wrap g-4 flex-md-nowrap">
+                                                                        <div class="nk-sale-data">
+                                                                            <span class="amount">{{$storedata->first()->sales}}</span>
+                                                                            <span class="sub-title"><span class="change up text-success"><em class="icon ni ni-arrow-long-up"></em>2.45%</span>since last week</span>
+                                                                        </div>
+                                                                        <div class="nk-sales-ck">
+                                                                            <canvas class="sales-bar-chart" id="totalSubscription"></canvas>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div><!-- .card -->
+                                                        </div><!-- .col -->
+                                                    </div><!-- .row -->
+                                                </div><!-- .col -->
+                                            </div><!-- .row -->
+                                        </div><!-- .col -->
+                                        <div class="col-xxl-6">
+                                            <div class="row g-gs">
+                                                <div class="col-lg-6 col-xxl-12">
+                                                    <div class="row g-gs">
+                                                    @if($storedata->first()->revenue != 0 )
+                                                        <div class="col-sm-6 col-lg-12 col-xxl-6">
+                                                            <div class="card">
+                                                                <div class="card-inner">
+                                                                    <div class="card-title-group align-start mb-2">
+                                                                        <div class="card-title">
+                                                                            <h6 class="title">AOV</h6>
+                                                                        </div>
+                                                                        <div class="card-tools">
+                                                                            <em class="card-hint icon ni ni-help-fill" data-bs-toggle="tooltip" data-bs-placement="left" title="Total Sales"></em>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="align-end flex-sm-wrap g-4 flex-md-nowrap">
+                                                                        <div class="nk-sale-data">
+                                                                            <span class="amount">{{number_format($storedata->first()->revenue / $storedata->first()->sales, 2, ',', ' ')}} €</span>
+                                                                            <span class="sub-title"><span class="change down text-danger"><em class="icon ni ni-arrow-long-down"></em>1.93%</span>since last month</span>
+                                                                        </div>
+                                                                        <div class="nk-sales-ck">
+                                                                            <canvas class="sales-bar-chart" id="activeSubscription"></canvas>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div><!-- .card -->
+                                                        </div><!-- .col -->
+
+                                                        @endif
+                                                        <div class="col-sm-6 col-lg-12 col-xxl-6">
+                                                            <div class="card">
+                                                                <div class="card-inner">
+                                                                    <div class="card-title-group align-start mb-2">
+                                                                        <div class="card-title">
+                                                                            <h6 class="title">Products</h6>
+                                                                        </div>
+                                                                        <div class="card-tools">
+                                                                            <em class="card-hint icon ni ni-help-fill" data-bs-toggle="tooltip" data-bs-placement="left" title="Total Revenue"></em>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="align-end flex-sm-wrap g-4 flex-md-nowrap">
+                                                                        <div class="nk-sale-data">
+                                                                            <span class="amount">{{$storedata->first()->allproducts}}</span>
+                                                                            <span class="sub-title"><span class="change up text-success"><em class="icon ni ni-arrow-long-up"></em>2.45%</span>since last week</span>
+                                                                        </div>
+                                                                        <div class="nk-sales-ck">
+                                                                            <canvas class="sales-bar-chart" id="totalSubscription"></canvas>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div><!-- .card -->
+                                                        </div><!-- .col -->
+                                                    </div><!-- .row -->
+                                                </div><!-- .col -->
+                                            </div><!-- .row -->
+                                        </div><!-- .col -->
+
+                                        </div>
+                                        </div>
 
       <!-- ENd Dashboard  -->
 
@@ -211,7 +329,7 @@
 @if($storedata->first()->currency != "EUR" )
 
 <!-- DAshboard  -->
-<div class="row grid-margin">
+<!-- <div class="row grid-margin">
             <div class="col-12">
               <div class="card card-statistics">
                 <div class="card-body">
@@ -256,7 +374,124 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
+
+          <div class="nk-block">
+                 <div class="row g-gs">
+                       <div class="col-xxl-6">
+                                            <div class="row g-gs">
+                                                <div class="col-lg-6 col-xxl-12">
+                                                    <div class="row g-gs">
+                                                        <div class="col-sm-6 col-lg-12 col-xxl-6">
+                                                            <div class="card">
+                                                                <div class="card-inner">
+                                                                    <div class="card-title-group align-start mb-2">
+                                                                        <div class="card-title">
+                                                                            <h6 class="title"> Revenue</h6>
+                                                                        </div>
+                                                                        <div class="card-tools">
+                                                                            <em class="card-hint icon ni ni-help-fill" data-bs-toggle="tooltip" data-bs-placement="left" title="Total active Stores"></em>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="align-end flex-sm-wrap g-4 flex-md-nowrap">
+                                                                        <div class="nk-sale-data">
+                                                                            <span class="amount">${{ number_format($storedata->first()->revenue, 2, ',', ' ') }}</span>
+                                                                            <span class="sub-title"><span class="change down text-danger"><em class="icon ni ni-arrow-long-down"></em>1.93%</span>since last month</span>
+                                                                        </div>
+                                                                        <div class="nk-sales-ck">
+                                                                            <canvas class="sales-bar-chart" id="activeSubscription"></canvas>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div><!-- .card -->
+                                                        </div><!-- .col -->
+                                                        <div class="col-sm-6 col-lg-12 col-xxl-6">
+                                                            <div class="card">
+                                                                <div class="card-inner">
+                                                                    <div class="card-title-group align-start mb-2">
+                                                                        <div class="card-title">
+                                                                            <h6 class="title">Sales</h6>
+                                                                        </div>
+                                                                        <div class="card-tools">
+                                                                            <em class="card-hint icon ni ni-help-fill" data-bs-toggle="tooltip" data-bs-placement="left" title="Total Products"></em>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="align-end flex-sm-wrap g-4 flex-md-nowrap">
+                                                                        <div class="nk-sale-data">
+                                                                            <span class="amount">{{$storedata->first()->sales}}</span>
+                                                                            <span class="sub-title"><span class="change up text-success"><em class="icon ni ni-arrow-long-up"></em>2.45%</span>since last week</span>
+                                                                        </div>
+                                                                        <div class="nk-sales-ck">
+                                                                            <canvas class="sales-bar-chart" id="totalSubscription"></canvas>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div><!-- .card -->
+                                                        </div><!-- .col -->
+                                                    </div><!-- .row -->
+                                                </div><!-- .col -->
+                                            </div><!-- .row -->
+                                        </div><!-- .col -->
+                                        <div class="col-xxl-6">
+                                            <div class="row g-gs">
+                                                <div class="col-lg-6 col-xxl-12">
+                                                    <div class="row g-gs">
+                                                    @if($storedata->first()->revenue != 0 )
+                                                        <div class="col-sm-6 col-lg-12 col-xxl-6">
+                                                            <div class="card">
+                                                                <div class="card-inner">
+                                                                    <div class="card-title-group align-start mb-2">
+                                                                        <div class="card-title">
+                                                                            <h6 class="title">AOV</h6>
+                                                                        </div>
+                                                                        <div class="card-tools">
+                                                                            <em class="card-hint icon ni ni-help-fill" data-bs-toggle="tooltip" data-bs-placement="left" title="Total Sales"></em>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="align-end flex-sm-wrap g-4 flex-md-nowrap">
+                                                                        <div class="nk-sale-data">
+                                                                            <span class="amount">$ {{number_format($storedata->first()->revenue / $storedata->first()->sales, 2, ',', ' ')}}</span>
+                                                                            <span class="sub-title"><span class="change down text-danger"><em class="icon ni ni-arrow-long-down"></em>1.93%</span>since last month</span>
+                                                                        </div>
+                                                                        <div class="nk-sales-ck">
+                                                                            <canvas class="sales-bar-chart" id="activeSubscription"></canvas>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div><!-- .card -->
+                                                        </div><!-- .col -->
+
+                                                        @endif
+                                                        <div class="col-sm-6 col-lg-12 col-xxl-6">
+                                                            <div class="card">
+                                                                <div class="card-inner">
+                                                                    <div class="card-title-group align-start mb-2">
+                                                                        <div class="card-title">
+                                                                            <h6 class="title">Products</h6>
+                                                                        </div>
+                                                                        <div class="card-tools">
+                                                                            <em class="card-hint icon ni ni-help-fill" data-bs-toggle="tooltip" data-bs-placement="left" title="Total Revenue"></em>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="align-end flex-sm-wrap g-4 flex-md-nowrap">
+                                                                        <div class="nk-sale-data">
+                                                                            <span class="amount">{{$storedata->first()->allproducts}}</span>
+                                                                            <span class="sub-title"><span class="change up text-success"><em class="icon ni ni-arrow-long-up"></em>2.45%</span>since last week</span>
+                                                                        </div>
+                                                                        <div class="nk-sales-ck">
+                                                                            <canvas class="sales-bar-chart" id="totalSubscription"></canvas>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div><!-- .card -->
+                                                        </div><!-- .col -->
+                                                    </div><!-- .row -->
+                                                </div><!-- .col -->
+                                            </div><!-- .row -->
+                                        </div><!-- .col -->
+
+                                        </div>
+                                        </div>
 
       <!-- ENd Dashboard  -->
 

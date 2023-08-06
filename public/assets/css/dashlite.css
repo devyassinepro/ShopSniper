@@ -780,6 +780,7 @@ progress {
   margin-top: calc(-1 * var(--bs-gutter-y));
   margin-right: calc(-0.5 * var(--bs-gutter-x));
   margin-left: calc(-0.5 * var(--bs-gutter-x));
+  margin-bottom: 1em;
 }
 .row > * {
   flex-shrink: 0;
@@ -34493,6 +34494,8 @@ body.toggle-shown {
 }
 .nk-ck-sm {
   height: 180px;
+  align-content: center;
+  text-align: center;
 }
 
 .nk-ck1 {
@@ -34528,6 +34531,8 @@ body.toggle-shown {
   }
   .nk-ck-sm {
     height: 180px;
+      align-content: center;
+  text-align: center;
   }
   .nk-ck1 {
     height: 120px;

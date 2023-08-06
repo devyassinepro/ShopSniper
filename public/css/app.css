@@ -1806,6 +1806,8 @@ pre code {
 
 .card.card-statistics .statistics-item {
   position: relative;
+  text-align: left;
+
 }
 
 

@@ -22572,6 +22572,7 @@ code {
 
 .card.card-statistics .statistics-item {
   position: relative;
+  
 }
 
 @media (min-width: 768px) {
