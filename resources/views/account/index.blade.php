@@ -212,7 +212,7 @@ fpr("referral",{email:"{{ Auth::user()->email }}"})
                       <tbody>
                         @foreach ($products as $product)
                         <tr>
-                        <td>
+                        <td class="w-25">
                               <a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="100" height="100"></a>
                           </td>
                           <td>
