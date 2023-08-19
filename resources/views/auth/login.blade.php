@@ -76,5 +76,5 @@
             padding-bottom:15px;
         }
     </style>
-@endpush
+    @endpush
 </x-guest-layout>

@@ -41,13 +41,13 @@
 <section class="all-news section-padding pt-50 blog bg-transparent style-3">
             <div class="container">
 
-            <div></div>     <div></div>
-                <div class="blog-details-slider mb-100">
+            <div></div>     <div></div> <br><br><br>
+                <!-- <div class="blog-details-slider mb-100">
                     <div class="section-head text-center mb-60 style-5">
                         <h2 class="mb-20 color-000"> Privacy Policy</h2>
                         <small class="d-block date text">
                         </small>
-                    </div>    
+                    </div>     -->
                     
             
                 <!-- <div class="row justify-content-center">

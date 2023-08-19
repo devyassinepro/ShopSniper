@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="light">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="Weenify , store shopify tracking ,store shopify,product spying, keyword research, search engine optimization, search engine marketing" />
     <meta name="description" content="">
+
+        <!--twitter og-->
+    <meta name="twitter:site" content="@themetags">
+    <meta name="twitter:creator" content="@themetags">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Weenify - Creative SAAS Technology & IT Solutions Bootstrap 5 HTML Template">
+    <meta name="twitter:description" content="Weenify creative Saas, software technology, Saas agency & business Bootstrap 5 Html template. It is best and famous software company and Saas website template.">
+    <meta name="twitter:image" content="#">
+
+    <!--facebook og-->
+    <meta property="og:url" content="#">
+    <meta name="twitter:title" content="Weenify - Creative SAAS Technology & IT Solutions Bootstrap 5 HTML Template">
+    <meta property="og:description" content="Weenify creative Saas, software technology, Saas agency & business Bootstrap 5 Html template. It is best and famous software company and Saas website template.">
+    <meta property="og:image" content="#">
+    <meta property="og:image:secure_url" content="#">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+
 
         <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -15,10 +34,15 @@
     <link href="{{ asset('saas/home/css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Loading Template CSS -->
-    <link href="{{ asset('saas/home/css/style.css')}}" rel="stylesheet">
+    <!-- <link href="{{ asset('saas/home/css/style.css')}}" rel="stylesheet">
     <link href="{{ asset('saas/home/css/animate.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('saas/home/css/pe-icon-7-stroke.css')}}">
-    <link href="{{ asset('saas/home/css/style-magnific-popup.css')}}" rel="stylesheet">
+    <link href="{{ asset('saas/home/css/style-magnific-popup.css')}}" rel="stylesheet"> -->
+
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!--custom css start-->
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <!--custom css end-->
 
     <!-- Awsome Fonts -->
     <link rel="stylesheet" href="{{ asset('saas/home/css/all.min.css')}}">
@@ -28,6 +52,10 @@
 
     <!-- Font Favicon -->
     <link rel="shortcut icon" href="{{ asset('saas/img/favicon.png') }}">
+    <link rel="icon" href="assets/img/favicon.png" type="image/png" sizes="16x16">
+
+
+
     @livewireStyles
     @stack('styles')
     <style>
@@ -39,82 +67,60 @@
         }
     </style>
 
-<script>(function(w){w.fpr=w.fpr||function(){w.fpr.q = w.fpr.q||[];w.fpr.q[arguments[0]=='set'?'unshift':'push'](arguments);};})(window);
-fpr("init", {cid:"uhjjfvck"});
-fpr("click");
-</script>
-{{-- <script src="https://cdn.firstpromoter.com/fpr.js" async></script> --}}
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-975957367"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-975957367');
-</script>
-
-<!-- Hotjar Tracking Code for my site -->
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:3424765,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
-
 </head>
 
 <body>
 
     <!-- ======== End Navbar ======== -->
-<!--begin header -->
-<header class="header">
 
-    <!--begin navbar-fixed-top -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <!--preloader start-->
+    <!-- <div id="preloader" class="bg-light-subtle">
+        <div class="preloader-wrap">
+            <img src="assets/img/favicon.png" alt="logo" class="img-fluid preloader-icon">
+            <div class="loading-bar"></div>
+        </div>
+    </div> -->
+    <!--preloader end-->
+    <!--main content wrapper start-->
+    <div class="main-wrapper">
 
-        <!--begin container -->
-        <div class="container">
-
-            <!--begin navbar -->
-            <nav class="navbar navbar-expand-lg">
-
-                <!--begin logo -->
-                <a class="navbar-brand" href="/">
+        <!--header section start-->
+        <!--header start-->
+        <header class="main-header position-absolute w-100">
+            <nav class="navbar navbar-expand-xl navbar-dark z-10">
+                <div class="container d-flex align-items-center justify-content-lg-between position-relative">
+                @if(Request::is('/'))
+                    <a href="/" class="navbar-brand d-flex align-items-center mb-md-0 text-decoration-none">
+                        <img src="assets/img/logo.png" alt="logo" class="img-fluid logo-white" />
+                        <img src="assets/img/logo.png" alt="logo" class="img-fluid logo-color" />
+                    </a>
+                @else 
+                    <a class="navbar-brand" href="/">
                     <img src="{{ asset('saas/img/logo.png') }}" class="navbar-brand-img" alt="knine" style="max-height: 3rem;">
-                </a>
-                <!--end logo -->
-
-                <!--begin navbar-toggler -->
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
-                </button>
-                <!--end navbar-toggler -->
-
-                <!--begin navbar-collapse -->
-                <div class="navbar-collapse collapse" id="navbarCollapse" style="">
-
-                    <!--begin navbar-nav -->
-                    <ul class="ml-auto navbar-nav">
+                  </a>
+                @endif
+                    <a class="navbar-toggler position-absolute right-0 border-0" href="#offcanvasWithBackdrop">
+                        <i class="flaticon-menu" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"
+                     data-bs-toggle="offcanvas" role="button"></i>
+                    </a>
+                    <div class="clearfix"></div>
+                    <div class="collapse navbar-collapse justify-content-center">
+                        <ul class="nav col-12 col-md-auto justify-content-center main-menu">
                         @if(Request::is('/'))
-                            <li class="link"><a href="/">{{ __('Home') }}</a></li>
 
-                            <!-- <li class="link"><a href="#about">{{ __('About') }}</a></li> -->
-                            <li class="link"><a href="#faq">{{ __('FAQ') }}</a></li>
+                            <li><a href="/" class="nav-link">{{ __('Home') }}</a></li>
+                            <li><a href="#faq" class="nav-link">{{ __('FAQ') }}</a></li>
+                            <li><a href="#pricing" class="nav-link">{{ __('Pricing') }}</a></li>
+                            <li><a href="/contact" class="nav-link">{{ __('Contact') }}</a></li>
 
-                            <li class="link"><a href="#pricing">{{ __('Pricing') }}</a></li>
-
-                            <li class="link"><a href="/contact">{{ __('Contact') }}</a></li>
                         @endif
-
-            @guest
-            {{-- <a href="/login" role="button" class="btn-1">Login</a> --}}
-            <li class="discover-link"><a href="/login" class="external">{{ __('Login') }}</a></li>
-            <li class="discover-link"><a href="/register" class="external discover-btn">{{ __('Start Free Trial') }}</a></li>
+   
+                </ul>
+                </div>
+                @guest
+            <!-- {{-- <a href="/login" role="button" class="btn-1">Login</a> --}} -->
+            <!-- <li class="discover-link"><a href="/login" class="external">{{ __('Login') }}</a></li> -->
+            <!-- <li class="discover-link"><a href="/register" class="external discover-btn">{{ __('Start Free Trial') }}</a></li> -->
             @else
             <div>
                 <span class="nav-item dropdown">
@@ -128,11 +134,11 @@ fpr("click");
 
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <!-- User Account Link -->
-                        <a class="dropdown-item" href="{{ route('profile.show') }}">
+                        <a class="dropdown-item" href="/dashboard">
                             <span class="dropdown-item-icon">
                             <i class="fas fa-user"></i>
                             </span>
-                            {{ __('Profile') }}
+                            {{ __('Dashboard') }}
                         </a>
                         <a class="dropdown-item" href="{{ route('account.password') }}">
                             <span class="dropdown-item-icon">
@@ -164,8 +170,8 @@ fpr("click");
                 </span>
             </div>
             @endguest
-            <li class="nav-item dropdown mr-4">
                 <div class="hs-unfold">
+                    
                   <a class="pr-0 nav-link btn btn-secondary" href="#" role="button" data-toggle="dropdown" style="background-color:transparent; border:0px;"
                       aria-haspopup="true" aria-expanded="false">
                       <div class="media-body d-none d-lg-block">
@@ -178,25 +184,77 @@ fpr("click");
                     @foreach (language()->allowed() as $code => $name)
                       <a class="dropdown-item" href="{{ language()->back($code) }}">{{ $name }}</a>
                     @endforeach
-                  </div>
-                </div>
-              </li>
-                    </ul>
-                    <!--end navbar-nav -->
+                        </div>
+                          </div>
+                    @guest
+                    <div class="action-btns text-end me-5 me-lg-0 d-none d-md-block d-lg-block">
+                        <a href="javascript:void(0)" class="btn btn-link p-1 tt-theme-toggle">
+                            <div class="tt-theme-light" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Light"><i class="flaticon-sun-1 fs-lg"></i></div>
+                            <div class="tt-theme-dark" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Dark"><i class="flaticon-moon-1 fs-lg"></i></div>
+                        </a> 
+                        <a href="/login" class="btn btn-link text-decoration-none me-2">Sign In</a>
+                        <a href="/register" class="btn btn-primary">Get Started</a>
+                    </div>
+                    @endguest
 
+                    
                 </div>
-                <!--end navbar-collapse -->
-
             </nav>
-            <!--end navbar -->
+            <!--offcanvas menu start-->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasWithBackdrop">
+                <div class="offcanvas-header d-flex align-items-center mt-4">
+                    <a href="/" class="d-flex align-items-center mb-md-0 text-decoration-none">
+                        <img src="saas/img/logo.png" alt="logo" class="img-fluid ps-2" />
+                    </a>
+                    <button type="button" class="close-btn text-danger" data-bs-dismiss="offcanvas" aria-label="Close">
+                        <i class="flaticon-cancel"></i>
+                    </button>
+                </div>
+                <div class="offcanvas-body z-10">
 
-        </div>
-        <!--end container -->
+                    @guest
+                    <ul class="nav col-12 col-md-auto justify-content-center main-menu">
+                        <li class="nav-item dropdown">
+                           
+                            <li><a href="/" class="nav-link">{{ __('Home') }}</a></li>
+                            <li><a href="#faq" class="nav-link">{{ __('FAQ') }}</a></li>
+                            <li><a href="#pricing" class="nav-link">{{ __('Pricing') }}</a></li>
+                            <li><a href="/contact" class="nav-link">{{ __('Contact') }}</a></li>
+                    </ul>
+                    <div class="action-btns mt-4 ps-3">
+                        <a href="/login" class="btn btn-outline-primary me-2">Sign In</a>
+                        <a href="/register" class="btn btn-primary">Get Started</a>
+                    </div>
+                    @else
 
-    </nav>
-    <!--end navbar-fixed-top -->
+                    <ul class="nav col-12 col-md-auto justify-content-center main-menu">
+                        <li class="nav-item dropdown">
+                           
 
-</header>
+                            <li><a href="/dashboard" class="nav-link">{{ __('Dashboard') }}</a></li>
+                            <li><a href="{{ route('account.password') }}" class="nav-link">{{ __('Password') }}</a></li>
+                            <li>  
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                            <span class="dropdown-item-icon">
+                            <i class="fas fa-power-off"></i>
+                            </span>
+                            {{ __('Logout') }}
+                        </a>
+                        <form method="POST" id="logout-form" action="{{ route('logout') }}">
+                            @csrf
+                        </form>
+                            <li><a href="/contact" class="nav-link">{{ __('Contact') }}</a></li>
+                    </ul>
+                    <!-- start -->
+                    @endguest
+                    <!-- end -->
+
+                </div>
+            </div>
+            <!--offcanvas menu end-->
+        </header>
+<!--begin header -->
 <!--end header -->
         {{ $slot }}
 
