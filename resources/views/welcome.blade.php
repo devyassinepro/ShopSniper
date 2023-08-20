@@ -60,7 +60,7 @@
                             <p class="lead">Time is Money: Trust Us to Find the Winning Products</p>
                             <div class="action-btn mt-5 align-items-center d-block d-sm-flex d-lg-flex d-md-flex">
                                 <a href="/register" class="btn btn-primary me-3">Start Free Trial</a>
-                                <a href="http://www.youtube.com/watch?v=hAP2QF--2Dg" class="text-decoration-none popup-youtube d-inline-flex align-items-center watch-now-btn mt-3 mt-lg-0 mt-md-0"> <i
+                                <a href="https://www.youtube.com/watch?v=TZkyCvcSkBo" class="text-decoration-none popup-youtube d-inline-flex align-items-center watch-now-btn mt-3 mt-lg-0 mt-md-0"> <i
                                         class="fas fa-play"></i> Watch Demo </a>
                             </div>
                             <div class="row justify-content-lg-start mt-60">
@@ -262,7 +262,7 @@
                                             <div class="testimonial-video-wrapper position-relative">
                                                 <img src="assets/img/testimonial/t-1.jpg" class="img-fluid rounded-custom shadow-lg" alt="testimonial author">
                                                 <div class="customer-info text-white d-flex align-items-center">
-                                                    <a href="http://www.youtube.com/watch?v=hAP2QF--2Dg" class="video-icon popup-youtube text-decoration-none"><i class="fas fa-play"></i> <span class="text-white ms-2 small"> Watch Video</span></a>
+                                                    <a href="https://www.youtube.com/watch?v=TZkyCvcSkBo" class="video-icon popup-youtube text-decoration-none"><i class="fas fa-play"></i> <span class="text-white ms-2 small"> Watch Video</span></a>
                                                 </div>
                                                 <div class="position-absolute bg-primary-dark z--1 dot-mask dm-size-16 dm-wh-350 top--40 left--40 top-left"></div>
                                             </div>
@@ -306,7 +306,7 @@
                                             <div class="testimonial-video-wrapper position-relative">
                                                 <img src="assets/img/testimonial/t-2.jpg" class="img-fluid rounded-custom shadow-lg" alt="testimonial author">
                                                 <div class="customer-info text-white d-flex align-items-center">
-                                                    <a href="http://www.youtube.com/watch?v=hAP2QF--2Dg" class="video-icon popup-youtube text-decoration-none"><i class="fas fa-play"></i> <span class="text-white ms-2 small"> Watch Video</span></a>
+                                                    <a href="https://www.youtube.com/watch?v=TZkyCvcSkBo" class="video-icon popup-youtube text-decoration-none"><i class="fas fa-play"></i> <span class="text-white ms-2 small"> Watch Video</span></a>
                                                 </div>
                                                 <div class="position-absolute bg-primary-dark z--1 dot-mask dm-size-16 dm-wh-350 top--40 left--40 top-left"></div>
                                             </div>
@@ -352,7 +352,7 @@
                                             <div class="testimonial-video-wrapper position-relative">
                                                 <img src="assets/img/testimonial/t-3.jpg" class="img-fluid rounded-custom shadow-lg" alt="testimonial author">
                                                 <div class="customer-info text-white d-flex align-items-center">
-                                                    <a href="http://www.youtube.com/watch?v=hAP2QF--2Dg" class="video-icon popup-youtube text-decoration-none"><i class="fas fa-play"></i> <span class="text-white ms-2 small"> Watch Video</span></a>
+                                                    <a href="https://www.youtube.com/watch?v=TZkyCvcSkBo" class="video-icon popup-youtube text-decoration-none"><i class="fas fa-play"></i> <span class="text-white ms-2 small"> Watch Video</span></a>
                                                 </div>
                                                 <div class="position-absolute bg-primary-dark z--1 dot-mask dm-size-16 dm-wh-350 top--40 left--40 top-left"></div>
                                             </div>
@@ -396,7 +396,7 @@
                                             <div class="testimonial-video-wrapper position-relative">
                                                 <img src="assets/img/testimonial/t-4.jpg" class="img-fluid rounded-custom shadow-lg" alt="testimonial author">
                                                 <div class="customer-info text-white d-flex align-items-center">
-                                                    <a href="http://www.youtube.com/watch?v=hAP2QF--2Dg" class="video-icon popup-youtube text-decoration-none"><i class="fas fa-play"></i> <span class="text-white ms-2 small"> Watch Video</span></a>
+                                                    <a href="https://www.youtube.com/watch?v=TZkyCvcSkBo" class="video-icon popup-youtube text-decoration-none"><i class="fas fa-play"></i> <span class="text-white ms-2 small"> Watch Video</span></a>
                                                 </div>
                                                 <div class="position-absolute bg-primary-dark z--1 dot-mask dm-size-16 dm-wh-350 top--40 left--40 top-left"></div>
                                             </div>
@@ -440,7 +440,7 @@
                                             <div class="testimonial-video-wrapper position-relative">
                                                 <img src="assets/img/testimonial/t-5.jpg" class="img-fluid rounded-custom shadow-lg" alt="testimonial author">
                                                 <div class="customer-info text-white d-flex align-items-center">
-                                                    <a href="http://www.youtube.com/watch?v=hAP2QF--2Dg" class="video-icon popup-youtube text-decoration-none"><i class="fas fa-play"></i> <span class="text-white ms-2 small"> Watch Video</span></a>
+                                                    <a href="https://www.youtube.com/watch?v=TZkyCvcSkBo" class="video-icon popup-youtube text-decoration-none"><i class="fas fa-play"></i> <span class="text-white ms-2 small"> Watch Video</span></a>
                                                 </div>
                                                 <div class="position-absolute bg-primary-dark z--1 dot-mask dm-size-16 dm-wh-350 top--40 left--40 top-left"></div>
                                             </div>
@@ -733,7 +733,7 @@
                                 </div>
                                 <div class="form-block-banner mw-60 m-auto mt-5">
                                     <a href="/register" class="btn btn-primary">Start Free Trial</a>
-                                    <a href="http://www.youtube.com/watch?v=hAP2QF--2Dg" class="text-decoration-none popup-youtube d-inline-flex align-items-center watch-now-btn ms-lg-3 ms-md-3 mt-3 mt-lg-0"> <i
+                                    <a href="https://www.youtube.com/watch?v=TZkyCvcSkBo" class="text-decoration-none popup-youtube d-inline-flex align-items-center watch-now-btn ms-lg-3 ms-md-3 mt-3 mt-lg-0"> <i
                                             class="fas fa-play"></i> Watch Demo </a>
                                 </div>
                                 <ul class="nav justify-content-center subscribe-feature-list mt-4">
