@@ -89,9 +89,18 @@ class StoresController extends Controller
                     'url' => 'required',
                     'nicheid' =>'required'
                 ]);
+                //if domaine with url ;;; 
+                $parsedUrl = parse_url($request->url);
+
+                if (isset($parsedUrl['host'])) {
+                    $domain = $parsedUrl['scheme'] . '://' . $parsedUrl['host']. '/' ;
+
+                } else {
+                    return redirect()->route('account.stores.create')->with('error','This Store not Supported by Weenify');
+                }
 
                 // check if store already added
-                $stores = stores::where('url', $request->url)->first();
+                $stores = stores::where('url', $domain)->first();
                 if($stores)
                 {
                     $storeuser = Storeuser::where('user_id', $user_id)->where('store_id', $stores->id)->count();
@@ -140,12 +149,12 @@ class StoresController extends Controller
                     try {
                         $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n"));
                         $context = stream_context_create($opts);
-                        $meta = file_get_contents($request->url.'meta.json',false,$context);
+                        $meta = file_get_contents($domain.'meta.json',false,$context);
                         $metas = json_decode($meta);
                         $totalproducts = $metas->published_products_count;
 
                         $store_id = DB::table('stores')->insertGetId(
-                            ['url' => $request->url,
+                            ['url' => $domain,
                             'name' => $metas->name,
                             'status' => 1,
                             'sales' => 0,
@@ -175,23 +184,23 @@ class StoresController extends Controller
                              "updated_at" => now()
                         ]);
                         if($totalproducts<=250){
-                            createstore($request->url,$store_id,1);
+                            createstore($domain,$store_id,1);
 
 
                         }else if($totalproducts<=500){
                             for ($i = 1; $i <= 2; $i++) {
-                                createstore($request->url,$store_id,$i);
+                                createstore($domain,$store_id,$i);
 
                             }
                          }else if($totalproducts<=750){
                             for ($i = 1; $i <= 3; $i++) {
-                                createstore($request->url,$store_id,$i);
+                                createstore($domain,$store_id,$i);
 
                             }
                         }
                         else if($totalproducts<=1000 || $totalproducts>1000){
                             for ($i = 1; $i <= 4; $i++) {
-                                createstore($request->url,$store_id,$i);
+                                createstore($domain,$store_id,$i);
                             }
                         }
                     } catch(\Exception $exception) {
