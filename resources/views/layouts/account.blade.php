@@ -24,6 +24,24 @@
   <link rel="stylesheet" href="{{ asset('assets/css/dashlite.css?ver=3.2.0') }}" type="text/css">
 
   <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" type="text/css">
+
+
+  <link rel="stylesheet" href="assets/css/main.css">
+    <!--custom css start-->
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <!--custom css end-->
+
+    <!-- Awsome Fonts -->
+    <link rel="stylesheet" href="{{ asset('saas/home/css/all.min.css')}}">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Cabin:700" rel="stylesheet">
+
+    <!-- Font Favicon -->
+    <link rel="shortcut icon" href="{{ asset('saas/img/favicon.png') }}">
+    <link rel="icon" href="assets/img/favicon.png" type="image/png" sizes="16x16">
+
+
   @livewireStyles
   @stack('styles')
 
