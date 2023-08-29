@@ -37,16 +37,13 @@
   @livewireStyles
   @stack('styles')
 
-  <script>(function(w){w.fpr=w.fpr||function(){w.fpr.q = w.fpr.q||[];w.fpr.q[arguments[0]=='set'?'unshift':'push'](arguments);};})(window);
-fpr("init", {cid:"uhjjfvck"}); 
-fpr("click");
-</script>
-<!-- Hotjar Tracking Code for my site -->
 </head>
 <body>
 
   <!-- Main content -->
+  @if(Route::is('subscriptions'))
 
+  <!-- Sidenav -->
 
   <nav class="navbar navbar-expand-md">
   <div class="container-fluid">
@@ -70,19 +67,59 @@ fpr("click");
   <div class="nk-app-root">
         <!-- main @s -->
         <div class="nk-main ">
+
             <!-- wrap @s -->
             <div class="nk-wrap ">
+
                 <!-- main header @s -->
                 <!-- main header @e -->
                    <!-- Page content -->
                    {{ $slot }}
 
-
+                <!-- footer @s -->
                 <!-- footer @e -->
             </div>
             <!-- wrap @e -->
         </div>
         <!-- main @e -->
+
+@else 
+
+  <!-- Sidenav -->
+  @include('partials.read-only')
+  @include('partials.account.login_as')
+  <!-- @include('partials.account.sidebar') -->
+
+  <div class="nk-app-root">
+        <!-- main @s -->
+        <div class="nk-main ">
+        @include('partials.account.sidebar')
+
+            <!-- wrap @s -->
+            <div class="nk-wrap ">
+            @include('partials.account.topnav')
+
+                <!-- main header @s -->
+                <!-- main header @e -->
+                   <!-- Page content -->
+                   {{ $slot }}
+
+                <!-- footer @s -->
+                <div class="nk-footer">
+                    <div class="container-fluid">
+                        <div class="nk-footer-wrap">
+                            <div class="nk-footer-copyright"> &copy; 2023 Weenify. Template by <a href="https://weenify.io" target="_blank">Weenify</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- footer @e -->
+            </div>
+            <!-- wrap @e -->
+        </div>
+        <!-- main @e -->
+@endif
+
     </div>
 
 
@@ -92,8 +129,8 @@ fpr("click");
 	<x-livewire-alert::scripts />
   <script src="{{ asset('js/app.js') }}"></script>
   <script src="{{ asset('assets/vendor/js-cookie/js.cookie.js') }}"></script>
-    <script src="{{ asset('assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/lavalamp/js/jquery.lavalamp.min.js') }}"></script>
+  <script src="{{ asset('assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
+  <script src="{{ asset('assets/vendor/lavalamp/js/jquery.lavalamp.min.js') }}"></script>
     <!-- Optional JS -->
     <!-- Argon JS -->
     <script src="{{ asset('assets/js/argon.mine209.js?v=1.0.0') }}"></script>

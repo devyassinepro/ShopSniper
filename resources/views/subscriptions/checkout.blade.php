@@ -2,13 +2,13 @@
     <x-slot name="header">
         <div class="d-none d-lg-block">
             <h1 class="h2 text-white">{{ __('Checkout')  }}</h1>
-        </div>
-    </x-slot>
-    @if ($message = Session::get('error'))
-            <div class="alert alert-danger">
-                <p>{{ $message }}</p>
-            </div>
-        @endif
+  </div>
+</x-slot>
+            @if ($message = Session::get('error'))
+                    <div class="alert alert-danger">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
     
                 <!-- <x:card-form :action="route('subscriptions.store')">
                     <input type="hidden" name="plan" value="{{ request('plan') }}" <div class="text-center">
