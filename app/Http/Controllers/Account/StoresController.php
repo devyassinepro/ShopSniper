@@ -62,6 +62,15 @@ class StoresController extends Controller
 
         //to add niche to store
         $allniches = Niche::where('user_id', $user_id)->get();
+
+        if ($allniches->isEmpty()) {
+
+            DB::table('niches')->insert([
+                "name" => 'All',
+                "user_id" => $user_id,
+            ]);
+
+        }
         return view('account.stores.create', compact('allniches'));
     }
  /**

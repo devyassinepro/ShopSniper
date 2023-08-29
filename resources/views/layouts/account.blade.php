@@ -25,15 +25,7 @@
 
   <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" type="text/css">
 
-
   <link rel="stylesheet" href="assets/css/main.css">
-    <!--custom css start-->
-    <link rel="stylesheet" href="assets/css/custom.css">
-    <!--custom css end-->
-
-    <!-- Awsome Fonts -->
-    <link rel="stylesheet" href="{{ asset('saas/home/css/all.min.css')}}">
-
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway|Cabin:700" rel="stylesheet">
 

@@ -70,7 +70,7 @@ src="https://www.facebook.com/tr?id=691407819506168&ev=PageView&noscript=1"
                 <div class="nk-footer">
                     <div class="container-fluid">
                         <div class="nk-footer-wrap">
-                            <div class="nk-footer-copyright"> &copy; 2023 Weenify. Template by <a href="https://weenify.io" target="_blank">Weenify</a>
+                            <div class="nk-footer-copyright"> &copy; 2023 <a href="https://weenify.io" target="_blank">Weenify</a>
                             </div>
                         </div>
                     </div>

@@ -24,6 +24,11 @@ class DashboardController extends Controller
             redirect()->route('dashboard')->with('error','You can not access this page.');
         }
 
+        // if not subscribed or not on trial redirect to choose plan 
+        if (!(currentTeam()->Subscribed('default') || currentTeam()->onTrial())) {
+            return redirect()->route('subscription.plans');
+        }
+
         $user_id = Auth::user()->id;
         $storelimit = check_store_limit();
         // get user's stores

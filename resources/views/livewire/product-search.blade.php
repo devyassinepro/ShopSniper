@@ -14,11 +14,16 @@
                                                     <p>{{ $message }}</p>
                                                 </div>
                                               @endif
-                                              @if(!currentTeam()->subscribed())
-                                    <div class="alert alert-warning" role="alert">
-                                    Welcome to Weenify. Visit the <a href="{{ route('subscription.plans') }}">billing page</a> to activate a Trial plan.
-                                    </div>
-                                    @endif 
+                                              <br> 
+                    <div class="nk-block">
+                    @if(!currentTeam()->subscribed())
+                                        
+                    <div class="alert alert-icon alert-warning" role="alert">
+                        <em class="icon ni ni-alert-circle"></em> 
+                        <strong>Welcome to Weenify.</strong> Visit the <a href="{{ route('subscription.plans') }}">billing page</a> to activate a Trial plan.
+                    </div>
+                    @endif
+                    </div>
 
                                   
                                       <div class="nk-block-head-content">

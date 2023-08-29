@@ -23,8 +23,18 @@ class NicheController extends Controller
         }
 
         $user_id = Auth::user()->id;
+        
 
         $nicheall = Niche::where('user_id', $user_id)->orderBy('id','desc')->paginate(10);
+
+        if ($nicheall->isEmpty()) {
+
+            DB::table('niches')->insert([
+                "name" => 'All',
+                "user_id" => $user_id,
+            ]);
+
+        }
         return view('account.niches.index', compact('nicheall'));
     }
 
