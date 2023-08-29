@@ -44,34 +44,40 @@ fpr("click");
 <!-- Hotjar Tracking Code for my site -->
 </head>
 <body>
-  <!-- Sidenav -->
-  @include('partials.read-only')
-  @include('partials.account.login_as')
-  <!-- @include('partials.account.sidebar') -->
+
   <!-- Main content -->
 
+
+  <nav class="navbar navbar-expand-md">
+  <div class="container-fluid">
+    <a class="navbar-brand d-md-none" href="#">
+    <img  src="{{ asset('images/logo-dark.png') }}" >
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <a class="navbar-brand d-none d-md-block" href="#">
+        <img  src="{{ asset('images/logo-dark.png') }}" >
+        </a>
+      </ul>
+    </div>
+
+  </div>
+</nav>
   <div class="nk-app-root">
         <!-- main @s -->
         <div class="nk-main ">
-              @include('partials.account.sidebar')
-
             <!-- wrap @s -->
             <div class="nk-wrap ">
                 <!-- main header @s -->
-                @include('partials.account.topnav')
                 <!-- main header @e -->
                    <!-- Page content -->
                    {{ $slot }}
 
-                <!-- footer @s -->
-                <div class="nk-footer">
-                    <div class="container-fluid">
-                        <div class="nk-footer-wrap">
-                            <div class="nk-footer-copyright"> &copy; 2023 Weenify. Template by <a href="https://weenify.io" target="_blank">Weenify</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <!-- footer @e -->
             </div>
             <!-- wrap @e -->
