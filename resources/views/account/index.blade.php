@@ -195,9 +195,9 @@ fpr("referral",{email:"{{ Auth::user()->email }}"})
 <!-- Table >Top Products  -->
  <!-- Affiche //// -->
 
+ @if (currentTeam()->subscribed('default'))
 
  <div class="row">
- @if (currentTeam()->subscribed('default'))
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
