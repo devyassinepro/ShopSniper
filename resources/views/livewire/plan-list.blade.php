@@ -49,18 +49,20 @@
                 @foreach ($plans as $index => $plan)
 
                     <div class="col-lg-4 col-md-6">
-                        <div class="position-relative single-pricing-wrap rounded-custom {{$plan->id == 11 ? 'bg-gradient text-white p-5 mb-4 mb-lg-0' : 'bg-white custom-shadow p-5 mb-4 mb-lg-0'}}">
+                        <div class="position-relative single-pricing-wrap rounded-custom {{$plan->id == 16 ? 'bg-gradient text-white p-5 mb-4 mb-lg-0' : 'bg-white custom-shadow p-5 mb-4 mb-lg-0'}}">
                             <div class="pricing-header mb-32">
                                 <h3 class="package-name text-primary d-block">{{$plan->name}}</h3>
                                 <h4 class="display-6 fw-semi-bold">${{round($plan->price,0)}}<span>/month</span></h4>
                             </div>
                             <div class="pricing-info mb-4">
                                 <ul class="pricing-feature-list list-unstyled">
-                                    <li><i class="fas fa-circle fa-2xs text-warning me-2"></i> Track {{$plan->store_access_count}} Stores</li>
+                                    <li><i class="fas fa-circle fa-2xs text-warning me-2"></i>{{$plan->store_access_count}} Tracked Stores</li>
+                                    <li><i class="fas fa-circle fa-2xs text-warning me-2"></i> Top 100 Stores</li>
+                                    <li><i class="fas fa-circle fa-2xs text-warning me-2"></i> Top 500 Products</li>
+                                    <li><i class="fas fa-circle fa-2xs text-warning me-2"></i> Real Time Sales</li>
+                                    <li><i class="fas fa-circle fa-2xs text-warning me-2"></i> Product Filters</li>
                                     <li><i class="fas fa-circle fa-2xs text-warning me-2"></i> Change Store Any Time</li>
-                                    <li><i class="fas fa-circle fa-2xs text-warning me-2"></i> Track Products</li>
-                                    <li><i class="fas fa-circle fa-2xs text-warning me-2"></i> 1000 Products Per 1 Store</li>
-                                    <li><i class="fas fa-circle fa-2xs text-warning me-2"></i> Every Minute</li>
+                                    <!-- <li><i class="fas fa-circle fa-2xs text-warning me-2"></i> Every Minute</li> -->
                                 </ul>
                             </div>
                             <a href="{{ route('subscriptions',['plan' => $plan->slug]) }}" class="btn btn-outline-primary mt-2">{{ __('Start Free Trial') }}</a>
