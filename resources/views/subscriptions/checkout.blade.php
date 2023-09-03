@@ -20,106 +20,127 @@
                     
                     <button type="submit" class="btn btn-primary " id="card-button" data-secret="{{ $intent->client_secret }}"> {{ __('Subscribe') }} </button>
                 </x:card-form> -->
-
-    
-    @push('styles')
-    <script src="https://js.stripe.com/v3/"></script>
-    @endpush
-            <div class="row g-3">
-
-              <div class="col-md-6">  
-                
-                <span>Payment Method</span>
-                <div class="card">
-
-                  <div class="accordion" id="accordionExample">
-
-                    <div class="card">
-                      <div class="card-header p-0">
-                        <h2 class="mb-0">
-                          <button class="btn btn-light btn-block text-left p-3 rounded-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            <div class="d-flex align-items-center justify-content-between">
-
-                              <span>Credit card</span>
-                              <div class="icons">
-               
-                                <img src="{{ asset('saas/img/master.png') }}" width="30">
-                                <img src="{{ asset('saas/img/visa.png') }}" width="30">
-                                <img src="{{ asset('saas/img/stripe.png') }}" width="30">
-                                <img src="{{ asset('saas/img/master2.png') }}" width="30">
-                              </div>
-                              
+   <!-- wrap @s -->
+   <div class="nk-wrap nk-wrap-nosidebar">
+                <!-- content @s -->
+                <div class="nk-content ">
+                    <div class="nk-split nk-split-page nk-split-lg">
+                        <div class="nk-split-content nk-block-area nk-block-area-column nk-auth-container bg-white">
+                            <div class="absolute-top-right d-lg-none p-3 p-sm-5">
+                                <a href="#" class="toggle btn-white btn btn-icon btn-light" data-target="athPromo"><em class="icon ni ni-info"></em></a>
                             </div>
-                          </button>
-                        </h2>
-                      </div>
+                            <div class="nk-block nk-block-middle nk-auth-body">
+                                <div class="brand-logo pb-5">
+                                <h4>2-Start Trial</h4>
 
-                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body payment-card-body">
-                          
-                    <x:card-form :action="route('subscriptions.store')">
-                    <input type="hidden" name="plan" value="{{ request('plan') }}" <div class="text-center">
-
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <span class="text-muted certificate-text"><i class="fa fa-lock"></i> Your transaction is secured with ssl certificate</span>
-                         
-                  </div>
-                  
-                </div>
-
-              </div>
-
-              <div class="col-md-6">
-                  <span>Summary</span>
-
-                  <div class="card">
-
-                    <div class="d-flex justify-content-between p-3">
-
-            @foreach ($plans as $plan)
-                      <div class="d-flex flex-column">
-                        <span>{{ $plan->title }} - {{ $plan->store_access_count }} Stores(Billed Monthly) <i class="fa fa-caret-down"></i></span>
-
-                      </div>
-
-                      <div class="mt-1">
-                        <sup class="super-price">${{ $plan->price }}</sup>
-                        <span class="super-month">/Month</span>
-                      </div>
-                      
-                    </div>
-
-                    <hr class="mt-0 line">
-                    <div class="form-group">
-                        <label for="coupon">{{ __('Coupon') }}</label>
-                        <input type="text" name="coupon" id="coupon" class="form-control">
-                    </div>
-
-                    <div class="p-3 d-flex justify-content-between">
-
-                      <div class="d-flex flex-column">
-
-                        <span>Today you pay(US Dollars)</span>
-                        <small>After 7 days ${{ $plan->price }}</small>
+                                </div>
+                             
+                          <!-- checkout -->
                         
-                      </div>
-                      <span>$0</span> 
-                      @endforeach
-                    </div>
+                          <h5>Card Information</h5>
+                          <p>All transactions are secure and encrypted.</p>
+                          <div class="icons">
+               
+               <img src="{{ asset('saas/img/master.png') }}" width="30">
+               <img src="{{ asset('saas/img/visa.png') }}" width="30">
+               <img src="{{ asset('saas/img/stripe.png') }}" width="30">
+               <img src="{{ asset('saas/img/master2.png') }}" width="30">
+             </div>
+                  
+                          @push('styles')
+                          <script src="https://js.stripe.com/v3/"></script>
+                          @endpush
+                                  <x:card-form :action="route('subscriptions.store')">
+                                      <input type="hidden" name="plan" value="{{ request('plan') }}" <div class="text-center">
 
+                                      <div class="form-group">
+                                          <label for="coupon">{{ __('Coupon') }}</label>
+                                          <input type="text" name="coupon" id="coupon" class="form-control">
+                                      </div>
+                                      
+                                      <button type="submit" class="btn btn-primary " id="card-button" data-secret="{{ $intent->client_secret }}"> Try it free for 7 days (0$) </button>
+                                  </x:card-form>
+                         
+                            </div><!-- .nk-block -->
+                            <div class="nk-block nk-auth-footer">
+                                <div class="nk-block-between">
+                                    <ul class="nav nav-sm">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/TermsandConditions">Terms & Condition</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/privacypolicy">Privacy Policy</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/RefundPolicy">Privacy Policy</a>
+                                        </li>
+                                    </ul><!-- .nav -->
+                                </div>
+                                <div class="mt-3">
+                                    <p>&copy; 2023 Weenify. All Rights Reserved.</p>
+                                </div>
+                            </div><!-- .nk-block -->
+                        </div><!-- .nk-split-content -->
 
-                    <div class="p-3">
+                        <!-- right -->
+                        <div class="nk-split-content nk-split-stretch bg-lighter d-flex toggle-break-lg toggle-slide toggle-slide-right" data-toggle-body="true" data-content="athPromo" data-toggle-screen="lg" data-toggle-overlay="true">
+                            <div class="slider-wrap w-100 w-max-550px p-3 p-sm-5 m-auto">
+                                <div class="slider-init" data-slick='{"dots":true, "arrows":false}'>
+                                    <div class="slider-item">
+                                        <div class="nk-feature nk-feature-center">
+                                            <div class="nk-feature-img">
+                                            @foreach ($plans as $plan)
+                                              <div class="position-relative single-pricing-wrap rounded-custom bg-gradient text-white p-5 mb-4 mb-lg-0">
+                                                  <div class="pricing-header mb-32">
+                                                      <h3 class="package-name text-primary d-block">{{$plan->name}}</h3>
+                                                      <h4 class="display-6 fw-semi-bold">${{round($plan->price,0)}}<span>/month</span></h4>
+                                                  </div>
+                                                  <div class="pricing-info mb-4">
+                                                      <ul class="pricing-feature-list list-unstyled">
+                                                          <li><i class="fas fa-circle fa-2xs text-warning me-2"></i>{{$plan->store_access_count}} Tracked Stores</li>
+                                                          <li><i class="fas fa-circle fa-2xs text-warning me-2"></i> Top 100 Stores</li>
+                                                          <li><i class="fas fa-circle fa-2xs text-warning me-2"></i> Top 500 Products</li>
+                                                          <li><i class="fas fa-circle fa-2xs text-warning me-2"></i> Real Time Sales</li>
+                                                          <li><i class="fas fa-circle fa-2xs text-warning me-2"></i> Product Filters</li>
+                                                          <li><i class="fas fa-circle fa-2xs text-warning me-2"></i> Change Store Any Time</li>
+                                                          <!-- <li><i class="fas fa-circle fa-2xs text-warning me-2"></i> Every Minute</li> -->
+                                                      </ul>
+                                                  </div>
+                                                  <!--pattern start-->
+                                                  <div class="dot-shape-bg position-absolute z--1 left--40 bottom--40">
+                                                      <img src="assets/img/shape/dot-big-square.svg" alt="shape">
+                                                  </div>
+                                                  <!--pattern end-->
+                                              @endforeach                                           
+                                            </div>
+                                            <div class="nk-feature-content py-4 p-sm-5">
+                                                <h4>Weenify</h4>
+                                                <ul class="nav justify-content-center subscribe-feature-list mt-4">
+                                    <li class="nav-item">
+                                        <span><i class="far fa-check-circle text-primary me-2"></i>Free 7-day trial</span>
+                                    </li>
+                                    <li class="nav-item">
+                                        <span><i
+                                            class="far fa-check-circle text-primary me-2"></i>No credit card required</span>
+                                    </li>
+                                    <li class="nav-item">
+                                        <span><i class="far fa-check-circle text-primary me-2"></i>Support 24/7</span>
+                                    </li>
+                                </ul>
+                                              </div>
+                                        </div>
+                                    </div><!-- .slider-item -->
 
-                    <button  type="submit" class="btn btn-primary btn-block free-button" id="card-button" data-secret="{{ $intent->client_secret }}">Try it free for 7 days (0$)</button> 
-                </x:card-form>
-                    </div>
-                    
-                  </div>
-              </div>
-              
+                                </div><!-- .slider-init -->
+                                <div class="slider-dots"></div>
+                                <div class="slider-arrows"></div>
+                            </div><!-- .slider-wrap -->
+                        </div><!-- .nk-split-content -->
+                    </div><!-- .nk-split -->
+                    <!-- end right -->
+                </div>
+                <!-- wrap @e -->
             </div>
+    
             
 </x-account-layout>

@@ -94,6 +94,7 @@ src="https://www.facebook.com/tr?id=691407819506168&ev=PageView&noscript=1"
       <ul class="navbar-nav mx-auto">
         <a class="navbar-brand d-none d-md-block" href="#">
         <img  src="{{ asset('images/logo-dark.png') }}" >
+        
         </a>
       </ul>
     </div>
