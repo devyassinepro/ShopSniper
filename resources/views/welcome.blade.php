@@ -802,7 +802,7 @@
                                             <li><a href="/contact" class="text-decoration-none">Contact</a></li>
                                             <li><a href="/TermsandConditions" class="text-decoration-none">Terms and Conditions</a></li>
                                             <li><a href="/privacypolicy" class="text-decoration-none">Privacy Policy</a></li>
-                                            <li><a href="/https://weenify.firstpromoter.com/" class="text-decoration-none">Affiliate Program</a></li>
+                                            <li><a href="https://weenify.firstpromoter.com/" class="text-decoration-none">Affiliate Program</a></li>
                                             <li><a href="/RefundPolicy" class="text-decoration-none">Refund Policy</a></li>
                                             <li><a href="#pricing" class="text-decoration-none">Pricing</a></li>
 
