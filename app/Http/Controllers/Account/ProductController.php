@@ -109,7 +109,8 @@ class ProductController extends Controller
    $products = Product::orderBy('revenue','desc')
    ->where('id', $id);
 
-   $products = $products->withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales', 'day7sales', 'weeklysales', 'montlysales']);
+//    $products = $products->withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales', 'day7sales']);
+
    $products = $products->get();
 
     return view('account.product.show', compact('products','dates'));

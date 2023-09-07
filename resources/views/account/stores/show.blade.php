@@ -787,9 +787,9 @@
                 fontColor: '#9eaecf',
                 padding: 10,
                 callback: function callback(value, index, values) {
-                  return '$ ' + value;
+                  return ' ' + value;
                 },
-                min: 100,
+                min: 0,
                 stepSize: 3000
               },
               gridLines: {
