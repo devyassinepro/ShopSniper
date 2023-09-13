@@ -51,6 +51,9 @@
                                                             <select  id="filtreorder" wire:model="filtreorder" class="form-control">
                                                             <option value="revenue">Total revenue</option>
                                                             <option value="totalsales">Total sales</option>
+                                                            <option value="todaysales">Today sales</option>
+                                                            <option value="yesterdaysales">Yesterday sales</option>
+
                                                               <!-- <option value="todaysales">Today sales</option>
                                                               <option value="yesterdaysales">Yesterday sales</option> -->
                                                           </select>
