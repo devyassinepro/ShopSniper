@@ -23,8 +23,7 @@ class TopstoresController extends Controller
         {
             redirect()->route('account.tuto.index')->with('error','You can not access this page.');
         }
-        $stores = stores::orderBy('revenue','desc')
-        ->with('products');
+        $stores = stores::orderBy('revenue','desc');
         $stores = $stores->take(50)->get();
         return view('account.topstores.index', compact('stores'));
     }
