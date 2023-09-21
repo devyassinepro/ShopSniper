@@ -79,7 +79,7 @@
                             <h5 class="h6 text-muted text-uppercase mb-2">
                                 {{ __('Total Stores') }} <i class="fa fa-arrow-up text-danger ml-1"></i>
                             </h5>
-                            <span class="h2 mb-0">{{ $totalstores }}</span>
+                            <span class="h2 mb-0">{{ $totalStores }}</span>
                         </div>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
                             <h5 class="h6 text-muted text-uppercase mb-2">
                                 {{ __('Total Products') }} <i class="fa fa-arrow-up text-danger ml-1"></i>
                             </h5>
-                            <span class="h2 mb-0">{{ $totalproducts }}</span>
+                            <span class="h2 mb-0">{{number_format($totalProducts, 0, ',', ' ')}}</span>
                         </div>
                     </div>
                 </div>
@@ -113,29 +113,11 @@
                             <h5 class="h6 text-muted text-uppercase mb-2">
                                 {{ __('Total Sales') }} <i class="fa fa-arrow-up text-danger ml-1"></i>
                             </h5>
-                            <span class="h2 mb-0">{{ $totalsales }}</span>
+                            <span class="h2 mb-0">{{number_format($totalSales, 0, ',', ' ')}}</span>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-sm-6 col-xl-3 mb-4">
-                <div class="card">
-                    <div class="card-body media align-items-center px-xl-3">
-                        <div class="u-doughnut u-doughnut--70 mr-3 mr-xl-2">
-                        <i class="fa fa-shopping-cart"></i>
-                        </div>
-
-                        <div class="media-body">
-                            <h5 class="h6 text-muted text-uppercase mb-2">
-                                {{ __('Total Revenue') }} <i class="fa fa-arrow-up text-danger ml-1"></i>
-                            </h5>
-                            <span class="h2 mb-0">{{number_format($totalRevenue, 2, ',', ' ')}} $</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
 
         </div>
 

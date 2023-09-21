@@ -18,10 +18,10 @@ class DashboardController extends Controller
     public function index()
     {
 
-        $totalproducts = Product::all()->count();
-        $totalstores = stores::all()->count();
-        $totalsales = Product::all()->sum('totalsales');
-        $totalRevenue = Product::all()->sum('revenue');
+        $totalProducts = Product::count();
+        $totalStores = stores::count();
+        // $totalsales = Product::all()->sum('totalsales');
+        $totalSales = Product::sum('totalsales');
         $user_count = User::all()->count();
         $team_count = Team::all()->count();
         $newTicket = Ticket::where('status', 'Open')->count();
@@ -35,6 +35,6 @@ class DashboardController extends Controller
             'chart_type' => 'bar',
         ];
         $chart1 = new LaravelChart($chart_options);
-        return view('admin.index', compact('user_count', 'newTicket', 'total_subscription', 'team_count', 'chart1', 'totalproducts' , 'totalstores' , 'totalsales' , 'totalRevenue'));
+        return view('admin.index', compact('user_count', 'newTicket', 'total_subscription', 'team_count', 'chart1','totalProducts', 'totalStores' , 'totalSales'));
     }
 }
