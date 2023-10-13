@@ -19,6 +19,26 @@ class StoreSearch extends Component
 
     protected $paginationTheme = 'bootstrap';
 
+
+    public function updateNiche($nicheId)
+    {
+        $this->filtreNiche = $nicheId;
+    }
+
+    public function updateOrderBy($orderBy)
+    {
+        $this->filtreorderby = $orderBy;
+    }
+
+    public function updateCurrency($currency)
+    {
+        $this->filtreCurrency = $currency;
+    }
+
+    public function updatePagination($perPage)
+    {
+        $this->filtrePagination = $perPage;
+    }
     public function render()
     {
 
