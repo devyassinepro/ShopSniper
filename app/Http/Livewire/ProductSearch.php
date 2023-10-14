@@ -53,6 +53,12 @@ class ProductSearch extends Component
             ->select('products.*', DB::raw('COALESCE(todaysales, 0) AS calculated_todaysales'), DB::raw('COALESCE(yesterdaysales, 0) AS calculated_yesterdaysales'));
 
 
+        if($this->search != ""){
+            $this->resetPage();
+            $products->where("title", "LIKE",  "%". $this->search ."%")
+                         ->orWhere("url","LIKE",  "%". $this->search ."%");
+        }
+
         if ($this->filtreorderby != "") {
 
             if($this->filtreorderby == "todaysales") {
@@ -82,6 +88,13 @@ class ProductSearch extends Component
 
 
         return view('livewire.product-search',compact('products'));
+    }
+
+    public function updated($property)
+    {
+        if ($property === 'search') {
+            $this->resetPage();
+        }
     }
 
 
