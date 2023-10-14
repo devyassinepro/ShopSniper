@@ -184,7 +184,9 @@
                                                 <label class="custom-control-label" for="oid"></label>
                                             </div>
                                         </div>
+                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span></span></div>
                                         <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span>Store</span></div>
+                                        <div class="nk-tb-col tb-col-md" style="font-size: 16px; font-weight: bold;"><span>Currency</span></div>
                                         <div class="nk-tb-col tb-col-md" style="font-size: 16px; font-weight: bold;"><span>Date</span></div>
                                         <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block">Products</span></div>
                                         <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block">Sales</span></div>
@@ -201,15 +203,20 @@
                                             </div>
                                         </div>
                                         <div class="nk-tb-col">
-                                            <span class="tb-lead"><a href="#">{{ $store->name }} - {{ $store->currency }}</a></span>
                                             <a  target="_blank" href="{{$store->url}}"><img src="https://cdn3.iconfinder.com/data/icons/social-media-2068/64/_shopping-512.png" width="30" height="30"></a>             
                                         </div>
+                                        <div class="nk-tb-col">
+                                            <span class="tb-lead">{{ $store->name }}</span>
+                                        </div>
+                                        <div class="nk-tb-col">
+                                            <span class="tb-lead">{{ $store->currency }}</span>
+                                        </div>
                                         <div class="nk-tb-col tb-col-md">
-                                            <span class="tb-sub">{{ $store->created_at }}</span>
+                                        <span class="tb-sub" style="font-size: 13px; font-weight: bold;">{{ $store->created_at }}</span>
                                         </div>
                                         <div class="nk-tb-col">
                                             <span class="dot bg-warning d-sm-none"></span>
-                                            <span class="tb-sub" style="font-size: 16px; font-weight: bold;">{{ $store->allproducts }}</span>
+                                            <span class="tb-sub" style="font-size: 21px; font-weight: bold;">{{ $store->allproducts }}</span>
                                         </div>
                                         <div class="nk-tb-col tb-col-sm">
                                             <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $store->sales }}</span>

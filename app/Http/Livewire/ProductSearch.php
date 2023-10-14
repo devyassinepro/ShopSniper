@@ -20,11 +20,20 @@ class ProductSearch extends Component
     public $search = "";
     public $filter = '';
     public $filtrePagination = "";
-    public $filtreorder = '';
+    public $filtreorderby = '';
 
 
     protected $paginationTheme = 'bootstrap';
 
+    public function updatePagination($perPage)
+    {
+        $this->filtrePagination = $perPage;
+    }
+
+    public function updateOrderBy($orderBy)
+    {
+        $this->filtreorderby = $orderBy;
+    }
     public function render()
     {
 
@@ -44,18 +53,18 @@ class ProductSearch extends Component
             ->select('products.*', DB::raw('COALESCE(todaysales, 0) AS calculated_todaysales'), DB::raw('COALESCE(yesterdaysales, 0) AS calculated_yesterdaysales'));
 
 
-        if ($this->filtreorder != "") {
+        if ($this->filtreorderby != "") {
 
-            if($this->filtreorder == "todaysales") {
+            if($this->filtreorderby == "todaysales") {
                 $products = $products->orderBy('calculated_todaysales', 'desc');
             }
 
-            if($this->filtreorder == "yesterdaysales") {
+            if($this->filtreorderby == "yesterdaysales") {
                 $products = $products->orderBy('calculated_yesterdaysales', 'desc');
             }
 
-            if($this->filtreorder == 'totalsales') {
-                $products =$products->orderBy($this->filtreorder,'desc');
+            if($this->filtreorderby == 'totalsales') {
+                $products =$products->orderBy($this->filtreorderby,'desc');
             }
 
 
@@ -67,7 +76,7 @@ class ProductSearch extends Component
 
                 $products =$products->paginate($this->filtrePagination);
         }else{
-            $products =$products->paginate(10);
+            $products =$products->paginate(25);
         }
 
 

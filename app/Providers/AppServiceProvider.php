@@ -27,6 +27,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
+        \Blade::directive('domain', function ($expression) {
+            return "<?php echo parse_url($expression, PHP_URL_HOST); ?>";
+        });
         URL::forceScheme('https');
 
     }
