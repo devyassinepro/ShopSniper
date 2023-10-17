@@ -233,8 +233,6 @@
                                         </div>
                                         <div class="nk-tb-col tb-col-md">
                                             <span class="tb-sub"> <a  class="btn btn-success" href="{{ route('account.product.show',$product->id) }}" >View </a></span>
-                                            <span class="tb-sub"> <a  class="btn btn-success" href="{{ route('account.product.show',$product->id) }}" >View </a></span>
-
                                         </div>
                                        
                                     </div><!-- .nk-tb-item -->
