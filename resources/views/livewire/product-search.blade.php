@@ -1,19 +1,19 @@
 <div class="nk-content ">
                 @if ($message = Session::get('success'))
-                    <div class="alert alert-success">
-                        <p>{{ $message }}</p>
-                            </div>
-                            @endif
-                            <br> 
-                    <div class="nk-block">
-                    @if(!currentTeam()->subscribed())
-                                        
-                    <div class="alert alert-icon alert-warning" role="alert">
-                        <em class="icon ni ni-alert-circle"></em> 
-                        <strong>Welcome to Weenify.</strong> Visit the <a href="{{ route('subscription.plans') }}">billing page</a> to activate a Trial plan.
-                    </div>
-                    @endif
-                    </div>
+                                <div class="alert alert-success">
+                                    <p>{{ $message }}</p>
+                                </div>
+                                @endif
+                                <br> 
+                        <div class="nk-block">
+                        @if(!currentTeam()->subscribed())
+                                            
+                        <div class="alert alert-icon alert-warning" role="alert">
+                            <em class="icon ni ni-alert-circle"></em> 
+                            <strong>Welcome to Weenify.</strong> Visit the <a href="{{ route('subscription.plans') }}">billing page</a> to activate a Trial plan.
+                        </div>
+                        @endif
+                        </div>
 
                     <div class="container-fluid">
                         <div class="nk-content-inner">
@@ -21,7 +21,7 @@
                                 <div class="nk-block-head nk-block-head-sm">
                                     <div class="nk-block-between">
                                         <div class="nk-block-head-content">
-                                            <h3 class="nk-block-title page-title">Stores</h3>
+                                            <h3 class="nk-block-title page-title">Products</h3>
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
                                             <div class="toggle-wrap nk-block-tools-toggle">
@@ -72,18 +72,13 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                            
+
                                                 <div class="drodown">
                                                     <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-bs-toggle="dropdown">{{ $filtrePagination ? $filtrePagination : 'Items Per Page' }}</a>
                                                     <div class="dropdown-menu dropdown-menu-end">
                                                         <ul class="link-list-opt no-bdr">
                                                             <!-- Default option without filter -->
-                                                            <!-- <li>
-                                                                <a href="#" wire:click.prevent="updatePagination('')" wire:model="filtrePagination">
-                                                                    <span>All Items</span>
-                                                                </a>
-                                                            </li> -->
-
+                                                
                                                             <!-- Other pagination options -->
                                                             <li>
                                                                 <a href="#" wire:click.prevent="updatePagination('25')" wire:model="filtrePagination">
@@ -103,8 +98,9 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                
-                                                        </li>
+                                            
+                                              
+                                            </li>
                                                        
                                                     </ul>
                                                 </div>
@@ -119,16 +115,61 @@
                                 <strong>Welcome to Weenify.</strong> Visit the <a href="{{ route('subscription.plans') }}">billing page</a> to activate a Trial plan.
                             </div>
                             @endif
-                                <div wire:loading.delay class="text-center">
-                                                <div class="d-flex align-items-center">
-                                                <strong>Loading...</strong>
-                                                <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
-                                                </div>
-                                </div>
+                               
+                                  
                                 
                                 <div class="nk-block">
                                     <div class="nk-tb-list is-separate is-medium mb-3">
+                                  
                                     <div class="nk-tb-item nk-tb-head">
+                                    @if ($products->hasPages())
+                                    <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;">
+
+                                    <span>
+                                    {{-- Previous Page Link --}}
+                                    @if ($products->onFirstPage())
+                                        <span class="btn btn-primary">
+                                            <
+                                        </span>
+                                    @else
+                                        <button wire:click="previousPage" wire:loading.attr="disabled" rel="prev" class="btn btn-primary">
+                                        <
+                                        </button>
+                                    @endif
+                              
+                                    </span></div>
+                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span>
+                                       
+                                        </span></div>
+                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span></span></div>
+                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span>
+                                        <div wire:loading.delay class="spinner-grow">
+                                        <span class="sr-only">Loading...</span>
+                                         </div>
+                                        </span></div>
+                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span>
+                                        </span></div>
+                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span></span></div>
+                                        <div class="nk-tb-col tb-col-md" style="font-size: 16px; font-weight: bold;"><span></span></div>
+                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span></span></div>
+                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;">  <span>
+                                                {{-- Next Page Link --}}
+                                            @if ($products->hasMorePages())
+                                                <button wire:click="nextPage" wire:loading.attr="disabled" rel="next" class="btn btn-primary">
+                                                    >
+                                                </button>
+                                            @else
+                                                <span class="btn btn-primary">
+                                                >
+                                                </span>
+                                            @endif
+                                        </span></div>
+
+                                       
+                                    </div><!-- .nk-tb-item -->
+                                     @endif
+                                    <!-- after  -->
+                                    <div  wire:loading.class="invisible" class="nk-tb-item nk-tb-head">
                                         <div class="nk-tb-col nk-tb-col-check">
                                             <div class="custom-control custom-control-sm custom-checkbox notext">
                                                 <input type="checkbox" class="custom-control-input" id="oid">
@@ -147,7 +188,7 @@
                                     </div><!-- .nk-tb-item -->
 
                                     @foreach ($products as $product)
-                                    <div class="nk-tb-item">
+                                    <div wire:loading.class="invisible" class="nk-tb-item">
                                         <div class="nk-tb-col nk-tb-col-check">
                                             <div class="custom-control custom-control-sm custom-checkbox notext">
                                                 <input type="checkbox" class="custom-control-input" id="oid01">
@@ -160,6 +201,8 @@
                                         <div class="nk-tb-col">
                                             <a href="{{ route('account.product.show',$product->id) }}"><h6>{{ $product->title }}</h6></a>
                                             <a target="_blank" href="{{ $product->url }}">{{ parse_url($product->url, PHP_URL_HOST) }}</a>
+
+
                                         </div>
                                         <div class="nk-tb-col tb-col-md">
                                                 <a  target="_blank" href="{{$product->url}}"><img src="https://cdn3.iconfinder.com/data/icons/social-media-2068/64/_shopping-512.png" width="30" height="30"></a>
@@ -190,22 +233,63 @@
                                         </div>
                                         <div class="nk-tb-col tb-col-md">
                                             <span class="tb-sub"> <a  class="btn btn-success" href="{{ route('account.product.show',$product->id) }}" >View </a></span>
+                                            <span class="tb-sub"> <a  class="btn btn-success" href="{{ route('account.product.show',$product->id) }}" >View </a></span>
+
                                         </div>
                                        
                                     </div><!-- .nk-tb-item -->
                                     @endforeach
                                 </div>
 
-                                <div class="card">
+                                <!-- <div class="card">
                                     <div class="card-inner">
                                         <div wire:loading.class="invisible" class="my-4">
                                             {{ $products->links() }}
+
+                                        </div>
+                                    </div>
+                                </div> -->
+
+                                <div wire:loading.class="invisible" class="card">
+                                    <div class="card-inner">
+                                        <div wire:loading.class="invisible" class="my-4">
+                                            <div>
+                                                    @if ($products->hasPages())
+                                                        <nav role="navigation" aria-label="Pagination Navigation" class="flex justify-between">
+                                                            <span>
+                                                                {{-- Previous Page Link --}}
+                                                                @if ($products->onFirstPage())
+                                                                    <span class="btn btn-primary">
+                                                                       <
+                                                                    </span>
+                                                                @else
+                                                                    <button wire:click="previousPage" wire:loading.attr="disabled" rel="prev" class="btn btn-primary">
+                                                                    <
+                                                                    </button>
+                                                                @endif
+                                                            </span>
+                                                
+                                                              <!-- Page Input and "Go" Button -->
+                                                            {{ $products->links() }}
+
+                                                            <span>
+                                                                {{-- Next Page Link --}}
+                                                                @if ($products->hasMorePages())
+                                                                    <button wire:click="nextPage" wire:loading.attr="disabled" rel="next" class="btn btn-primary">
+                                                                       >
+                                                                    </button>
+                                                                @else
+                                                                    <span class="btn btn-primary">
+                                                                    >
+                                                                    </span>
+                                                                @endif
+                                                            </span>
+                                                        </nav>
+                                                    @endif
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
-
-
-
                         </div>
                     </div>
 </div>

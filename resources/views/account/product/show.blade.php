@@ -110,42 +110,42 @@
                           </td>                          
                           <td>$ {{ $products->first()->prix }}</td>
                              <td>
-                            <label class="badgepro badge-success badge-pill">${{ $products->first()->todaysales * $products->first()->prix }}</label>
-                              <label class="badgepro badge-info badge-pill">{{ $products->first()->todaysales }}</label>
+                              <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $products->first()->todaysales * $products->first()->prix }}</span>
+                              <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $products->first()->todaysales }}</span>
                             </td>
                           <td>
-                          <label class="badgepro badge-success badge-pill">${{ $products->first()->yesterdaysales * $products->first()->prix }}</label>
-                            <label class="badgepro badge-info badge-pill">{{ $products->first()->yesterdaysales }}</label>
+                          <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $products->first()->yesterdaysales * $products->first()->prix }}</span>
+                          <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $products->first()->yesterdaysales }}</span>
                           </td>  
 
                           <td>
-                          <label class="badgepro badge-success badge-pill">${{ $products->first()->day3sales * $products->first()->prix }}</label>
-                            <label class="badgepro badge-info badge-pill">{{ $products->first()->day3sales }}</label>
+                              <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $products->first()->day3sales * $products->first()->prix }}</span>
+                              <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $products->first()->day3sales }}</span>
                           </td>                          
                         
                           <td>
-                          <label class="badgepro badge-success badge-pill">${{ $products->first()->day4sales * $products->first()->prix }}</label>
-                            <label class="badgepro badge-info badge-pill">{{ $products->first()->day4sales }}</label>
+                            <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $products->first()->day4sales * $products->first()->prix }}</span>
+                            <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $products->first()->day4sales }}</span>
                           </td>
                           <td>
-                          <label class="badgepro badge-success badge-pill">${{ $products->first()->day5sales * $products->first()->prix }}</label>
-                            <label class="badgepro badge-info badge-pill">{{ $products->first()->day5sales }}</label>
+                            <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $products->first()->day5sales * $products->first()->prix }}</span>
+                            <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $products->first()->day5sales }}</span>
                           </td>  
                           <td>
-                          <label class="badgepro badge-success badge-pill">${{ $products->first()->day6sales * $products->first()->prix }}</label>
-                            <label class="badgepro badge-info badge-pill">{{ $products->first()->day6sales }}</label>
+                            <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $products->first()->day6sales * $products->first()->prix }}</span>
+                            <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $products->first()->day6sales }}</span>
                           </td>  
                           <td>
-                          <label class="badgepro badge-success badge-pill">${{ $products->first()->weeksales * $products->first()->prix }}</label>
-                            <label class="badgepro badge-info badge-pill">{{ $products->first()->weeksales }}</label>
+                            <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $products->first()->weeksales * $products->first()->prix }}</span>
+                            <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $products->first()->weeksales }}</span>
                           </td>
                           <td>
-                          <label class="badgepro badge-success badge-pill">${{ $products->first()->monthysales * $products->first()->prix }}</label>
-                            <label class="badgepro badge-info badge-pill">{{ $products->first()->monthsales }}</label>
+                            <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $products->first()->monthysales * $products->first()->prix }}</span>
+                            <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $products->first()->monthsales }}</span>
                           </td>
                           <td>
-                          <label class="badgepro badge-success badge-pill">${{ $products->first()->totalsales * $products->first()->prix }}</label>
-                            <label class="badgepro badge-info badge-pill">{{ $products->first()->totalsales }}</label>
+                            <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $products->first()->totalsales * $products->first()->prix }}</span>
+                            <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $products->first()->totalsales }}</span>
                           </td>
                         </tr>
                       </tbody>
