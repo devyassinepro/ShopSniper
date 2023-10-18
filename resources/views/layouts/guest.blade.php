@@ -42,6 +42,8 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <!--custom css start-->
     <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/theme.css?ver=3.2.0') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('assets/css/dashlite.css?ver=3.2.0') }}" type="text/css">
     <!--custom css end-->
 
     <!-- Awsome Fonts -->
@@ -341,6 +343,9 @@ src="https://www.facebook.com/tr?id=691407819506168&ev=PageView&noscript=1"
 <script src="{{ asset('saas/home/js/wow.js')}}"></script>
 <script src="{{ asset('saas/home/js/plugins.js')}}"></script>
 <script src="{{ asset('saas/home/js/custom.js')}}"></script>
+
+<script src="./assets/js/bundle.js?ver=3.2.0"></script>
+    <script src="./assets/js/scripts.js?ver=3.2.0"></script>
 
   <!--Start of Tawk.to Script-->
   @if (config('saas.demo_mode'))
