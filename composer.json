@@ -35,6 +35,7 @@
         "laravelcollective/html": "^6.2",
         "laraveldaily/laravel-charts": "^0.1.29",
         "livewire/livewire": "^2.10",
+        "maatwebsite/excel": "^3.1",
         "mews/purifier": "^3.3",
         "rappasoft/laravel-livewire-tables": "^1.11.0",
         "rappasoft/lockout": "^4.0",

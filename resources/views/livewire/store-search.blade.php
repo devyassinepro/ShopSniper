@@ -275,7 +275,8 @@
                                         </div>
                                         @endif
                                         <div class="nk-tb-col tb-col-sm">
-                                            <a href="{{ route('account.stores.show',$store->id) }}" class="btn btn-info">Show Charts</a>
+                                            <a href="{{ route('account.stores.show',$store->id) }}" class="btn btn-white btn-dim btn-outline-primary"><em class="icon ni ni-reports"></em><span>Show Charts</span></a>
+
                                         </div>
                                         <div class="nk-tb-col tb-col-sm">
                                             <form action="{{ route('account.stores.destroy',$store->id) }}" method="Post">

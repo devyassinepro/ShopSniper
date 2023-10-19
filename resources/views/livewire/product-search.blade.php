@@ -152,6 +152,7 @@
                                         <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span></span></div>
                                         <div class="nk-tb-col tb-col-md" style="font-size: 16px; font-weight: bold;"><span></span></div>
                                         <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span></span></div>
+                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span></span></div>
                                         <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;">  <span>
                                                 {{-- Next Page Link --}}
                                             @if ($products->hasMorePages())
@@ -184,7 +185,9 @@
                                         <div class="nk-tb-col tb-col-md" style="font-size: 16px; font-weight: bold;"><span>Today</span></div>
                                         <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block">Yesterday</span></div>
                                         <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block">Total sales</span></div>
+                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block"></span></div>
                                         <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block">Expand</span></div>
+
                                     </div><!-- .nk-tb-item -->
 
                                     @foreach ($products as $product)
@@ -231,8 +234,12 @@
                                             <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $product->totalsales }}</span>
 
                                         </div>
+
                                         <div class="nk-tb-col tb-col-md">
-                                            <span class="tb-sub"> <a  class="btn btn-success" href="{{ route('account.product.show',$product->id) }}" >View </a></span>
+                                            <li><a href="{{ route('account.product.show',$product->id) }}" class="btn btn-white btn-dim btn-outline-primary"><em class="icon ni ni-reports"></em><span>View</span></a></li>
+                                        </div>
+                                        <div class="nk-tb-col tb-col-md">
+                                            <li><a wire:click="exportToCsv('{{ $product->url }}')" class="btn btn-white btn-dim btn-outline-primary"><em class="icon ni ni-download-cloud"></em><span>Import product</span></a></li>
                                         </div>
                                        
                                     </div><!-- .nk-tb-item -->

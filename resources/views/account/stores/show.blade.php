@@ -301,16 +301,17 @@
                           </td>
                           <td>{{ $product->prix }} €</td>
                           <td>
-                          <label class="badgepro badge-success badge-pill">{{ $product->todaysales_count * $product->prix }}€</label>
-                            <label class="badgepro badge-info badge-pill">{{ $product->todaysales_count }}</label>
+                              <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $product->todaysales_count * $product->prix }}€</span>
+                              <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $product->todaysales_count }}</span>          
                           </td>
                           <td>
-                          <label class="badge badge-success badge-pill">{{ $product->yesterdaysales_count * $product->prix }}€</label>
-                            <label class="badgepro badge-info badge-pill">{{ $product->yesterdaysales_count }}</label>
+                                <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $product->yesterdaysales_count * $product->prix }}€</span>
+                                <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $product->yesterdaysales_count }}</span>          
+                          
                           </td>
                           <td>
-                          <label class="badgepro badge-success badge-pill">{{ $product->totalsales * $product->prix }}€</label>
-                            <label class="badgepro badge-info badge-pill">{{ $product->totalsales }}</label>
+                              <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $product->totalsales * $product->prix }}€</span>
+                              <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $product->totalsales }}</span>          
                           </td>
 
                           <td><a  class="btn btn-success" href="{{ route('account.product.show',$product->id) }}" >View </a></td>
@@ -571,16 +572,18 @@
                                       </td>
                                       <td>$ {{ $product->prix }}</td>
                                       <td>
-                                      <label class="badgepro badge-success badge-pill">${{ $product->todaysales * $product->prix }}</label>
-                                        <label class="badgepro badge-info badge-pill">{{ $product->todaysales }}</label>
+                                            <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">$ {{ $product->todaysales * $product->prix }}</span>
+                                            <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $product->todaysales }}</span>          
                                       </td>
                                       <td>
-                                      <label class="badge badge-success badge-pill">${{ $product->yesterdaysales * $product->prix }}</label>
-                                        <label class="badgepro badge-info badge-pill">{{ $product->yesterdaysales }}</label>
+                                            <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $product->yesterdaysales * $product->prix }}</span>
+                                            <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $product->yesterdaysales }}</span>          
+                                    
                                       </td>
                                       <td>
-                                      <label class="badgepro badge-success badge-pill">${{ $product->totalsales * $product->prix }}</label>
-                                        <label class="badgepro badge-info badge-pill">{{ $product->totalsales }}</label>
+                                        <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $product->totalsales * $product->prix }}</span>
+                                        <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $product->totalsales }}</span>          
+                                    
                                       </td>
                                       <td><a  class="btn btn-success" href="{{ route('account.product.show',$product->id) }}" >View </a></td>
                           </td>

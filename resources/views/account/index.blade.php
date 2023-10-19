@@ -227,8 +227,8 @@ fpr("referral",{email:"{{ Auth::user()->email }}"})
                           </td>
                           <td>${{ $product->prix }}</td>
                           <td>
-                        <h5><label class="badgepro badge-success badge-pill">${{ number_format($product->todaysales * $product->prix, 2, ',', ' ') }}</label>
-                            <label class="badgepro badge-info badge-pill">{{ $product->todaysales }}</label>
+                        <h5><label class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ number_format($product->todaysales * $product->prix, 2, ',', ' ') }}</label>
+                            <label class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $product->todaysales }}</label>
                         </h5></td>
                         </tr>
                         @endforeach
@@ -244,7 +244,7 @@ fpr("referral",{email:"{{ Auth::user()->email }}"})
             </div>
                 </div>
             </div>    
-          </div>     
+</div>     
 
 @endsection
 @push('styles')
