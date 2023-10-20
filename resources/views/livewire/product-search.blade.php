@@ -116,59 +116,17 @@
                             </div>
                             @endif
                                
-                                  
+                        <div wire:loading.delay>
+                                <div style="display: flex; justify-content: center; align-items: center; background-color:black; position: fixed; top:0px;left:0px;z-index:9999;width:100% ;height:100%; opacity: .75;">
+                                            <div class="la-square-jelly-box la-3x">
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                </div>
+                        </div>
                                 
                                 <div class="nk-block">
                                     <div class="nk-tb-list is-separate is-medium mb-3">
-                                  
-                                    <div class="nk-tb-item nk-tb-head">
-                                    @if ($products->hasPages())
-                                    <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;">
-
-                                    <span>
-                                    {{-- Previous Page Link --}}
-                                    @if ($products->onFirstPage())
-                                        <span class="btn btn-primary">
-                                            <
-                                        </span>
-                                    @else
-                                        <button wire:click="previousPage" wire:loading.attr="disabled" rel="prev" class="btn btn-primary">
-                                        <
-                                        </button>
-                                    @endif
-                              
-                                    </span></div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span>
-                                       
-                                        </span></div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span></span></div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span>
-                                        <div wire:loading.delay class="spinner-grow">
-                                        <span class="sr-only">Loading...</span>
-                                         </div>
-                                        </span></div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span>
-                                        </span></div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span></span></div>
-                                        <div class="nk-tb-col tb-col-md" style="font-size: 16px; font-weight: bold;"><span></span></div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span></span></div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span></span></div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;">  <span>
-                                                {{-- Next Page Link --}}
-                                            @if ($products->hasMorePages())
-                                                <button wire:click="nextPage" wire:loading.attr="disabled" rel="next" class="btn btn-primary">
-                                                    >
-                                                </button>
-                                            @else
-                                                <span class="btn btn-primary">
-                                                >
-                                                </span>
-                                            @endif
-                                        </span></div>
-
-                                       
-                                    </div><!-- .nk-tb-item -->
-                                     @endif
                                     <!-- after  -->
                                     <div  wire:loading.class="invisible" class="nk-tb-item nk-tb-head">
                                         <div class="nk-tb-col nk-tb-col-check">
@@ -204,7 +162,6 @@
                                         <div class="nk-tb-col">
                                             <a href="{{ route('account.product.show',$product->id) }}"><h6>{{ $product->title }}</h6></a>
                                             <a target="_blank" href="{{ $product->url }}">{{ parse_url($product->url, PHP_URL_HOST) }}</a>
-
 
                                         </div>
                                         <div class="nk-tb-col tb-col-md">
