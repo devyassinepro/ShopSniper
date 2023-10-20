@@ -36,7 +36,7 @@
                                                                 <input
                                                                         type="search"
                                                                         wire:model.debounce.500ms="search"
-                                                                        placeholder="Search by Store"
+                                                                        placeholder="Search by Product"
                                                                         class="form-control"
                                                                     >
                                                         </div>
