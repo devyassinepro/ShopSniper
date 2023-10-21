@@ -29,6 +29,8 @@ use App\Http\Controllers\Account\ProductController as AccountProductController;
 use App\Http\Controllers\Account\TutoController as AccountTutoController;
 use App\Http\Controllers\Account\TopstoresController as AccountopstoresController;
 use App\Http\Controllers\Account\StoresController as AccountStoresController;
+// use App\Http\Controllers\Account\ProductResearchController as AccountResearchController;
+// use App\Http\Controllers\Account\TrendsController as AccountTrendsController;
 use App\Http\Controllers\Account\DashboardController as AccountDashboardController;
 use JoelButcher\Socialstream\Http\Controllers\Inertia\PasswordController;
 use App\Http\Controllers\Account\Subscriptions\SubscriptionCardController;
@@ -96,7 +98,12 @@ Route::group(['middleware' => 'language'], function () {
         Route::resource('/niches', AccountNicheController::class);
         Route::resource('/tuto', AccountTutoController::class);
         Route::resource('/topstores', AccountopstoresController::class);
+        // Route::resource('/productresearch', AccountResearchController::class);
+        // Route::resource('/trends', AccountTrendsController::class);
 
+
+
+        Route::get('/product/importproduct/{url}', [AccountProductController::class, 'importproduct'])->name('product.importproduct');
 
         Route::get('/stores/storeproducts/{id}', [AccountStoresController::class, 'storeproducts'])->name('stores.storeproducts');
 

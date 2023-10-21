@@ -45,19 +45,75 @@ class ProductSearch extends Component
         $this->resetPage(); // Reset to page 1 when changing the sorting order.
 
     }
+    
+    public function render()
+    {
+
+        if(check_user_type() != 'user')
+        {
+            redirect()->route('dashboard')->with('error','You can not access this page.');
+        }
+
+        $user_id = Auth::user()->id;
+
+        // get user's stores
+        $totalstores = Storeuser::where('user_id', $user_id)->pluck('store_id')->ToArray();
+
+        // Get stores of this user and select the COALESCE calculation
+        $products = Product::whereIn('stores_id', $totalstores)
+            ->where('title', '>=', 10)
+            ->select('products.*', DB::raw('COALESCE(todaysales, 0) AS calculated_todaysales'), DB::raw('COALESCE(yesterdaysales, 0) AS calculated_yesterdaysales'));
+
+
+        if($this->search != ""){
+            $this->resetPage();
+            $products->where("title", "LIKE",  "%". $this->search ."%")
+                         ->orWhere("url","LIKE",  "%". $this->search ."%");
+        }
+
+        if ($this->filtreorderby != "") {
+
+            if($this->filtreorderby == "todaysales") {
+                $products = $products->orderBy('calculated_todaysales', 'desc');
+            }
+
+            if($this->filtreorderby == "yesterdaysales") {
+                $products = $products->orderBy('calculated_yesterdaysales', 'desc');
+            }
+
+            if($this->filtreorderby == 'totalsales') {
+                $products =$products->orderBy($this->filtreorderby,'desc');
+            }
+
+
+        } else {
+            $products = $products->orderBy('revenue', 'desc');
+        }
+
+        if($this->filtrePagination != ""){
+
+                $products =$products->paginate($this->filtrePagination);
+        }else{
+            // $products =$products->paginate(5);
+            $products = $products->paginate($this->filtrePagination ?: 25);
+
+        }
+
+        // return view('livewire.product-search',compact('products'));
+        return view('livewire.product-search', [
+            'products' => $products,
+        ]);
+    }
+
+
+    public function updatingQuery(){
+        $this->resetPage();
+    }
+
+
 
     public function exportToCsv($url)
     {
-
-        // $productData = json_decode($html)->product;
-        
-        // Fetch or prepare your product data here
-
-        // Convert $productData to an array of associative arrays
-        // $productArray = [];
-        // foreach ($productData as $item) {
-        //     $productArray[] = (array) $item;
-        // }
         $opts = array('http' => array('header' => "User-Agent:MyAgent/1.0\r\n"));
         $context = stream_context_create($opts);
         $html = file_get_contents($url . '.json', false, $context);
@@ -349,73 +405,7 @@ class ProductSearch extends Component
         
         // Return the path to the generated CSV file
         return response()->download($csvFilePath);
-        // This code will manually create a CSV file with the product data and then provide a download link to the user.
         
-    }
-
-
-    public function render()
-    {
-
-        if(check_user_type() != 'user')
-        {
-            redirect()->route('dashboard')->with('error','You can not access this page.');
-        }
-
-        $user_id = Auth::user()->id;
-
-        // get user's stores
-        $totalstores = Storeuser::where('user_id', $user_id)->pluck('store_id')->ToArray();
-
-        // Get stores of this user and select the COALESCE calculation
-        $products = Product::whereIn('stores_id', $totalstores)
-            ->where('title', '>=', 10)
-            ->select('products.*', DB::raw('COALESCE(todaysales, 0) AS calculated_todaysales'), DB::raw('COALESCE(yesterdaysales, 0) AS calculated_yesterdaysales'));
-
-
-        if($this->search != ""){
-            $this->resetPage();
-            $products->where("title", "LIKE",  "%". $this->search ."%")
-                         ->orWhere("url","LIKE",  "%". $this->search ."%");
-        }
-
-        if ($this->filtreorderby != "") {
-
-            if($this->filtreorderby == "todaysales") {
-                $products = $products->orderBy('calculated_todaysales', 'desc');
-            }
-
-            if($this->filtreorderby == "yesterdaysales") {
-                $products = $products->orderBy('calculated_yesterdaysales', 'desc');
-            }
-
-            if($this->filtreorderby == 'totalsales') {
-                $products =$products->orderBy($this->filtreorderby,'desc');
-            }
-
-
-        } else {
-            $products = $products->orderBy('revenue', 'desc');
-        }
-
-        if($this->filtrePagination != ""){
-
-                $products =$products->paginate($this->filtrePagination);
-        }else{
-            // $products =$products->paginate(5);
-            $products = $products->paginate($this->filtrePagination ?: 25);
-
-        }
-
-        // return view('livewire.product-search',compact('products'));
-        return view('livewire.product-search', [
-            'products' => $products,
-        ]);
-    }
-
-
-    public function updatingQuery(){
-        $this->resetPage();
     }
 
 

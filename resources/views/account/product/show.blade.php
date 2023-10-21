@@ -33,8 +33,8 @@
                                                         <a  class="btn btn-primary"  target="_blank" href="{{$products->first()->url}}">View on Shopify</a>
                                                         <a  class="btn btn-primary"   target="_blank" href="https://www.aliexpress.com/wholesale?SearchText={{urldecode($products->first()->title)}}">Search on AliExpress</a>
                                                         <a  class="btn btn-primary"   target="_blank" href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&q={{urldecode($products->first()->title)}}&search_type=keyword_unordered&media_type=all">Search on Facebook</a>
-   
-                                                        </div>
+                                                        <a href="{{ route('account.product.importproduct',$products->first()->id) }}" class="btn btn-white btn-dim btn-outline-primary"><em class="icon ni ni-download-cloud"></em><span>Import product</span></a></li>
+                                                          </div>
                                                     </div>
                                                 </div><!-- .card-preview -->
                                             </div>
