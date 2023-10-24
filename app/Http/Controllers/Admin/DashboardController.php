@@ -20,6 +20,8 @@ class DashboardController extends Controller
 
         $totalProducts = Product::count();
         $totalStores = stores::count();
+        $activeStores = stores::where('status', '1')->count();
+
         // $totalsales = Product::all()->sum('totalsales');
         $totalSales = Product::sum('totalsales');
         $user_count = User::all()->count();
@@ -35,6 +37,6 @@ class DashboardController extends Controller
             'chart_type' => 'bar',
         ];
         $chart1 = new LaravelChart($chart_options);
-        return view('admin.index', compact('user_count', 'newTicket', 'total_subscription', 'team_count', 'chart1','totalProducts', 'totalStores' , 'totalSales'));
+        return view('admin.index', compact('user_count', 'newTicket', 'total_subscription', 'team_count', 'chart1','totalProducts', 'totalStores' , 'totalSales', 'activeStores'));
     }
 }

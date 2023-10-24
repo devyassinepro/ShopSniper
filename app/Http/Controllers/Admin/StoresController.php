@@ -23,14 +23,18 @@ class StoresController extends Controller
      */
     public function index(Request $request)
     {
-        $stores = stores::withSum('products', 'totalsales')
-        ->withSum('products', 'revenue')
-        ->with('products');
+        // $stores = stores::withSum('products', 'totalsales')
+        // ->withSum('products', 'revenue')
+        // ->with('products');
+
+
+        $stores = stores::query();
+
 
          if($request->ordreby){
              $stores = $stores::orderBy($request->ordreby,'desc');
 
-         }else  $stores = $stores->orderBy('products_sum_revenue','desc');
+         }else  $stores = $stores->orderBy('revenue','desc');
          if( $request->title){
               $stores = $stores->where('url', 'ilike', "%" . strtoupper($request->url) . "%");
          }

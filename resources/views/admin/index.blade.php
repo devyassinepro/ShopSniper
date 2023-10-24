@@ -89,6 +89,23 @@
                 <div class="card">
                     <div class="card-body media align-items-center px-xl-3">
                         <div class="u-doughnut u-doughnut--70 mr-3 mr-xl-2">
+                        <i class="fa fa-shopping-bag"></i>
+                        </div>
+
+                        <div class="media-body">
+                            <h5 class="h6 text-muted text-uppercase mb-2">
+                                {{ __('Active Stores') }} <i class="fa fa-arrow-up text-danger ml-1"></i>
+                            </h5>
+                            <span class="h2 mb-0">{{ $activeStores }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-3 mb-4">
+                <div class="card">
+                    <div class="card-body media align-items-center px-xl-3">
+                        <div class="u-doughnut u-doughnut--70 mr-3 mr-xl-2">
                         <i class="fa fa-database"></i>
                         </div>
 

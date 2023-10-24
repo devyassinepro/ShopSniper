@@ -89,8 +89,8 @@
                         <td><a href="{{ route('admin.stores.show',$store->id) }}">{{ $store->name }}</a></td>
                         <td>{{ $store->allproducts }}</td>
                         <!-- <td>{{ $store->status }}</td> -->
-                        <td>{{ $store->products_sum_totalsales }}</td>
-                        <td>$ {{ number_format($store->products_sum_revenue, 2, ',', ' ') }}</td>
+                        <td>{{ $store->sales }}</td>
+                        <td>$ {{ number_format($store->revenue, 2, ',', ' ') }}</td>
                         <td><a  class="btn btn-success" href="{{ route('admin.stores.show',$store->id) }}">Show Details</a></td>
 
                             <form action="{{ route('admin.stores.destroy',$store->id) }}" method="Post">
