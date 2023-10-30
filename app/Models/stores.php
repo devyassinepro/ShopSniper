@@ -25,6 +25,7 @@ class stores extends Model
         'name',
         'url',
         'status',
+        'tag',
         'revenue',
         'city',
         'country',
@@ -90,7 +91,6 @@ class stores extends Model
     {
         return $this->hasMany(Sales::class)->where('created_at', '=', Carbon::now()->subDays(6)->format('Y-m-d'));
     }
-
 
     protected $table = 'stores';
 

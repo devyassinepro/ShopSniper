@@ -1,6 +1,9 @@
-<div class="nk-content ">
-
-                                    @if ($message = Session::get('success'))
+<div class="nk-content">
+                    <div class="container-fluid">
+                        <div class="nk-content-inner"> 
+    <div class="nk-content-body">
+                                <!--  -->
+                                @if ($message = Session::get('success'))
                                         
                                         <div class="alert alert-fill alert-icon alert-success" role="alert">
                                             <em class="icon ni ni-alert-circle"></em> 
@@ -16,14 +19,26 @@
                                         </div>
                                     @endif
 
-                    <div class="container-fluid">
-                        <div class="nk-content-inner">
-                            <div class="nk-content-body">
-                                <div class="nk-block-head nk-block-head-sm">
+                                    <div class="alert alert-pro alert-primary">
+
+                                                <div class="user-toggle">
+                                                    <div class="user-avatar lg">
+                                                    <em class="icon ni ni-bag-fill"></em>
+                                                </div>
+
+                                                <div class="user-info">
+                                                    <h3>Sales Tracker</h3>
+                                                    <h6>Track sales of stores</h6>
+                                                </div>
+                                                </div>
+
+                                                <div class="nk-block-head nk-block-head-sm">
                                     <div class="nk-block-between">
+                                   
                                         <div class="nk-block-head-content">
-                                            <h3 class="nk-block-title page-title">Stores</h3>
-                                        </div><!-- .nk-block-head-content -->
+                                            <h3 class="nk-block-title page-title"></h3>
+                                        </div>
+                                        <!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
                                             <div class="toggle-wrap nk-block-tools-toggle">
                                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
@@ -161,6 +176,9 @@
                                         </div><!-- .nk-block-head-content -->
                                     </div><!-- .nk-block-between -->
                                 </div><!-- .nk-block-head -->
+                            </div>
+                           
+
                                   
                     @if(!currentTeam()->subscribed())
                     <div class="alert alert-fill alert-icon alert-warning" role="alert">
@@ -169,15 +187,16 @@
                     </div>
                     @endif
                                 
-
-                    <div wire:loading.delay>
-                                <div style="display: flex; justify-content: center; align-items: center; background-color:black; position: fixed; top:0px;left:0px;z-index:9999;width:100% ;height:100%; opacity: .75;">
-                                            <div class="la-square-jelly-box la-3x">
-                                                <div></div>
-                                                <div></div>
+                                <!-- start Loading -->
+                                <div wire:loading.delay>
+                                            <div style="display: flex; justify-content: center; align-items: center; background-color:black; position: fixed; top:0px;left:0px;z-index:9999;width:100% ;height:100%; opacity: .75;">
+                                                        <div class="la-square-jelly-box la-3x">
+                                                            <div></div>
+                                                            <div></div>
+                                                        </div>
                                             </div>
-                                </div>
-                        </div>
+                                    </div>
+                                    <!-- end loading -->
                                 <div class="nk-block">
                                     <div class="nk-tb-list is-separate is-medium mb-3">
                                   
@@ -250,8 +269,9 @@
                                         </div>
                                     </div><!-- .nk-tb-item -->
                                     @endforeach
-                                </div>
-
+                                </div>  <!-- end Block -->
+                                
+                                <!-- Pagination  -->
                                 <div wire:loading.class="invisible" class="card">
                                     <div class="card-inner">
                                         <div wire:loading.class="invisible" class="my-4">
@@ -291,12 +311,13 @@
                                                 </div>
                                         </div>
                                     </div>
+                                </div>   <!-- End Pagination  -->
+
                                 </div>
-
-
-
-                        </div>
                     </div>
                 </div>
+
+
+
 
 <!-- after  -->

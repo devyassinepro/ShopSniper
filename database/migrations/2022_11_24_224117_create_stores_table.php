@@ -18,6 +18,7 @@ class CreateStoresTable extends Migration
             $table->string('name');
             $table->string('url');
             $table->string('status');
+            $table->string('tag');
             $table->float('revenue');
             $table->string('city');
             $table->string('country');

@@ -4,7 +4,6 @@
                                     <p>{{ $message }}</p>
                                 </div>
                                 @endif
-                                <br> 
                         <div class="nk-block">
                         @if(!currentTeam()->subscribed())
                                             
@@ -18,10 +17,24 @@
                     <div class="container-fluid">
                         <div class="nk-content-inner">
                             <div class="nk-content-body">
+
+                                    <div class="alert alert-pro alert-primary">
+
+                                                <div class="user-toggle">
+                                                        <div class="user-avatar lg">
+                                                        <em class="icon ni ni-package-fill"></em>
+                                                        </div>
+
+                                                <div class="user-info">
+                                                    <h3>Sales Tracker</h3>
+                                                    <h6>Track sales of products</h6>
+                                                </div>
+                                                </div>
+
                                 <div class="nk-block-head nk-block-head-sm">
                                     <div class="nk-block-between">
                                         <div class="nk-block-head-content">
-                                            <h3 class="nk-block-title page-title">Products</h3>
+                                            <h3 class="nk-block-title page-title"></h3>
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
                                             <div class="toggle-wrap nk-block-tools-toggle">
@@ -108,6 +121,8 @@
                                         </div><!-- .nk-block-head-content -->
                                     </div><!-- .nk-block-between -->
                                 </div><!-- .nk-block-head -->
+
+                            </div>
                                   
                             @if(!currentTeam()->subscribed())
                             <div class="alert alert-fill alert-icon alert-warning" role="alert">

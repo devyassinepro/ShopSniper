@@ -210,19 +210,19 @@ src="https://www.facebook.com/tr?id=691407819506168&ev=PageView&noscript=1"
             @endguest
                 <div class="hs-unfold">
                     
-                  <a class="pr-0 nav-link btn btn-secondary" href="#" role="button" data-toggle="dropdown" style="background-color:transparent; border:0px;"
+                  <!-- <a class="pr-0 nav-link btn btn-secondary" href="#" role="button" data-toggle="dropdown" style="background-color:transparent; border:0px;"
                       aria-haspopup="true" aria-expanded="false">
                       <div class="media-body d-none d-lg-block">
                         <img src="{{ asset('saas/svg/flags/'.app()->getLocale().'.svg') }}" alt="United States Flag">
                         <span>{{ app()->getLocale()  }}</span>
                       </div>
-                  </a>
+                  </a> -->
 
-                  <div id="footerLanguage" class="hs-unfold-content dropdown-menu dropdown-unfold dropdown-menu-bottom mb-2">
+                  <!-- <div id="footerLanguage" class="hs-unfold-content dropdown-menu dropdown-unfold dropdown-menu-bottom mb-2">
                     @foreach (language()->allowed() as $code => $name)
                       <a class="dropdown-item" href="{{ language()->back($code) }}">{{ $name }}</a>
                     @endforeach
-                        </div>
+                        </div> -->
                           </div>
                     @guest
                     <div class="action-btns text-end me-5 me-lg-0 d-none d-md-block d-lg-block">

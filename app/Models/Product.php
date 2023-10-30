@@ -42,9 +42,11 @@ class Product extends Model
 
     ];
     
-    public function stores(): HasMany
+    public function stores()
     {
-        return $this->hasMany(stores::class);
+        // return $this->hasMany(stores::class);
+        return $this->belongsTo(stores::class, 'stores_id'); // Assuming 'stores_id' is the foreign key.
+
         
     }
     

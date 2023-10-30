@@ -5,6 +5,7 @@ use GuzzleHttp\Middleware;
 use Laravel\Cashier\Cashier;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\MaintenanceMode;
+use App\Http\Livewire\ProductResearch;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CouponController;
@@ -29,8 +30,8 @@ use App\Http\Controllers\Account\ProductController as AccountProductController;
 use App\Http\Controllers\Account\TutoController as AccountTutoController;
 use App\Http\Controllers\Account\TopstoresController as AccountopstoresController;
 use App\Http\Controllers\Account\StoresController as AccountStoresController;
-// use App\Http\Controllers\Account\ProductResearchController as AccountResearchController;
-// use App\Http\Controllers\Account\TrendsController as AccountTrendsController;
+use App\Http\Controllers\Account\ProductResearchController as AccountResearchController;
+use App\Http\Controllers\Account\TrendsController as AccountTrendsController;
 use App\Http\Controllers\Account\DashboardController as AccountDashboardController;
 use JoelButcher\Socialstream\Http\Controllers\Inertia\PasswordController;
 use App\Http\Controllers\Account\Subscriptions\SubscriptionCardController;
@@ -98,12 +99,18 @@ Route::group(['middleware' => 'language'], function () {
         Route::resource('/niches', AccountNicheController::class);
         Route::resource('/tuto', AccountTutoController::class);
         Route::resource('/topstores', AccountopstoresController::class);
-        // Route::resource('/productresearch', AccountResearchController::class);
-        // Route::resource('/trends', AccountTrendsController::class);
+        Route::resource('/researchproduct', AccountResearchController::class);
+        Route::resource('/trends', AccountTrendsController::class);
 
 
+        Route::get('proresearch', ProductResearch::class)->name('proresearch');
 
+        // export product in csv
         Route::get('/product/importproduct/{url}', [AccountProductController::class, 'importproduct'])->name('product.importproduct');
+
+        // track store from product research
+
+        Route::post('/stores/trackstore/{id}', [AccountStoresController::class, 'trackstore'])->name('stores.trackstore');
 
         Route::get('/stores/storeproducts/{id}', [AccountStoresController::class, 'storeproducts'])->name('stores.storeproducts');
 

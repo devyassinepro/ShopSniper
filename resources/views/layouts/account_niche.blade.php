@@ -67,6 +67,9 @@ src="https://www.facebook.com/tr?id=691407819506168&ev=PageView&noscript=1"
 
   gtag('config', 'G-M19EWRS3EN');
 </script>
+
+<script src="{{ asset('vendor/livewire/livewire.js') }}"></script>
+
 <body>
   <!-- Sidenav -->
   @include('partials.read-only')
@@ -87,14 +90,14 @@ src="https://www.facebook.com/tr?id=691407819506168&ev=PageView&noscript=1"
               @yield('content')
 
                 <!-- footer @s -->
-                <div class="nk-footer">
+                <!-- <div class="nk-footer">
                     <div class="container-fluid">
                         <div class="nk-footer-wrap">
                             <div class="nk-footer-copyright"> &copy; 2023 <a href="https://weenify.io" target="_blank">Weenify</a>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- footer @e -->
             </div>
             <!-- wrap @e -->

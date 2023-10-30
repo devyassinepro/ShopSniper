@@ -11,13 +11,9 @@
                                     <img class="logo-dark logo-img" src="{{ asset('images/logo-dark.png') }}" srcset="{{ asset('images/logo-dark2x.png 2x') }}" alt="logo-dark">
                                 </a>
                             </div><!-- .nk-header-brand -->
-                            <div class="nk-header-search ms-3 ms-xl-0">
-                                <em class="icon ni ni-search"></em>
-                                <input type="text" class="form-control border-transparent form-focus-none" placeholder="Search anything">
-                            </div><!-- .nk-header-news -->
                             <div class="nk-header-tools">
                                 <ul class="nk-quick-nav">
-                                    <li class="dropdown language-dropdown d-none d-sm-block me-n1">
+                                    <!-- <li class="dropdown language-dropdown d-none d-sm-block me-n1">
                                         <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-bs-toggle="dropdown">
                                             <div class="quick-icon border border-light">
                                             <img src="{{ asset('saas/svg/flags/'.app()->getLocale().'.svg') }}" alt="United States Flag">
@@ -35,7 +31,11 @@
                                              
                                             </ul>
                                         </div>
-                                    </li><!-- .dropdown -->
+                                    </li>.dropdown -->
+                                  
+                                    <li><a class="dark-switch" href="#"></a></li>
+
+
                                                    <!-- Search form -->
                                     <ul class="navbar-nav align-items-center ml-md-auto">
                                         <li class="nav-item d-xl-none">
@@ -74,7 +74,7 @@
                                                     @role('admin')
                                                     <li><a href="{{ route('admin.index') }}"><em class="icon ni ni-activity-alt"></em><span> {{ __('Admin panel') }}</span></a></li>
                                                     @endrole
-                                                    <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>
+                                                    <!-- <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li> -->
                                                 </ul>
                                             </div>
                                             <div class="dropdown-inner">

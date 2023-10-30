@@ -30958,7 +30958,7 @@ body.nav-shown {
   min-width: 320px;
 }
 .nk-header-fixed + .nk-content {
-  margin-top: 65px;
+  margin-top: 30px;
   position: relative;
 }
 .nk-header-wrap {

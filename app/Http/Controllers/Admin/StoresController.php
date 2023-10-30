@@ -215,7 +215,7 @@ class StoresController extends Controller
         //
         $store = stores::findorFail($id); //searching for object in database using ID
         DB::table('products')->where('stores_id', $id)->delete();
-    if($store->delete()){ //deletes the object
+            if($store->delete()){ //deletes the object
             Storeuser::where('store_id', $id)->delete();
             // return 'deleted successfully'; //shows a message when the delete operation was successful.
             return redirect()->route('admin.stores.index')->with('success','deleted successfully');
@@ -247,7 +247,58 @@ class StoresController extends Controller
     }
     
 
+
+        /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function trackstore($id)
+    {
+
+        if(check_user_type() != 'user')
+        {
+            return redirect()->route('dashboard')->with('error','You can not access this page.');
+        }
+
+        $user_id = Auth::user()->id;
+        $storeuser = Storeuser::where('user_id', $user_id)->count();
+
+        if(check_store_limit() <= $storeuser)
+        {
+            return redirect()->route('subscription.plans');
+        }
+         $storedata = DB::table('stores')->where('id', $id)->first();
+         $stores = stores::where('url', $storedata->url)->first();
+
+            if($stores)
+            {
+                $storeuser = Storeuser::where('user_id', $user_id)->where('store_id', $stores->id)->count();
+                if($storeuser > 0)
+                {
+                    redirect()->route('account.stores.create');
+                }
+                else
+                {
+                    Storeuser::create([
+                        "store_id" => $stores->id,
+                        "user_id" => $user_id,
+                        "created_at" => now(),
+                        "updated_at" => now()
+                    ]);
+                }
+
+            }
+            return redirect()->route('account.stores.index');
+
+
+    }
+
 }
+
+
+
 
 function createstore ($store ,$store_id, $i){
     $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 

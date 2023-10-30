@@ -7,5 +7,5 @@
                 @if (currentTeam()->subscribed('default'))
                 <livewire:store-search />  
                 @endif
-
+                      
   @endsection
