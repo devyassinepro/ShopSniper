@@ -57,32 +57,30 @@
                                                                     >
                                                         </div>
                                                         </li>
-                                            
-                                                         
-                                                            <div class="drodown">
-                                                                <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-bs-toggle="dropdown">{{ $filtreNiche ? $niches->where('id', $filtreNiche)->first()->name : 'Select Niche' }}</a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <ul class="link-list-opt no-bdr">
-                                                                        <!-- Default option without filter -->
-                                                                        <li>
-                                                                            <a href="#" wire:click.prevent="updateNiche('')" wire:model="filtreNiche">
-                                                                                <span>ALL Niches</span>
-                                                                            </a>
-                                                                        </li>
+                                                    <div class="drodown">
+                                                        <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-bs-toggle="dropdown">{{ $filtreNiche ? $niches->where('id', $filtreNiche)->first()->name : 'Select Niche' }}</a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <ul class="link-list-opt no-bdr">
+                                                                <!-- Default option without filter -->
+                                                                <li>
+                                                                    <a href="#" wire:click.prevent="updateNiche('')" wire:model="filtreNiche">
+                                                                        <span>ALL Niches</span>
+                                                                    </a>
+                                                                </li>
 
-                                                                        <!-- Other niche options from the loop -->
-                                                                        @foreach ($niches as $niche)
-                                                                            <li>
-                                                                                <a href="#" wire:click.prevent="updateNiche({{ $niche->id }})" wire:model="filtreNiche">
-                                                                                    <span>{{ $niche->name }}</span>
-                                                                                </a>
-                                                                            </li>
-                                                                        @endforeach
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
+                                                                <!-- Other niche options from the loop -->
+                                                                @foreach ($niches as $niche)
+                                                                    <li>
+                                                                        <a href="#" wire:click.prevent="updateNiche({{ $niche->id }})" wire:model="filtreNiche">
+                                                                            <span>{{ $niche->name }}</span>
+                                                                        </a>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    </div>
 
-                                                            <div class="drodown">
+                                                    <div class="drodown">
                                                     <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-bs-toggle="dropdown"> {{ $filtreorderby ? ucfirst($filtreorderby) : 'Order By' }}</a>
                                                     <div class="dropdown-menu dropdown-menu-end">
                                                         <ul class="link-list-opt no-bdr">

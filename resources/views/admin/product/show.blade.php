@@ -2,19 +2,17 @@
 
 @section('title', '| Products')
 
-@section('content')  <div class="container-fluid">
+@section('content') 
+ <div class="container-fluid">
       <div class="row">
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-12 pt-3 px-4">
         <div><h4>View Product</h4></div>
         <div><h5>Store Name : {{$products->first()->title}}</h5></div>
 
-        <td><img src="{{ $products->first()->imageproduct }}" width="300" height="300"></a></td>
+        <td><a href="{{ $products->first()->url }}" target="_blank"><img src="{{ $products->first()->imageproduct }}" width="300" height="300"></a></td>
         <td><a  class="btn btn-success" href="{{$products->first()->url}}" target="_blank">View </a></td>
-
-                   
-
-                        
+     
           <div class="table-responsive">
             <table class="table table-striped table-sm">
             <thead>
@@ -45,8 +43,72 @@
             </tbody>
             </table>
           </div>
+            <div>   
+            <form action="{{ route('admin.product.update', $products->first()->id) }}" method="POST">
+                @csrf
+                @method('PATCH')
+
+                <div class="form-group">
+                  <label for="inputAddress">Title</label>
+                  <input type="text" class="form-control" name="pricealiexpress" id="inputAddress" value="{{ $products->first()->title }}">
+                </div>
+
+                <div class="form-group">
+                  <label for="inputAddress">Aliexpress Price</label>
+                  <input type="number" class="form-control" name="pricealiexpress" id="inputAddress" placeholder="Price aliexpress">
+                </div>
+
+                <!-- Add form fields for other product data -->
+
+                <button type="submit" class="btn btn-primary">Update</button>
+
+            </form>
+            </div>
         </main>
       </div>
+      <div class="row">
+
+
+      <!-- <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Email</label>
+            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Password</label>
+            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">Address</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        </div>
+        <div class="form-group">
+          <label for="inputAddress2">Address 2</label>
+          <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputCity">City</label>
+            <input type="text" class="form-control" id="inputCity">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">State</label>
+            <select id="inputState" class="form-control">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputZip">Zip</label>
+            <input type="text" class="form-control" id="inputZip">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+      </form> -->
+      </div>
+
     </div>
     
     @endsection

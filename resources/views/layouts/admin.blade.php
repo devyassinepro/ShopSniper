@@ -168,6 +168,15 @@ src="https://www.facebook.com/tr?id=691407819506168&ev=PageView&noscript=1"
 				<!-- End Footer -->
 			</div>
 		</main>
+
+		@livewireScripts
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<x-livewire-alert::scripts />
+
+	<script src="{{ asset('js/app.js') }}"></script>
+  <script src="{{ asset('assets/vendor/js-cookie/js.cookie.js') }}"></script>
+    <script src="{{ asset('assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/lavalamp/js/jquery.lavalamp.min.js') }}"></script>
         <!-- Global Vendor -->
 		<script src="{{ asset('saas/admin/vendor/jquery/dist/jquery.min.js') }}"></script>
 		<script src="{{ asset('saas/admin/vendor/popper.js/dist/umd/popper.min.js') }}"></script>
@@ -179,6 +188,10 @@ src="https://www.facebook.com/tr?id=691407819506168&ev=PageView&noscript=1"
 		<!-- Initialization  -->
 		<script src="{{ asset('saas/admin/js/sidebar-nav.js') }}"></script>
 		<script src="{{ asset('saas/admin/js/main.js') }}"></script>
+
+		 <!--End of Tawk.to Script-->
+		 <script src="{{ asset('assets/js/bundle.js?ver=3.2.0') }}"></script>
+    <script src="{{ asset('assets/js/scripts.js?ver=3.2.0') }}"></script>
 		@livewireScripts
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 		<x-livewire-alert::scripts />

@@ -17,33 +17,8 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
- //conf standard 
- $totalsalesmin = 0;
- $pagination = 50;
- $urlstore = "";
 
-  if($request->ordreby){
-      $products = Product::orderBy($request->ordreby,'desc');
-
-  }else  $products =  Product::orderBy('revenue','desc');
-  if( $request->title){
-       $products = $products->where('title', 'ilike', "%" . strtoupper($request->title) . "%");
-  }
-  if( $request->min_revenue && $request->max_revenue ){
-      $products = $products->where('revenue', '>=', $request->min_revenue)
-                   ->where('revenue', '<=', $request->max_revenue);
-  }
-  if( $request->min_sales && $request->max_sales ){
-      $products = $products->where('totalsales', '>=', $request->min_sales)
-                   ->where('totalsales', '<=', $request->max_sales);
-  }else  $products = $products->where('totalsales', '>=', $totalsalesmin);
- //version 2 without filtre 
-
- $products = $products->withCount(['todaysales', 'yesterdaysales']);
- $products = $products->paginate($pagination)->withQueryString();
-
-        return view('admin.product.index', compact('products'))
-        ->with('totalproducts',Product::all()->count());
+        return view('admin.product.index');
     }
 
     /**
@@ -105,23 +80,26 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
     
-        $this->validate($request, [ // the new values should not be null
-            'title' => 'required',
-            'timestamp' => 'required',
-            'vendor' => 'required',
-            'store' => 'required',
-            'totalsales' => 'required',
-        ]);
+        // $this->validate($request, [ // the new values should not be null
+        //     'title' => 'required',
+        //     'timestamp' => 'required',
+        //     'vendor' => 'required',
+        //     'store' => 'required',
+        //     'totalsales' => 'required',
+        // ]);
   
         $product = Product::findorFail($id); // uses the id to search values that need to be updated.
-        $product->title = $request->input('title'); //retrieves user input
-        $product->timestamp = $request->input('timestamp'); //retrieves user input
-        $product->vendor = $request->input('vendor'); //retrieves user input
-        $product->store = $request->input('store');////retrieves user input
-        $product->totalsales = $request->input('totalsales');////retrieves user input
 
-        $product->save();//saves the values in the database. The existing data is overwritten.
-        return $product; // retrieves the updated object from the database
+        dd($request->input('title'));
+
+        // $product->title = $request->input('title'); //retrieves user input
+        // $product->timestamp = $request->input('timestamp'); //retrieves user input
+        // $product->vendor = $request->input('vendor'); //retrieves user input
+        // $product->store = $request->input('store');////retrieves user input
+        // $product->totalsales = $request->input('totalsales');////retrieves user input
+
+        // $product->save();//saves the values in the database. The existing data is overwritten.
+        // return $product; // retrieves the updated object from the database
     }
 
     /**
