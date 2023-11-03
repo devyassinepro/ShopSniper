@@ -333,16 +333,32 @@
                                                     </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3">
-                                                     <div class="form-group">
-                                                        <label class="form-label" for="favorite-filter">Winning Product</label>
+                                        <div class="col-lg-2">
+                                                    <div class="form-group">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input" wire:model.defer="winning" id="favorite-filter">
+                                                            <label class="form-check-label" for="favorite-filter">Winning</label>
+                                                        </div>
                                                     </div>
                                         </div>
-                                        <div class="col-lg-3">    
+                                        <div class="col-lg-2">    
                                                      <div class="form-group">
                                                         <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input" wire:model.defer="favorites" id="favorite-filter">
-                                                            <label class="form-check-label" for="favorite-filter">Only Winning</label>
+                                                            <input type="checkbox" class="form-check-input" wire:model.defer="dropshipping" id="dropshipping-filter">
+                                                            <label class="form-check-label" for="dropshipping-filter">Dropshiping</label>
+                                                        </div>
+                                                    </div>
+                                        </div>
+                                        <div class="col-lg-2">
+                                                    <div class="form-group">
+                                                        <div class="form-check">
+                                                       
+                                                                <select  id="filtrePagination" wire:model.defer="filtrePagination" class="form-control">
+                                                                <option value="">25</option>
+                                                                <option value="50">50</option>
+                                                                <option value="100">100</option>
+                                                                </select>
+                                                           
                                                         </div>
                                                     </div>
                                         </div>
@@ -360,21 +376,23 @@
                         </div><!-- card -->
 
           <div class="table-responsive">
+          <form wire:submit.prevent="applyBulkAction">
+
+                <!-- Bulk Action Dropdown -->
+
             <table class="table table-striped table-sm">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Image</th>
                     <th>Title</th>
                     <th>Prix</th>
                     <th>Store Products</th>
-                    <th>Today</th>
-                    <th>Total sales</th>
-                    <th>Total Revenue</th>
                     <th>Country</th>
                     <th>Currency</th>
-                    <th>favoris</th>
+                    <th>Winning Product</th>
+                    <th>Dropshipping</th>
                     <th>Created_at</th>
-                    <th></th>
                     <th></th>
 
                 </tr>
@@ -382,39 +400,59 @@
             <tbody>
                 @foreach ($products as $product)
                     <tr>
+                        <td> 
+                              <input type="checkbox" wire:model.defer="selectedProducts.{{ $product->id }}" />
+                        </td>
                         <td><a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="250" height="250"></a></td>
-                        <!-- <td><a href="{{ $product->url }}" target="_blank">{{ $product->title }}</a></td> -->
                         <td><a href="{{ route('admin.product.show',$product->id) }}">{{ $product->title }}</a></td>
                         <td>{{ $product->prix }} $</td>
                         <td>{{ $product->stores->allproducts }}</td>
-                        <td>{{ $product->todaysales }} / ${{ $product->todaysales * $product->prix }}</td>
-                        <td>{{ $product->totalsales }}</td>
-                        <td>{{number_format($product->revenue, 2, ',', ' ')}} $</td>
                         <td>{{ $product->stores->country }}</td>
-                        <td>{{ $product->stores->currency }}</td>
-                        <!-- <td>{{ $product->favoris }}</td> -->
-
+                        <td>{{ $product->stores->currency }}</td>                    
                         <td>
-                        <td>
-                                <div class="form-check form-switch">
-                                    <input
-                                        class="form-check-input"
-                                        type="checkbox"
-                                        role="switch" 
-                                        wire:click="toggleFavoris({{ $product->id }}, {{ $product->favoris }})"
-                                        {{ $product->favoris == 1 ? 'checked' : '' }}
-                                    >
-                                    <label class="form-check-label" for="flexSwitchCheckDefault">
-                                        Toggle Favoris
-                                    </label>
-                                </div>
+                        <div class="form-check form-switch">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                role="switch" 
+                                wire:click="onetoggleWinning({{ $product->id }}, {{ $product->favoris }})"
+                                {{ $product->favoris == 1 ? 'checked' : '' }}
+                            >
+                            <label class="form-check-label" for="flexSwitchCheckDefault">
+                                Winning
+                            </label>
+                        </div>
 
-                        <td>{{ $product->created_at }}</td>
-                        <td><a  class="btn btn-success" href="{{ route('admin.product.show',$product->id) }}" >View </a></td>
+                        <div class="form-check form-switch">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                role="switch" 
+                                wire:click="onetoggleDropshipping({{ $product->id }}, {{ $product->dropshipping ?? 0 }})"
+                                {{ $product->dropshipping == 1 ? 'checked' : '' }}
+                            >
+                            <label class="form-check-label" for="flexSwitchCheckDefault">
+                                Dropshipping
+                            </label>
+                        </div>
+                        
+                        </td>
+                        <td>{{ $product->created_at_shopify }}</td>
+                        
+                        
+                    <td><a  class="btn btn-success" href="{{ route('admin.product.show',$product->id) }}" >View </a></td>
                     </tr>
                     @endforeach
             </tbody>
             </table>
+                    <select wire:model.defer="bulkAction">
+                        <option value="">Choose</option>
+                        <option value="add-to-dropshipping">Add to Dropshipping</option>
+                        <option value="add-to-winning">Add to Winning Product</option>
+                        <!-- Other bulk actions -->
+                    </select>
+                  <button type="submit">Apply Bulk Action</button>
+                </form>
           </div>
           <div>
         {{ $products->links() }}

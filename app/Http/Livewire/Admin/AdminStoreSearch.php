@@ -75,7 +75,7 @@ class AdminStoreSearch extends Component
             
         }
         if (!empty($this->storemax)) {
-            $stores->where('allproducts', '<=', $this->storemin);
+            $stores->where('allproducts', '>=', $this->storemax);
 
         }
         if (!empty($this->country)) {

@@ -96,7 +96,7 @@ class ProductResearch extends Component
         }
         if (!empty($this->storemax)) {
             $products->whereHas('stores', function ($query) {
-                $query->where('allproducts', '<=', $this->storemax);
+                $query->where('allproducts', '>=', $this->storemax);
             });
         }
         if (!empty($this->country)) {

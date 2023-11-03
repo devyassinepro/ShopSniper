@@ -307,6 +307,7 @@ function createstore ($store ,$store_id, $i){
     $products = json_decode($html)->products;
     foreach ($products as $product) {
 
+        // price
         if(isset($product->variants[0]->price)){
             $price= $product->variants[0]->price;
         }else{
@@ -318,6 +319,27 @@ function createstore ($store ,$store_id, $i){
             $image="default";
         }
 
+        // Check if the images array has elements before accessing them
+        if (isset($product->images[1])) {
+            $image2 = $product->images[1]->src;
+        }else $image2 ='';
+
+        if (isset($product->images[2])) {
+            $image3 = $product->images[2]->src;
+        }else $image3 ='';
+
+        if (isset($product->images[3])) {
+            $image4 = $product->images[3]->src;
+        }else $image4 ='';
+
+        if (isset($product->images[4])) {
+            $image5 = $product->images[4]->src;
+        }else $image5 ='';
+
+        if (isset($product->images[5])) {
+            $image6 = $product->images[5]->src;
+        }else $image6 ='';
+        
         $timeconvert = strtotime($product->updated_at);
         $totalsales = 0;
         $urlproduct = $store.'products/'.$product->handle;
@@ -340,7 +362,14 @@ function createstore ($store ,$store_id, $i){
             "day6sales" => 0,
             "day7sales" => 0,
             "weeksales" => 0,
-            "monthsales" => 0
+            "monthsales" => 0,
+            'description' => $product->body_html,
+            'created_at_shopify' => $product->published_at,
+            'image2' => $image2,
+            'image3' => $image3,
+            'image4' => $image4,
+            'image5' => $image5,
+            'image6' => $image6,
         ]);
     } 
 }

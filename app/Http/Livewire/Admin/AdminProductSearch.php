@@ -8,12 +8,16 @@ use App\Models\stores;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 
 class AdminProductSearch extends Component
 {
     use WithPagination;
     public $search = "";
     public $filtrePagination = "";
+    protected $paginationTheme = 'bootstrap';
+
    
 //    filters data
     public $title = '';
@@ -28,14 +32,89 @@ class AdminProductSearch extends Component
     public $storemax = '';
     public $country = '';
     public $currency = '';
-    public $favorites = '';
+    public $winning = '';
+    public $dropshipping = '';
 
-    
+
+    public $selectAll = false;
+    public $selectedProducts = [];
+    public $bulkAction = '';
+
+    public function applyBulkAction()
+    {
+
+        //  dd($this->bulkAction);
+        //  dd($this->selectedProducts);
+
+        if ($this->bulkAction === 'add-to-dropshipping') {
+            foreach ($this->selectedProducts as $productId => $isSelected) {
+                if ($isSelected) {              
+                    $this->toggleDropshipping($productId, 1); // 1 means "Add to Favorites"
+                }
+            }
+        }
+        else if($this->bulkAction === 'add-to-winning'){
+            foreach ($this->selectedProducts as $productId => $isSelected) {
+                if ($isSelected) {
+                    $this->toggleWinning($productId, 1); // 1 means "Add to Favorites"
+                }
+            }
+        }
+
+        // Clear selected products
+        $this->selectedProducts = [];
+    }
 
     protected $debug = true;
 
 
-    protected $paginationTheme = 'bootstrap';
+    public function toggleWinning($productId, $currentFavoris)
+    {
+        $product = Product::find($productId);
+
+        if ($product) {
+            $product->favoris = $currentFavoris;
+            // $product->favoris = $currentFavoris == 1 ? 0 : 1;
+            $product->created_at_favorite = Carbon::now()->format('Y-m-d');
+            $product->save();
+        }
+    }
+
+    
+    public function toggleDropshipping($productId, $currentDropshipping)
+    {
+        $product = Product::find($productId);
+
+        if ($product) {
+            // $product->dropshipping = $currentDropshipping == 1 ? 0 : 1;
+            $product->dropshipping = $currentDropshipping;
+            $product->save();
+        }
+    }
+
+
+    public function onetoggleWinning($productId, $currentFavoris)
+    {
+        $product = Product::find($productId);
+
+        if ($product) {
+            $product->favoris = $currentFavoris == 1 ? 0 : 1;
+            $product->created_at_favorite = Carbon::now()->format('Y-m-d');
+            $product->save();
+        }
+    }
+
+    
+    public function onetoggleDropshipping($productId, $currentDropshipping)
+    {
+        $product = Product::find($productId);
+
+        if ($product) {
+            $product->dropshipping = $currentDropshipping == 1 ? 0 : 1;
+            $product->save();
+        }
+    }
+
 
     public function updatePagination($perPage)
     {
@@ -45,15 +124,17 @@ class AdminProductSearch extends Component
     public function save(){
     }
 
-    public function toggleFavoris($productId, $currentFavoris)
-    {
-        $product = Product::find($productId);
+    // public function toggleFavoris($productId, $currentFavoris)
+    // {
+    //     $product = Product::find($productId);
     
-        if ($product) {
-            $product->favoris = $currentFavoris == 1 ? 0 : 1;
-            $product->save();
-        }
-    }
+    //     if ($product) {
+    //         $product->favoris = $currentFavoris == 1 ? 0 : 1;
+    //         $product->created_at_favorite = Carbon::now()->format('Y-m-d');
+    //         $product->save();
+    //     }
+    // }
+
 
     public function render()
     {
@@ -111,19 +192,19 @@ class AdminProductSearch extends Component
             });
         }
 
-        if ($this->favorites) {
+        if ($this->winning) {
             // If "Favorites" checkbox is checked, filter for favorites (where the field is 1)
             $products->where('favoris', 1);
-        } else {
-            // If "Favorites" checkbox is not checked, include all products (where the field is 0)
-            $products->where('favoris', 0);
-        }
-
+        } 
+        if ($this->dropshipping) {
+            // If "Favorites" checkbox is checked, filter for favorites (where the field is 1)
+            $products->where('dropshipping', 1);
+        } 
         if($this->filtrePagination != ""){
 
                 $products =$products->paginate($this->filtrePagination);
         }else{
-            $products =$products->paginate(20);
+            $products =$products->paginate(25);
         }
         return view('livewire.admin.admin-product-search',compact('products'));
 
