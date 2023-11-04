@@ -15,6 +15,9 @@ class ProductResearch extends Component
     use WithPagination;
     public $search = "";
     public $filtrePagination = "";
+
+    public $filterDropshipping = true;
+
    
 //    filters data
     public $title = '';
@@ -108,6 +111,10 @@ class ProductResearch extends Component
             $products->whereHas('stores', function ($query) {
                 $query->where('currency', '=', $this->currency);
             });
+        }
+
+        if ($this->filterDropshipping) {
+            $products->where('dropshipping', 1); // Assuming 'dropshipping' is a boolean column
         }
 
         // if($this->search != ""){

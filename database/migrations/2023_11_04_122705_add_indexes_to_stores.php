@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->index('stores_id');
-            $table->index('created_at');
-            $table->index('favoris');
-            $table->index('created_at_shopify');
-            $table->index('created_at_favorite');
-            $table->index('dropshipping');
+        Schema::table('stores', function (Blueprint $table) {
             //
+            $table->index('name');
+            $table->index('country');
+            $table->index('currency');
+            $table->index('allproducts');
         });
     }
 
@@ -31,9 +29,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->dropIndex('products_stores_id_index');
-
+        Schema::table('stores', function (Blueprint $table) {
             //
         });
     }

@@ -334,9 +334,18 @@
                                                     </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3">
+
+                                         <div class="col-lg-3">
+                                            <div class="form-group">
+                                                <label class="form-label" for="site-name">Dropshipping</label>
+                                            </div>
                                         </div>
-                                        <div class="col-lg-3">    
+                                        <div class="col-lg-3">
+                                            <div class="form-group">
+                                                <div class="form-control-wrap">
+                                                <input type="checkbox" wire:model.defer="filterDropshipping" id="filter-dropshipping">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                             

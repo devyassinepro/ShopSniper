@@ -21,7 +21,6 @@ class CreateProductsTable extends Migration
             $table->string('timesparam',500);
             $table->float('prix');
             $table->float('revenue');
-            // $table->integer('stores_id');
             $table->foreignId('stores_id');
             $table->string('url',500);
             $table->string('imageproduct',500);
