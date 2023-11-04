@@ -24,7 +24,7 @@
       <div class="card">
           <h5 class="card-header">Revenue</h5>
           <div class="card-body">
-            <h5 class="card-title">$ {{ number_format($storesrevenue->first()->products_sum_revenue, 2, ',', ' ') }}</h5>
+            <h5 class="card-title">$ {{ number_format($storesrevenue->first()->revenue, 2, ',', ' ') }}</h5>
           </div>
         </div>
   </div>
@@ -33,7 +33,7 @@
       <div class="card">
           <h5 class="card-header">Sales</h5>
           <div class="card-body">
-            <h5 class="card-title">{{$storesrevenue->first()->products_sum_totalsales}}</h5>
+            <h5 class="card-title">{{$storesrevenue->first()->sales}}</h5>
           </div>
         </div>
   </div>
@@ -42,7 +42,7 @@
       <div class="card">
           <h5 class="card-header">AOV</h5>
           <div class="card-body">
-            <h5 class="card-title">$ {{number_format($storesrevenue->first()->products_sum_revenue / $storesrevenue->first()->products_sum_totalsales, 2, ',', ' ')}}</h5>
+            <h5 class="card-title">$ {{number_format($storesrevenue->first()->revenue / $storesrevenue->first()->sales, 2, ',', ' ')}}</h5>
           </div>
         </div>
   </div>
@@ -91,14 +91,14 @@
                         <td>{{ $product->created_at }}</td>
                         <td><a href="{{ route('admin.product.show',$product->id) }}">{{ $product->title }}</a></td>
                         <td>{{ $product->prix }} $</td>
-                        <td>{{ $product->todaysales_count }}</td>
-                        <td>{{ $product->yesterdaysales_count }}</td>
-                        <td>{{ $product->day3sales_count }}</td>
-                        <td>{{ $product->day4sales_count }}</td>
-                        <td>{{ $product->day5sales_count }}</td>
-                        <td>{{ $product->day6sales_count }}</td>
-                        <td>{{ $product->weeklysales_count }}</td>
-                        <td>{{ $product->montlysales_count }}</td>
+                        <td>{{ $product->todaysales }}</td>
+                        <td>{{ $product->yesterdaysales }}</td>
+                        <td>{{ $product->day3sales }}</td>
+                        <td>{{ $product->day4sales }}</td>
+                        <td>{{ $product->day5sales }}</td>
+                        <td>{{ $product->day6sales }}</td>
+                        <td>{{ $product->weeksales }}</td>
+                        <td>{{ $product->monthsales }}</td>
                         <td>$ {{number_format($product->revenue, 2, ',', ' ')}}</td>
                     </tr>
                     @endforeach

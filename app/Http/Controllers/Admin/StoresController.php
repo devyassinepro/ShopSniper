@@ -150,24 +150,13 @@ class StoresController extends Controller
      */
     public function show($id)
     {
-
-        // $nichesall = Niche::find($id);
-        // $stores=$nichesall->stores()->withSum('products', 'totalsales')->withSum('products', 'revenue')
-        // ->orderBy('products_sum_revenue','desc')
-        // ->paginate(50);
-        // return view('admin.stores.index', compact('stores'));
-
         $storedata = DB::table('stores')->where('id', $id)->get();
-        $storesrevenue = stores::withSum('products', 'totalsales')
-        ->withSum('products', 'revenue')
-        ->where('id', $id)
+        $storesrevenue = stores::where('id', $id)
         ->get();
 
         $totalsalesmin = 0;
         // $pagination = 50;
-        $products = Product::withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales', 'weeklysales', 'montlysales'])
-                        ->where('stores_id',$id)
-                        ->where('totalsales', '>=', $totalsalesmin)
+        $products = Product::where('totalsales', '>=', $totalsalesmin)
                         ->orderBy('totalsales','desc')->take(10)->get();
 
     return view('admin.stores.show', compact('products','storedata','storesrevenue'))
@@ -236,8 +225,7 @@ class StoresController extends Controller
 
         $totalsalesmin = 0;
          $pagination = 50;
-        $products = Product::withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales', 'weeklysales', 'montlysales'])
-                        ->where('stores_id',$id)
+        $products = Product::where('stores_id',$id)
                         ->where('totalsales', '>=', $totalsalesmin)
                         ->orderBy('totalsales','desc')->paginate($pagination);
 

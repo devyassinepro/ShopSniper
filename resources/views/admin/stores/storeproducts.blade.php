@@ -98,14 +98,14 @@
                         <td><a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="150" height="150"></a></td>
                         <td><a href="{{ route('admin.product.show',$product->id) }}">{{ $product->title }}</a></td>
                         <td>{{ $product->prix }} $</td>
-                        <td>{{ $product->todaysales_count }}</td>
-                        <td>{{ $product->yesterdaysales_count }}</td>
-                        <td>{{ $product->day3sales_count }}</td>
-                        <td>{{ $product->day4sales_count }}</td>
-                        <td>{{ $product->day5sales_count }}</td>
-                        <td>{{ $product->day6sales_count }}</td>
-                        <td>{{ $product->weeklysales_count }}</td>
-                        <td>{{ $product->montlysales_count }}</td>
+                        <td>{{ $product->todaysales }}</td>
+                        <td>{{ $product->yesterdaysales }}</td>
+                        <td>{{ $product->day3sales }}</td>
+                        <td>{{ $product->day4sales }}</td>
+                        <td>{{ $product->day5sales }}</td>
+                        <td>{{ $product->day6sales }}</td>
+                        <td>{{ $product->weeklysales }}</td>
+                        <td>{{ $product->montlysales }}</td>
                         <td>{{ $product->totalsales }}</td>
                         <td>{{number_format($product->revenue, 2, ',', ' ')}} $</td>
                     </tr>
