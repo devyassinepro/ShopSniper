@@ -61,6 +61,7 @@ Route::get('resetdb', function () {
 Route::group(['middleware' => 'language'], function () {
     Route::get('oauth/{provider}', [OAuthController::class, 'redirectToProvider'])->name('oauth.redirect');
     Route::get('auth/{provider}/callback',[OAuthController::class, 'handleProviderCallback'])->name('oauth.callback');
+   
     Route::get('/', function () {
         return view('welcome');
     })->name('home');
@@ -81,6 +82,10 @@ Route::group(['middleware' => 'language'], function () {
         return view('pages.TermsandConditions');
     })->name('TermsandConditions');
 
+// redirect link
+    Route::get('/shopify', function () {
+        return redirect('https://shopify.pxf.io/MmW3NY');
+    });
 
 
     Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [AccountDashboardController::class, 'index'])->name('dashboard');

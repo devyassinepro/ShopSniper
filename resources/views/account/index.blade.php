@@ -265,7 +265,7 @@ fpr("referral",{email:"{{ Auth::user()->email }}"})
                                                 <div class="card-inner">
                                                     <div class="card-title-group">
                                                         <div class="card-title">
-                                                            <h6 class="title">Latest News</h6>
+                                                            <h6 class="title">Limited Time Offer</h6>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -278,11 +278,33 @@ fpr("referral",{email:"{{ Auth::user()->email }}"})
                                                         <div class="nk-tb-col"><span></span></div>
                                                         <div class="nk-tb-col"><span class="d-none d-sm-inline"></span></div>
                                                     </div>
+                                                    <!-- offer 1 -->
                                                     <div class="nk-tb-item">
                                                         <div class="nk-tb-col">
-                                                                <!-- <div class="user-avatar lg">
-                                                                      <img src="https://static-00.iconduck.com/assets.00/tiktok-icon-1890x2048-ihin0vop.png" alt="">
-                                                                </div> -->
+                                                                <div class="thumb">
+                                                                         <img src="https://cdn3.iconfinder.com/data/icons/social-media-2068/64/_shopping-512.png" width="40" height="40" alt="">
+                                                                </div>
+                                                        </div>
+                                                        <div class="nk-tb-col tb-col-sm">
+                                                            <div class="user-card">
+                                                                <div class="user-name">
+                                                                    <span class="tb-lead">Launch Your Store on Shopify for Only $1</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="nk-tb-col tb-col-md">
+                                                            <span class="tb-sub"> </span>
+                                                        </div>
+                                                        <div class="nk-tb-col">
+                                                            <span class="tb-sub tb-amount"> </span>
+                                                        </div>
+                                                        <div class="nk-tb-col">
+                                                            <a href="https://shopify.pxf.io/MmW3NY"  target="_blank" class="btn btn-primary">Claim Offer</a>
+                                                        </div>
+                                                    </div>
+                                                    <!-- offer 2 -->
+                                                    <div class="nk-tb-item">
+                                                        <div class="nk-tb-col">
                                                                 <div class="thumb">
                                                                          <img src="https://static-00.iconduck.com/assets.00/tiktok-icon-1890x2048-ihin0vop.png" width="40" height="40" alt="">
                                                                 </div>
