@@ -62,9 +62,9 @@ class ProductResearch extends Component
     
         // Get stores of this user and select the COALESCE calculation
         $products = Product::where('title', '>=', 10)
-            ->select('products.*', DB::raw('COALESCE(todaysales, 0) AS calculated_todaysales'), DB::raw('COALESCE(yesterdaysales, 0) AS calculated_yesterdaysales'));
-
-
+            ->select('products.*', DB::raw('COALESCE(todaysales, 0) AS calculated_todaysales'), DB::raw('COALESCE(yesterdaysales, 0) AS calculated_yesterdaysales'))
+            ->inRandomOrder();
+            
         // filters
         if($this->title != ""){
             // $this->resetPage();
