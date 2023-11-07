@@ -90,8 +90,8 @@
                                                         </div>
                                                             
                                                         <div class="project-meta">
-                                                            <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">$ {{ $product->prix }}</span>
-                                                            <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">$ {{ $product->prix - $product->price_aliexpress }}</span>
+                                                            <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">$ {{ $product->price_aliexpress }}</span>
+                                                            <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">$ {{ $product->prix }}</span>
 
                                                             <!-- <span class="badge badge-dim bg-warning"><em class="icon ni ni-clock"></em><span>5 Days Left</span></span> -->
                                                             <div class="drodown">
