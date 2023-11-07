@@ -5,7 +5,7 @@ use GuzzleHttp\Middleware;
 use Laravel\Cashier\Cashier;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\MaintenanceMode;
-use App\Http\Livewire\ProductResearch;
+use App\Http\Livewire\Account\ProductResearch;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CouponController;
@@ -57,6 +57,11 @@ Route::get('resetdb', function () {
     \Artisan::call('migrate:refresh --seed');
     dd("Data base has been reset");
 });
+
+
+Route::fallback(function() {
+        return view('welcome');
+ });
 
 Route::group(['middleware' => 'language'], function () {
     Route::get('oauth/{provider}', [OAuthController::class, 'redirectToProvider'])->name('oauth.redirect');

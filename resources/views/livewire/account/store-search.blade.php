@@ -1,7 +1,7 @@
 <div class="nk-content">
                     <div class="container-fluid">
                         <div class="nk-content-inner"> 
-    <div class="nk-content-body">
+<div class="nk-content-body">
                                 <!--  -->
                                 @if ($message = Session::get('success'))
                                         
@@ -137,12 +137,6 @@
                                                     <div class="dropdown-menu dropdown-menu-end">
                                                         <ul class="link-list-opt no-bdr">
                                                             <!-- Default option without filter -->
-                                                            <!-- <li>
-                                                                <a href="#" wire:click.prevent="updatePagination('')" wire:model="filtrePagination">
-                                                                    <span>All Items</span>
-                                                                </a>
-                                                            </li> -->
-
                                                             <!-- Other pagination options -->
                                                             <li>
                                                                 <a href="#" wire:click.prevent="updatePagination('10')" wire:model="filtrePagination">
@@ -196,120 +190,166 @@
                                     </div>
                                     <!-- end loading -->
                                 <div class="nk-block">
-                                    <div class="nk-tb-list is-separate is-medium mb-3">
-                                  
-                                    <div wire:loading.class="invisible" class="nk-tb-item nk-tb-head">
-                                        <div class="nk-tb-col nk-tb-col-check">
-                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                <input type="checkbox" class="custom-control-input" id="oid">
-                                                <label class="custom-control-label" for="oid"></label>
-                                            </div>
-                                        </div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span></span></div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span>Store</span></div>
-                                        <div class="nk-tb-col tb-col-md" style="font-size: 16px; font-weight: bold;"><span>Currency</span></div>
-                                        <div class="nk-tb-col tb-col-md" style="font-size: 16px; font-weight: bold;"><span>Date</span></div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block">Products</span></div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block">Sales</span></div>
+
+                                <!-- test -->
+
+                                <!-- <div class="nk-tb-col tb-col-md" style="font-size: 16px; font-weight: bold;"><span>Date</span></div>
+                                        <div class="nk-tb-col tb-col-md" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block">Products</span></div>
+                                        <div class="nk-tb-col tb-col-md" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block">Sales</span></div>
                                         <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block">Revenue</span></div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block">Expand</span></div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block">Action</span></div>
-                                    </div><!-- .nk-tb-item -->
-                                    @foreach ($stores as $store)
-                                    <div wire:loading.class="invisible" class="nk-tb-item">
-                                        <div class="nk-tb-col nk-tb-col-check">
-                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                <input type="checkbox" class="custom-control-input" id="oid01">
-                                                <label class="custom-control-label" for="oid01"></label>
+                                        <div class="nk-tb-col tb-col-md" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block">Expand</span></div>
+                                        <div class="nk-tb-col tb-col-md" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block">Action</span></div> -->
+
+                                <div class="nk-block">
+                                    <div class="nk-tb-list is-separate is-medium mb-3">
+                                        <div class="nk-tb-item nk-tb-head">
+                                            <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span></span></div>
+                                            <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span>Store</span></div>
+                                            <div class="nk-tb-col tb-col-md" style="font-size: 16px; font-weight: bold;"><span>Currency</span></div>
+                                            <div class="nk-tb-col tb-col-md" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block">Date</span></div>
+                                            <div class="nk-tb-col tb-col-sm" style="font-size: 16px; font-weight: bold;"><span>Products</span></div>
+                                            <div class="nk-tb-col tb-col-md" style="font-size: 16px; font-weight: bold;"><span>Sales</span></div>
+                                            <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span>Revenue</span></div>
+                                            <div class="nk-tb-col nk-tb-col-tools">
+                                            </div>
+                                        </div><!-- .nk-tb-item -->
+
+                                        @foreach ($stores as $store)
+
+                                        <div class="nk-tb-item">
+                                             <div class="nk-tb-col">
+                                                        <span class="dot bg-success">
+                                                        </span>
+
+                                                </div>
+                                            <div class="nk-tb-col">
+                                                <span class="tb-lead"><a href="{{ route('account.stores.show',$store->id) }}">{{ $store->name }}</a></span>
+                                            </div>
+                                            <div class="nk-tb-col tb-col-md">
+                                                <span class="tb-sub" style="font-size: 15px; font-weight: bold;">{{ $store->currency }}</span>
+                                            </div>
+                                            <div class="nk-tb-col tb-col-md">
+                                                <span class="tb-sub" style="font-size: 15px; font-weight: bold;">{{ $store->created_at }}</span>
+                                            </div>
+                                            <div class="nk-tb-col tb-col-sm">
+                                                <span class="tb-sub" style="font-size: 15px; font-weight: bold;">{{ $store->allproducts }}</span>
+                                            </div>
+                                            <div class="nk-tb-col tb-col-sm">
+                                                <span class="dot bg-primary d-sm-none"></span>
+                                                <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 15px; font-weight: bold;">{{ $store->sales }}</span>
+                                            </div>
+                                            @if($store->currency == "EUR" )
+                                            <div class="nk-tb-col">
+                                                    <span class="badge badge-sm badge-dot has-bg bg-success" style="font-size: 15px; font-weight: bold;">{{number_format($store->revenue, 2, ',', ' ')}} €</span>
+                                            </div>
+                                            @endif
+                                            @if($store->currency != "EUR" )
+                                            <div class="nk-tb-col">
+                                                     <span class="badge badge-sm badge-dot has-bg bg-success" style="font-size: 15px; font-weight: bold;">$ {{number_format($store->revenue, 2, ',', ' ')}}</span>
+                                            </div>
+                                            @endif
+
+                                            <div class="nk-tb-col nk-tb-col-tools">
+                                                <ul class="nk-tb-actions gx-1">
+                                                    <li class="nk-tb-action-hidden"><a href="{{ route('account.stores.show',$store->id) }}" class="btn btn-icon btn-trigger btn-tooltip" title="Show Charts">
+                                                            <em class="icon ni ni-eye"></em></a></li>
+                                                    <li>
+                                                        <div class="drodown me-n1">
+                                                            <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                <ul class="link-list-opt no-bdr">
+                                                                    <li><a href="{{ route('account.stores.show',$store->id) }}"><em class="icon ni ni-eye"></em><span>Show Charts</span></a></li>
+                                                                    <li>
+                                                                            <form action="{{ route('account.stores.destroy', $store->id) }}" method="POST">
+                                                                                @csrf
+                                                                                @method('DELETE')
+                                                                                @if (!currentTeam()->onTrial())
+                                                                                    <button type="submit" class="btn btn-danger">
+                                                                                        <em class="icon ni ni-trash"></em>
+                                                                                        <span>Untrack Store</span>
+                                                                                    </button>
+                                                                                @endif
+                                                                            </form>
+                                                                        </li>                                                               
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div><!-- .nk-tb-item -->
+                                        @endforeach
+                                    </div><!-- .nk-tb-list -->
+                                    <div class="card">
+                                            <div class="card-inner">
+                                                <div class="nk-block-between-md g-3">
+                                                    <div class="g">
+                                                   
+                                                    </div>
+
+                                                <div class="g">
+                                                           
+                                                    <div class="pagination-goto d-flex justify-content-center justify-content-md-start gx-3">
+                                                                    <ul class="pagination">
+                                                                        @if ($stores->currentPage() > 1)
+                                                                            <li class="page-item">
+                                                                                <a class="page-link" wire:click="previousPage" href="#">
+                                                                                    <em class="icon ni ni-back-alt-fill"></em>
+                                                                                </a>
+                                                                            </li>
+                                                                        @else
+                                                                            <li class="page-item disabled">
+                                                                                <span class="page-link"><em class="icon ni ni-back-alt-fill"></em></span>
+                                                                            </li>
+                                                                        @endif
+
+                                                                        @if ($stores->currentPage() < $stores->lastPage())
+                                                                            <li class="page-item">
+                                                                                <a class="page-link" wire:click="nextPage" href="#">
+                                                                                    <em class="icon ni ni-forward-alt-fill"></em>
+                                                                                </a>
+                                                                            </li>
+                                                                        @else
+                                                                            <li class="page-item disabled">
+                                                                                <span class="page-link"><em class="icon ni ni-forward-alt-fill"></em></span>
+                                                                            </li>
+                                                                        @endif
+                                                                    </ul>
+                                                                    <div>
+                                                                         <!-- <select class="form-select js-select2" data-search="on" data-dropdown="xs center" wire:model="page">
+                                                                            @for ($i = 1; $i <= $stores->lastPage(); $i++)
+                                                                                <option value="{{ $i }}">{{ $i }}</option>
+                                                                            @endfor
+                                                                        </select> -->
+                                                                   
+                                                                    <div class="drodown">
+                                                                        <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-bs-toggle="dropdown"> {{ $stores->currentPage()  }} </a>
+                                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                                            <ul class="link-list-opt no-bdr">
+                                                                                <!-- Default option without filter -->
+                                                                                <!-- Other pagination options -->
+
+                                                                                @for ($i = 1; $i <= $stores->lastPage(); $i++)
+                                                                                <li>
+                                                                                    <a class="page-link" wire:click="gotoPage({{ $i }})">
+                                                                                        <span>{{ $i }}</span>
+                                                                                    </a>
+                                                                                </li>
+
+                                                                                @endfor
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+                                                                    <div>OF {{ $stores->lastPage() }}</div>
+
+                                                    </div>
+                                                </div><!-- .pagination-goto -->
                                             </div>
                                         </div>
-                                        <div class="nk-tb-col">
-                                            <a  target="_blank" href="{{$store->url}}"><img src="https://cdn3.iconfinder.com/data/icons/social-media-2068/64/_shopping-512.png" width="30" height="30"></a>             
-                                        </div>
-                                        <div class="nk-tb-col">
-                                            <span class="tb-lead">{{ $store->name }}</span>
-                                        </div>
-                                        <div class="nk-tb-col">
-                                            <span class="tb-lead">{{ $store->currency }}</span>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-md">
-                                        <span class="tb-sub" style="font-size: 13px; font-weight: bold;">{{ $store->created_at }}</span>
-                                        </div>
-                                        <div class="nk-tb-col">
-                                            <span class="dot bg-warning d-sm-none"></span>
-                                            <span class="tb-sub" style="font-size: 21px; font-weight: bold;">{{ $store->allproducts }}</span>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-sm">
-                                            <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $store->sales }}</span>
-                                        </div>
-                                        @if($store->currency == "EUR" )
-                                        <div class="nk-tb-col tb-col-sm">
-                                            <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{number_format($store->revenue, 2, ',', ' ')}} €</span>
-                                        </div>
-                                        @endif
-                                        @if($store->currency != "EUR" )
-                                        <div class="nk-tb-col tb-col-sm">
-                                            <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">$ {{number_format($store->revenue, 2, ',', ' ')}}</span>
-                                        </div>
-                                        @endif
-                                        <div class="nk-tb-col tb-col-sm">
-                                            <a href="{{ route('account.stores.show',$store->id) }}" class="btn btn-white btn-dim btn-outline-primary"><em class="icon ni ni-reports"></em><span>Show Charts</span></a>
 
-                                        </div>
-                                        <div class="nk-tb-col tb-col-sm">
-                                            <form action="{{ route('account.stores.destroy',$store->id) }}" method="Post">
-                                                @csrf
-                                                @method('DELETE')
-                                                @if (!currentTeam()->onTrial())
-                                                <button type="submit" class="btn btn-danger">Untrack Store</button>
-                                                @endif
-                                            </form>
-                                        </div>
-                                    </div><!-- .nk-tb-item -->
-                                    @endforeach
-                                </div>  <!-- end Block -->
-                                
-                                <!-- Pagination  -->
-                                <div wire:loading.class="invisible" class="card">
-                                    <div class="card-inner">
-                                        <div wire:loading.class="invisible" class="my-4">
-                                            <div>
-                                                    @if ($stores->hasPages())
-                                                        <nav role="navigation" aria-label="Pagination Navigation" class="flex justify-between">
-                                                            <span>
-                                                                {{-- Previous Page Link --}}
-                                                                @if ($stores->onFirstPage())
-                                                                    <span class="btn btn-primary">
-                                                                       <
-                                                                    </span>
-                                                                @else
-                                                                    <button wire:click="previousPage" wire:loading.attr="disabled" rel="prev" class="btn btn-primary">
-                                                                    <
-                                                                    </button>
-                                                                @endif
-                                                            </span>
-                                                
-                                                              <!-- Page Input and "Go" Button -->
-                                                            {{ $stores->links() }}
 
-                                                            <span>
-                                                                {{-- Next Page Link --}}
-                                                                @if ($stores->hasMorePages())
-                                                                    <button wire:click="nextPage" wire:loading.attr="disabled" rel="next" class="btn btn-primary">
-                                                                       >
-                                                                    </button>
-                                                                @else
-                                                                    <span class="btn btn-primary">
-                                                                    >
-                                                                    </span>
-                                                                @endif
-                                                            </span>
-                                                        </nav>
-                                                    @endif
-                                                </div>
-                                        </div>
-                                    </div>
-                                </div>   <!-- End Pagination  -->
+                                </div><!-- .nk-block -->
 
                                 </div>
                     </div>

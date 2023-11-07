@@ -440,7 +440,7 @@
                         <td>{{ $product->created_at_shopify }}</td>
                         
                         
-                    <td><a  class="btn btn-success" href="{{ route('admin.product.show',$product->id) }}" >View </a></td>
+                    <td><a  class="btn btn-success" href="{{ route('admin.product.show',$product->id) }} " target="_blank">View </a></td>
                     </tr>
                     @endforeach
             </tbody>

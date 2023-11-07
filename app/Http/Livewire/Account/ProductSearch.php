@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Account;
 
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -100,7 +100,7 @@ class ProductSearch extends Component
         }
 
         // return view('livewire.product-search',compact('products'));
-        return view('livewire.product-search', [
+        return view('livewire.account.product-search', [
             'products' => $products,
         ]);
     }

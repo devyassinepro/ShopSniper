@@ -5,7 +5,7 @@
 @section('content')
 
                       @if (currentTeam()->subscribed('default'))
-                      <livewire:current-trends/>  
+                      <livewire:account.current-trends/>  
                       @endif
 
     @endsection

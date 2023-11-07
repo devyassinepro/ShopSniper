@@ -40,7 +40,7 @@ Welcome to Weenify. Visit the <a href="{{ route('subscription.plans') }}">billin
                 </div> -->
 
                       @if (currentTeam()->subscribed('default'))
-                      <livewire:product-search/>  
+                      <livewire:account.product-search/>  
                       @endif
         <!-- </main>
       </div>

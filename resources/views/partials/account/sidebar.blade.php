@@ -79,9 +79,9 @@
                                 </li> -->
                                 <!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="#" class="nk-menu-link {{ return_if(on_page('account.trends.index') OR on_page('account.currenttrends.create') OR on_page('account.trends.edit'), ' active') }}">
+                                    <a href="{{ route('account.trends.index') }}" class="nk-menu-link {{ return_if(on_page('account.trends.index') OR on_page('account.currenttrends.create') OR on_page('account.trends.edit'), ' active') }}">
                                         <span class="nk-menu-icon"><em class="icon ni ni-growth-fill"></em></span>
-                                        <span class="nk-menu-text">{{ __('Current Trends') }} <span class="badge badge-dim bg-primary rounded-pill">soon</span></span>
+                                        <span class="nk-menu-text">{{ __('Current Trends') }} <span class="badge badge-dim bg-primary rounded-pill">New</span></span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">

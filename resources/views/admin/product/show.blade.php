@@ -12,6 +12,7 @@
 
         <td><a href="{{ $products->first()->url }}" target="_blank"><img src="{{ $products->first()->imageproduct }}" width="300" height="300"></a></td>
         <td><a  class="btn btn-success" href="{{$products->first()->url}}" target="_blank">View </a></td>
+        <td><a  class="btn btn-primary"   target="_blank" href="https://www.aliexpress.com/wholesale?SearchText={{urldecode($products->first()->title)}}">Search on AliExpress</a></td>
      
           <div class="table-responsive">
             <table class="table table-striped table-sm">
@@ -29,15 +30,15 @@
             </thead>
             <tbody>
                     <tr>
-                    <td>{{ $products->first()->todaysales_count }}</td>
+                    <td>{{ $products->first()->todaysales }}</td>
 
-                    <td>{{ $products->first()->yesterdaysales_count }}</td>
-                        <td>{{ $products->first()->day3sales_count }}</td>
-                        <td>{{ $products->first()->day4sales_count }}</td>
-                        <td>{{ $products->first()->day5sales_count }}</td>
-                        <td>{{ $products->first()->day6sales_count }}</td>
-                        <td>{{ $products->first()->weeklysales_count }}</td>
-                        <td>{{ $products->first()->montlysales_count }}</td>
+                    <td>{{ $products->first()->yesterdaysales }}</td>
+                        <td>{{ $products->first()->day3sales }}</td>
+                        <td>{{ $products->first()->day4sales }}</td>
+                        <td>{{ $products->first()->day5sales }}</td>
+                        <td>{{ $products->first()->day6sales }}</td>
+                        <td>{{ $products->first()->weeklysales }}</td>
+                        <td>{{ $products->first()->montlysales }}</td>
 
                     </tr>
             </tbody>
@@ -50,12 +51,12 @@
 
                 <div class="form-group">
                   <label for="inputAddress">Title</label>
-                  <input type="text" class="form-control" name="pricealiexpress" id="inputAddress" value="{{ $products->first()->title }}">
+                  <input type="text" class="form-control" name="title" id="inputAddress" value="{{ $products->first()->title }}">
                 </div>
 
                 <div class="form-group">
                   <label for="inputAddress">Aliexpress Price</label>
-                  <input type="number" class="form-control" name="pricealiexpress" id="inputAddress" placeholder="Price aliexpress">
+                  <input type="number"  step="any" class="form-control" name="pricealiexpress" id="inputAddress" value ="{{ $products->first()->price_aliexpress }}" placeholder="Price aliexpress">
                 </div>
 
                 <!-- Add form fields for other product data -->

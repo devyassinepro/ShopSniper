@@ -5,6 +5,6 @@
 @section('content')
 
                       @if (currentTeam()->subscribed('default'))
-                      <livewire:product-research />  
+                      <livewire:account.product-research />  
                       @endif
     @endsection

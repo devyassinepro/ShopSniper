@@ -10,72 +10,115 @@
                             <div class="nk-block">
                                   
                                   <div class="row g-gs">
-                                            <div class="col-md-6">
+                                            
+                                            <div class="col-md-5">
                                                 <div class="card card-bordered card-preview">
                                                     <div class="card-inner">
-                                                        <div class="card-head">
-                                                            <h6 class="title">Image</h6>
-                                                        </div>
-                                                        <div class="nk-ck-sm">
-                                                        <td><img src="{{ $products->first()->imageproduct }}" width="200" height="200"></a></td>
+                 
+                                                        <div id="carouselExConInd" class="carousel slide" data-bs-ride="carousel">
+                                                                  <ol class="carousel-indicators">
+                                                                      <li data-bs-target="#carouselExConInd" data-bs-slide-to="0" class="active"></li>
+                                                                      <li data-bs-target="#carouselExConInd" data-bs-slide-to="1"></li>
+                                                                      <li data-bs-target="#carouselExConInd" data-bs-slide-to="2"></li>
+                                                                      <li data-bs-target="#carouselExConInd" data-bs-slide-to="3"></li>
+                                                                      <li data-bs-target="#carouselExConInd" data-bs-slide-to="4"></li>
+                                                                      <li data-bs-target="#carouselExConInd" data-bs-slide-to="5"></li>
 
-                                                        </div>
+                                                                  </ol>
+                                                                  <div class="carousel-inner">
+                                                                      <div class="carousel-item active">
+                                                                          <img src="{{ $products->first()->imageproduct }}" class="d-block w-80" alt="carousel">
+                                                                      </div>
+                                                                      <div class="carousel-item">
+                                                                          <img src="{{ $products->first()->image2 }}" class="d-block w-80" alt="carousel">
+                                                                      </div>
+                                                                      <div class="carousel-item">
+                                                                          <img src="{{ $products->first()->image3 }}" class="d-block w-80" alt="carousel">
+                                                                      </div>
+                                                                      <div class="carousel-item">
+                                                                          <img src="{{ $products->first()->image4 }}" class="d-block w-80" alt="carousel">
+                                                                      </div>
+                                                                      <div class="carousel-item">
+                                                                          <img src="{{ $products->first()->image5 }}" class="d-block w-80" alt="carousel">
+                                                                      </div>
+                                                                      
+                                                                  </div>
+                                                                  <a class="carousel-control-prev" href="#carouselExConInd" role="button" data-bs-slide="prev">
+                                                                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                      <span class="visually-hidden">Previous</span>
+                                                                  </a>
+                                                                  <a class="carousel-control-next" href="#carouselExConInd" role="button" data-bs-slide="next">
+                                                                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                      <span class="visually-hidden">Next</span>
+                                                                  </a>
+                                                              </div>
                                                     </div>
                                                 </div><!-- .card-preview -->
                                             </div>
-                                            <div class="col-md-6">
+                                            <!-- screen2 -->
+                                            <div class="col-md-7">
                                                 <div class="card card-bordered card-preview">
-                                                    <div class="card-inner">
-                                                        <div class="card-head">
-                                                            <h6 class="title">Product Name : {{$products->first()->title}}</h6>
-                                                        </div>
-                                                        <div class="nk-ck-sm">
-                                                        <a  class="btn btn-primary"  target="_blank" href="{{$products->first()->url}}">View on Shopify</a>
-                                                        <a  class="btn btn-primary"   target="_blank" href="https://www.aliexpress.com/wholesale?SearchText={{urldecode($products->first()->title)}}">Search on AliExpress</a>
-                                                        <a  class="btn btn-primary"   target="_blank" href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&q={{urldecode($products->first()->title)}}&search_type=keyword_unordered&media_type=all">Search on Facebook</a>
-                                                        <a href="{{ route('account.product.importproduct',$products->first()->id) }}" class="btn btn-white btn-dim btn-outline-primary"><em class="icon ni ni-download-cloud"></em><span>Import product</span></a></li>
+                                                      <div class="card-inner">
+                                                            <div class="card-head">
+                                                                <h4 class="title">{{$products->first()->title}}</h4>
+                                                            </div>
+                                                            
+                                                            
+                                                            <div class="card-head">
+                                                              <div class="limited-text">
+                                                                  <p>{!! strip_tags($products->first()->description) !!}</p>
+                                                              </div>
+                                                              <a href="#" class="read-more">Read More</a>
                                                           </div>
+
+
+                                            <div class="card-inner pt-0">
+                                                <div class="rounded px-2 py-4 bg-primary">
+                                                    
+                                                    <div class="d-flex">
+                                                        <div class="w-50 px-4">
+                                                            <div class="fs-14px text-white text-opacity-75">Product Cost</div>
+                                                            <span class="fs-2 lh-1 mb-1 text-white">${{$products->first()->price_aliexpress}}</span>
+                                                        </div>
+                                                        <div class="border-start opacity-50"></div>
+                                                        <div class="w-50 px-4">
+                                                            <div class="fs-14px text-white text-opacity-75">Selling Price</div>
+                                                            <span class="fs-2 lh-1 mb-1 text-white">${{$products->first()->prix}}</span>
+                                                        </div>
+                                                        <div class="border-start opacity-50"></div>
+                                                        <div class="w-50 px-4">
+                                                            <div class="fs-14px text-white text-opacity-75">Profit per Sale</div>
+                                                            <span class="fs-2 lh-1 mb-1 text-white">${{$products->first()->prix - $products->first()->price_aliexpress}}</span>
+                                                        </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                                <!-- button part  -->
+                                                         <div class="nk-ck-sm">
+
+                                                               <ul class="">
+                                                                    <li>
+                                                                          <a  class="btn btn-primary"  target="_blank" href="{{$products->first()->url}}"><em class="icon ni ni-eye-fill"></em>Go to Shopify</a>
+                                                                          <a  class="btn btn-primary"   target="_blank" href="https://www.aliexpress.com/wholesale?SearchText={{urldecode($products->first()->title)}}"><em class="icon ni ni-eye-fill"></em>Go to AliExpress</a>
+                                                                    </li>
+                                                                     <br>
+                                                                    <li>
+                                                                          <a  class="btn btn-primary"   target="_blank" href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&q={{urldecode($products->first()->title)}}&search_type=keyword_unordered&media_type=all"><em class="icon ni ni-facebook-circle"></em>Go to FB Ads</a>
+                                                                          <a href="{{ route('account.product.importproduct',$products->first()->id) }}" class="btn btn-primary"><em class="icon ni ni-download-cloud"></em><span>Import product</span></a></li>
+                                                                    </li>
+                                                                  
+                                                                </ul>
+                                                   
+                                              <!-- <li><a href="#" class="btn btn-success eg-swal-success">Success</a></li> -->
+                                             
+                                        </div><!-- .card -->
+                                                              
+                                                              
+                                                              </div>
+                                                      </div>
                                                 </div><!-- .card-preview -->
-                                            </div>
-                                          
-                                           
+                                                                 
                                         </div>
-
-
-                                  <div class="row g-gs">
-                                  <div class="col-md-6">
-                                                <div class="card h-100">
-                                                <div class="card-inner">
-                                                    <div class="card-title-group align-start gx-3 mb-3">
-                                                        <div class="card-title">
-                                                            <h6 class="title">Revenue Chart ($)</h6>
-                                                        </div>
-                                                    </div>
-                                                    <div class="nk-sales-ck large pt-4">
-                                                        <canvas class="sales-overview-chart" id="revenueOvervieweenify"></canvas>
-                                                    </div>
-                                                </div>
-                                            </div><!-- .card -->
-                                            </div>
-                                            <div class="col-md-6">
-                                            <div class="card h-100">
-                                                <div class="card-inner">
-                                                    <div class="card-title-group align-start gx-3 mb-3">
-                                                        <div class="card-title">
-                                                            <h6 class="title">Sales Overview</h6>
-                                                        </div>
-                                                    </div>
-                                                    <div class="nk-sales-ck large pt-4">
-                                                        <canvas class="sales-overview-chart" id="salesOvervieweenify"></canvas>
-                                                    </div>
-                                                </div>
-                                            </div><!-- .card -->
-                                            </div>
-                                          
-                                           
-                                        </div>
-
 
           <!-- ALl Affiche -->
 
@@ -84,76 +127,24 @@
                 <div class="card-body">
                   <h4 class="card-title">
                     <i class="fas fa-table"></i>
-                    Sales Details
+                    Sales Tracking
+                    <div class="nk-tb-col tb-col-md">
+                                        <form method="POST" action="{{ route('account.stores.trackstore', $products->first()->stores->id) }}">
+                                        @csrf
+                                        <!-- Your form content here -->
+                                        <button type="submit" class="btn btn-white btn-dim btn-outline-primary">
+                                            <em class="icon ni ni-crosshair"></em>
+                                            <span>Track product</span>
+                                        </button>
+                                            </form>                                         
+                                      </div> 
                   </h4>
-                  <div class="table-responsive">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>Title</th>
-                          <th>Price</th>
-                          <th>Today</th>
-                          <th>Yesterday</th>
-                          <th>3</th>
-                          <th>4</th>
-                          <th>5</th>
-                          <th>6</th>
-                          <th>Weekly</th>
-                          <th>Monthly</th>
-                          <th>Total</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="font-weight-bold">
-                              <a href="{{ route('account.product.show',$products->first()->id) }}">{{ $products->first()->title }}</a>
-                          </td>                          
-                          <td>$ {{ $products->first()->prix }}</td>
-                             <td>
-                              <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $products->first()->todaysales * $products->first()->prix }}</span>
-                              <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $products->first()->todaysales }}</span>
-                            </td>
-                          <td>
-                          <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $products->first()->yesterdaysales * $products->first()->prix }}</span>
-                          <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $products->first()->yesterdaysales }}</span>
-                          </td>  
-
-                          <td>
-                              <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $products->first()->day3sales * $products->first()->prix }}</span>
-                              <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $products->first()->day3sales }}</span>
-                          </td>                          
-                        
-                          <td>
-                            <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $products->first()->day4sales * $products->first()->prix }}</span>
-                            <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $products->first()->day4sales }}</span>
-                          </td>
-                          <td>
-                            <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $products->first()->day5sales * $products->first()->prix }}</span>
-                            <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $products->first()->day5sales }}</span>
-                          </td>  
-                          <td>
-                            <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $products->first()->day6sales * $products->first()->prix }}</span>
-                            <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $products->first()->day6sales }}</span>
-                          </td>  
-                          <td>
-                            <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $products->first()->weeksales * $products->first()->prix }}</span>
-                            <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $products->first()->weeksales }}</span>
-                          </td>
-                          <td>
-                            <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $products->first()->monthysales * $products->first()->prix }}</span>
-                            <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $products->first()->monthsales }}</span>
-                          </td>
-                          <td>
-                            <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $products->first()->totalsales * $products->first()->prix }}</span>
-                            <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $products->first()->totalsales }}</span>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                                 <img src="{{ asset('assets/images/trackingsales.png') }}" width="1500" height= "300">
                 </div>
               </div>
             </div>
+
+
           </div>
 
           </div>
@@ -167,8 +158,37 @@
 <script src="{{ asset('assets/js/bundle.js?ver=3.2.0') }}"></script>
 <script src="{{ asset('assets/js/scripts.js?ver=3.2.0') }}"></script>
 <script src="{{ asset('assets/js/charts/chart-sales.js?ver=3.2.0') }}"></script>
+<script src="{{ asset('assets/js/example-sweetalert.js?ver=3.2.0') }}"></script>
 
 
+<style>
+.limited-text {
+    max-height: 70px;
+    overflow: hidden;
+}
+
+.read-more {
+    display: none;
+    color: #007BFF;
+    cursor: pointer;
+}
+
+.read-more.show {
+    display: block;
+}
+
+</style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $(".read-more").on("click", function(e) {
+            e.preventDefault();
+            $(".limited-text").toggleClass("show");
+            $(this).hide();
+        });
+    });
+</script>
 
 <!-- storesrevenue Chart -->
 <script>

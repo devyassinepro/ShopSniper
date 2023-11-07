@@ -208,7 +208,7 @@
                                         </div>
 
                                         <div class="nk-tb-col tb-col-md">
-                                            <li><a href="{{ route('account.product.show',$product->id) }}" class="btn btn-white btn-dim btn-outline-primary"><em class="icon ni ni-reports"></em><span>View</span></a></li>
+                                            <li><a href="{{ route('account.product.show',$product->id) }}" target="_blank" class="btn btn-white btn-dim btn-outline-primary"><em class="icon ni ni-reports"></em><span>View</span></a></li>
                                         </div>
                                         <div class="nk-tb-col tb-col-md">
                                             <li><a wire:click="exportToCsv('{{ $product->url }}')" class="btn btn-white btn-dim btn-outline-primary"><em class="icon ni ni-download-cloud"></em><span>Import product</span></a></li>

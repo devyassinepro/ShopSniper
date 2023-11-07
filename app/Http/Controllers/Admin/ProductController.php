@@ -48,22 +48,13 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        
-    // $products = Product::withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales'])
-    //                     ->where('stores_id',$id)
-    //                     ->orderBy('totalsales','desc')->paginate(100);
-
-
-    // return view('admin.product.index', compact('products'))
-    // ->with('totalproducts',Product::where('stores_id',$id)->count());
-                //conf standard 
+    
                 $totalsalesmin = 0;
                 $pagination = 50;
              
-               $products = Product::orderBy('revenue','desc')
-               ->where('id', $id);
+               $products = Product::where('id', $id);
    
-                $products = $products->withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales', 'weeklysales', 'montlysales']);
+                // $products = $products->withCount(['todaysales', 'yesterdaysales' , 'day3sales' , 'day4sales' , 'day5sales' , 'day6sales', 'weeklysales', 'montlysales']);
                 $products = $products->get();
         
                 return view('admin.product.show', compact('products'));
@@ -79,27 +70,21 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-    
-        // $this->validate($request, [ // the new values should not be null
-        //     'title' => 'required',
-        //     'timestamp' => 'required',
-        //     'vendor' => 'required',
-        //     'store' => 'required',
-        //     'totalsales' => 'required',
-        // ]);
-  
+      
         $product = Product::findorFail($id); // uses the id to search values that need to be updated.
 
-        dd($request->input('title'));
 
-        // $product->title = $request->input('title'); //retrieves user input
-        // $product->timestamp = $request->input('timestamp'); //retrieves user input
-        // $product->vendor = $request->input('vendor'); //retrieves user input
-        // $product->store = $request->input('store');////retrieves user input
-        // $product->totalsales = $request->input('totalsales');////retrieves user input
+        $product->price_aliexpress = $request->input('pricealiexpress');
+        $product->save();//saves the values in the database. The existing data is overwritten.
 
-        // $product->save();//saves the values in the database. The existing data is overwritten.
-        // return $product; // retrieves the updated object from the database
+
+        $products = Product::where('id', $id);
+        $products = $products->get();
+
+
+            // Fetch the product data after updating
+
+    return view('admin.product.show', compact('products'));
     }
 
     /**

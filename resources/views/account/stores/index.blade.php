@@ -5,7 +5,7 @@
 @section('content')
 
                 @if (currentTeam()->subscribed('default'))
-                <livewire:store-search />  
+                <livewire:account.store-search />  
                 @endif
                       
   @endsection

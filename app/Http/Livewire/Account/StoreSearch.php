@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Account;
 
 use Livewire\Component;
 use App\Models\Product;
@@ -17,7 +17,9 @@ class StoreSearch extends Component
     public $search = "";
     public $filtreCurrency = "", $filtreNiche = "", $filtrePagination = "", $filtreorderby = "";
 
+
     protected $paginationTheme = 'bootstrap';
+    public $page = 1;
 
 
     public function updateNiche($nicheId)
@@ -82,17 +84,29 @@ class StoreSearch extends Component
         $stores = $stores->orderBy('revenue','desc')
             ->paginate($this->filtrePagination);
         }else{
-            $stores = $stores->orderBy('revenue','desc')
-            ->paginate(10);
+            $stores = $stores->orderBy('revenue','desc');
         }
+
+        if($this->page > 1){
+            $stores = $stores->paginate(10, ['*'], 'page', $this->page);
+        }else {
+            $stores =  $stores->paginate(10);
+        }
+
 
          $niches = Niche::where('user_id', $user_id)->orderBy('id','asc')->get();
         // return view('livewire.store-search', compact('stores','niches'));
-        return view('livewire.store-search', [
+        return view('livewire.account.store-search', [
             "stores" => $stores,
             "niches"=> $niches
         ]);
 
+    }
+
+
+    public function gotoPage($page)
+    {
+        $this->page = $page; // Set the selected page
     }
 
     public function updated($property)

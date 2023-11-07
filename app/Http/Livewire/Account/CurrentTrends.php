@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Account;
+
 
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -9,46 +10,28 @@ use App\Models\stores;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ProductExport;
 
-class ProductResearch extends Component
+class CurrentTrends extends Component
 {
+   
     use WithPagination;
     public $search = "";
     public $filtrePagination = "";
 
-    public $filterDropshipping = true;
+    public $productUrl;
 
    
-//    filters data
-    public $title = '';
-    public $titleexclude = '';
-    public $description = '';
-    public $descriptionexlude = '';
-    public $url = ''; 
-    public $urlexlude = '';
-    public $pricemin = '';
-    public $pricemax = '';
-    public $storemin = '';
-    public $storemax = '';
-    public $country = '';
-    public $currency = '';
-
-    protected $debug = true;
-
-
     protected $paginationTheme = 'bootstrap';
 
     public function updatePagination($perPage)
     {
         $this->filtrePagination = $perPage;
-    }
-
-    public function save(){
-      
-        //   dd($this->title,$this->description,$this->url,$this->pricemin,$this->pricemax,$this->pricemin,$this->storemin,$this->storemax,$this->country);
+        $this->resetPage(); // Reset to page 1 when changing the items per page.
 
     }
-
+    
     public function render()
     {
 
@@ -57,95 +40,32 @@ class ProductResearch extends Component
             redirect()->route('dashboard')->with('error','You can not access this page.');
         }
 
-        $user_id = Auth::user()->id;
-
-    
         // Get stores of this user and select the COALESCE calculation
         $products = Product::where('title', '>=', 10)
-            ->select('products.*', DB::raw('COALESCE(todaysales, 0) AS calculated_todaysales'), DB::raw('COALESCE(yesterdaysales, 0) AS calculated_yesterdaysales'))
+            ->where('favoris', 1)
+            ->select('products.*')
             ->inRandomOrder();
-            
-        // filters
-        if($this->title != ""){
-            // $this->resetPage();
-            $products->where("title", "LIKE",  "%". $this->title ."%");
-        }
-        if($this->url != ""){
-            $products->where('url', 'LIKE', "%{$this->url}%");
-        }
 
-        if (!empty($this->titleexclude)) {
-            $products->where('title', 'not like', "%{$this->titleexclude}%");
-        }
 
-        if (!empty($this->urlexlude)) {
-            $products->where('url', 'not like', "%{$this->urlexlude}%");
+        if($this->search != ""){
+            $this->resetPage();
+            $products->where("title", "LIKE",  "%". $this->search ."%")
+                         ->orWhere("url","LIKE",  "%". $this->search ."%");
         }
-
-        if (!empty($this->pricemin)) {
-
-            // $products->where('prix', '>=', $this->priceMin);
-            $products->where('prix', '>=', $this->pricemin);
-
-        }
-        if (!empty($this->pricemax)) {
-            $products->where('prix', '<=', $this->pricemax);
-        }
-        if (!empty($this->storemin)) {
-            // $products->where('prix', '>=', $this->priceMin);
-            $products->whereHas('stores', function ($query) {
-                $query->where('allproducts', '<=', $this->storemin);
-            });
-        }
-        if (!empty($this->storemax)) {
-            $products->whereHas('stores', function ($query) {
-                $query->where('allproducts', '>=', $this->storemax);
-            });
-        }
-        if (!empty($this->country)) {
-            $products->whereHas('stores', function ($query) {
-                $query->where('country', '=', $this->country);
-            });
-        }
-        if (!empty($this->currency)) {
-            $products->whereHas('stores', function ($query) {
-                $query->where('currency', '=', $this->currency);
-            });
-        }
-
-        if ($this->filterDropshipping) {
-            $products->where('dropshipping', 1); // Assuming 'dropshipping' is a boolean column
-        }
-
-        // if($this->search != ""){
-        //     $this->resetPage();
-        //     $products->where("title", "LIKE",  "%". $this->search ."%")
-        //                     ->orWhere("url","LIKE",  "%". $this->search ."%");
-        // }
 
         if($this->filtrePagination != ""){
 
                 $products =$products->paginate($this->filtrePagination);
         }else{
-            $products =$products->paginate(20);
+            // $products =$products->paginate(5);
+            $products = $products->paginate($this->filtrePagination ?: 28);
+
         }
-        return view('livewire.product-research',compact('products'));
-    }
 
-    public function updated($property)
-    {
-        if ($property === 'search') {
-            $this->resetPage();
-        }
-    }
-
-    public function updatingQuery(){
-        $this->resetPage();
-    }
-
-    public function updatedSearch()
-    {
-        $this->resetPage();
+        // return view('livewire.product-search',compact('products'));
+        return view('livewire.account.current-trends', [
+            'products' => $products,
+        ]);
     }
 
     public function exportToCsv($url)
@@ -438,11 +358,13 @@ class ProductResearch extends Component
         
         // Close the CSV file
         fclose($csvFile);
-        
         // Return the path to the generated CSV file
         return response()->download($csvFilePath)->deleteFileAfterSend(true);
-        
+
     }
 
+    public function updatingQuery(){
+        $this->resetPage();
+    }
 
 }

@@ -189,7 +189,7 @@ fpr("referral",{email:"{{ Auth::user()->email }}"})
                                                 <div class="data">
                                                     <div class="thumb"><img src="./images/icons/product-ee.svg" alt=""></div>
                                                     <div class="info">
-                                                        <h6 class="title"><span class="name">Current Trends (Soon)</span><span class="badge badge-dim bg-primary rounded-pill">oon</span></h6>
+                                                        <h6 class="title"><span class="name">Current Trends (New)</span><span class="badge badge-dim bg-primary rounded-pill">New</span></h6>
                                                         <div class="meta">
                                                             <span class="version">
                                                                 <span class="text-soft">Version: </span> <span>1.3.1</span>
@@ -201,7 +201,7 @@ fpr("referral",{email:"{{ Auth::user()->email }}"})
                                                     </div>
                                                 </div>
                                                 <div class="actions">
-                                                    <a href="/" class="btn btn-primary">Current Trends</a>
+                                                    <a href="{{ route('account.trends.index') }}" class="btn btn-primary">Current Trends</a>
                                                 </div>
                                             </div><!-- .sp-pdl-item -->
                                         </div><!-- .col -->
