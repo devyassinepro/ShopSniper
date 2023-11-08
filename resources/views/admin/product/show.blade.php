@@ -8,7 +8,10 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-12 pt-3 px-4">
         <div><h4>View Product</h4></div>
-        <div><h5>Store Name : {{$products->first()->title}}</h5></div>
+        <div><h5>Product Title : {{$products->first()->title}}</h5></div>
+
+        <div><h3>Product prix : {{$products->first()->prix}}</h3></div>
+
 
         <td><a href="{{ $products->first()->url }}" target="_blank"><img src="{{ $products->first()->imageproduct }}" width="300" height="300"></a></td>
         <td><a  class="btn btn-success" href="{{$products->first()->url}}" target="_blank">View </a></td>
