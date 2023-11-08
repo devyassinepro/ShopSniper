@@ -133,5 +133,16 @@ src="https://www.facebook.com/tr?id=691407819506168&ev=PageView&noscript=1"
     <!--End of Tawk.to Script-->
     <script src="{{ asset('assets/js/bundle.js?ver=3.2.0') }}"></script>
     <script src="{{ asset('assets/js/scripts.js?ver=3.2.0') }}"></script>
+<!-- sweet Alert -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.min.css" rel="stylesheet">
+    <script type="text/javascript">
+        $("body").on("click"," .import-product", function(){
+            // var current_object = $(this);
+            Swal.fire("Product Imported Successfully !", "The product has been downloaded in a CSV file. Just go to your Shopify dashboard, click on 'Products,' and select 'Import product.' After a few seconds, you will see the product published in your store.", "success");
+        });
+</script>
+
 </body>
 </html>
