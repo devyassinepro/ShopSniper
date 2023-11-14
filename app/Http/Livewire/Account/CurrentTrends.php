@@ -24,6 +24,8 @@ class CurrentTrends extends Component
 
    
     protected $paginationTheme = 'bootstrap';
+    public $page = 1;
+
 
     public function updatePagination($perPage)
     {
@@ -365,6 +367,18 @@ class CurrentTrends extends Component
 
     public function updatingQuery(){
         $this->resetPage();
+    }
+
+    public function gotoPage($page)
+    {
+        $this->page = $page; // Set the selected page
+    }
+
+    public function updated($property)
+    {
+        if ($property === 'search') {
+            $this->resetPage();
+        }
     }
 
 }

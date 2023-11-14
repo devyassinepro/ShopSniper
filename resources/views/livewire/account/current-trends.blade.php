@@ -69,32 +69,29 @@
                             <!-- later -->
                                 <div class="nk-block">
                                     <div class="row g-gs">
-
                                     @foreach ($products as $product)
-                                        <div class="col-sm-6 col-lg-4 col-xxl-3">
-                                            <div class="card card-bordered h-100">
-                                                <div class="card-inner">
-                                                    <div class="project">
-                                                    <!-- <a href="{{ $product->url }}" target="_blank"></a> -->
-                                                    <div class="project-details">
-                                                      <a href="{{ route('account.trends.show',$product->id) }}"> <img src="{{ $product->imageproduct }}" width="300" height="300"></a>
-                        
-                                                    </div>
-                                                    <div class="project-head">
-                                                            <a href="{{ $product->url }}" target="_blank" class="project-title">
-                                                                <div class="project-info">
-                                                                    <h6 class="title">{{ $product->title }}</h6>
-                                                                    <!-- <span class="sub-text">{{ parse_url($product->url, PHP_URL_HOST) }}</span> -->
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                            
-                                                        <div class="project-meta">
-                                                            <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">$ {{ $product->price_aliexpress }}</span>
-                                                            <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">$ {{ $product->prix }}</span>
 
-                                                            <!-- <span class="badge badge-dim bg-warning"><em class="icon ni ni-clock"></em><span>5 Days Left</span></span> -->
-                                                            <div class="drodown">
+                                    <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                            <div class="card card-bordered product-card">
+                                                <div class="product-thumb">
+                                                    <a href="{{ route('account.product.show',$product->id) }}">
+                                                        <img class="card-img-top" src="{{ $product->imageproduct }}" alt="">
+                                                    </a>
+                                                    <ul class="product-badges">
+                                                        <li><span class="badge bg-success">New</span></li>
+                                                    </ul>
+                                                    <ul class="product-actions">
+                                                        <li><a href="#"><em class="icon ni ni-cart"></em></a></li>
+                                                        <li><a href="#"><em class="icon ni ni-heart"></em></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="card-inner text-center">
+                                                    <!-- <ul class="product-tags">
+                                                        <li><a href="#">Smart Watch</a></li>
+                                                    </ul> -->
+                                                    <h5 class="product-title"><a href="{{ route('account.product.show',$product->id) }}">{{ $product->title }}</a></h5>
+                                                    <div class="product-price text-primary h5">$ {{ $product->price_aliexpress }}  -  $ {{ $product->prix }}
+                                                    <div class="drodown">
                                                                 <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 me-n1" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                 <div class="dropdown-menu dropdown-menu-end">
                                                                     <ul class="link-list-opt no-bdr">
@@ -104,12 +101,15 @@
 
                                                                     </ul>
                                                                 </div>
-                                                            </div>
-                                                        </div>
+                                                     </div>
                                                     </div>
+                                                   
                                                 </div>
+                                                     
                                             </div>
-                                        </div>
+                                        </div><!-- .col -->
+
+
                                         @endforeach
 
                                     </div>
@@ -128,46 +128,75 @@
                                     </div>
                                 </div> -->
 
-                                <div wire:loading.class="invisible" class="card">
+                                <div class="card">
                                     <div class="card-inner">
-                                        <div wire:loading.class="invisible" class="my-4">
-                                            <div>
-                                                    @if ($products->hasPages())
-                                                        <nav role="navigation" aria-label="Pagination Navigation" class="flex justify-between">
-                                                            <span>
-                                                                {{-- Previous Page Link --}}
-                                                                @if ($products->onFirstPage())
-                                                                    <span class="btn btn-primary">
-                                                                       <
-                                                                    </span>
-                                                                @else
-                                                                    <button wire:click="previousPage" wire:loading.attr="disabled" rel="prev" class="btn btn-primary">
-                                                                    <
-                                                                    </button>
-                                                                @endif
-                                                            </span>
+                                    <div class="nk-block-between-md g-3">
+                                                <div class="g">
                                                 
-                                                              <!-- Page Input and "Go" Button -->
-                                                            {{ $products->links() }}
+                                            </div>
+                                            <div class="g">
+                                                           
+                                                    <div class="pagination-goto d-flex justify-content-center justify-content-md-start gx-3">
+                                                                    <ul class="pagination">
+                                                                        @if ($products->currentPage() > 1)
+                                                                            <li class="page-item">
+                                                                                <a class="page-link" wire:click="previousPage" href="#">
+                                                                                    <em class="icon ni ni-back-alt-fill"></em>
+                                                                                </a>
+                                                                            </li>
+                                                                        @else
+                                                                            <li class="page-item disabled">
+                                                                                <span class="page-link"><em class="icon ni ni-back-alt-fill"></em></span>
+                                                                            </li>
+                                                                        @endif
 
-                                                            <span>
-                                                                {{-- Next Page Link --}}
-                                                                @if ($products->hasMorePages())
-                                                                    <button wire:click="nextPage" wire:loading.attr="disabled" rel="next" class="btn btn-primary">
-                                                                       >
-                                                                    </button>
-                                                                @else
-                                                                    <span class="btn btn-primary">
-                                                                    >
-                                                                    </span>
-                                                                @endif
-                                                            </span>
-                                                        </nav>
-                                                    @endif
-                                                </div>
-                                        </div>
+                                                                        @if ($products->currentPage() < $products->lastPage())
+                                                                            <li class="page-item">
+                                                                                <a class="page-link" wire:click="nextPage" href="#">
+                                                                                    <em class="icon ni ni-forward-alt-fill"></em>
+                                                                                </a>
+                                                                            </li>
+                                                                        @else
+                                                                            <li class="page-item disabled">
+                                                                                <span class="page-link"><em class="icon ni ni-forward-alt-fill"></em></span>
+                                                                            </li>
+                                                                        @endif
+                                                                    </ul>
+                                                                    <div>
+                                                                         <!-- <select class="form-select js-select2" data-search="on" data-dropdown="xs center" wire:model="page">
+                                                                            @for ($i = 1; $i <= $products->lastPage(); $i++)
+                                                                                <option value="{{ $i }}">{{ $i }}</option>
+                                                                            @endfor
+                                                                        </select> -->
+                                                                   
+                                                                    <div class="drodown">
+                                                                        <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-bs-toggle="dropdown"> {{ $products->currentPage()  }} </a>
+                                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                                            <ul class="link-list-opt no-bdr">
+                                                                                <!-- Default option without filter -->
+                                                                                <!-- Other pagination options -->
+
+                                                                                @for ($i = 1; $i <= $products->lastPage(); $i++)
+                                                                                <li>
+                                                                                    <a class="page-link" wire:click="gotoPage({{ $i }})">
+                                                                                        <span>{{ $i }}</span>
+                                                                                    </a>
+                                                                                </li>
+
+                                                                                @endfor
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+                                                                    <div>OF {{ $products->lastPage() }}</div>
+                                                    </div>
+                                                </div><!-- .pagination-goto -->
+                                            </div>
+
                                     </div>
                                 </div>
+
+
                         </div>
                     </div>
 </div>

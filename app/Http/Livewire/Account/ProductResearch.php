@@ -37,6 +37,8 @@ class ProductResearch extends Component
 
 
     protected $paginationTheme = 'bootstrap';
+    public $page = 1;
+
 
     public function updatePagination($perPage)
     {
@@ -126,7 +128,14 @@ class ProductResearch extends Component
 
                 $products =$products->paginate($this->filtrePagination);
         }else{
-            $products =$products->paginate(20);
+            // $products =$products->paginate(20);
+        }
+
+
+        if($this->page > 1){
+            $products = $products->paginate(25, ['*'], 'page', $this->page);
+        }else {
+            $products =  $products->paginate(25);
         }
         return view('livewire.account.product-research',compact('products'));
     }
@@ -136,6 +145,10 @@ class ProductResearch extends Component
         if ($property === 'search') {
             $this->resetPage();
         }
+    }
+    public function gotoPage($page)
+    {
+        $this->page = $page; // Set the selected page
     }
 
     public function updatingQuery(){

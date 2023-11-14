@@ -280,14 +280,14 @@
                                         </div><!-- .nk-tb-item -->
                                         @endforeach
                                     </div><!-- .nk-tb-list -->
+
                                     <div class="card">
                                             <div class="card-inner">
-                                                <div class="nk-block-between-md g-3">
-                                                    <div class="g">
-                                                   
-                                                    </div>
-
+                                            <div class="nk-block-between-md g-3">
                                                 <div class="g">
+                                                
+                                            </div>
+                                            <div class="g">
                                                            
                                                     <div class="pagination-goto d-flex justify-content-center justify-content-md-start gx-3">
                                                                     <ul class="pagination">
@@ -342,13 +342,10 @@
                                                                     </div>
                                                                     </div>
                                                                     <div>OF {{ $stores->lastPage() }}</div>
-
                                                     </div>
                                                 </div><!-- .pagination-goto -->
                                             </div>
                                         </div>
-
-
                                 </div><!-- .nk-block -->
 
                                 </div>
