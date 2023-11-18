@@ -118,6 +118,9 @@ Route::group(['middleware' => 'language'], function () {
         // export product in csv
         Route::get('/product/importproduct/{url}', [AccountProductController::class, 'importproduct'])->name('product.importproduct');
 
+        Route::get('/stores/importstore/{url}', [AccountStoresController::class, 'importstore'])->name('stores.importstore');
+
+
         // track store from product research
 
         Route::post('/stores/trackstore/{id}', [AccountStoresController::class, 'trackstore'])->name('stores.trackstore');
