@@ -378,101 +378,84 @@
                                 
                                 <div class="nk-block">
                                     <div class="nk-tb-list is-separate is-medium mb-3">
-                                    <!-- after  -->
-                                    <div  class="nk-tb-item nk-tb-head">
-                                        <!-- <div class="nk-tb-col nk-tb-col-check">
-                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                <input type="checkbox" class="custom-control-input" id="oid">
-                                                <label class="custom-control-label" for="oid"></label>
+                                        <div class="nk-tb-item nk-tb-head">
+                                            <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span>Product</span></div>
+                                            <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span></span></div>
+                                            <div class="nk-tb-col tb-col-md" style="font-size: 16px; font-weight: bold;"><span></span></div>
+                                            <div class="nk-tb-col tb-col-md" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block">Price</span></div>
+                                            <div class="nk-tb-col tb-col-sm" style="font-size: 16px; font-weight: bold;"><span>Store Products</span></div>
+                                            <div class="nk-tb-col tb-col-sm" style="font-size: 16px; font-weight: bold;"><span>Currency</span></div>
+                                            <div class="nk-tb-col tb-col-sm" style="font-size: 16px; font-weight: bold;"><span>Country</span></div>
+                                            <!-- <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span>Expand</span></div> -->
+
+                                            <div class="nk-tb-col nk-tb-col-tools">
                                             </div>
-                                        </div> -->
+                                        </div><!-- .nk-tb-item -->
 
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span>Product</span></div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span></span></div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span></span></div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span>Price</span></div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block">Store Products</span></div>
-                                        <div class="nk-tb-col tb-col-md" style="font-size: 16px; font-weight: bold;"><span>Currency</span></div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block">Country</span></div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block"></span></div>
-                                        <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span class="d-none d-sm-block">Expand</span></div>
+                                        @foreach ($products as $product)
 
-                                    </div><!-- .nk-tb-item -->
+                                        <div class="nk-tb-item">
 
-                                    @foreach ($products as $product)
-                                    <div class="nk-tb-item">
-                                        <!-- <div class="nk-tb-col nk-tb-col-check">
-                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                <input type="checkbox" class="custom-control-input" id="oid01">
-                                                <label class="custom-control-label" for="oid01"></label>
+                                            <div class="nk-tb-col">
+                                                <a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="100" height="100"></a>
                                             </div>
-                                        </div> -->
-                                        <div class="nk-tb-col">
-                                            <a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="100" height="100"></a>
-                                        </div>
-                                        <div class="nk-tb-col">
-                                            <a href="{{ route('account.product.show',$product->id) }}"><h6>{{ $product->title }}</h6></a>
-                                            <a target="_blank" href="{{ $product->url }}">{{ parse_url($product->url, PHP_URL_HOST) }}</a>
-
-
-                                        </div>
-                                        <div class="nk-tb-col tb-col-md">
+                                            <div class="nk-tb-col">
+                                                    <a href="{{ route('account.product.show',$product->id) }}"><h6>{{ $product->title }}</h6></a>
+                                                    <a target="_blank" href="{{ $product->url }}">{{ parse_url($product->url, PHP_URL_HOST) }}</a>
+                                            </div>
+                                            <div class="nk-tb-col tb-col-md">
                                                 <a  target="_blank" href="{{$product->url}}"><img src="https://cdn3.iconfinder.com/data/icons/social-media-2068/64/_shopping-512.png" width="30" height="30"></a>
                                                 <a  target="_blank" href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&q={{urldecode($product->title)}}&search_type=keyword_unordered&media_type=all"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/1024px-2021_Facebook_icon.svg.png" width="30" height="30"></a>
                                                 <a  target="_blank" href="https://www.aliexpress.com/wholesale?SearchText={{urldecode($product->title)}}"> <img src="https://img.icons8.com/color/512/aliexpress.png" width="30" height="30"></a>
-                                         </div>
-
-                                         <div class="nk-tb-col tb-col-md">
-                                           <h6>$ {{ $product->prix }}</h6> 
-                                         <!-- <span class="badge badge-sm badge-dot has-bg bg-info d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">$ {{ $product->prix }}</span> -->
-
-                                        </div>
-                                        <div class="nk-tb-col tb-col-md">
-                                                  <h6>{{ $product->stores->currency }}</h6> 
-
-                                       </div>
-
-                                        <div class="nk-tb-col tb-col-md">
-                                        <h6>{{ $product->stores->allproducts }}</h6> 
-
-                                        </div>
-                                        <div class="nk-tb-col tb-col-md">
-                                        <h6>{{ $product->stores->country }}</h6> 
-
-                                        </div>
-                                        <!-- <div class="nk-tb-col tb-col-md">
-                                            <span class="tb-sub"> <a  class="btn btn-success" href="{{ route('account.product.show',$product->id) }}" >View </a></span>
-                                            <button wire:click="exportToCsv('{{ $product->url }}')">Export Product</button> -->
-
-                                        <!-- </div> -->
-                                        <div class="nk-tb-col tb-col-md">
-                                            <li><a wire:click="exportToCsv('{{ $product->url }}')" class="btn btn-white btn-dim btn-outline-primary"><svg xmlns="http://www.w3.org/2000/svg" height="4em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#95bf46}</style><path d="M388.32,104.1a4.66,4.66,0,0,0-4.4-4c-2,0-37.23-.8-37.23-.8s-21.61-20.82-29.62-28.83V503.2L442.76,472S388.72,106.5,388.32,104.1ZM288.65,70.47a116.67,116.67,0,0,0-7.21-17.61C271,32.85,255.42,22,237,22a15,15,0,0,0-4,.4c-.4-.8-1.2-1.2-1.6-2C223.4,11.63,213,7.63,200.58,8c-24,.8-48,18-67.25,48.83-13.61,21.62-24,48.84-26.82,70.06-27.62,8.4-46.83,14.41-47.23,14.81-14,4.4-14.41,4.8-16,18-1.2,10-38,291.82-38,291.82L307.86,504V65.67a41.66,41.66,0,0,0-4.4.4S297.86,67.67,288.65,70.47ZM233.41,87.69c-16,4.8-33.63,10.4-50.84,15.61,4.8-18.82,14.41-37.63,25.62-50,4.4-4.4,10.41-9.61,17.21-12.81C232.21,54.86,233.81,74.48,233.41,87.69ZM200.58,24.44A27.49,27.49,0,0,1,215,28c-6.4,3.2-12.81,8.41-18.81,14.41-15.21,16.42-26.82,42-31.62,66.45-14.42,4.41-28.83,8.81-42,12.81C131.33,83.28,163.75,25.24,200.58,24.44ZM154.15,244.61c1.6,25.61,69.25,31.22,73.25,91.66,2.8,47.64-25.22,80.06-65.65,82.47-48.83,3.2-75.65-25.62-75.65-25.62l10.4-44s26.82,20.42,48.44,18.82c14-.8,19.22-12.41,18.81-20.42-2-33.62-57.24-31.62-60.84-86.86-3.2-46.44,27.22-93.27,94.47-97.68,26-1.6,39.23,4.81,39.23,4.81L221.4,225.39s-17.21-8-37.63-6.4C154.15,221,153.75,239.8,154.15,244.61ZM249.42,82.88c0-12-1.6-29.22-7.21-43.63,18.42,3.6,27.22,24,31.23,36.43Q262.63,78.68,249.42,82.88Z"/></svg><span>Import product</span></a></li>
-                                        </div>
                                       
-                                        <div class="nk-tb-col tb-col-md">
-                                        <form method="POST" action="{{ route('account.stores.trackstore', $product->stores->id) }}">
-                                        @csrf
-                                        <!-- Your form content here -->
-                                        <button type="submit" class="btn btn-white btn-dim btn-outline-primary">
-                                            <em class="icon ni ni-crosshair"></em>
-                                            <span>Track product</span>
-                                        </button>
-                                            </form>                                         
-                                      </div> 
+                                            </div>
+                                            <div class="nk-tb-col tb-col-sm">
+                                                       <h6>$ {{ $product->prix }}</h6> 
+                                            </div>
+                                            <div class="nk-tb-col tb-col-sm">
+                                                         <h6>{{ $product->stores->allproducts }}</h6> 
+                                            </div>
 
-                                                
-                                    </div><!-- .nk-tb-item -->
-                                    @endforeach
-                                </div>
+                                            <div class="nk-tb-col tb-col-sm">
+                                                   <h6>{{ $product->stores->currency }}</h6> 
+                                            </div>
 
-                                <!-- <div class="card">
-                                    <div class="card-inner">
-                                        <div wire:loading.class="invisible" class="my-4">
-                                            {{ $products->links() }}
+                                            <div class="nk-tb-col tb-col-sm">
+                                                   <h6>{{ $product->stores->country }}</h6> 
+                                           </div>
 
-                                        </div>
-                                    </div>
-                                </div> -->
+        
+                                            <div class="nk-tb-col nk-tb-col-tools">
+                                                <ul class="nk-tb-actions gx-1">
+                                                    <li class="nk-tb-action-hidden">
+                                                        <a href="{{ route('account.product.show',$product->id) }}" class="btn btn-icon btn-trigger btn-tooltip" title="Show Charts">
+                                                            <em class="icon ni ni-eye"></em></a></li>
+                                                    <li>
+                                                        <div class="drodown me-n1">
+                                                            <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                <ul class="link-list-opt no-bdr">
+                                                                    <li><a href="{{ route('account.product.show',$product->id) }}"><em class="icon ni ni-eye"></em><span>Show Charts</span></a></li>
+                                                                    <li><a wire:click="exportToCsv('{{ $product->url }}')" class="btn btn-white btn-dim btn-outline-primary"><svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#95bf46}</style><path d="M388.32,104.1a4.66,4.66,0,0,0-4.4-4c-2,0-37.23-.8-37.23-.8s-21.61-20.82-29.62-28.83V503.2L442.76,472S388.72,106.5,388.32,104.1ZM288.65,70.47a116.67,116.67,0,0,0-7.21-17.61C271,32.85,255.42,22,237,22a15,15,0,0,0-4,.4c-.4-.8-1.2-1.2-1.6-2C223.4,11.63,213,7.63,200.58,8c-24,.8-48,18-67.25,48.83-13.61,21.62-24,48.84-26.82,70.06-27.62,8.4-46.83,14.41-47.23,14.81-14,4.4-14.41,4.8-16,18-1.2,10-38,291.82-38,291.82L307.86,504V65.67a41.66,41.66,0,0,0-4.4.4S297.86,67.67,288.65,70.47ZM233.41,87.69c-16,4.8-33.63,10.4-50.84,15.61,4.8-18.82,14.41-37.63,25.62-50,4.4-4.4,10.41-9.61,17.21-12.81C232.21,54.86,233.81,74.48,233.41,87.69ZM200.58,24.44A27.49,27.49,0,0,1,215,28c-6.4,3.2-12.81,8.41-18.81,14.41-15.21,16.42-26.82,42-31.62,66.45-14.42,4.41-28.83,8.81-42,12.81C131.33,83.28,163.75,25.24,200.58,24.44ZM154.15,244.61c1.6,25.61,69.25,31.22,73.25,91.66,2.8,47.64-25.22,80.06-65.65,82.47-48.83,3.2-75.65-25.62-75.65-25.62l10.4-44s26.82,20.42,48.44,18.82c14-.8,19.22-12.41,18.81-20.42-2-33.62-57.24-31.62-60.84-86.86-3.2-46.44,27.22-93.27,94.47-97.68,26-1.6,39.23,4.81,39.23,4.81L221.4,225.39s-17.21-8-37.63-6.4C154.15,221,153.75,239.8,154.15,244.61ZM249.42,82.88c0-12-1.6-29.22-7.21-43.63,18.42,3.6,27.22,24,31.23,36.43Q262.63,78.68,249.42,82.88Z"/></svg><span>Import product</span></a></li>                                                         
+                                                                    <li>    
+                                                                        <form method="POST" action="{{ route('account.stores.trackstore', $product->stores->id) }}">
+                                                                        @csrf
+                                                                        <!-- Your form content here -->
+                                                                        <button type="submit" class="btn btn-white btn-dim btn-outline-primary">
+                                                                            <em class="icon ni ni-crosshair"></em>
+                                                                            <span>Track product</span>
+                                                                        </button>
+                                                                            </form>   
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div><!-- .nk-tb-item -->
+                                        @endforeach
+                                    </div><!-- .nk-tb-list -->
 
                                 <div wire:loading.class="invisible" class="card">
                                     <div class="card-inner">
@@ -482,61 +465,85 @@
                                             </div>
                                             <div class="g">
                                                            
-                                                    <div class="pagination-goto d-flex justify-content-center justify-content-md-start gx-3">
-                                                                    <ul class="pagination">
-                                                                        @if ($products->currentPage() > 1)
-                                                                            <li class="page-item">
-                                                                                <a class="page-link" wire:click="previousPage" href="#">
-                                                                                    <em class="icon ni ni-back-alt-fill"></em>
-                                                                                </a>
-                                                                            </li>
-                                                                        @else
+                                            @if (currentTeam()->onTrial())
+                                                <div class="pagination-goto d-flex justify-content-center justify-content-md-start gx-3">
+                                                                   
+                                                                   <ul class="pagination">
+                                                                       <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Disabled Skip Trial">
                                                                             <li class="page-item disabled">
                                                                                 <span class="page-link"><em class="icon ni ni-back-alt-fill"></em></span>
                                                                             </li>
-                                                                        @endif
+                                                                        </span>
+                                                                        <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Disabled Skip Trial">
 
-                                                                        @if ($products->currentPage() < $products->lastPage())
-                                                                            <li class="page-item">
-                                                                                <a class="page-link" wire:click="nextPage" href="#">
-                                                                                    <em class="icon ni ni-forward-alt-fill"></em>
-                                                                                </a>
-                                                                            </li>
-                                                                        @else
                                                                             <li class="page-item disabled">
                                                                                 <span class="page-link"><em class="icon ni ni-forward-alt-fill"></em></span>
                                                                             </li>
-                                                                        @endif
+                                                                        </span>
+
                                                                     </ul>
+
                                                                     <div>
-                                                                         <!-- <select class="form-select js-select2" data-search="on" data-dropdown="xs center" wire:model="page">
-                                                                            @for ($i = 1; $i <= $products->lastPage(); $i++)
-                                                                                <option value="{{ $i }}">{{ $i }}</option>
-                                                                            @endfor
-                                                                        </select> -->
-                                                                   
-                                                                    <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-bs-toggle="dropdown"> {{ $products->currentPage()  }} </a>
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <ul class="link-list-opt no-bdr">
-                                                                                <!-- Default option without filter -->
-                                                                                <!-- Other pagination options -->
-
-                                                                                @for ($i = 1; $i <= $products->lastPage(); $i++)
-                                                                                <li>
-                                                                                    <a class="page-link" wire:click="gotoPage({{ $i }})">
-                                                                                        <span>{{ $i }}</span>
-                                                                                    </a>
-                                                                                </li>
-
-                                                                                @endfor
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
+                            
                                                                     </div>
                                                                     <div>OF {{ $products->lastPage() }}</div>
                                                     </div>
-                                                </div><!-- .pagination-goto -->
+                                                </div>
+                                                @endif
+                                                @if(currentTeam()->subscribed())
+                                                <div class="pagination-goto d-flex justify-content-center justify-content-md-start gx-3">
+                                                                                                <ul class="pagination">
+                                                                                                    @if ($products->currentPage() > 1)
+                                                                                                        <li class="page-item">
+                                                                                                            <a class="page-link" wire:click="previousPage" href="#">
+                                                                                                                <em class="icon ni ni-back-alt-fill"></em>
+                                                                                                            </a>
+                                                                                                        </li>
+                                                                                                    @else
+                                                                                                        <li class="page-item disabled">
+                                                                                                            <span class="page-link"><em class="icon ni ni-back-alt-fill"></em></span>
+                                                                                                        </li>
+                                                                                                    @endif
+
+                                                                                                    @if ($products->currentPage() < $products->lastPage())
+                                                                                                        <li class="page-item">
+                                                                                                            <a class="page-link" wire:click="nextPage" href="#">
+                                                                                                                <em class="icon ni ni-forward-alt-fill"></em>
+                                                                                                            </a>
+                                                                                                        </li>
+                                                                                                    @else
+                                                                                                        <li class="page-item disabled">
+                                                                                                            <span class="page-link"><em class="icon ni ni-forward-alt-fill"></em></span>
+                                                                                                        </li>
+                                                                                                    @endif
+                                                                                                </ul>
+                                                                                                <div>
+                                                                                            <div class="drodown">
+                                                                                                <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-bs-toggle="dropdown"> {{ $products->currentPage()  }} </a>
+                                                                                                <div class="dropdown-menu dropdown-menu-end">
+                                                                                                    <ul class="link-list-opt no-bdr">
+                                                                                                        <!-- Default option without filter -->
+                                                                                                        <!-- Other pagination options -->
+
+                                                                                                        @for ($i = 1; $i <= $products->lastPage(); $i++)
+                                                                                                        <li>
+                                                                                                            <a class="page-link" wire:click="gotoPage({{ $i }})">
+                                                                                                                <span>{{ $i }}</span>
+                                                                                                            </a>
+                                                                                                        </li>
+
+                                                                                                        @endfor
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            </div>
+                                                                                            <div>OF {{ $products->lastPage() }}</div>
+                                                                            </div>
+                                                                        </div><!-- .pagination-goto -->
+                                            @endif
+
+
                                             </div>
 
 
