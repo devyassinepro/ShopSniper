@@ -42,6 +42,9 @@ class SubscriptionController extends Controller
                     'redirect' => route('account.subscriptions'),
                 ]
             );
+        } catch (\Exception $e) {
+            // Handle other exceptions, such as unsuccessful payment
+            return back()->with('error', 'Failed to update trial. Please try again.');
         }
         return back();
     }
