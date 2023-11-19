@@ -469,12 +469,12 @@
                                                 <div class="pagination-goto d-flex justify-content-center justify-content-md-start gx-3">
                                                                    
                                                                    <ul class="pagination">
-                                                                       <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Disabled Skip Trial">
+                                                                       <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Skip Trial to unlock">
                                                                             <li class="page-item disabled">
                                                                                 <span class="page-link"><em class="icon ni ni-back-alt-fill"></em></span>
                                                                             </li>
                                                                         </span>
-                                                                        <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Disabled Skip Trial">
+                                                                        <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Skip Trial to unlock">
 
                                                                             <li class="page-item disabled">
                                                                                 <span class="page-link"><em class="icon ni ni-forward-alt-fill"></em></span>
@@ -490,7 +490,7 @@
                                                     </div>
                                                 </div>
                                                 @endif
-                                                @if(currentTeam()->subscribed())
+                                                @if (!currentTeam()->onTrial())
                                                 <div class="pagination-goto d-flex justify-content-center justify-content-md-start gx-3">
                                                                                                 <ul class="pagination">
                                                                                                     @if ($products->currentPage() > 1)

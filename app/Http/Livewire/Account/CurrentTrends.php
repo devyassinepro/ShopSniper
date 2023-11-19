@@ -55,14 +55,23 @@ class CurrentTrends extends Component
                          ->orWhere("url","LIKE",  "%". $this->search ."%");
         }
 
-        if($this->filtrePagination != ""){
 
-                $products =$products->paginate($this->filtrePagination);
-        }else{
-            // $products =$products->paginate(5);
-            $products = $products->paginate($this->filtrePagination ?: 28);
+        if(currentTeam()->onTrial()){
 
+            $products = $products->paginate($this->filtrePagination ?: 5);
+
+        }else {
+            if($this->filtrePagination != ""){
+
+                    $products =$products->paginate($this->filtrePagination);
+            }else{
+                // $products =$products->paginate(5);
+                $products = $products->paginate($this->filtrePagination ?: 28);
+
+            }
         }
+
+
 
         // return view('livewire.product-search',compact('products'));
         return view('livewire.account.current-trends', [
