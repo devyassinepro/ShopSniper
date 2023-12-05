@@ -400,8 +400,10 @@
                                                 <a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="100" height="100"></a>
                                             </div>
                                             <div class="nk-tb-col">
-                                                    <a href="{{ route('account.product.show',$product->id) }}"><h6>{{ $product->title }}</h6></a>
+                                                    <a href="{{ route('account.researchproduct.show',$product->id) }}"><h6>{{ $product->title }} ({{ $product->created_at_shopify }})</h6></a>
                                                     <a target="_blank" href="{{ $product->url }}">{{ parse_url($product->url, PHP_URL_HOST) }}</a>
+                                                    <!-- <a>{{ $product->created_at }}</a> -->
+
                                             </div>
                                             <div class="nk-tb-col tb-col-md">
                                                 <a  target="_blank" href="{{$product->url}}"><img src="https://cdn3.iconfinder.com/data/icons/social-media-2068/64/_shopping-512.png" width="30" height="30"></a>
