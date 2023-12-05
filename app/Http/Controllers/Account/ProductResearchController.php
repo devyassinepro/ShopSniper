@@ -36,4 +36,34 @@ class ProductResearchController extends Controller
          return view('account.productresearch.index');
     }
 
+
+          /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        if(check_user_type() != 'user')
+        {
+            redirect()->route('dashboard')->with('error','You can not access this page.');
+        }
+
+            $dates = [];
+            for ($i = 6; $i >= 0; $i--) {
+                $dates[] = Carbon::now()->subDays($i)->format('Y-m-d');
+            }
+            $totalsalesmin = 0;
+            $pagination = 50;
+
+        $products = Product::orderBy('revenue','desc')
+        ->where('id', $id);
+
+        $products = $products->get();
+
+            return view('account.productresearch.show', compact('products','dates'));
+
+    }
+
 }
