@@ -10,10 +10,6 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-// ini_set('memory_limit', '256M');
-ini_set('memory_limit', '512M');
-
-
 
 class ProductResearch extends Component
 {
