@@ -17,7 +17,7 @@ class ProductResearch extends Component
     public $search = "";
     public $filtrePagination = "";
 
-    public $filterDropshipping = true;
+    public $filterDropshipping = false;
 
    
 //    filters data
@@ -117,7 +117,7 @@ class ProductResearch extends Component
             });
         }
         if ($this->filterDropshipping) {
-            $products->where('dropshipping', 1); // Assuming 'dropshipping' is a boolean column
+            $products->where('dropshipping', 0); // Assuming 'dropshipping' is a boolean column
         }
 
         // if($this->search != ""){
