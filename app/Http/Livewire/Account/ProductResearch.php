@@ -64,9 +64,10 @@ class ProductResearch extends Component
 
     
         // Get stores of this user and select the COALESCE calculation
-        $products = Product::where('title', '>=', 10)
-            ->select('products.*', DB::raw('COALESCE(todaysales, 0) AS calculated_todaysales'), DB::raw('COALESCE(yesterdaysales, 0) AS calculated_yesterdaysales'))
-            ->orderBy('created_at_shopify', 'desc');
+        $products = Product::orderBy('created_at_shopify', 'desc')
+                ->take(10000);
+            // ->select('products.*', DB::raw('COALESCE(todaysales, 0) AS calculated_todaysales'), DB::raw('COALESCE(yesterdaysales, 0) AS calculated_yesterdaysales'))
+            // ->orderBy('created_at_shopify', 'desc');
             // ->inRandomOrder();
             
         // filters
@@ -128,17 +129,19 @@ class ProductResearch extends Component
 
         if($this->filtrePagination != ""){
 
-                $products =$products->paginate($this->filtrePagination);
+            $products =$products->paginate($this->filtrePagination);
         }else{
             // $products =$products->paginate(20);
         }
 
-
         if($this->page > 1){
             $products = $products->paginate(25, ['*'], 'page', $this->page);
+            // dd($this->page);
         }else {
             $products =  $products->paginate(25);
+            // dd($this->page);
         }
+   
         return view('livewire.account.product-research',compact('products'));
     }
 
