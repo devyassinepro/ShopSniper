@@ -9,6 +9,7 @@ use App\Models\stores;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 
 class ProductResearch extends Component
@@ -17,7 +18,7 @@ class ProductResearch extends Component
     public $search = "";
     public $filtrePagination = "";
 
-    public $filterDropshipping = false;
+    public $filterDropshipping = true;
 
    
 //    filters data
@@ -60,15 +61,15 @@ class ProductResearch extends Component
             redirect()->route('dashboard')->with('error','You can not access this page.');
         }
 
-        $user_id = Auth::user()->id;
-
-    
+  
         // Get stores of this user and select the COALESCE calculation
-        $products = Product::orderBy('created_at_shopify', 'desc')
-                ->take(10000);
+    
             // ->select('products.*', DB::raw('COALESCE(todaysales, 0) AS calculated_todaysales'), DB::raw('COALESCE(yesterdaysales, 0) AS calculated_yesterdaysales'))
-            // ->orderBy('created_at_shopify', 'desc');
             // ->inRandomOrder();
+            $currentDate = Carbon::now();
+            $products = Product::where('title', '>=', 10)
+            ->whereBetween('created_at_shopify', ['2023-01-01', $currentDate])
+            ->latest('created_at_shopify');
             
         // filters
         if($this->title != ""){
@@ -118,7 +119,7 @@ class ProductResearch extends Component
             });
         }
         if ($this->filterDropshipping) {
-            $products->where('dropshipping', 0); // Assuming 'dropshipping' is a boolean column
+            $products->where('dropshipping', 1); // Assuming 'dropshipping' is a boolean column
         }
 
         // if($this->search != ""){
@@ -136,10 +137,10 @@ class ProductResearch extends Component
 
         if($this->page > 1){
             $products = $products->paginate(25, ['*'], 'page', $this->page);
-            // dd($this->page);
+            // dd($products);
         }else {
             $products =  $products->paginate(25);
-            // dd($this->page);
+            // dd($products);
         }
    
         return view('livewire.account.product-research',compact('products'));
