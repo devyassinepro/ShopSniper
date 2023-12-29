@@ -36,6 +36,7 @@ class CreateStoresTable extends Migration
             $table->integer('day7sales');
             $table->integer('weeksales');
             $table->integer('monthsales');
+            $table->integer('dropshipping');
             $table->timestamps();
         });
     }

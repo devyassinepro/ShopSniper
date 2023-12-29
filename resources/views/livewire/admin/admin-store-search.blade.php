@@ -298,6 +298,7 @@
             <thead>
                 <tr>
                     <th>Store</th>
+                    <th>Url</th>
                     <th>Products</th>
                     <!-- <th>Start Tracking</th> -->
                     <!-- <th>Status</th> -->
@@ -313,6 +314,7 @@
                 @foreach ($stores as $store)
                     <tr>
                         <td><a href="{{ route('admin.stores.show',$store->id) }}">{{ $store->name }}</a></td>
+                        <td><a href="{{ $store->url }}">{{ $store->url }}</a> {{ $store->id }}</td>
                         <td>{{ $store->allproducts }}</td>
                         <!-- <td>{{ $store->status }}</td> -->
                         <td>{{ $store->sales }}</td>
