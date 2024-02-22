@@ -16,11 +16,16 @@ class ShowStore extends Component
 
     public $storeId;
     public $deleteId = '';
-
+    public $storeid = '';
 
     public function mount($id)
     {
         $this->storeId = $id;
+    }
+
+    public function trackstore($id)
+    {
+        $this->storeid = $id;
     }
 
     public function render()
@@ -114,6 +119,52 @@ class ShowStore extends Component
  
         return redirect()->to('/account/stores');
 
+
+    }
+
+  
+    public function untrackstore(){
+
+
+        $store = stores::findorFail($this->storeid); //searching for object in database using ID
+
+        if(check_user_type() != 'user')
+        {
+            return redirect()->route('dashboard')->with('error','You can not access this page.');
+        }
+
+        $user_id = Auth::user()->id;
+        $storeuser = Storeuser::where('user_id', $user_id)->where('store_id', $this->storeid)->count();
+        if($storeuser > 0)
+        {
+            // if store added by admin
+            if(empty($store->user_id))
+            {
+                Storeuser::where('user_id', $user_id)->where('store_id', $this->storeid)->delete();
+                return redirect()->route('account.storesearch.index')->with('success','deleted successfully');
+            }
+            else
+            {
+                $store_added_by_total_users = Storeuser::where('store_id', $this->storeid)->count();
+                if($store_added_by_total_users > 1)
+                {
+
+                    Storeuser::where('user_id', $user_id)->where('store_id', $this->storeid)->delete();
+                    return redirect()->route('account.storesearch.index')->with('success','deleted successfully');
+
+                }
+                else
+                {
+                    Storeuser::where('user_id', $user_id)->where('store_id', $this->storeid)->delete();
+                    DB::table('stores')->where('id', $this->storeid)->update(array('status' => 0));
+                    return redirect()->route('account.storesearch.index')->with('success','deleted successfully');
+                }
+            }
+        }
+        else
+        {
+            return redirect()->route('account.storesearch.index')->with('error','Something went wrong');
+        }
 
     }
 

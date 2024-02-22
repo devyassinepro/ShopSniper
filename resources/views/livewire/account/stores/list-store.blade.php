@@ -58,7 +58,7 @@
                               <a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="150" height="150"></a>
                           </td>
                           <td class="font-weight-bold">
-                              <a href="{{ route('account.product.show',$product->id) }}">{{ $product->title }}</a>
+                              <a href="{{ route('account.productdata.show',['id' =>$product->id]) }}" wire:navigate>{{ $product->title }}</a>
                           </td>
                           <td>$ {{ $product->prix }}</td>
                           <td>

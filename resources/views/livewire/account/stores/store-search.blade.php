@@ -253,20 +253,9 @@
                                                             <div class="dropdown-menu dropdown-menu-end">
                                                                 <ul class="link-list-opt no-bdr">
                                                                     <li><a href="{{ route('account.storedata.show',['id' =>$store->id]) }}" wire:navigate><em class="icon ni ni-eye"></em><span>Show Charts</span></a></li>
-                                                                    <button type="button" wire:click="Remove({{ $store->id }})" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
+                                                                    <button type="button" wire:click="trackstore('{{ $store->id }}')" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Untrack Store</button>
 
-                                                                    <li>
-                                                                            <form action="{{ route('account.stores.destroy', $store->id) }}" method="POST">
-                                                                                @csrf
-                                                                                @method('DELETE')
-                                                                                @if (!currentTeam()->onTrial())
-                                                                                    <button type="submit" class="btn btn-danger">
-                                                                                        <em class="icon ni ni-trash"></em>
-                                                                                        <span>Untrack Store</span>
-                                                                                    </button>
-                                                                                @endif
-                                                                            </form>
-                                                                        </li>                                                               
+                                                                                                                               
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -360,7 +349,7 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
-                                                            <button type="button" wire:click.prevent="delete()" class="btn btn-danger close-modal" data-dismiss="modal">Yes, Delete</button>
+                                                            <button type="button" wire:click.prevent="untrackstore()" class="btn btn-danger close-modal" data-dismiss="modal">Yes, Delete</button>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -24,15 +24,8 @@
                                         <span class="nk-menu-text">{{ __('Dashboard') }}</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
-                                <!-- <li class="nk-menu-item">
-                                    <a href="{{ route('account.topstores.index') }}" class="nk-menu-link {{ return_if(on_page('account.tuto.index') OR on_page('account.tuto.index') OR on_page('account.tuto.index'), ' active') }}">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-chart-up"></em></span>
-                                        <span class="nk-menu-text">{{ __('Top Stores') }}</span>
-                                    </a>
-                                </li>.nk-menu-item -->
-
                                 <li class="nk-menu-item has-sub">
-                                    <a href="{{ route('account.storesearch.index') }}" class="nk-menu-link nk-menu-toggle" wire:navigate>
+                                    <a href="#" class="nk-menu-link nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-crosshair"></em></span>
                                         <span class="nk-menu-text">Sales Tracker</span>
                                     </a>

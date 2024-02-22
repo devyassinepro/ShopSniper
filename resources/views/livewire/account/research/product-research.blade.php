@@ -466,6 +466,8 @@
                                                 
                                             </div>
                                             <div class="g">
+                                            {{ $products->links() }}
+
                                                            
                                             @if (currentTeam()->onTrial())
                                                 <div class="pagination-goto d-flex justify-content-center justify-content-md-start gx-3">
