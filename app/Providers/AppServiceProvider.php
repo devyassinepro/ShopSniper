@@ -31,8 +31,10 @@ class AppServiceProvider extends ServiceProvider
         \Blade::directive('domain', function ($expression) {
             return "<?php echo parse_url($expression, PHP_URL_HOST); ?>";
         });
-        URL::forceScheme('http');
-        
+
+        if ($this->app->environment('local')) {
+            URL::forceScheme('http');
+        }        
 
     }
 }
