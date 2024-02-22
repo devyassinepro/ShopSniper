@@ -43,7 +43,7 @@
                                                 <div class="col-lg-3">
                                                     <div class="form-group">
                                                         <div class="form-control-wrap">
-                                                            <input type="text"  wire:model.defer="title" class="form-control" id="site-name" placeholder="Separate search query">
+                                                            <input type="text"  wire:model="title" class="form-control" id="site-name" placeholder="Separate search query">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -55,7 +55,7 @@
                                                 <div class="col-lg-3">
                                                     <div class="form-group">
                                                         <div class="form-control-wrap">
-                                                            <input type="text" wire:model.defer="titleexclude" class="form-control" id="site-name" placeholder="Separate search query">
+                                                            <input type="text" wire:model="titleexclude" class="form-control" id="site-name" placeholder="Separate search query">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -70,7 +70,7 @@
                                         <div class="col-lg-3">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
-                                                    <input type="text" class="form-control" wire:model.defer="description" id="site-name" placeholder="Separate search query">
+                                                    <input type="text" class="form-control" wire:model="description" id="site-name" placeholder="Separate search query">
                                                 </div>
                                             </div>
                                         </div>
@@ -82,7 +82,7 @@
                                         <div class="col-lg-3">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
-                                                    <input type="text" class="form-control" wire:model.defer="descriptionexlude" id="site-name" placeholder="Separate search query">
+                                                    <input type="text" class="form-control" wire:model="descriptionexlude" id="site-name" placeholder="Separate search query">
                                                 </div>
                                             </div>
                                         </div>
@@ -97,7 +97,7 @@
                                         <div class="col-lg-3">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
-                                                    <input type="text" class="form-control"  wire:model.defer="url" id="site-name" placeholder="Separate search query">
+                                                    <input type="text" class="form-control"  wire:model="url" id="site-name" placeholder="Separate search query">
                                                 </div>
                                             </div>
                                         </div>
@@ -109,7 +109,7 @@
                                         <div class="col-lg-3">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
-                                                    <input type="text" class="form-control" wire:model.defer="urlexlude" id="site-name" placeholder="Separate search query">
+                                                    <input type="text" class="form-control" wire:model="urlexlude" id="site-name" placeholder="Separate search query">
                                                 </div>
                                             </div>
                                         </div>
@@ -122,7 +122,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-addon1">Price</span>
                                                     </div>
-                                                    <input type="number" class="form-control" wire:model.defer="pricemin" placeholder="Min" >
+                                                    <input type="number" class="form-control" wire:model="pricemin" placeholder="Min" >
                                                 </div>
                                             </div>
                                         </div>
@@ -133,7 +133,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text" id="basic-addon1">Price</span>
                                                             </div>
-                                                            <input type="number" class="form-control" wire:model.defer="pricemax" placeholder="Max" >
+                                                            <input type="number" class="form-control" wire:model="pricemax" placeholder="Max" >
                                                         </div>
                                                     </div>
                                             </div>
@@ -145,7 +145,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-addon1">Store Products</span>
                                                     </div>
-                                                    <input type="number" class="form-control" wire:model.defer="storemin" placeholder="Min" >
+                                                    <input type="number" class="form-control" wire:model="storemin" placeholder="Min" >
                                                 </div>
                                             </div>
                                             </div>
@@ -157,7 +157,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Store Products</span>
                                                         </div>
-                                                        <input type="number" class="form-control" wire:model.defer="storemax" placeholder="Max">
+                                                        <input type="number" class="form-control" wire:model="storemax" placeholder="Max">
                                                     </div>
                                                 </div>
                                             </div>
@@ -172,7 +172,7 @@
                                                         <div class="input-group-prepend">
                                                             <label class="input-group-text" for="inputGroupSelect01">Store Country</label>
                                                         </div>
-                                                        <select class="form-control" wire:model.defer="country" id="inputGroupSelect01">
+                                                        <select class="form-control" wire:model="country" id="inputGroupSelect01">
                                                             <option value=""selected>All</option>
                                                             <option value="US">United States (US)</option>
                                                             <option value="PE">Peru (PE)</option>
@@ -268,7 +268,7 @@
                                                             <div class="input-group-prepend">
                                                                 <label class="input-group-text" for="inputGroupSelect01">Store Currency</label>
                                                             </div>
-                                                            <select class="form-control"  wire:model.defer="currency" id="inputGroupSelect01">
+                                                            <select class="form-control"  wire:model="currency" id="inputGroupSelect01">
                                                                 <option value=""selected>All</option>
                                                                 <option value="USD">USD</option>
                                                                 <option value="EUR">EUR</option>
@@ -336,7 +336,7 @@
                                         <div class="col-lg-2">
                                                     <div class="form-group">
                                                         <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input" wire:model.defer="winning" id="favorite-filter">
+                                                            <input type="checkbox" class="form-check-input" wire:model="winning" id="favorite-filter">
                                                             <label class="form-check-label" for="favorite-filter">Winning</label>
                                                         </div>
                                                     </div>
@@ -344,7 +344,7 @@
                                         <div class="col-lg-2">    
                                                      <div class="form-group">
                                                         <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input" wire:model.defer="dropshipping" id="dropshipping-filter">
+                                                            <input type="checkbox" class="form-check-input" wire:model="dropshipping" id="dropshipping-filter">
                                                             <label class="form-check-label" for="dropshipping-filter">Dropshiping</label>
                                                         </div>
                                                     </div>
@@ -353,7 +353,7 @@
                                                     <div class="form-group">
                                                         <div class="form-check">
                                                        
-                                                                <select  id="filtrePagination" wire:model.defer="filtrePagination" class="form-control">
+                                                                <select  id="filtrePagination" wire:model="filtrePagination" class="form-control">
                                                                 <option value="">25</option>
                                                                 <option value="50">50</option>
                                                                 <option value="100">100</option>
@@ -401,7 +401,7 @@
                 @foreach ($products as $product)
                     <tr>
                         <td> 
-                              <input type="checkbox" wire:model.defer="selectedProducts.{{ $product->id }}" />
+                              <input type="checkbox" wire:model="selectedProducts.{{ $product->id }}" />
                         </td>
                         <td><a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="250" height="250"></a></td>
                         <td><a href="{{ route('admin.product.show',$product->id) }}">{{ $product->title }}</a></td>
@@ -445,7 +445,7 @@
                     @endforeach
             </tbody>
             </table>
-                    <select wire:model.defer="bulkAction">
+                    <select wire:model="bulkAction">
                         <option value="">Choose</option>
                         <option value="add-to-dropshipping">Add to Dropshipping</option>
                         <option value="add-to-winning">Add to Winning Product</option>

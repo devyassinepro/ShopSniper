@@ -13,7 +13,7 @@
             <div class="mb-3" x-data="{photoName: null, photoPreview: null}">
                 <!-- Profile Photo File Input -->
                 <input type="file" hidden
-                       wire:model="photo"
+                       wire:model.live="photo"
                        x-ref="photo"
                        x-on:change="
                                     photoName = $refs.photo.files[0].name;
@@ -54,21 +54,21 @@
             <!-- Name -->
             <div class="mb-3">
                 <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" type="text" class="{{ $errors->has('name') ? 'is-invalid' : '' }}" wire:model.defer="state.name" autocomplete="name" />
+                <x-jet-input id="name" type="text" class="{{ $errors->has('name') ? 'is-invalid' : '' }}" wire:model="state.name" autocomplete="name" />
                 <x-jet-input-error for="name" />
             </div>
 
             <!-- Email -->
             <div class="mb-3">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" type="email" class="{{ $errors->has('email') ? 'is-invalid' : '' }}" wire:model.defer="state.email" />
+                <x-jet-input id="email" type="email" class="{{ $errors->has('email') ? 'is-invalid' : '' }}" wire:model="state.email" />
                 <x-jet-input-error for="email" />
             </div>
 
             <!-- Phone -->
             <div class="mb-3">
                 <x-jet-label for="mobile" value="{{ __('Phone') }}" />
-                <x-jet-input id="mobile" type="text" class="{{ $errors->has('mobile') ? 'is-invalid' : '' }}" wire:model.defer="state.mobile" autocomplete="mobile" />
+                <x-jet-input id="mobile" type="text" class="{{ $errors->has('mobile') ? 'is-invalid' : '' }}" wire:model="state.mobile" autocomplete="mobile" />
                 <x-jet-input-error for="mobile" />
             </div>
             <!-- Gender -->
@@ -79,7 +79,7 @@
                     <!-- Custom Radio -->
                     <div class="form-control">
                       <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" wire:model.defer="state.gender" value="male" name="genderTypeRadio" id="genderTypeRadio1">
+                        <input type="radio" class="custom-control-input" wire:model="state.gender" value="male" name="genderTypeRadio" id="genderTypeRadio1">
                         <label class="custom-control-label" for="genderTypeRadio1">{{ __('Male') }}</label>
                       </div>
                     </div>
@@ -88,7 +88,7 @@
                     <!-- Custom Radio -->
                     <div class="form-control">
                       <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" wire:model.defer="state.gender" value="female" name="genderTypeRadio" id="genderTypeRadio2" checked="">
+                        <input type="radio" class="custom-control-input" wire:model="state.gender" value="female" name="genderTypeRadio" id="genderTypeRadio2" checked="">
                         <label class="custom-control-label" for="genderTypeRadio2">{{ __('Female') }}</label>
                       </div>
                     </div>
@@ -97,7 +97,7 @@
                     <!-- Custom Radio -->
                     <div class="form-control">
                       <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" wire:model.defer="state.gender" value="other" name="genderTypeRadio" id="genderTypeRadio3">
+                        <input type="radio" class="custom-control-input" wire:model="state.gender" value="other" name="genderTypeRadio" id="genderTypeRadio3">
                         <label class="custom-control-label" for="genderTypeRadio3">{{ __('Other') }}</label>
                       </div>
                     </div>

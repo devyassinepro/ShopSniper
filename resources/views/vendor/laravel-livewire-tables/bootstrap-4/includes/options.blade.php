@@ -4,7 +4,7 @@
             <div class="col form-inline">
                 @lang('laravel-livewire-tables::strings.per_page'): &nbsp;
 
-                <select wire:model="perPage" class="form-control">
+                <select wire:model.live="perPage" class="form-control">
                     @foreach ($perPageOptions as $option)
                         <option>{{ $option }}</option>
                     @endforeach
@@ -18,8 +18,8 @@
                     <div class="input-group">
                         @endif
                         <input
-                            @if (is_numeric($searchDebounce) && $searchUpdateMethod === 'debounce') wire:model.debounce.{{ $searchDebounce }}ms="search" @endif
-                            @if ($searchUpdateMethod === 'lazy') wire:model.lazy="search" @endif
+                            @if (is_numeric($searchDebounce) && $searchUpdateMethod === 'debounce') wire:model.live.debounce.{{ $searchDebounce }}ms="search" @endif
+                            @if ($searchUpdateMethod === 'lazy') wire:model.blur="search" @endif
                             @if ($disableSearchOnLoading) wire:loading.attr="disabled" @endif
                             class="form-control"
                             type="text"

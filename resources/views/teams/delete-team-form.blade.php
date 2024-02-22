@@ -13,7 +13,7 @@
         </div>
 
         <div class="mt-5">
-            <x-jet-danger-button wire:click="$emit('confirmingTeamDeletion')" wire:loading.attr="disabled">
+            <x-jet-danger-button wire:click="$dispatch('confirmingTeamDeletion')" wire:loading.attr="disabled">
                 {{ __('Delete Team') }}
             </x-jet-danger-button>
         </div>

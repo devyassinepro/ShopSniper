@@ -5,7 +5,7 @@
             <label class="d-flex align-items-center justify-content-between">
 
                 <div class="form-toggle">
-                    <input wire:model='maintenance' name="toggleCheckbox" type="checkbox" checked="" disabled>
+                    <input wire:model.live='maintenance' name="toggleCheckbox" type="checkbox" checked="" disabled>
 
                     <div class="form-toggle__item">
                         <i class="fa" data-check-icon="" data-uncheck-icon=""></i>
@@ -42,7 +42,7 @@
             <form wire:submit.prevent="down('{{ $token }}')">
                 <div class="form-group mb-4">
                     <label for="successTextInput">Token</label>
-                    <input id="successTextInput" wire:model='token' class="form-control" type="text" required
+                    <input id="successTextInput" wire:model.live='token' class="form-control" type="text" required
                         placeholder="Placeholder" aria-describedby="successTextInput">
                         <p><small>{{ __('A link will be generate with this token to let you be able to access application even maintenance mode active.') }}</small></p>
                         <button type="button" wire:click='generateToken' class="btn btn-soft-primary btn-xs mt-2"> <i class="fas fa-redo"></i> {{ __('Generate new token') }}</button>

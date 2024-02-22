@@ -15,7 +15,7 @@
                 <div class="mb-3">
                     <x-jet-label for="name" value="{{ __('Token Name') }}" />
                     <x-jet-input id="name" type="text" class="{{ $errors->has('name') ? 'is-invalid' : '' }}"
-                                 wire:model.defer="createApiTokenForm.name" autofocus />
+                                 wire:model="createApiTokenForm.name" autofocus />
                     <x-jet-input-error for="name" />
                 </div>
 
@@ -29,7 +29,7 @@
                                 <div class="col-6">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="{{ $permission }}"
-                                               wire:model.defer="createApiTokenForm.permissions">
+                                               wire:model="createApiTokenForm.permissions">
                                         <label class="form-check-label">
                                             {{ $permission }}
                                         </label>
@@ -87,7 +87,7 @@
                                         <button class="btn btn-link text-secondary"
                                                 wire:loading.attr="disabled"
                                                 wire:target="updateApiToken"
-                                                wire:click="$emit('manageApiTokenPermissions', {{ $token->id }})">
+                                                wire:click="$dispatch('manageApiTokenPermissions', {{ $token->id }})">
                                             {{ __('Permissions') }}
                                         </button>
                                     @endif
@@ -95,7 +95,7 @@
                                     <button class="btn btn-link text-danger text-decoration-none"
                                             wire:loading.attr="disabled"
                                             wire:target="deleteApiToken"
-                                            wire:click="$emit('confirmApiTokenDeletion', {{ $token->id }})">
+                                            wire:click="$dispatch('confirmApiTokenDeletion', {{ $token->id }})">
                                         {{ __('Delete') }}
                                     </button>
                                 </div>
@@ -144,7 +144,7 @@
                     <div class="col-6">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="{{ $permission }}"
-                                   wire:model.defer="updateApiTokenForm.permissions">
+                                   wire:model="updateApiTokenForm.permissions">
                             <label class="form-check-label">
                                 {{ $permission }}
                             </label>

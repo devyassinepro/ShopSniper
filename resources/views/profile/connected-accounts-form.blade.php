@@ -47,7 +47,7 @@
         </div>
 
         <!-- Logout Other Devices Confirmation Modal -->
-        <x-jet-dialog-modal wire:model="confirmingRemove">
+        <x-jet-dialog-modal wire:model.live="confirmingRemove">
             <x-slot name="title">
                 {{ __('Remove Connected Account') }}
             </x-slot>

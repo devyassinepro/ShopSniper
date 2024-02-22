@@ -39,7 +39,7 @@
                                                                 <!-- <input type="text" class="form-control" id="default-04" placeholder="Quick search by id"> -->
                                                                 <input
                                                               type="search"
-                                                              wire:model.debounce.500ms="search"
+                                                              wire:model.live.debounce.500ms="search"
                                                               placeholder="Search products"
                                                               class="form-control"
                                                           >
@@ -48,7 +48,7 @@
                                                         <li>
                                                             <div class="drodown">
                                                            
-                                                            <select  id="filtreorder" wire:model="filtreorder" class="form-control">
+                                                            <select  id="filtreorder" wire:model.live="filtreorder" class="form-control">
                                                             <option value="revenue">Total revenue</option>
                                                             <option value="totalsales">Total sales</option>
                                                             <option value="todaysales">Today sales</option>
@@ -61,7 +61,7 @@
                                                         </li>
                                                         <li>
                                                             <div class="drodown">
-                                                            <select  id="filtreCurrency" wire:model="filtreCurrency" class="form-control">
+                                                            <select  id="filtreCurrency" wire:model.live="filtreCurrency" class="form-control">
                                                                 <option value="">filter By Currency</option>
                                                                 <option value="USD">USD</option>
                                                                 <option value="EUR">EUR</option>
@@ -71,7 +71,7 @@
                                                         </li>
                                                         <li>
                                                             <div class="drodown">
-                                                                <select  id="filtrePagination" wire:model="filtrePagination" class="form-control">
+                                                                <select  id="filtrePagination" wire:model.live="filtrePagination" class="form-control">
                                                                 <option value="">10</option>
                                                                 <option value="25">25</option>
                                                                 <option value="50">50</option>

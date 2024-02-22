@@ -7,7 +7,7 @@
             <div class="pricing">
                 <!-- <div class="switch align-self-center">
                     <label>{{ __('Monthly') }}</label>
-                    <input type="checkbox" wire:model="month" wire:change="changePlan" class="switch" id="switch-id" checked>
+                    <input type="checkbox" wire:model.live="month" wire:change="changePlan" class="switch" id="switch-id" checked>
                     <label for="switch-id">{{ __('Yearly') }}</label><span class="mb-2 ml-2 badge badge-primary">{{ __('Save up to 10%') }}</span>
                 </div> -->
             </div>

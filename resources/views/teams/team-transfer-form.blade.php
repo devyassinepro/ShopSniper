@@ -23,7 +23,7 @@
                     <div class="grid grid-cols-6 gap-6 mt-5">
                         <div class="col-span-6 sm:col-span-4">
                             <x-jet-label for="email" value="{{ __('Email') }}" />
-                            <x-jet-input id="name" required type="text" class="mt-1 block w-full" wire:model.defer="transferTeamForm.email" wire:keydown.enter="confirmTransferTeam" />
+                            <x-jet-input id="name" required type="text" class="mt-1 block w-full" wire:model="transferTeamForm.email" wire:keydown.enter="confirmTransferTeam" />
                             <x-jet-input-error for="email" class="mt-2" />
                         </div>
                     </div>
@@ -43,7 +43,7 @@
     @endif
 
     <!-- Logout Other Devices Confirmation Modal -->
-    <x-jet-dialog-modal wire:model="confirmingTransferTeam">
+    <x-jet-dialog-modal wire:model.live="confirmingTransferTeam">
         <x-slot name="title">
             {{ __('Transfer Team') }}
         </x-slot>
@@ -54,7 +54,7 @@
             <div class="mt-4" x-data="{}" x-on:confirming-team-transfer.window="setTimeout(() => $refs.password.focus(), 250)">
                 <x-jet-input type="password" class="mt-1 block w-3/4" placeholder="{{ __('Password') }}"
                             x-ref="password"
-                            wire:model.defer="password"
+                            wire:model="password"
                             wire:keydown.enter="transferTeam" />
 
                 <x-jet-input-error for="password" class="mt-2" />

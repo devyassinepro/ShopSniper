@@ -4,8 +4,7 @@ use App\Models\Plan;
 use GuzzleHttp\Middleware;
 use Laravel\Cashier\Cashier;
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\MaintenanceMode;
-use App\Http\Livewire\Account\ProductResearch;
+use App\Livewire\MaintenanceMode;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CouponController;
@@ -41,6 +40,19 @@ use App\Http\Controllers\Account\Subscriptions\SubscriptionCouponController;
 use App\Http\Controllers\Account\Subscriptions\SubscriptionResumeController;
 use App\Http\Controllers\Account\Subscriptions\SubscriptionInvoiceController;
 use Carbon\Carbon;
+use App\Livewire\Account\research\ProductResearch;
+use App\Livewire\Account\trends\CurrentTrends;
+use App\Livewire\Account\products\ProductSearch;
+use App\Livewire\Account\stores\StoreSearch;
+use App\Livewire\Account\Dashboard;
+use App\Livewire\Account\niches\Niches;
+use App\Livewire\Account\niches\NicheAdd;
+use App\Livewire\Account\stores\AddStore;
+use App\Livewire\Account\stores\ShowStore;
+use App\Livewire\Account\stores\ListStore;
+use App\Livewire\Account\products\ShowProduct;
+use App\Livewire\Account\trends\ShowTrends;
+use App\Livewire\Account\research\ShowResearch;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,10 +104,10 @@ Route::group(['middleware' => 'language'], function () {
         return redirect('https://shopify.pxf.io/MmW3NY');
     });
 
+    Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+        return view('dashboard');})->name('dashboard');
 
-    Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [AccountDashboardController::class, 'index'])->name('dashboard');
-
-    Route::group(['prefix' => 'account', 'as' => 'account.', 'middleware' => ['auth:sanctum', 'verified']], function () {
+    Route::group(['prefix' => '', 'as' => 'account.', 'middleware' => ['auth:sanctum', 'verified']], function () {
         Route::view('security', 'account.security')->name('security');
         Route::view('password', 'account.password')->name('password');
         Route::view('social', 'profile.social')->name('social');
@@ -104,6 +116,8 @@ Route::group(['middleware' => 'language'], function () {
             return view('account.plan', ['team' => $team]);
         })->name('plan');
 
+
+        // controllers
         Route::resource('/product', AccountProductController::class);
         Route::resource('/stores', AccountStoresController::class);
         Route::resource('/niches', AccountNicheController::class);
@@ -112,8 +126,23 @@ Route::group(['middleware' => 'language'], function () {
         Route::resource('/researchproduct', AccountResearchController::class);
         Route::resource('/trends', AccountTrendsController::class);
 
+        // Livewires 3
+        Route::get('/Research', ProductResearch::class)->name('researchproduct.index');
+        Route::get('/Trending', CurrentTrends::class)->name('currenttrends.index');
+        Route::get('/ProductsTracker', ProductSearch::class)->name('productsearch.index');
+        Route::get('/StoresTracker', StoreSearch::class)->name('storesearch.index');
+        Route::get('/Niches', Niches::class)->name('nichesaffiche.index');
+        Route::get('/Add-Niches', NicheAdd::class)->name('AddNiches.index');
+        Route::get('/Dashboard', Dashboard::class)->name('Dashboard.index');
+        Route::get('/Add-Store', AddStore::class)->name('AddStore.index');
 
-        Route::get('proresearch', ProductResearch::class)->name('proresearch');
+        Route::get('/liststore/{id}', ListStore::class)->name('liststore.show');
+        Route::get('/showstore/{id}', ShowStore::class)->name('storedata.show');
+        Route::get('/showproduct/{id}', ShowProduct::class)->name('productdata.show');
+        Route::get('/trendshow/{id}', ShowTrends::class)->name('trenddata.show');
+        Route::get('/researchshow/{id}', ShowResearch::class)->name('researchdata.show');
+
+        // Route::get('proresearch', ProductResearch::class)->name('proresearch');
 
         // export product in csv
         Route::get('/product/importproduct/{url}', [AccountProductController::class, 'importproduct'])->name('product.importproduct');
@@ -125,7 +154,7 @@ Route::group(['middleware' => 'language'], function () {
 
         Route::post('/stores/trackstore/{id}', [AccountStoresController::class, 'trackstore'])->name('stores.trackstore');
 
-        Route::get('/stores/storeproducts/{id}', [AccountStoresController::class, 'storeproducts'])->name('stores.storeproducts');
+        // Route::get('/stores/storeproducts/{id}', [AccountStoresController::class, 'storeproducts'])->name('stores.storeproducts');
 
     });
 

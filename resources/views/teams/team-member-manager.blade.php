@@ -22,7 +22,7 @@
                     <div class="mb-2">
                         <x-jet-label for="email" value="{{ __('Email') }}" />
                         <x-jet-input id="name" type="email" class="{{ $errors->has('email') ? 'is-invalid' : '' }}"
-                                     wire:model.defer="addTeamMemberForm.email" />
+                                     wire:model="addTeamMemberForm.email" />
                         <x-jet-input-error for="email" />
                     </div>
 
@@ -135,7 +135,7 @@
                         <div class="d-flex">
                             <!-- Manage Team Member Role -->
                             @if (Gate::check('addTeamMember', $team) && Laravel\Jetstream\Jetstream::hasRoles())
-                                <button class="btn btn-link text-secondary" wire:click="$emit('manageRole', {{ $user->id }})">
+                                <button class="btn btn-link text-secondary" wire:click="$dispatch('manageRole', {{ $user->id }})">
                                     {{ Laravel\Jetstream\Jetstream::findRole($user->membership->role)->name }}
                                 </button>
                             @elseif (Laravel\Jetstream\Jetstream::hasRoles())
@@ -146,13 +146,13 @@
 
                         <!-- Leave Team -->
                             @if ($this->user->id === $user->id)
-                                <button class="btn btn-link text-danger text-decoration-none" wire:click="$emit('confirmingLeavingTeam')">
+                                <button class="btn btn-link text-danger text-decoration-none" wire:click="$dispatch('confirmingLeavingTeam')">
                                     {{ __('Leave') }}
                                 </button>
 
                                 <!-- Remove Team Member -->
                             @elseif (Gate::check('removeTeamMember', $team))
-                                <button class="btn btn-link text-danger text-decoration-none" wire:click="$emit('confirmTeamMemberRemoval', {{ $user->id }})">
+                                <button class="btn btn-link text-danger text-decoration-none" wire:click="$dispatch('confirmTeamMemberRemoval', {{ $user->id }})">
                                     {{ __('Remove') }}
                                 </button>
                             @endif

@@ -42,7 +42,7 @@
                                                 <div class="col-lg-3">
                                                     <div class="form-group">
                                                         <div class="form-control-wrap">
-                                                            <input type="text"  wire:model.defer="title" class="form-control" id="site-name" placeholder="Separate search query">
+                                                            <input type="text"  wire:model="title" class="form-control" id="site-name" placeholder="Separate search query">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -57,7 +57,7 @@
                                         <div class="col-lg-3">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
-                                                    <input type="text" class="form-control" wire:model.defer="description" id="site-name" placeholder="Separate search query">
+                                                    <input type="text" class="form-control" wire:model="description" id="site-name" placeholder="Separate search query">
                                                 </div>
                                             </div>
                                         </div>
@@ -72,7 +72,7 @@
                                         <div class="col-lg-3">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
-                                                    <input type="text" class="form-control"  wire:model.defer="url" id="site-name" placeholder="Separate search query">
+                                                    <input type="text" class="form-control"  wire:model="url" id="site-name" placeholder="Separate search query">
                                                 </div>
                                             </div>
                                         </div>
@@ -86,7 +86,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-addon1">Store Products</span>
                                                     </div>
-                                                    <input type="number" class="form-control" wire:model.defer="storemin" placeholder="Min" >
+                                                    <input type="number" class="form-control" wire:model="storemin" placeholder="Min" >
                                                 </div>
                                             </div>
                                             </div>
@@ -98,7 +98,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="basic-addon1">Store Products</span>
                                                         </div>
-                                                        <input type="number" class="form-control" wire:model.defer="storemax" placeholder="Max">
+                                                        <input type="number" class="form-control" wire:model="storemax" placeholder="Max">
                                                     </div>
                                                 </div>
                                             </div>
@@ -113,7 +113,7 @@
                                                         <div class="input-group-prepend">
                                                             <label class="input-group-text" for="inputGroupSelect01">Store Country</label>
                                                         </div>
-                                                        <select class="form-control" wire:model.defer="country" id="inputGroupSelect01">
+                                                        <select class="form-control" wire:model="country" id="inputGroupSelect01">
                                                             <option value=""selected>All</option>
                                                             <option value="US">United States (US)</option>
                                                             <option value="PE">Peru (PE)</option>
@@ -209,7 +209,7 @@
                                                             <div class="input-group-prepend">
                                                                 <label class="input-group-text" for="inputGroupSelect01">Store Currency</label>
                                                             </div>
-                                                            <select class="form-control"  wire:model.defer="currency" id="inputGroupSelect01">
+                                                            <select class="form-control"  wire:model="currency" id="inputGroupSelect01">
                                                                 <option value=""selected>All</option>
                                                                 <option value="USD">USD</option>
                                                                 <option value="EUR">EUR</option>

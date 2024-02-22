@@ -13,7 +13,7 @@
 
           <div class="col-sm-9">
             <!-- Select -->
-            <select class="form-control" id="languageLabel" wire:model.defer='language'
+            <select class="form-control" id="languageLabel" wire:model='language'
                 @foreach (language()->allowed() as $code => $name)
                     <option value="{{ $code }}" data-option-template='<img class="avatar avatar-xss avatar-circle mr-2" src="{{ asset('saas/svg/flags/'.$code.'.svg') }}" alt="Image description" width="16"/><span>{{ $name }}</span>'>{{ $name }}</option>
                 @endforeach
@@ -28,7 +28,7 @@
           <label for="timeZoneLabel" class="col-sm-3 col-form-label input-label">Time zone</label>
 
           <div class="col-sm-9">
-            <input type="text" class="form-control" wire:model.defer="timezone" name="currentPassword" id="timeZoneLabel" placeholder="Your time zone" aria-label="Your time zone" readonly>
+            <input type="text" class="form-control" wire:model="timezone" name="currentPassword" id="timeZoneLabel" placeholder="Your time zone" aria-label="Your time zone" readonly>
           </div>
         </div>
         <!-- End Form Group -->

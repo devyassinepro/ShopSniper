@@ -29,7 +29,7 @@
             <x-jet-input id="name"
                          type="text"
                          class="{{ $errors->has('name') ? 'is-invalid' : '' }}"
-                         wire:model.defer="state.name"
+                         wire:model="state.name"
                          :disabled="! Gate::check('update', $team)" />
 
             <x-jet-input-error for="name" />

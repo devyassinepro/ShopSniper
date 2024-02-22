@@ -455,20 +455,5 @@ class ProductController extends Controller
         return $product; // retrieves the updated object from the database
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-        // $task = Task::findorFail($id); //searching for object in database using ID
-        // if($task->delete()){ //deletes the object
-        //     return 'deleted successfully'; //shows a message when the delete operation was successful.
-        // }
-
-    }
-
+  
 }

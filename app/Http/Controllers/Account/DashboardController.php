@@ -8,8 +8,6 @@ use App\Models\Storeuser;
 use App\Models\Product;
 use App\Models\Team;
 use App\Models\User;
-use App\Models\Coupon;
-use App\Models\Ticket;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;

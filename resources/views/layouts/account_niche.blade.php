@@ -90,14 +90,14 @@ src="https://www.facebook.com/tr?id=691407819506168&ev=PageView&noscript=1"
               @yield('content')
 
                 <!-- footer @s -->
-                <!-- <div class="nk-footer">
+                <div class="nk-footer">
                     <div class="container-fluid">
                         <div class="nk-footer-wrap">
-                            <div class="nk-footer-copyright"> &copy; 2023 <a href="https://weenify.io" target="_blank">Weenify</a>
+                            <div class="nk-footer-copyright"> &copy; 2024 <a href="https://weenify.io" target="_blank">Weenify</a>
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <!-- footer @e -->
             </div>
             <!-- wrap @e -->
@@ -107,7 +107,6 @@ src="https://www.facebook.com/tr?id=691407819506168&ev=PageView&noscript=1"
 
   @livewireScripts
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-	<x-livewire-alert::scripts />
   <script src="{{ asset('js/app.js') }}"></script>
   <script src="{{ asset('assets/vendor/js-cookie/js.cookie.js') }}"></script>
     <script src="{{ asset('assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>

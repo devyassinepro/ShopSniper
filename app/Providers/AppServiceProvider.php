@@ -17,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         Cashier::ignoreMigrations();
+
     }
 
     /**
@@ -30,7 +31,8 @@ class AppServiceProvider extends ServiceProvider
         \Blade::directive('domain', function ($expression) {
             return "<?php echo parse_url($expression, PHP_URL_HOST); ?>";
         });
-        URL::forceScheme('https');
+        URL::forceScheme('http');
+        
 
     }
 }

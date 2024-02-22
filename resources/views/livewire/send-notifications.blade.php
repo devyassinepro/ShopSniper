@@ -4,7 +4,7 @@
         <div class="form-group row">
             <label class="col-md-3 col-form-label" for="hf-name">{{ __('Select Users') }}</label>
             <div class="col-md-6" wire:ignore>
-                <select id="category-dropdown" class="form-control" multiple wire:model="selectusers">
+                <select id="category-dropdown" class="form-control" multiple wire:model.live="selectusers">
                     @foreach($users as $user)
                         <option value="{{$user->id}}">{{ $user->name }}</option>
                     @endforeach
@@ -14,19 +14,19 @@
         <div class="form-group row">
             <label class="col-md-3 col-form-label" for="hf-name">{{ __('Subject') }}</label>
             <div class="col-md-6">
-                <input type="text" class="form-control" wire:model="subject"/>
+                <input type="text" class="form-control" wire:model.live="subject"/>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-3 col-form-label" for="hf-name">{{ __('Message') }}</label>
             <div class="col-md-6">
-                <textarea class="form-control" rows="4" wire:model="body"></textarea>
+                <textarea class="form-control" rows="4" wire:model.live="body"></textarea>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-3 col-form-label" for="hf-name">{{ __('Link') }}</label>
             <div class="col-md-6">
-                <input type="text" class="form-control" wire:model="link"/>
+                <input type="text" class="form-control" wire:model.live="link"/>
             </div>
         </div>
             <hr>

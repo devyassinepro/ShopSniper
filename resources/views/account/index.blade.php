@@ -1,4 +1,4 @@
-@extends('layouts.account_niche')
+@extends('layouts.account')
 
 @section('title', '| Stores')
 

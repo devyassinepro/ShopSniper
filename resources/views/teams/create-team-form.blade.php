@@ -24,7 +24,7 @@
         <div class="w-100">
             <x-jet-label for="name" value="{{ __('Team Name') }}" />
             <x-jet-input id="name" type="text" class="{{ $errors->has('name') ? 'is-invalid' : '' }}"
-                         wire:model.defer="state.name" autofocus />
+                         wire:model="state.name" autofocus />
             <x-jet-input-error for="name" />
         </div>
     </x-slot>

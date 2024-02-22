@@ -52,7 +52,7 @@
         @endif
 
         <div class="d-flex mt-3">
-            <x-jet-button wire:click="$emit('confirmLogout')" wire:loading.attr="disabled">
+            <x-jet-button wire:click="$dispatch('confirmLogout')" wire:loading.attr="disabled">
                 {{ __('Logout Other Browser Sessions') }}
             </x-jet-button>
 
@@ -73,7 +73,7 @@
                 <div class="mt-4" x-data="{}" x-on:confirming-logout-other-browser-sessions.window="setTimeout(() => $refs.password.focus(), 250)">
                     <x-jet-input type="password" placeholder="{{ __('Password') }}"
                                  x-ref="password"
-                                 wire:model.defer="password"
+                                 wire:model="password"
                                  wire:keydown.enter="logoutOtherBrowserSessions" />
 
                     <x-jet-input-error for="password" class="mt-2" />
