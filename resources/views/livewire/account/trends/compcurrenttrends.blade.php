@@ -1,4 +1,15 @@
 <div class="nk-block">
+
+                            <!-- Loading -->
+                            <div wire:loading.delay>
+                                    <div style="display: flex; justify-content: center; align-items: center; background-color:black; position: fixed; top:0px;left:0px;z-index:9999;width:100% ;height:100%; opacity: .75;">
+                                                <div class="la-square-jelly-box la-3x">
+                                                    <div></div>
+                                                    <div></div>
+                                                </div>
+                                    </div>
+                            </div>
+                            <!-- End Loading -->
                                     <div class="row g-gs">
                                         <!-- if is trial  -->
                                         @if (currentTeam()->onTrial())

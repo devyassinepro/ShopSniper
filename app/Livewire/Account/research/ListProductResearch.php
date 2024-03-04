@@ -49,6 +49,12 @@ class ListProductResearch extends Component
     {
         $this->filtrePagination = $perPage;
     }
+
+    public function save(){
+
+    
+        return view('skeleton');
+    }
     public function render()
     {
         if(check_user_type() != 'user')

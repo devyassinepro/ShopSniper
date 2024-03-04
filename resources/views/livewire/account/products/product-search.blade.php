@@ -1,1 +1,3 @@
-<livewire:account.products.list-product-search lazy/>
+<div>
+    <livewire:account.products.list-product-search lazy/>
+</div>
