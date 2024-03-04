@@ -53,6 +53,6 @@
 
 
 
-<livewire:account.trends.compcurrenttrends lazy />
+<livewire:account.trends.compcurrenttrends  />
 
 </div>
