@@ -1,7 +1,3 @@
-<script>
-fpr("referral",{email:"{{ Auth::user()->email }}"})
-</script>
-
 <div class="nk-content">
                     <div class="container-fluid">
                         <div class="nk-content-inner">
@@ -296,3 +292,4 @@ fpr("referral",{email:"{{ Auth::user()->email }}"})
    <!-- Chartisan -->
    <script src="https://unpkg.com/@chartisan/echarts/dist/chartisan_echarts.js"></script>
 @endpush
+

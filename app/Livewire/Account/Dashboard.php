@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\DB;
 
 class Dashboard extends Component
 {
+
+    public function placeholder()
+    {
+        return view('skeleton');
+    }
     public function render()
     {
 
