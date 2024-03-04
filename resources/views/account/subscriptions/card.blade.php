@@ -8,7 +8,7 @@
 <div class="card">
     <h5 class="card-header">{{ __('My cards') }}</h5>
     
-    <livewire:payments />
+
 </div>
 @push('styles')
     <script src="https://js.stripe.com/v3/"></script>
