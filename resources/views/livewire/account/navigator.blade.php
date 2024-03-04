@@ -67,7 +67,7 @@
                                     <h6 class="overline-title text-primary-alt">Return to</h6>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="{{ route('account.tuto.index') }}" class="nk-menu-link {{ return_if(on_page('account.tuto.index') OR on_page('account.tuto.index') OR on_page('account.tuto.index'), ' active') }}">
+                                    <a href="{{ route('account.tutorial.index') }}" wire:navigate class="nk-menu-link {{ return_if(on_page('account.tuto.index') OR on_page('account.tuto.index') OR on_page('account.tuto.index'), ' active') }}">
                                         <span class="nk-menu-icon"><em class="icon ni ni-package-fill"></em></span>
                                         <span class="nk-menu-text">{{ __('Tutorial') }}</span>
                                     </a>

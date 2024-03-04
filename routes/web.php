@@ -53,6 +53,8 @@ use App\Livewire\Account\stores\ListStore;
 use App\Livewire\Account\products\ShowProduct;
 use App\Livewire\Account\trends\ShowTrends;
 use App\Livewire\Account\research\ShowResearch;
+use App\Livewire\Account\Tuto\Tuto;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -132,6 +134,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/ProductsTracker', ProductSearch::class)->name('productsearch.index');
         Route::get('/StoresTracker', StoreSearch::class)->name('storesearch.index');
         Route::get('/Niches', Niches::class)->name('nichesaffiche.index');
+        Route::get('/Tutorial', Tuto::class)->name('tutorial.index');
         Route::get('/Add-Niches', NicheAdd::class)->name('AddNiches.index');
         Route::get('/Dashboard', Dashboard::class)->name('Dashboard.index');
         Route::get('/Add-Store', AddStore::class)->name('AddStore.index');

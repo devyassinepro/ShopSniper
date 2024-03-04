@@ -22,6 +22,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "hisorange/browser-detect": "^4.4",
         "jamesmills/laravel-timezone": "^1.9",
+        "jantinnerezo/livewire-alert": "^3.0",
         "joedixon/laravel-translation": "^1.1",
         "joelbutcher/socialstream": "^1.1",
         "lab404/laravel-impersonate": "^1.7",
