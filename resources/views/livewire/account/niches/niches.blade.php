@@ -8,7 +8,6 @@
                                 </div><!-- .nk-block-head -->
           <a class="btn btn-primary" href="{{ route('account.AddNiches.index') }}" wire:navigate>Add Niche</a>
 
-          <!-- <a class="btn btn-success" href="/exportstores">Export Stores</a> -->
 
         </br></br>
                     @if ($message = Session::get('success'))
@@ -18,26 +17,6 @@
                     @endif
 
                     <div>
-
-                    <!-- @if (session()->has('message'))
-                      
-                        <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
-                        <div class="toast-container position-absolute top-0 end-0 p-3">
-                            <div class="toast show">
-                            <div class="toast-header">
-                                <strong class="me-auto text-primary">Bootstrap</strong>
-                                <small>11 mins ago</small>
-                                <button type="button" class="close" data-dismiss="toast" aria-label="Close">
-                                <em class="icon ni ni-cross-sm"></em>
-                                </button>
-                            </div>
-                            <div class="toast-body">
-                            {{ session('message') }}
-                            </div>
-                            </div>
-                        </div> 
-                        </div>
-                    @endif -->
     </div>
 
                         <div wire:loading.delay>

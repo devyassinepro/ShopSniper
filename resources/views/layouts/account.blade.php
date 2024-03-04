@@ -66,48 +66,23 @@
         </div>
         <!-- main @e -->
     </div>
-
-    <script>
-
-          <script src="{{ asset('assets/js/argon.mine209.js?v=1.0.0') }}"></script>
+         
           <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
           <script src="{{ asset('assets/vendor/js-cookie/js.cookie.js') }}"></script>
             <script src="{{ asset('assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
             <script src="{{ asset('assets/vendor/lavalamp/js/jquery.lavalamp.min.js') }}"></script>
-            <!-- Optional JS -->
-            <!-- Argon JS -->
-                <!--Start of Tawk.to Script-->
-            <!--End of Tawk.to Script-->
+            <script src="{{ asset('assets/js/argon.mine209.js?v=1.0.0') }}"></script>
+            // <!-- Optional JS -->
+            // <!-- Argon JS -->
+                // <!--Start of Tawk.to Script-->
+            // <!--End of Tawk.to Script-->
             <script src="{{ asset('assets/js/bundle.js?ver=3.2.0') }}"></script>
             <script src="{{ asset('assets/js/scripts.js?ver=3.2.0') }}"></script>
             <script src="{{ asset('assets/js/example-toastr.js?ver=3.2.0') }}"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
  
-    </script>
-    {{-- Toastr Script for Livewire --}}
-    <script>
-        $(document).ready(function(){
-            toastr.options = {
-                "progressBar": true,
-                "positionClass": "toast-top-right"
-            }
-        });
-
-        window.addEventListener('success', event => {
-            toastr.success(event.detail.message);
-        });
-
-        window.addEventListener('warning', event => {
-            toastr.warning(event.detail.message);
-        });
-
-        window.addEventListener('error', event => {
-            toastr.error(event.detail.message);
-        });
-    </script>
- 
-{{-- Connect component files js --}}
+<!-- {{-- Connect component files js --}} -->
     @stack('scripts')
 </body>
 </html>
