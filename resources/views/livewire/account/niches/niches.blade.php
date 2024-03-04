@@ -4,25 +4,40 @@
                         <div class="nk-content-inner">
                             <div class="nk-content-body">
                                 <div class="nk-block-head nk-block-head-sm">
-                                  
+                            
                                 </div><!-- .nk-block-head -->
           <a class="btn btn-primary" href="{{ route('account.AddNiches.index') }}" wire:navigate>Add Niche</a>
 
           <!-- <a class="btn btn-success" href="/exportstores">Export Stores</a> -->
 
         </br></br>
-          @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-                <p>{{ $message }}</p>
-            </div>
-        @endif
+                    @if ($message = Session::get('success'))
+                    <div class="btn btn-success eg-toastr-with-title">
+                            {{ session('message') }}
+                        </div>
+                    @endif
 
-        <div>
-        @if (session()->has('message'))
-            <div class="alert alert-danger">
-                {{ session('message') }}
-            </div>
-        @endif
+                    <div>
+
+                    <!-- @if (session()->has('message'))
+                      
+                        <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
+                        <div class="toast-container position-absolute top-0 end-0 p-3">
+                            <div class="toast show">
+                            <div class="toast-header">
+                                <strong class="me-auto text-primary">Bootstrap</strong>
+                                <small>11 mins ago</small>
+                                <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+                                <em class="icon ni ni-cross-sm"></em>
+                                </button>
+                            </div>
+                            <div class="toast-body">
+                            {{ session('message') }}
+                            </div>
+                            </div>
+                        </div> 
+                        </div>
+                    @endif -->
     </div>
 
                         <div wire:loading.delay>

@@ -1,5 +1,5 @@
 <x-account-layout>
 
-    <livewire:account.dashboard lazy />
+    <livewire:account.dashboard />
 
 </x-account-layout>

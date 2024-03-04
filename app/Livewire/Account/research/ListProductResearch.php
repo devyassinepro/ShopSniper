@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Account\Trends;
+namespace App\Livewire\Account\Research;
 
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -9,78 +9,152 @@ use App\Models\stores;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\ProductExport;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Database\Eloquent\Builder;
+use Carbon\Carbon;
 
-class Compcurrenttrends extends Component
+class ListProductResearch extends Component
 {
     use WithPagination;
     public $search = "";
     public $filtrePagination = "";
 
-    public $productUrl;
-
-   
-    protected $paginationTheme = 'bootstrap';
-    public $page = 1;
-
+    public $filterDropshipping = true;
+    
     public function placeholder()
     {
         return view('skeleton');
     }
+   
+//    filters data
+    public $title = '';
+    public $titleexclude = '';
+    public $description = '';
+    public $descriptionexlude = '';
+    public $url = ''; 
+    public $urlexlude = '';
+    public $pricemin = '';
+    public $pricemax = '';
+    public $storemin = '';
+    public $storemax = '';
+    public $country = '';
+    public $currency = '';
+
+    protected $debug = true;
+
+
+    protected $paginationTheme = 'bootstrap';
+    public $page = 1;
+
 
     public function updatePagination($perPage)
     {
         $this->filtrePagination = $perPage;
-        $this->resetPage(); // Reset to page 1 when changing the items per page.
-
     }
     public function render()
     {
-
         if(check_user_type() != 'user')
         {
             redirect()->route('dashboard')->with('error','You can not access this page.');
         }
 
+  
         // Get stores of this user and select the COALESCE calculation
-        $products = Product::where('title', '>=', 10)
-            ->where('favoris', 1)
-            ->select('products.*')
-            ->inRandomOrder();
+    
+            // ->select('products.*', DB::raw('COALESCE(todaysales, 0) AS calculated_todaysales'), DB::raw('COALESCE(yesterdaysales, 0) AS calculated_yesterdaysales'))
+            // ->inRandomOrder();
+            $currentDate = Carbon::now();
+            $products = Product::where('title', '>=', 10)
+            ->whereBetween('created_at_shopify', ['2023-01-01', $currentDate])
+            ->latest('created_at_shopify');
+            
+        // filters
+        if($this->title != ""){
+            // $this->resetPage();
+            $products->where("title", "LIKE",  "%". $this->title ."%");
+        }
+        if($this->url != ""){
+            $products->where('url', 'LIKE', "%{$this->url}%");
+        }
 
- 
-       if($this->search != ""){
-            $this->resetPage();
-            $products->where("title", "LIKE",  "%". $this->search ."%")
-                         ->orWhere("url","LIKE",  "%". $this->search ."%");
+        if (!empty($this->titleexclude)) {
+            $products->where('title', 'not like', "%{$this->titleexclude}%");
+        }
+
+        if (!empty($this->urlexlude)) {
+            $products->where('url', 'not like', "%{$this->urlexlude}%");
+        }
+
+        if (!empty($this->pricemin)) {
+
+            // $products->where('prix', '>=', $this->priceMin);
+            $products->where('prix', '>=', $this->pricemin);
+
+        }
+        if (!empty($this->pricemax)) {
+            $products->where('prix', '<=', $this->pricemax);
+        }
+        if (!empty($this->storemin)) {
+            // $products->where('prix', '>=', $this->priceMin);
+            $products->whereHas('stores', function ($query) {
+                $query->where('allproducts', '<=', $this->storemin);
+            });
+        }
+        if (!empty($this->storemax)) {
+            $products->whereHas('stores', function ($query) {
+                $query->where('allproducts', '>=', $this->storemax);
+            });
+        }
+        if (!empty($this->country)) {
+            $products->whereHas('stores', function ($query) {
+                $query->where('country', '=', $this->country);
+            });
+        }
+        if (!empty($this->currency)) {
+            $products->whereHas('stores', function ($query) {
+                $query->where('currency', '=', $this->currency);
+            });
+        }
+        if ($this->filterDropshipping) {
+            $products->where('dropshipping', 1); // Assuming 'dropshipping' is a boolean column
         }
 
 
-        if(currentTeam()->onTrial()){
+        if($this->filtrePagination != ""){
 
-            $products = $products->paginate($this->filtrePagination ?: 5);
+            $products =$products->paginate($this->filtrePagination);
+        }else{
+            // $products =$products->paginate(20);
+        }
 
+        if($this->page > 1){
+            $products = $products->paginate(25, ['*'], 'page', $this->page);
+            // dd($products);
         }else {
-            if($this->filtrePagination != ""){
-
-                    $products =$products->paginate($this->filtrePagination);
-            }else{
-                // $products =$products->paginate(5);
-                $products = $products->paginate($this->filtrePagination ?: 28);
-
-            }
+            $products =  $products->paginate(25);
+            // dd($products);
         }
-
-        // return view('livewire.product-search',compact('products'));
-        return view('livewire.account.trends.compcurrenttrends', [
-            'products' => $products,
-        ]);
+           return view('livewire.account.research.list-product-research',compact('products'));
     }
 
+
+    public function updated($property)
+    {
+        if ($property === 'search') {
+            $this->resetPage();
+        }
+    }
+    public function gotoPage($page)
+    {
+        $this->page = $page; // Set the selected page
+    }
+
+    public function updatingQuery(){
+        $this->resetPage();
+    }
+
+    public function updatedSearch()
+    {
+        $this->resetPage();
+    }
 
     public function exportToCsv($url)
     {
@@ -377,19 +451,4 @@ class Compcurrenttrends extends Component
 
     }
 
-    public function updatingQuery(){
-        $this->resetPage();
-    }
-
-    public function gotoPage($page)
-    {
-        $this->page = $page; // Set the selected page
-    }
-
-    public function updated($property)
-    {
-        if ($property === 'search') {
-            $this->resetPage();
-        }
-    }
 }

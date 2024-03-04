@@ -55,7 +55,11 @@ class Niches extends Component
     {
      
         Niche::find($this->deleteId)->delete();
-        session()->flash('message', 'Niche has been Deleted successfully.'); 
+        // session()->flash('message', 'Niche has been Deleted successfully.'); 
+        session()->flash('message', 'Post successfully updated.');
+
+        // $this->dispatch('success', ['message'=>'Niche has been Deleted successfully']);
+
         return redirect()->to('/Niches');
     }
 
