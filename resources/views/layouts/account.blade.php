@@ -24,6 +24,7 @@
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
+  @vite(['resources/css/app.css','resources/js/app.js'])
 
 <!-- Scripts -->
 
@@ -80,6 +81,7 @@
             <script src="{{ asset('assets/js/scripts.js?ver=3.2.0') }}"></script>
             <script src="{{ asset('assets/js/example-toastr.js?ver=3.2.0') }}"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
  
 <!-- {{-- Connect component files js --}} -->

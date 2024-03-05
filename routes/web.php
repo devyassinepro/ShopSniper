@@ -54,6 +54,10 @@ use App\Livewire\Account\products\ShowProduct;
 use App\Livewire\Account\trends\ShowTrends;
 use App\Livewire\Account\research\ShowResearch;
 use App\Livewire\Account\Tuto\Tuto;
+use App\Livewire\Account\research\ListProductResearch;
+use App\Livewire\Account\trends\Compcurrenttrends;
+
+
 
 
 /*
