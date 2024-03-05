@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Account\Research;
+namespace App\Livewire\Account\research;
 
 use Livewire\Component;
 use Livewire\WithPagination;

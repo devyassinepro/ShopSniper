@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Account\Trends;
+namespace App\Livewire\Account\trends;
 
 use Livewire\Component;
 use Livewire\WithPagination;
