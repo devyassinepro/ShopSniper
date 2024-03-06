@@ -6,6 +6,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Title -->
   <title>{{ config('app.name', 'Weenify') }} - Winning Products For Dropshipping</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="{{ asset('saas/img/favicon.png') }}">
@@ -22,8 +23,41 @@
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
+  <style>
+    .colored-toast.swal2-icon-success {
+  background-color: #a5dc86 !important;
+}
+
+.colored-toast.swal2-icon-error {
+  background-color: #f27474 !important;
+}
+
+.colored-toast.swal2-icon-warning {
+  background-color: #f8bb86 !important;
+}
+
+.colored-toast.swal2-icon-info {
+  background-color: #3fc3ee !important;
+}
+
+.colored-toast.swal2-icon-question {
+  background-color: #87adbd !important;
+}
+
+.colored-toast .swal2-title {
+  color: white;
+}
+
+.colored-toast .swal2-close {
+  color: white;
+}
+
+.colored-toast .swal2-html-container {
+  color: white;
+}
+
+</style>
   @vite(['resources/css/app.css','resources/js/app.js'])
 
 <!-- Scripts -->
@@ -50,6 +84,8 @@
                 @include('partials.account.topnav')
                 <!-- main header @e -->
                    <!-- Page content -->
+
+                   <br> <br>
                    {{ $slot }}
 
    <!-- footer @s -->
@@ -79,11 +115,9 @@
             // <!--End of Tawk.to Script-->
             <script src="{{ asset('assets/js/bundle.js?ver=3.2.0') }}"></script>
             <script src="{{ asset('assets/js/scripts.js?ver=3.2.0') }}"></script>
-            <script src="{{ asset('assets/js/example-toastr.js?ver=3.2.0') }}"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
- 
+
 <!-- {{-- Connect component files js --}} -->
     @stack('scripts')
 </body>

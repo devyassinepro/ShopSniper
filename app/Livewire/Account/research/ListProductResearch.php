@@ -17,7 +17,7 @@ class ListProductResearch extends Component
     public $search = "";
     public $filtrePagination = "";
 
-    public $filterDropshipping = true;
+    public $filterDropshipping = false;
     
     public function placeholder()
     {
@@ -51,8 +51,6 @@ class ListProductResearch extends Component
     }
 
     public function save(){
-
-    
         return view('skeleton');
     }
     public function render()
@@ -62,14 +60,18 @@ class ListProductResearch extends Component
             redirect()->route('dashboard')->with('error','You can not access this page.');
         }
 
+        // Calculate the date three months ago from now
+        $threeMonthsAgo = Carbon::now()->subMonths(12);
+
   
         // Get stores of this user and select the COALESCE calculation
     
             // ->select('products.*', DB::raw('COALESCE(todaysales, 0) AS calculated_todaysales'), DB::raw('COALESCE(yesterdaysales, 0) AS calculated_yesterdaysales'))
             // ->inRandomOrder();
-            $currentDate = Carbon::now();
+            
             $products = Product::where('title', '>=', 10)
-            ->whereBetween('created_at_shopify', ['2023-01-01', $currentDate])
+            ->whereBetween('created_at_shopify', [$threeMonthsAgo, Carbon::now()])
+            ->where("title", "LIKE",  "%". "baby" ."%")
             ->latest('created_at_shopify');
             
         // filters

@@ -40,6 +40,6 @@
                                     </div><!-- .nk-block-between -->
                                 </div><!-- .nk-block-head -->
 
-<livewire:account.trends.compcurrenttrends />
+<livewire:account.trends.compcurrenttrends lazy />
 
 </div>

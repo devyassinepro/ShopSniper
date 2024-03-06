@@ -8,12 +8,25 @@
                                 </div><!-- .nk-block-head -->
           <a class="btn btn-primary" href="{{ route('account.AddNiches.index') }}" wire:navigate>Add Niche</a>
 
-
         </br></br>
                     @if ($message = Session::get('success'))
-                    <div class="btn btn-success eg-toastr-with-title">
-                            {{ session('message') }}
-                        </div>
+                       <script>
+                       const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-right',
+                            iconColor: 'white',
+                            customClass: {
+                                popup: 'colored-toast',
+                            },
+                            showConfirmButton: false,
+                            timer: 1500,
+                            timerProgressBar: true,
+                            })
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'Success',
+                            })
+                       </script>
                     @endif
 
                     <div>
@@ -29,6 +42,7 @@
                          </div>
 
                             <div class="table-responsive">
+
                                     <table class="table table-fixed">
                                         <thead>
                                         <tr>
@@ -53,12 +67,14 @@
                                             
                                             <td>   
                                             <td>
-                                            <button type="button" wire:click="Remove({{ $niche->id }})" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
-                                            </td>
+                                            <a class="btn btn-danger" wire:click="Remove({{ $niche->id }})" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</a>
+                                           
+                                        </td>
                                         </tr>
                                         @endforeach
                                         </tbody>
                                     </table>
+                            
 
                                 <!-- Modal -->
                                         <div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -466,7 +466,7 @@
                                                 
                                             </div>
                                             <div class="g">
-                                            {{ $products->links() }}
+                                     
 
                                                            
                                             @if (currentTeam()->onTrial())

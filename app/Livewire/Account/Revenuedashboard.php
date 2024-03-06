@@ -17,7 +17,7 @@ class Revenuedashboard extends Component
 
     public function placeholder()
     {
-        return view('skeleton');
+        return view('skeletondashboard');
     }
     public function render()
     {
