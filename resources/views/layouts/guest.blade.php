@@ -1,28 +1,12 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="light">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="keywords" content="Weenify , store shopify tracking ,store shopify,product spying, keyword research, search engine optimization, search engine marketing" />
-    <meta name="description" content="">
-
-        <!--twitter og-->
-    <meta name="twitter:site" content="@themetags">
-    <meta name="twitter:creator" content="@themetags">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Weenify - Creative SAAS Technology & IT Solutions Bootstrap 5 HTML Template">
-    <meta name="twitter:description" content="Weenify creative Saas, software technology, Saas agency & business Bootstrap 5 Html template. It is best and famous software company and Saas website template.">
-    <meta name="twitter:image" content="#">
-
-    <!--facebook og-->
-    <meta property="og:url" content="#">
-    <meta name="twitter:title" content="Weenify - Creative SAAS Technology & IT Solutions Bootstrap 5 HTML Template">
-    <meta property="og:description" content="Weenify creative Saas, software technology, Saas agency & business Bootstrap 5 Html template. It is best and famous software company and Saas website template.">
-    <meta property="og:image" content="#">
-    <meta property="og:image:secure_url" content="#">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="600">
+    <meta name="description" content="Iteck - Multi-Purpose HTML5 Template" />
+    <meta name="author" content="Touzani Yassine" />
 
 
         <!-- CSRF Token -->
@@ -30,33 +14,29 @@
 
     <title>{{ config('app.name') }} - Track winning stores Shopify</title>
 
-    <!-- Loading Bootstrap -->
-    <link href="{{ asset('saas/home/css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/img/favicon.png" title="Favicon" sizes="16x16" />
 
-    <!-- Loading Template CSS -->
-    <!-- <link href="{{ asset('saas/home/css/style.css')}}" rel="stylesheet">
-    <link href="{{ asset('saas/home/css/animate.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('saas/home/css/pe-icon-7-stroke.css')}}">
-    <link href="{{ asset('saas/home/css/style-magnific-popup.css')}}" rel="stylesheet"> -->
+    <!-- ====== bootstrap icons cdn ====== -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- bootstrap 5 -->
+    <link rel="stylesheet" href="assets/css/lib/bootstrap.min.css">
+
+    <!-- ====== font family ====== -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"rel="stylesheet">
+
+        <!--build:css-->
+        <link rel="stylesheet" href="assets/css/main.css">
+    <!-- endbuild -->
+
     <!--custom css start-->
-    <link rel="stylesheet" href="assets/css/custom.css">
-    <link rel="stylesheet" href="{{ asset('assets/css/theme.css?ver=3.2.0') }}" type="text/css">
-  <link rel="stylesheet" href="{{ asset('assets/css/dashlite.css?ver=3.2.0') }}" type="text/css">
-    <!--custom css end-->
-
-    <!-- Awsome Fonts -->
-    <link rel="stylesheet" href="{{ asset('saas/home/css/all.min.css')}}">
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway|Cabin:700" rel="stylesheet">
-
-    <!-- Font Favicon -->
-    <link rel="shortcut icon" href="{{ asset('saas/img/favicon.png') }}">
-    <link rel="icon" href="assets/img/favicon.png" type="image/png" sizes="16x16">
-
-
+    <!-- <link rel="stylesheet" href="assets/css/custom.css">   -->
+    <!-- <link rel="stylesheet" href="{{ asset('assets/css/theme.css?ver=3.2.0') }}" type="text/css"> -->
+    @if(!Request::is('/'))
+    <link rel="stylesheet" href="{{ asset('assets/css/dashlite.css?ver=3.2.0') }}" type="text/css">
+    @endif
+  <!--custom css end-->
 
     @livewireStyles
     @stack('styles')
@@ -69,55 +49,12 @@
         }
     </style>
 <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '691407819506168');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=691407819506168&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-<!-- Hotjar Tracking Code for https://weenify.io/ -->
-    <script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:3424765,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-M19EWRS3EN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-M19EWRS3EN');
-</script>
 </head>
 
 <body>
 
     <!-- ======== End Navbar ======== -->
-
-    <!--preloader start-->
-    <!-- <div id="preloader" class="bg-light-subtle">
-        <div class="preloader-wrap">
-            <img src="assets/img/favicon.png" alt="logo" class="img-fluid preloader-icon">
-            <div class="loading-bar"></div>
-        </div>
-    </div> -->
     <!--preloader end-->
     <!--main content wrapper start-->
     <div class="main-wrapper">
@@ -235,7 +172,6 @@ src="https://www.facebook.com/tr?id=691407819506168&ev=PageView&noscript=1"
                         <a href="/register" class="btn btn-primary">Get Started</a>
                     </div>
                     @endguest
-
                     
                 </div>
             </nav>
@@ -295,46 +231,105 @@ src="https://www.facebook.com/tr?id=691407819506168&ev=PageView&noscript=1"
         </header>
 <!--begin header -->
 <!--end header -->
+
         {{ $slot }}
 
-    <!--begin footer -->
-    <div class="footer">
+        <footer class="footer-section">
+            <!--footer top start-->
+            <!--for light footer add .footer-light class and for dark footer add .bg-dark .text-white class-->
+            <div class="footer-top  bg-gradient text-white ptb-120" style="background: url('assets/img/page-header-bg.svg')no-repeat bottom right">
+                <div class="container">
+                    <div class="row justify-content-between">
+                        <div class="col-md-8 col-lg-4 mb-md-4 mb-lg-0">
+                            <div class="footer-single-col">
+                                <div class="footer-single-col mb-4">
+                                    <img src="assets/img/logo.png" alt="logo" class="img-fluid logo-white">
+                                    <img src="assets/img/logo.png" alt="logo" class="img-fluid logo-color">
+                                </div>
+                                <p>Get every single promotional & business update.</p>
 
-        <!--begin container -->
-        <div class="px-0 container-fluid">
+                                <form class="newsletter-form position-relative d-block d-lg-flex d-md-flex">
+                                    <input type="text" class="input-newsletter form-control me-2" placeholder="Enter your email" name="email" required="" autocomplete="off">
+                                    <input type="submit" value="Subscribe" data-wait="Please wait..." class="btn btn-primary mt-3 mt-lg-0 mt-md-0">
+                                </form>
+                                <div class="ratting-wrap mt-4">
+                                    <h6 class="mb-0">10/10 Overall rating</h6>
+                                    <ul class="list-unstyled rating-list list-inline mb-0">
+                                        <li class="list-inline-item"><i class="fas fa-star text-warning"></i></li>
+                                        <li class="list-inline-item"><i class="fas fa-star text-warning"></i></li>
+                                        <li class="list-inline-item"><i class="fas fa-star text-warning"></i></li>
+                                        <li class="list-inline-item"><i class="fas fa-star text-warning"></i></li>
+                                        <li class="list-inline-item"><i class="fas fa-star text-warning"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-7 mt-4 mt-md-0 mt-lg-0">
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 mt-4 mt-md-0 mt-lg-0">
+                                    <div class="footer-single-col">
+                                        <!-- <h3>Primary Pages</h3> -->
+                                        <ul class="list-unstyled footer-nav-list mb-lg-0">
+                                            <li><a href="/" class="text-decoration-none">Home</a></li>
+                                            <li><a href="/contact" class="text-decoration-none">Contact</a></li>
+                                            <li><a href="/TermsandConditions" class="text-decoration-none">Terms and Conditions</a></li>
+                                            <li><a href="/privacypolicy" class="text-decoration-none">Privacy Policy</a></li>
+                                            <li><a href="https://weenify.firstpromoter.com/" class="text-decoration-none">Affiliate Program</a></li>
+                                            <li><a href="/RefundPolicy" class="text-decoration-none">Refund Policy</a></li>
+                                            <li><a href="#pricing" class="text-decoration-none">Pricing</a></li>
 
-            <!--begin row -->
-            @if (\Request::is('/'))
-            <div class="mx-0 row no-gutters">
+                                            </li>
+                                            <li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                        </div>
 
-                <!--begin col-md-4 -->
-                <!--end col-md-4 -->
-
-                <!--begin col-md-4 -->
-
-
+                    </div>
                 </div>
-                <!--end col-md-4 -->
-
-                <!--begin col-md-4 -->
-
-
             </div>
-            <!--end row -->
-            @endif
-            <!--begin row -->
-            <div class="row">
+            <!--footer top end-->
 
-                <!--end col-md-6 -->
-
+            <!--footer bottom start-->
+            <div class="footer-bottom  bg-gradient text-white py-4">
+                <div class="container">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-md-7 col-lg-7">
+                            <div class="copyright-text">
+                                <p class="mb-lg-0 mb-md-0">&copy; 2023 Weenify Rights Reserved. <a href="https://weenify.io/" class="text-decoration-none">Weenify</a></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4">
+                            <div class="footer-single-col text-start text-lg-end text-md-end">
+                                <ul class="list-unstyled list-inline footer-social-list mb-0">
+                                    <li class="list-inline-item"><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="https://www.instagram.com/weenifyio"><i class="fab fa-instagram"></i></a></li>
+                                    <li class="list-inline-item"><a href="https://www.tiktok.com/@weenify"><i class="fab fa-tiktok"></i></a></li>
+                                    <li class="list-inline-item"><a href="https://www.youtube.com/channel/UCBuzUBYeBY1NemZE5DFXuaw"><i class="fab fa-youtube"></i></a></li>
+                                   
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!--end row -->
+            <!--footer bottom end-->
+        </footer>
 
-        </div>
-        <!--end container -->
-
-    </div>
-    <!--end footer -->
+    <!-- @livewireScripts
+    <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/vendors/swiper-bundle.min.js"></script>
+    <script src="assets/js/vendors/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/vendors/parallax.min.js"></script>
+    <script src="assets/js/vendors/aos.js"></script>
+    <script src="assets/js/vendors/massonry.min.js"></script>
+    <script src="assets/js/app.js"></script>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="https://codepen.io/steveg3003/pen/zBVakw.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script> -->
 
     @livewireScripts
 <script src="{{ asset('saas/home/js/jquery-3.3.1.min.js')}}"></script>
@@ -348,20 +343,5 @@ src="https://www.facebook.com/tr?id=691407819506168&ev=PageView&noscript=1"
 <script src="./assets/js/bundle.js?ver=3.2.0"></script>
     <script src="./assets/js/scripts.js?ver=3.2.0"></script>
 
-  <!--Start of Tawk.to Script-->
-  @if (config('saas.demo_mode'))
-  <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/5fbb1a42a1d54c18d8ec4a68/default';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    @endif
-    <!--End of Tawk.to Script-->
 </body>
 </html>
