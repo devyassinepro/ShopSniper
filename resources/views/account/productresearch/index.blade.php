@@ -1,5 +1,6 @@
 <x-account-layout>
 
-    <livewire:account.research.product-research />  
+    <livewire:account.research.list-product-research  lazy/>
+
 
 </x-account-layout>
