@@ -114,6 +114,7 @@ Route::group(['middleware' => 'language'], function () {
         return view('dashboard');})->name('dashboard');
 
     Route::group(['prefix' => '', 'as' => 'account.', 'middleware' => ['auth:sanctum', 'verified']], function () {
+       
         Route::view('security', 'account.security')->name('security');
         Route::view('password', 'account.password')->name('password');
         Route::view('social', 'profile.social')->name('social');
@@ -133,28 +134,36 @@ Route::group(['middleware' => 'language'], function () {
         Route::resource('/trends', AccountTrendsController::class);
 
         // Livewires 3
-        Route::get('/Research', ProductResearch::class)->name('researchproduct.index');
-        Route::get('/Trending', CurrentTrends::class)->name('currenttrends.index');
-        Route::get('/ProductsTracker', ProductSearch::class)->name('productsearch.index');
-        Route::get('/StoresTracker', StoreSearch::class)->name('storesearch.index');
-        Route::get('/Niches', Niches::class)->name('nichesaffiche.index');
-        Route::get('/Tutorial', Tuto::class)->name('tutorial.index');
-        Route::get('/Add-Niches', NicheAdd::class)->name('AddNiches.index');
         Route::get('/Dashboard', Dashboard::class)->name('Dashboard.index');
+        //
+        Route::get('/StoresTracker', StoreSearch::class)->name('storesearch.index');
         Route::get('/Add-Store', AddStore::class)->name('AddStore.index');
-
         Route::get('/liststore/{id}', ListStore::class)->name('liststore.show');
         Route::get('/showstore/{id}', ShowStore::class)->name('storedata.show');
+        //
+        Route::get('/ProductsTracker', ProductSearch::class)->name('productsearch.index');
         Route::get('/showproduct/{id}', ShowProduct::class)->name('productdata.show');
+        //
+        Route::get('/Niches', Niches::class)->name('nichesaffiche.index');
+        Route::get('/Add-Niches', NicheAdd::class)->name('AddNiches.index');
+        //
+        Route::get('/Trending', CurrentTrends::class)->name('currenttrends.index');
         Route::get('/trendshow/{id}', ShowTrends::class)->name('trenddata.show');
+
+        //
+        Route::get('/Research', ProductResearch::class)->name('researchproduct.index');
         Route::get('/researchshow/{id}', ShowResearch::class)->name('researchdata.show');
+
+        //
+        Route::get('/Tutorial', Tuto::class)->name('tutorial.index');
+
 
         // Route::get('proresearch', ProductResearch::class)->name('proresearch');
 
         // export product in csv
-        Route::get('/product/importproduct/{url}', [AccountProductController::class, 'importproduct'])->name('product.importproduct');
+        // Route::get('/product/importproduct/{url}', [AccountProductController::class, 'importproduct'])->name('product.importproduct');
 
-        Route::get('/stores/importstore/{url}', [AccountStoresController::class, 'importstore'])->name('stores.importstore');
+        // Route::get('/stores/importstore/{url}', [AccountStoresController::class, 'importstore'])->name('stores.importstore');
 
 
         // track store from product research
@@ -171,6 +180,8 @@ Route::group(['middleware' => 'language'], function () {
         Route::post('/subscriptions', ['App\Http\Controllers\Subscriptions\SubscriptionController', 'store'])->name('subscriptions.store');
 
     });
+
+
     Route::get('/test', function () {
         $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
         $beautymail->send('emails.welcome', [], function ($message) {
@@ -180,6 +191,7 @@ Route::group(['middleware' => 'language'], function () {
                 ->subject('Welcome!');
         });
     });
+
     // Route::get('accept/{token}', [TeamMemberController::class, 'acceptInvite'])->name('teams.accept_invite');
 
     Route::group(['middleware' => 'verified', 'namespace' => 'Account', 'prefix' => 'account'], function () {
