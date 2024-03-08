@@ -1,10 +1,5 @@
-@extends('layouts.account_niche')
+<x-account-layout>
 
-@section('title', '| Products')
+    <livewire:account.research.product-research />  
 
-@section('content')
-
-                      @if (currentTeam()->subscribed('default'))
-                      <livewire:account.product-research />  
-                      @endif
-    @endsection
+</x-account-layout>

@@ -1,2 +1,2 @@
 
-<livewire:account.research.list-product-research  />
+<livewire:account.research.list-product-research  lazy/>
