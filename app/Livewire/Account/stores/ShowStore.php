@@ -40,10 +40,10 @@ class ShowStore extends Component
         $storeuser = Storeuser::where('user_id', $user_id)->count();
 
 
-    $dates = [];
-    for ($i = 6; $i >= 0; $i--) {
-        $dates[] = Carbon::now()->subDays($i)->format('Y-m-d');
-    }
+            $dates = [];
+            for ($i = 6; $i >= 0; $i--) {
+                $dates[] = Carbon::now()->subDays($i)->format('Y-m-d');
+            }
 
         $storedata = DB::table('stores')->where('id', $this->storeId)->get();
 

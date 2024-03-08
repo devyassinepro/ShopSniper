@@ -8,7 +8,6 @@
     <meta name="description" content="Iteck - Multi-Purpose HTML5 Template" />
     <meta name="author" content="Touzani Yassine" />
 
-
         <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -318,7 +317,7 @@
             <!--footer bottom end-->
         </footer>
 
-    <!-- @livewireScripts
+    @livewireScripts
     <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>
     <script src="assets/js/vendors/bootstrap.bundle.min.js"></script>
     <script src="assets/js/vendors/swiper-bundle.min.js"></script>
@@ -329,19 +328,10 @@
     <script src="assets/js/app.js"></script>
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 	<script src="https://codepen.io/steveg3003/pen/zBVakw.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
 
     @livewireScripts
-<script src="{{ asset('saas/home/js/jquery-3.3.1.min.js')}}"></script>
-<script src="{{ asset('saas/home/js/bootstrap.min.js')}}"></script>
-<script src="{{ asset('saas/home/js/jquery.magnific-popup.min.js')}}"></script>
-<script src="{{ asset('saas/home/js/jquery.nav.js')}}"></script>
-<script src="{{ asset('saas/home/js/wow.js')}}"></script>
-<script src="{{ asset('saas/home/js/plugins.js')}}"></script>
-<script src="{{ asset('saas/home/js/custom.js')}}"></script>
 
-<script src="./assets/js/bundle.js?ver=3.2.0"></script>
-    <script src="./assets/js/scripts.js?ver=3.2.0"></script>
 
 </body>
 </html>

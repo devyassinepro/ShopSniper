@@ -17,7 +17,7 @@ class ListProductResearch extends Component
     public $search = "";
     public $filtrePagination = "";
 
-    public $filterDropshipping = false;
+    public $filterDropshipping = true;
     
     public function placeholder()
     {
@@ -71,7 +71,6 @@ class ListProductResearch extends Component
             
             $products = Product::where('title', '>=', 10)
             ->whereBetween('created_at_shopify', [$threeMonthsAgo, Carbon::now()])
-            ->where("title", "LIKE",  "%". "baby" ."%")
             ->latest('created_at_shopify');
             
         // filters

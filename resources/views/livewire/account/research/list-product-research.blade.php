@@ -458,7 +458,7 @@
                                         </div><!-- .nk-tb-item -->
                                         @endforeach
                                     </div><!-- .nk-tb-list -->
-
+                                    {{ $products->links() }}
                                 <div wire:loading.class="invisible" class="card">
                                     <div class="card-inner">
                                     <div class="nk-block-between-md g-3">
