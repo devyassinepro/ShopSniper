@@ -28,8 +28,6 @@
 
                                 <div class="nk-block">
                                      <livewire:account.revenuedashboard lazy />
-                                     <livewire:account.revenuedashboard lazy />
-                                     <livewire:account.revenuedashboard lazy />
 
                                 </div><!-- .nk-block -->
 
