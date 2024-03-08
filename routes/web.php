@@ -133,7 +133,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::resource('/trends', AccountTrendsController::class);
 
         // Livewires 3
-        Route::get('/Research', ProductResearch::class)->name('researchproduct.index');
+        Route::get('/Research', ListProductResearch::class)->name('researchproduct.index');
         Route::get('/Trending', CurrentTrends::class)->name('currenttrends.index');
         Route::get('/ProductsTracker', ProductSearch::class)->name('productsearch.index');
         Route::get('/StoresTracker', StoreSearch::class)->name('storesearch.index');
