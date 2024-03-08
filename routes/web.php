@@ -56,6 +56,8 @@ use App\Livewire\Account\research\ShowResearch;
 use App\Livewire\Account\Tuto\Tuto;
 use App\Livewire\Account\research\ListProductResearch;
 use App\Livewire\Account\trends\Compcurrenttrends;
+use App\Livewire\Account\research\Listproducts;
+
 
 
 
@@ -152,6 +154,9 @@ Route::group(['middleware' => 'language'], function () {
 
         //
         Route::get('/Research', ProductResearch::class)->name('researchproduct.index');
+        Route::get('/direct', Listproducts::class)->name('researchdirect.index');
+
+        
         Route::get('/researchshow/{id}', ShowResearch::class)->name('researchdata.show');
 
         //
