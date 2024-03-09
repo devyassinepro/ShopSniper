@@ -1,10 +1,6 @@
-<div class="nk-content ">
-<div class="container-fluid">
-               
+
 <!-- card container  -->
                         
-<livewire:account.trends.compcurrenttrends lazy />
+<livewire:account.trends.listproducts lazy />
 
 
-</div>
-</div>
