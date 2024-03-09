@@ -1,16 +1,4 @@
-<div class="nk-content ">
-                @if ($message = Session::get('success'))
-                                <div class="alert alert-success">
-                                    <p>{{ $message }}</p>
-                                </div>
-                                @endif
-                        <div class="nk-content-inner">
-                            <div class="nk-content-body">
-                                <!-- <div class="nk-block-head nk-block-head-sm">
-                                    <div class="nk-block-between">
-                                     -->
-                                    <!-- </div>.nk-block-between -->
-                                <!-- </div>.nk-block-head -->
+<div class="nk-content-body">
                                   
                             @if(!currentTeam()->subscribed())
                             <div class="alert alert-fill alert-icon alert-warning" role="alert">
@@ -18,6 +6,11 @@
                                 <strong>Welcome to Weenify.</strong> Visit the <a href="{{ route('subscription.plans') }}">billing page</a> to activate a Trial plan.
                             </div>
                             @endif
+                            @if ($message = Session::get('success'))
+                                <div class="alert alert-success">
+                                    <p>{{ $message }}</p>
+                                </div>
+                                @endif
                                
                         <div class="row">
                         <div class="col-md-12 grid-margin stretch-card">
@@ -358,14 +351,11 @@
                                 </div>
                             </form>
                         </div>
-                        </div><!-- card -->
-                 
+                        </div><!-- card -->                 
                 </div>
               </div>
             </div>
             </div>
-                </div>
-            </div>    
                             <!-- Loading LiveWire -->
                         <div wire:loading.delay>
                                 <div style="display: flex; justify-content: center; align-items: center; background-color:black; position: fixed; top:0px;left:0px;z-index:9999;width:100% ;height:100%; opacity: .75;">
@@ -459,6 +449,7 @@
                                         @endforeach
                                     </div><!-- .nk-tb-list -->
                                     {{ $products->links() }}
-                               
-</div>
+                                        
+            </div>
+   
                         
