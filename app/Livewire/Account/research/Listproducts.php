@@ -63,12 +63,6 @@ public function render()
 
     // Calculate the date three months ago from now
     $threeMonthsAgo = Carbon::now()->subMonths(12);
-
-
-    // Get stores of this user and select the COALESCE calculation
-
-        // ->select('products.*', DB::raw('COALESCE(todaysales, 0) AS calculated_todaysales'), DB::raw('COALESCE(yesterdaysales, 0) AS calculated_yesterdaysales'))
-        // ->inRandomOrder();
         
         $products = Product::where('title', '>=', 10)
         ->whereBetween('created_at_shopify', [$threeMonthsAgo, Carbon::now()])
@@ -140,7 +134,9 @@ public function render()
         $products =  $products->paginate(25);
         // dd($products);
     }
-       return view('livewire.account.research.listproducts',compact('products'));
+       return view('livewire.account.research.listproducts');
+    //    return view('livewire.account.research.listproducts',compact('products'));
+
 }
 
 
