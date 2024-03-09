@@ -450,6 +450,6 @@
                                     </div><!-- .nk-tb-list -->
                                     {{ $products->links() }}
                                         
-            </div>
+</div>
    
                         
