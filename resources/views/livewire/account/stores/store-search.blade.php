@@ -1,7 +1,9 @@
-<div class="nk-content">
-                    <div class="container-fluid">
-                        <div class="nk-content-inner"> 
-<div class="nk-content-body">
+         
+             
+                                    <!-- end loading -->
+<div class="nk-block">
+
+                                <div class="nk-content-body">
                                 <!--  -->
                                 @if ($message = Session::get('success'))
                                         
@@ -172,9 +174,7 @@
                                 </div><!-- .nk-block-head -->
                             </div>
                            
-
-                                  
-                    @if(!currentTeam()->subscribed())
+                                @if(!currentTeam()->subscribed())
                     <div class="alert alert-fill alert-icon alert-warning" role="alert">
                         <em class="icon ni ni-alert-circle"></em> 
                         <strong>Welcome to Weenify.</strong> Visit the <a href="{{ route('subscription.plans') }}">billing page</a> to activate a Trial plan.
@@ -190,8 +190,6 @@
                                                         </div>
                                             </div>
                                     </div>
-                                    <!-- end loading -->
-                                <div class="nk-block">
 
                                 <!-- test -->
                                 <div class="nk-block">
@@ -265,11 +263,68 @@
                                         </div><!-- .nk-tb-item -->
                                         @endforeach
                                     </div><!-- .nk-tb-list -->
-                                    {{ $stores->links() }}
+                                  
+                                  <!-- .pagination Start -->
+
+                                  <div class="card">
+                                    <div class="card-inner">
+                                     <div class="nk-block-between-md g-3">
+                                                <div class="g"> </div>
+
+                                            <div class="g">
+                                                           
+                                                    <div class="pagination-goto d-flex justify-content-center justify-content-md-start gx-3">
+                                                                    <ul class="pagination">
+                                                                        @if ($stores->currentPage() > 1)
+                                                                            <li class="page-item">
+                                                                                <a class="page-link" wire:click="previousPage" href="#">
+                                                                                    <em class="icon ni ni-back-alt-fill"></em>
+                                                                                </a>
+                                                                            </li>
+                                                                        @else
+                                                                            <li class="page-item disabled">
+                                                                                <span class="page-link"><em class="icon ni ni-back-alt-fill"></em></span>
+                                                                            </li>
+                                                                        @endif
+
+                                                                        @if ($stores->currentPage() < $stores->lastPage())
+                                                                            <li class="page-item">
+                                                                                <a class="page-link" wire:click="nextPage" href="#">
+                                                                                    <em class="icon ni ni-forward-alt-fill"></em>
+                                                                                </a>
+                                                                            </li>
+                                                                        @else
+                                                                            <li class="page-item disabled">
+                                                                                <span class="page-link"><em class="icon ni ni-forward-alt-fill"></em></span>
+                                                                            </li>
+                                                                        @endif
+                                                                    </ul>
+                                                    <div>              
+                                                    <div class="drodown">
+                                                        <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-bs-toggle="dropdown"> {{ $stores->currentPage()  }} </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <ul class="link-list-opt no-bdr">
+                                                                <!-- Default option without filter -->
+                                                                <!-- Other pagination options -->
+
+                                                                @for ($i = 1; $i <= $stores->lastPage(); $i++)
+                                                                <li>
+                                                                    <a class="page-link" wire:click="gotoPage({{ $i }})">
+                                                                        <span>{{ $i }}</span>
+                                                                    </a>
+                                                                </li>
+
+                                                                @endfor
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                 </div><!-- g -->
+                                                                    <div>OF {{ $stores->lastPage() }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            <!-- .pagination END -->
                                  
-                                </div><!-- .nk-block -->
-
-
                                   <!-- Modal -->
                                   <div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
@@ -291,12 +346,5 @@
                                                 </div>
                                             </div>
                                         </div>
+</div><!-- .nk-block -->
 
-                                </div>
-                    </div>
-                </div>
-
-
-
-
-<!-- after  -->

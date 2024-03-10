@@ -58,6 +58,7 @@ use App\Livewire\Account\research\ListProductResearch;
 use App\Livewire\Account\trends\Compcurrenttrends;
 use App\Livewire\Account\research\Listproducts;
 use App\Livewire\Account\products\ListProductSearch;
+use App\Livewire\Account\stores\Homestores;
 
 
 
@@ -140,7 +141,9 @@ Route::group(['middleware' => 'language'], function () {
         // Livewires 3
         Route::get('/Dashboard', Dashboard::class)->name('Dashboard.index');
         //
-        Route::get('/StoresTracker', StoreSearch::class)->name('storesearch.index');
+        Route::get('/StoresTracker', Homestores::class)->name('storesearch.index');
+        Route::get('/skeletonpStores', StoreSearch::class)->name('skeletonpstore.index');
+
         Route::get('/Add-Store', AddStore::class)->name('AddStore.index');
         Route::get('/liststore/{id}', ListStore::class)->name('liststore.show');
         Route::get('/showstore/{id}', ShowStore::class)->name('storedata.show');

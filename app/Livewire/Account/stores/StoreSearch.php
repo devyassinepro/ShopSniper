@@ -25,6 +25,10 @@ class StoreSearch extends Component
     public $page = 1;
 
 
+    public function placeholder()
+    {
+        return view('skeleton');
+    }
    
     public function trackstore($id)
     {
