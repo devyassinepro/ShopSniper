@@ -1,19 +1,5 @@
 <div class="nk-content-body">
-
-                                @if ($message = Session::get('success'))
-                                    <div class="alert alert-success">
-                                        <p>{{ $message }}</p>
-                                    </div>
-                                    @endif
-                            <div class="nk-block">
-                            @if(!currentTeam()->subscribed())
-                                                
-                            <div class="alert alert-icon alert-warning" role="alert">
-                                <em class="icon ni ni-alert-circle"></em> 
-                                <strong>Welcome to Weenify.</strong> Visit the <a href="{{ route('subscription.plans') }}">billing page</a> to activate a Trial plan.
-                            </div>
-                            @endif
-                            </div>
+                                    
                                     <div class="alert alert-pro alert-primary">
 
                                                 <div class="user-toggle">
@@ -51,7 +37,7 @@
                                                         </div>
                                                         </li>
 
-                                                           <div class="drodown">
+                                                    <div class="drodown">
                                                     <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-bs-toggle="dropdown"> {{ $filtreorderby ? ucfirst($filtreorderby) : 'Order By' }}</a>
                                                     <div class="dropdown-menu dropdown-menu-end">
                                                         <ul class="link-list-opt no-bdr">
@@ -116,8 +102,16 @@
                                     </div><!-- .nk-block-between -->
                                 </div><!-- .nk-block-head -->
 
-                            </div>
-                                  
+                          
+                        
+                      
+
+                            @if ($message = Session::get('success'))
+                                    <div class="alert alert-success">
+                                        <p>{{ $message }}</p>
+                                    </div>
+                            @endif
+                          
                             @if(!currentTeam()->subscribed())
                             <div class="alert alert-fill alert-icon alert-warning" role="alert">
                                 <em class="icon ni ni-alert-circle"></em> 
@@ -208,7 +202,6 @@
                                         </div><!-- .nk-tb-item -->
                                         @endforeach
                                     </div><!-- .nk-tb-list -->
-                                    </div> <!-- .END nk-block -->  
                             <!-- .pagination Start -->
 
                                 <div class="card">
@@ -276,5 +269,5 @@
                                             </div>
                             <!-- .pagination END -->
 
-                      
+    </div>            
 </div>     <!-- . END nk-content-body -->   
