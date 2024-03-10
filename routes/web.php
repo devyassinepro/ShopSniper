@@ -58,10 +58,6 @@ use App\Livewire\Account\research\ListProductResearch;
 use App\Livewire\Account\trends\Compcurrenttrends;
 use App\Livewire\Account\research\Listproducts;
 use App\Livewire\Account\products\Listproductspy;
-use App\Livewire\Account\trends\Listproductstrends;
-
-
-
 
 
 
@@ -157,13 +153,11 @@ Route::group(['middleware' => 'language'], function () {
         //
         Route::get('/Trending', CurrentTrends::class)->name('currenttrends.index');
         Route::get('/trendshow/{id}', ShowTrends::class)->name('trenddata.show');
-        Route::get('/skeletontrends', Listproductstrends::class)->name('trendsdirect.index');
+        Route::get('/skeletontrends', Compcurrenttrends::class)->name('skeletonrends.index');
 
-        
         //
         Route::get('/Research', ProductResearch::class)->name('researchproduct.index');
         Route::get('/skeletonResearch', Listproducts::class)->name('researchdirect.index');
-        
         Route::get('/researchshow/{id}', ShowResearch::class)->name('researchdata.show');
 
         //
