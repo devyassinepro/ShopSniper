@@ -1,10 +1,6 @@
-<div class="nk-content ">
-<div class="container-fluid">
-                        <!-- Header -->
+<div class="nk-block">
 
-                    <div class="nk-content-inner">
-                    <div class="nk-content-body">
-                    <div class="nk-block-head nk-block-head-sm">
+            <div class="nk-block-head nk-block-head-sm">
                         <div class="nk-block-between">
                             <div class="nk-block-head-content">
                                 <h3 class="nk-block-title page-title">Current Trends</h3>
@@ -23,6 +19,7 @@
                             </div><!-- .nk-block-head-content -->
                         </div><!-- .nk-block-between -->
                     </div><!-- .nk-block-head -->
+                                    
             @if ($message = Session::get('success'))
                 <div class="alert alert-success">
                     <p>{{ $message }}</p>
@@ -37,8 +34,6 @@
                         </div>
                         @endif
                 </div>
-                         
-            <div class="nk-block">
 
                             <!-- Loading -->
                             <div wire:loading.delay>
@@ -1281,105 +1276,71 @@
                                         @endif
                                     </div>
 
+                        <!-- .pagination Start -->
 
+                    <div class="card">
+                                    <div class="card-inner">
+                                     <div class="nk-block-between-md g-3">
+                                                <div class="g"> </div>
 
-
-                            <!-- start pagination -->
-                                <div class="card">
-                                            <div class="card-inner">
-                                                    <div class="nk-block-between-md g-3">
-                                                                <div class="g"> </div>
-                                                        
-                                                                <div class="g">                
-                                                            @if (currentTeam()->onTrial())
-                                                                <div class="pagination-goto d-flex justify-content-center justify-content-md-start gx-3">
-                                                                                
+                                            <div class="g">
+                                                           
+                                                    <div class="pagination-goto d-flex justify-content-center justify-content-md-start gx-3">
                                                                     <ul class="pagination">
-                                                                        <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Skip Trial to unlock">
+                                                                        @if ($products->currentPage() > 1)
+                                                                            <li class="page-item">
+                                                                                <a class="page-link" wire:click="previousPage" href="#">
+                                                                                    <em class="icon ni ni-back-alt-fill"></em>
+                                                                                </a>
+                                                                            </li>
+                                                                        @else
                                                                             <li class="page-item disabled">
                                                                                 <span class="page-link"><em class="icon ni ni-back-alt-fill"></em></span>
                                                                             </li>
-                                                                        </span>
-                                                                        <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Skip Trial to unlock">
+                                                                        @endif
 
+                                                                        @if ($products->currentPage() < $products->lastPage())
+                                                                            <li class="page-item">
+                                                                                <a class="page-link" wire:click="nextPage" href="#">
+                                                                                    <em class="icon ni ni-forward-alt-fill"></em>
+                                                                                </a>
+                                                                            </li>
+                                                                        @else
                                                                             <li class="page-item disabled">
                                                                                 <span class="page-link"><em class="icon ni ni-forward-alt-fill"></em></span>
                                                                             </li>
-                                                                        </span>
-
+                                                                        @endif
                                                                     </ul>
-
-                                                                <div>
-                                            
-                                                                </div>   <!-- g-->
-                                                                            <div>OF {{ $products->lastPage() }}</div>
-                                                                    </div>
-                                                            @endif
-                                                </div>     <!-- card-inner  -->
-                                                            
-
-                                                                @if (!currentTeam()->onTrial())
-                                                                <div class="pagination-goto d-flex justify-content-center justify-content-md-start gx-3">
-                                                                            <ul class="pagination">
-                                                                                @if ($products->currentPage() > 1)
-                                                                                    <li class="page-item">
-                                                                                        <a class="page-link" wire:click="previousPage" href="#">
-                                                                                            <em class="icon ni ni-back-alt-fill"></em>
-                                                                                        </a>
-                                                                                    </li>
-                                                                                @else
-                                                                                    <li class="page-item disabled">
-                                                                                        <span class="page-link"><em class="icon ni ni-back-alt-fill"></em></span>
-                                                                                    </li>
-                                                                                @endif
-
-                                                                                @if ($products->currentPage() < $products->lastPage())
-                                                                                    <li class="page-item">
-                                                                                        <a class="page-link" wire:click="nextPage" href="#">
-                                                                                            <em class="icon ni ni-forward-alt-fill"></em>
-                                                                                        </a>
-                                                                                    </li>
-                                                                                @else
-                                                                                    <li class="page-item disabled">
-                                                                                        <span class="page-link"><em class="icon ni ni-forward-alt-fill"></em></span>
-                                                                                    </li>
-                                                                                @endif
-                                                                            </ul>
-                                                                <div>
-                                                                <div class="drodown">
-                                                                    <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-bs-toggle="dropdown"> {{ $products->currentPage()  }} </a>
-                                                                    <div class="dropdown-menu dropdown-menu-end">
-                                                                        <ul class="link-list-opt no-bdr">
-                                                                            <!-- Default option without filter -->
-                                                                            <!-- Other pagination options -->
-
+                                                    <div>
+                                                                         <!-- <select class="form-select js-select2" data-search="on" data-dropdown="xs center" wire:model.live="page">
                                                                             @for ($i = 1; $i <= $products->lastPage(); $i++)
-                                                                            <li>
-                                                                                <a class="page-link" wire:click="gotoPage({{ $i }})">
-                                                                                    <span>{{ $i }}</span>
-                                                                                </a>
-                                                                            </li>
-
+                                                                                <option value="{{ $i }}">{{ $i }}</option>
                                                                             @endfor
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
+                                                                        </select> -->
+                                                                   
+                                                    <div class="drodown">
+                                                        <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-bs-toggle="dropdown"> {{ $products->currentPage()  }} </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <ul class="link-list-opt no-bdr">
+                                                                <!-- Default option without filter -->
+                                                                <!-- Other pagination options -->
 
-                                                                        </div>
-                                                                        <div>OF {{ $products->lastPage() }}</div>
-                                                                                            </div>
-                                                                    </div><!-- .pagination-goto -->
-                                                            @endif
+                                                                @for ($i = 1; $i <= $products->lastPage(); $i++)
+                                                                <li>
+                                                                    <a class="page-link" wire:click="gotoPage({{ $i }})">
+                                                                        <span>{{ $i }}</span>
+                                                                    </a>
+                                                                </li>
 
-                                                            </div>
-
+                                                                @endfor
+                                                            </ul>
+                                                        </div>
                                                     </div>
-                            </div>    <!-- End Pagination -->
-                                  
-
-</div><!-- .nk-block -->
-
-</div>
-</div>
-
+                                                 </div><!-- g -->
+                                                                    <div>OF {{ $products->lastPage() }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            <!-- .pagination END -->
+                    </div><!-- .nk-block -->
 
