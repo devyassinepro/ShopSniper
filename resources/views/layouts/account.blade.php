@@ -116,7 +116,35 @@
             <script src="{{ asset('assets/js/bundle.js?ver=3.2.0') }}"></script>
             <script src="{{ asset('assets/js/scripts.js?ver=3.2.0') }}"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+                    <!-- sweet alert  -->
+            <script>
 
+            window.addEventListener('show-delete-confirmation', event =>{
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, Delete"
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                      Livewire.emit('deleteConfirmed')
+                    }
+                    });
+            });
+
+            window.addEventListener('NicheDeleted', event =>{
+                  Swal.fire({
+                      title: "Deleted!",
+                      text: "Your Niche has been deleted.",
+                      icon: "success"
+                    });
+            });
+
+               
+</script>
 
 <!-- {{-- Connect component files js --}} -->
     @stack('scripts')

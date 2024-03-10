@@ -12,6 +12,7 @@ class Niches extends Component
 {
     public $deleteId = '';
 
+    
     public function render()
     {
 
@@ -60,7 +61,8 @@ class Niches extends Component
 
         // $this->dispatch('success', ['message'=>'Niche has been Deleted successfully']);
 
-        return redirect()->to('/Niches');
+        return redirect()->to('/Niches')->with('deleted','Niche has been deleted successfully.');
+
     }
 
  

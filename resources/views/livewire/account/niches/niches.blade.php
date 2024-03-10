@@ -1,14 +1,10 @@
-
 <div class="nk-content ">
                     <div class="container-fluid">
                         <div class="nk-content-inner">
                             <div class="nk-content-body">
-                                <div class="nk-block-head nk-block-head-sm">
+                            <div class="nk-block-head nk-block-head-sm">
                             
-                                </div><!-- .nk-block-head -->
-          <a class="btn btn-primary" href="{{ route('account.AddNiches.index') }}" wire:navigate>Add Niche</a>
-
-        </br></br>
+                            </div><!-- .nk-block-head -->
                     @if ($message = Session::get('success'))
                        <script>
                        const Toast = Swal.mixin({
@@ -28,19 +24,40 @@
                             })
                        </script>
                     @endif
+                    @if ($message = Session::get('deleted'))
+                       <script>
+                       const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-right',
+                            iconColor: 'white',
+                            customClass: {
+                                popup: 'colored-toast',
+                            },
+                            showConfirmButton: false,
+                            timer: 1500,
+                            timerProgressBar: true,
+                            })
+                            Toast.fire({
+                                icon: 'error',
+                                title: 'Deleted',
+                            })
+                       </script>
+                    @endif
 
+                    
                     <div>
     </div>
 
-                        <div wire:loading.delay>
+                        <!-- <div wire:loading.delay>
                                 <div style="display: flex; justify-content: center; align-items: center; background-color:black; position: fixed; top:0px;left:0px;z-index:9999;width:100% ;height:100%; opacity: .75;">
                                             <div class="la-square-jelly-box la-3x">
                                                 <div></div>
                                                 <div></div>
                                             </div>
                                 </div>
-                         </div>
-
+                         </div> -->
+                         <livewire:account.niches.niche-add />
+ 
                             <div class="table-responsive">
 
                                     <table class="table table-fixed">
@@ -67,8 +84,15 @@
                                             
                                             <td>   
                                             <td>
-                                            <a class="btn btn-danger" wire:click="Remove({{ $niche->id }})" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</a>
-                                           
+                                            <!-- <a class="btn btn-danger" wire:click="Remove({{ $niche->id }})" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" wire:loading.delay>Delete</a> -->
+                                                                <button class="btn btn-danger" wire:click="Remove({{ $niche->id }})" type="button" data-toggle="modal" data-target="#exampleModal" wire:loading.remove>
+                                                               DELETE
+                                                                </button>
+                                                                <button class="btn btn-danger" type="button" wire:loading.delay >
+                                                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                                                <span>Loading...</span>
+                                                                </button>
+
                                         </td>
                                         </tr>
                                         @endforeach
@@ -97,7 +121,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+                                       <!-- EndModal --> 
                                 </div>
                             </div>
                         </div>
