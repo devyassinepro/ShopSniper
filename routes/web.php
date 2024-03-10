@@ -154,7 +154,8 @@ Route::group(['middleware' => 'language'], function () {
 
         //
         Route::get('/Research', ProductResearch::class)->name('researchproduct.index');
-    
+        Route::get('/direct', Listproducts::class)->name('researchdirect.index');
+        
         Route::get('/researchshow/{id}', ShowResearch::class)->name('researchdata.show');
 
         //

@@ -17,13 +17,13 @@ class Listproducts extends Component
 use WithPagination;
 public $search = "";
 public $filtrePagination = "";
-
 public $filterDropshipping = true;
 
-public function placeholder()
-{
-    return view('skeleton');
-}
+
+    public function placeholder()
+    {
+        return view('skeleton');
+    }
 
 //    filters data
 public $title = '';
@@ -45,15 +45,15 @@ protected $debug = true;
 protected $paginationTheme = 'bootstrap';
 public $page = 1;
 
+    public function updatePagination($perPage)
+    {
+        $this->filtrePagination = $perPage;
+    }
 
-public function updatePagination($perPage)
-{
-    $this->filtrePagination = $perPage;
-}
+    public function save(){
+        return view('skeleton');
+    }
 
-public function save(){
-    return view('skeleton');
-}
 public function render()
 {
     if(check_user_type() != 'user')
@@ -62,7 +62,7 @@ public function render()
     }
 
     // Calculate the date three months ago from now
-    $threeMonthsAgo = Carbon::now()->subMonths(12);
+    $threeMonthsAgo = Carbon::now()->subMonths(4);
         
         $products = Product::where('title', '>=', 10)
         ->whereBetween('created_at_shopify', [$threeMonthsAgo, Carbon::now()])
@@ -134,8 +134,7 @@ public function render()
         $products =  $products->paginate(25);
         // dd($products);
     }
-       return view('livewire.account.research.listproducts');
-    //    return view('livewire.account.research.listproducts',compact('products'));
+       return view('livewire.account.research.listproducts', compact('products'));
 
 }
 
