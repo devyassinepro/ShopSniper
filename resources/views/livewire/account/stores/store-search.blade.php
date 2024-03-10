@@ -1,7 +1,7 @@
          
              
                                     <!-- end loading -->
-<div class="nk-block">
+        <div class="nk-block">
 
                                 <div class="nk-content-body">
                                 <!--  -->

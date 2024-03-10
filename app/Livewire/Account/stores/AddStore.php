@@ -33,7 +33,7 @@ class AddStore extends Component
 
             if($storeuser >=3 ){
                 return redirect()->route('storesearch.index')->with('error','You can not add more stores on trial');
-
+            
             }
         }
         else if(check_store_limit() <= $storeuser)
@@ -85,7 +85,7 @@ class AddStore extends Component
                     $domain = $parsedUrl['scheme'] . '://' . $parsedUrl['host']. '/' ;
 
                 } else {
-                    return redirect()->route('account.AddStore.index')->with('error','This Store not Supported by Weenify');
+                    return redirect()->route('account.storesearch.index')->with('error','This Store not Supported by Weenify');
                 }
 
                 // check if store already added
@@ -193,7 +193,7 @@ class AddStore extends Component
                             }
                         }
                     } catch(\Exception $exception) {
-                        return redirect()->route('account.AddStore.index')->with('error','This Store not Supported by Weenify');
+                        return redirect()->route('account.storesearch.index')->with('error','This Store not Supported by Weenify');
 
                         // Log::error($exception->getMessage());
                     }
