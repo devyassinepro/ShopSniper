@@ -2,7 +2,7 @@
     <div class="container-fluid">
             <div class="nk-content-inner">
     
-                <livewire:account.products.list-product-search lazy/>
+                <livewire:account.products.listproducts lazy/>
      
           </div>  <!-- . END nk-content-inner --> 
       </div> <!-- . END container-fluid --> 
