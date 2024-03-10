@@ -1,4 +1,3 @@
-<div class="nk-content-inner">
 <div class="nk-content-body">
 
                                 @if ($message = Session::get('success'))
@@ -26,7 +25,7 @@
                                                     <h3>Sales Tracker</h3>
                                                     <h6>Track sales of products</h6>
                                                 </div>
-                                                </div>
+                                    </div>
 
                                 <div class="nk-block-head nk-block-head-sm">
                                     <div class="nk-block-between">
@@ -279,4 +278,3 @@
 
                       
 </div>     <!-- . END nk-content-body -->   
-</div>  <!-- . END nk-content-inner --> 
