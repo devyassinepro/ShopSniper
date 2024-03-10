@@ -1,5 +1,7 @@
-<div class="nk-content-body">
+<div class="nk-block">
+    <div class="nk-content-body">
                                     
+
                                     <div class="alert alert-pro alert-primary">
 
                                                 <div class="user-toggle">
@@ -102,16 +104,13 @@
                                     </div><!-- .nk-block-between -->
                                 </div><!-- .nk-block-head -->
 
-                          
-                        
-                      
-
+                    </div>
                             @if ($message = Session::get('success'))
                                     <div class="alert alert-success">
                                         <p>{{ $message }}</p>
                                     </div>
-                            @endif
-                          
+                                    @endif
+ 
                             @if(!currentTeam()->subscribed())
                             <div class="alert alert-fill alert-icon alert-warning" role="alert">
                                 <em class="icon ni ni-alert-circle"></em> 
@@ -129,7 +128,7 @@
                         </div>
                                 
                                 <!-- new TAB -->
-                                <div class="nk-block">
+                                <div class="card">
                                     <div class="nk-tb-list is-separate is-medium mb-3">
                                         <div class="nk-tb-item nk-tb-head">
                                             <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span>Product</span></div>
@@ -202,6 +201,7 @@
                                         </div><!-- .nk-tb-item -->
                                         @endforeach
                                     </div><!-- .nk-tb-list -->
+                                    </div> <!-- .END nk-block -->  
                             <!-- .pagination Start -->
 
                                 <div class="card">
@@ -269,5 +269,5 @@
                                             </div>
                             <!-- .pagination END -->
 
-    </div>            
+                      
 </div>     <!-- . END nk-content-body -->   
