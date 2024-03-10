@@ -1,3 +1,4 @@
+<div class="nk-content-inner">
 <div class="nk-content-body">
 
                                 @if ($message = Session::get('success'))
@@ -277,6 +278,5 @@
                             <!-- .pagination END -->
 
                       
-</div>     <!-- . END nk-content-body --> 
-                    
-                        
+</div>     <!-- . END nk-content-body -->   
+</div>  <!-- . END nk-content-inner --> 
