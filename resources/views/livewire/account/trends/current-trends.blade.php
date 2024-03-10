@@ -1,6 +1,6 @@
 
 <!-- card container  -->
                         
-<livewire:account.trends.Compcurrenttrends lazy />
+<livewire:account.trends.compcurrenttrends lazy />
 
 
