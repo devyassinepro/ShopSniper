@@ -57,6 +57,7 @@ use App\Livewire\Account\Tuto\Tuto;
 use App\Livewire\Account\research\ListProductResearch;
 use App\Livewire\Account\trends\Compcurrenttrends;
 use App\Livewire\Account\research\Listproducts;
+use App\Livewire\Account\products\Listproductspy;
 
 
 
@@ -145,6 +146,8 @@ Route::group(['middleware' => 'language'], function () {
         //
         Route::get('/ProductsTracker', ProductSearch::class)->name('productsearch.index');
         Route::get('/showproduct/{id}', ShowProduct::class)->name('productdata.show');
+        Route::get('/directproducts', Listproductspy::class)->name('productsdirect.index');
+
         //
         Route::get('/Niches', Niches::class)->name('nichesaffiche.index');
         Route::get('/Add-Niches', NicheAdd::class)->name('AddNiches.index');
