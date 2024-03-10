@@ -1,23 +1,19 @@
-<div class="nk-content ">
-                @if ($message = Session::get('success'))
-                                <div class="alert alert-success">
-                                    <p>{{ $message }}</p>
-                                </div>
-                                @endif
-                        <div class="nk-block">
-                        @if(!currentTeam()->subscribed())
-                                            
-                        <div class="alert alert-icon alert-warning" role="alert">
-                            <em class="icon ni ni-alert-circle"></em> 
-                            <strong>Welcome to Weenify.</strong> Visit the <a href="{{ route('subscription.plans') }}">billing page</a> to activate a Trial plan.
-                        </div>
-                        @endif
-                        </div>
+<div class="nk-content-body">
 
-                    <div class="container-fluid">
-                        <div class="nk-content-inner">
-                            <div class="nk-content-body">
-
+                                @if ($message = Session::get('success'))
+                                    <div class="alert alert-success">
+                                        <p>{{ $message }}</p>
+                                    </div>
+                                    @endif
+                            <div class="nk-block">
+                            @if(!currentTeam()->subscribed())
+                                                
+                            <div class="alert alert-icon alert-warning" role="alert">
+                                <em class="icon ni ni-alert-circle"></em> 
+                                <strong>Welcome to Weenify.</strong> Visit the <a href="{{ route('subscription.plans') }}">billing page</a> to activate a Trial plan.
+                            </div>
+                            @endif
+                            </div>
                                     <div class="alert alert-pro alert-primary">
 
                                                 <div class="user-toggle">
@@ -151,8 +147,8 @@
                                             <div class="nk-tb-col tb-col-sm" style="font-size: 16px; font-weight: bold;"><span>Total sales</span></div>
                                             <!-- <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span>Expand</span></div> -->
 
-                                            <div class="nk-tb-col nk-tb-col-tools">
-                                            </div>
+                                            <div class="nk-tb-col nk-tb-col-tools">  </div>
+                                          
                                         </div><!-- .nk-tb-item -->
 
                                         @foreach ($products as $product)
@@ -212,13 +208,14 @@
                                         </div><!-- .nk-tb-item -->
                                         @endforeach
                                     </div><!-- .nk-tb-list -->
-                                  
+                                    </div> <!-- .END nk-block -->  
+                            <!-- .pagination Start -->
+
                                 <div class="card">
                                     <div class="card-inner">
                                      <div class="nk-block-between-md g-3">
-                                                <div class="g">
-                                                
-                                            </div>
+                                                <div class="g"> </div>
+
                                             <div class="g">
                                                            
                                                     <div class="pagination-goto d-flex justify-content-center justify-content-md-start gx-3">
@@ -247,41 +244,39 @@
                                                                             </li>
                                                                         @endif
                                                                     </ul>
-                                                                    <div>
+                                                    <div>
                                                                          <!-- <select class="form-select js-select2" data-search="on" data-dropdown="xs center" wire:model.live="page">
                                                                             @for ($i = 1; $i <= $products->lastPage(); $i++)
                                                                                 <option value="{{ $i }}">{{ $i }}</option>
                                                                             @endfor
                                                                         </select> -->
                                                                    
-                                                                    <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-bs-toggle="dropdown"> {{ $products->currentPage()  }} </a>
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <ul class="link-list-opt no-bdr">
-                                                                                <!-- Default option without filter -->
-                                                                                <!-- Other pagination options -->
+                                                    <div class="drodown">
+                                                        <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-bs-toggle="dropdown"> {{ $products->currentPage()  }} </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <ul class="link-list-opt no-bdr">
+                                                                <!-- Default option without filter -->
+                                                                <!-- Other pagination options -->
 
-                                                                                @for ($i = 1; $i <= $products->lastPage(); $i++)
-                                                                                <li>
-                                                                                    <a class="page-link" wire:click="gotoPage({{ $i }})">
-                                                                                        <span>{{ $i }}</span>
-                                                                                    </a>
-                                                                                </li>
+                                                                @for ($i = 1; $i <= $products->lastPage(); $i++)
+                                                                <li>
+                                                                    <a class="page-link" wire:click="gotoPage({{ $i }})">
+                                                                        <span>{{ $i }}</span>
+                                                                    </a>
+                                                                </li>
 
-                                                                                @endfor
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    </div>
+                                                                @endfor
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                 </div><!-- g -->
                                                                     <div>OF {{ $products->lastPage() }}</div>
                                                     </div>
-                                                </div><!-- .pagination-goto -->
+                                                </div>
                                             </div>
+                            <!-- .pagination END -->
 
-
-                                    </div>
-                                </div>
-                        </div>
-                    </div>
-</div>
+                      
+</div>     <!-- . END nk-content-body --> 
+                    
                         
