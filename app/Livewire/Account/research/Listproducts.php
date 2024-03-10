@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
-class Listproducts extends Component
+class Listproductstrends extends Component
 {
   
 use WithPagination;

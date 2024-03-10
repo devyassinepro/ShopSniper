@@ -58,6 +58,9 @@ use App\Livewire\Account\research\ListProductResearch;
 use App\Livewire\Account\trends\Compcurrenttrends;
 use App\Livewire\Account\research\Listproducts;
 use App\Livewire\Account\products\Listproductspy;
+use App\Livewire\Account\trends\Listproductstrends;
+
+
 
 
 
@@ -146,7 +149,7 @@ Route::group(['middleware' => 'language'], function () {
         //
         Route::get('/ProductsTracker', ProductSearch::class)->name('productsearch.index');
         Route::get('/showproduct/{id}', ShowProduct::class)->name('productdata.show');
-        // Route::get('/directproducts', Listproductspy::class)->name('productsdirect.index');
+        Route::get('/skeletonproducts', Listproductspy::class)->name('skeletondirect.index');
 
         //
         Route::get('/Niches', Niches::class)->name('nichesaffiche.index');
@@ -154,10 +157,12 @@ Route::group(['middleware' => 'language'], function () {
         //
         Route::get('/Trending', CurrentTrends::class)->name('currenttrends.index');
         Route::get('/trendshow/{id}', ShowTrends::class)->name('trenddata.show');
+        Route::get('/skeletontrends', Listproductstrends::class)->name('trendsdirect.index');
 
+        
         //
         Route::get('/Research', ProductResearch::class)->name('researchproduct.index');
-        Route::get('/direct', Listproducts::class)->name('researchdirect.index');
+        Route::get('/skeletonResearch', Listproducts::class)->name('researchdirect.index');
         
         Route::get('/researchshow/{id}', ShowResearch::class)->name('researchdata.show');
 
