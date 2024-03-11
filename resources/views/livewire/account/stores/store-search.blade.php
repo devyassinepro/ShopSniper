@@ -32,7 +32,7 @@
                                                     <h3>Sales Tracker</h3>
                                                     <h6>Track sales of stores</h6>
                                                 </div>
-                                                </div>
+                                    </div>
 
                                                 <div class="nk-block-head nk-block-head-sm">
                                     <div class="nk-block-between">

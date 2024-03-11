@@ -6,7 +6,7 @@
         </div>
         @endif
 
-@if ($message = Session::get('success'))
+@if ($message = Session::get('success'))    
                        <script>
                        const Toast = Swal.mixin({
                             toast: true,
@@ -46,11 +46,11 @@
                     @endif
                                                               
                             <div class="card">
-                                            <div class="card-inner">
-                                               
-                                                <form wire:submit="save">
+                        <div class="alert alert-pro alert-primary">
+                            <div class="alert-text">
+                            <form wire:submit="save">
                                                   @csrf
-                                                    <div class="row g-4">
+                                                    <div class="row g-6">
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
                                                                 <label class="form-label" for="full-name-1">Url Store</label>
@@ -63,41 +63,36 @@
                                                     @error('niche')
                                                      <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                                      @enderror
-                                                        <div class="col-lg-2">
+                                                        <div class="col-lg-6">
+
                                                             <div class="form-group">
                                                                 <label class="form-label" for="email-address-1">Niche</label>
                                                                 <div class="form-control-wrap">
-                                                                <select wire:model="nicheid" class="form-control">
+                                                                
+                                                                <select wire:model="nicheid" class="form-select js-select2">
                                                                   @foreach ($allniches as $niche)
                                                                   <option value="{{ $niche->id }}" >{{ $niche->name }}</option>
                                                                   @endforeach
                                                                 </select>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div>@error('nicheid') {{ $message }} @enderror</div>
-
-                                                        <div class="col-lg-3">
-                                                            <div class="form-group">
+                                                                 <div class="form-group">
                                                                 <label class="form-label" for="phone-no-1"></label>
                                                                 <div class="form-group">
                                                                 <button type="submit" class="btn btn-lg btn-primary">Add Shop</button>
                                                             </div>
-                                                            </div>
+                                                        </div>
+                                                        <div>@error('nicheid') {{ $message }} @enderror</div>
+
+                                                       
                                                         </div>
                                                        
-                                                        
-                                                        
-                                                        <div class="col-12">
-                                                           
-                                                        </div>
                                                     </div>
                                                 </form>
-                                            </div>
-                                        </div>
-                                  
-
-                    </div>
+                            </div>
+                            </div>
+                            </div>  <!-- card -->
+                                       
 
 
 </div><!-- .nk-block -->
