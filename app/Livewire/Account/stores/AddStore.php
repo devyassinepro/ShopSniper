@@ -29,6 +29,11 @@ class AddStore extends Component
         $user_id = Auth::user()->id;
         $storeuser = Storeuser::where('user_id', $user_id)->count();
 
+        $storelimit = check_store_limit();
+        // get user's stores
+        $totalstores = Storeuser::where('user_id', $user_id)->pluck('store_id');
+        $totalstores = count($totalstores);
+
         if(currentTeam()->onTrial()){
 
             if($storeuser >=3 ){
@@ -52,7 +57,7 @@ class AddStore extends Component
             ]);
 
         }
-        return view('livewire.account.stores.add-store', compact('allniches'));
+        return view('livewire.account.stores.add-store', compact('allniches','storelimit','totalstores'));
     }
 
 

@@ -60,30 +60,55 @@
                                                                  <div>@error('url') {{ $message }} @enderror</div>                                                                </div>
                                                             </div>
                                                         </div>
+                                                        <div class="col-lg-2">
+                                                                <div class="form-group">
+                                                                    <label class="form-label" for="email-address-1">Niche</label>
+                                                                
+                                                                    <div class="form-control-wrap">
+                                                                    
+                                                                    <select wire:model="nicheid" class="form-select js-select2">
+                                                                    @foreach ($allniches as $niche)
+                                                                    <option value="{{ $niche->id }}" >{{ $niche->name }}</option>
+                                                                    @endforeach
+                                                                    </select>
+
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+
+                                                        <div class="col-lg-2">
+                                                                <div class="form-group">
+                                                                    <label class="form-label" for="email-address-1"></label>
+                                                                
+                                                                    <div class="form-control-wrap">
+                                                                    
+                                                                    <button type="submit" class="btn btn-lg btn-primary">Start Tracking</button>
+
+
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+
+                                                        <div class="col-lg-2">
+                                                                <div class="form-group">
+                                                                    <label class="form-label" for="email-address-1"></label>
+                                                                
+                                                                    <div class="form-control-wrap">
+                                                                    
+                                                                    <button type="submit" class="btn btn-lg btn-primary">Stores {{ $totalstores }}/ {{ $storelimit }}</button>
+
+
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                    
                                                     @error('niche')
                                                      <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                                      @enderror
-                                                        <div class="col-lg-6">
+                                                              
+                                                    <div>@error('nicheid') {{ $message }} @enderror</div>
 
-                                                            <div class="form-group">
-                                                                <label class="form-label" for="email-address-1">Niche</label>
-                                                                <div class="form-control-wrap">
-                                                                
-                                                                <select wire:model="nicheid" class="form-select js-select2">
-                                                                  @foreach ($allniches as $niche)
-                                                                  <option value="{{ $niche->id }}" >{{ $niche->name }}</option>
-                                                                  @endforeach
-                                                                </select>
-                                                                </div>
-                                                            </div>
-                                                                 <div class="form-group">
-                                                                <label class="form-label" for="phone-no-1"></label>
-                                                                <div class="form-group">
-                                                                <button type="submit" class="btn btn-lg btn-primary">Add Shop</button>
-                                                            </div>
-                                                        </div>
-                                                        <div>@error('nicheid') {{ $message }} @enderror</div>
-
+                                            
                                                        
                                                         </div>
                                                        
