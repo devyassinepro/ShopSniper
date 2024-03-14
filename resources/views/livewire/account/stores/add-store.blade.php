@@ -16,16 +16,16 @@
                                 popup: 'colored-toast',
                             },
                             showConfirmButton: false,
-                            timer: 1500,
+                            timer: 5000,
                             timerProgressBar: true,
                             })
                             Toast.fire({
                                 icon: 'success',
-                                title: 'Success',
+                                title: {{ $message }},
                             })
                        </script>
                     @endif
-                    @if ($message = Session::get('deleted'))
+                    @if ($message = Session::get('error'))
                        <script>
                        const Toast = Swal.mixin({
                             toast: true,
@@ -35,12 +35,31 @@
                                 popup: 'colored-toast',
                             },
                             showConfirmButton: false,
-                            timer: 1500,
+                            timer: 5000,
                             timerProgressBar: true,
                             })
                             Toast.fire({
                                 icon: 'error',
-                                title: 'Deleted',
+                                title: '{{ $message }}',
+                            })
+                       </script>
+                    @endif
+                    @if ($message = Session::get('error'))
+                       <script>
+                       const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-right',
+                            iconColor: 'white',
+                            customClass: {
+                                popup: 'colored-toast',
+                            },
+                            showConfirmButton: false,
+                            timer: 5000,
+                            timerProgressBar: true,
+                            })
+                            Toast.fire({
+                                icon: 'error',
+                                title: '{{ $message }}',
                             })
                        </script>
                     @endif
@@ -67,8 +86,8 @@
                                                                     <div class="form-control-wrap">
                                                                     
                                                                     <select wire:model="nicheid" class="form-select js-select2">
-                                                                    @foreach ($allniches as $niche)
-                                                                    <option value="{{ $niche->id }}" >{{ $niche->name }}</option>
+                                                                    @foreach ($allniches as $index => $niche)
+                                                                        <option value="{{ $niche->id }}" {{ $index == 0 ? 'selected' : '' }}>{{ $niche->name }}</option>
                                                                     @endforeach
                                                                     </select>
 
@@ -91,13 +110,9 @@
 
                                                         <div class="col-lg-2">
                                                                 <div class="form-group">
-                                                                    <label class="form-label" for="email-address-1"></label>
-                                                                
+                                                                    <label class="form-label" for="email-address-1"></label>                     
                                                                     <div class="form-control-wrap">
-                                                                    
-                                                                    <button type="submit" class="btn btn-lg btn-primary">Stores {{ $totalstores }}/ {{ $storelimit }}</button>
-
-
+                                                                    <button class="btn btn-lg btn-primary">Stores {{ $totalstores }}/ {{ $storelimit }}</button>
                                                                     </div>
                                                                 </div>
                                                         </div>

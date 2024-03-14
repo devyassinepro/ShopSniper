@@ -67,8 +67,11 @@ class AddStore extends Component
     {
         $validated = $this->validate([ 
             'url' => 'required',
-            'nicheid' => 'required',
+            // 'nicheid' => 'required',
         ]);
+        if ($validationFails) {
+            $this->emit('error', 'Validation failed! Please check your Store Url.');
+        }
 
         if(check_user_type() != 'user')
         {
