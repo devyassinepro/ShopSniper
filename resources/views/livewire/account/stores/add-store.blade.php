@@ -67,6 +67,7 @@
                             <div class="card">
                         <div class="alert alert-pro alert-primary">
                             <div class="alert-text">
+                         
                             <form wire:submit="save">
                                                   @csrf
                                                     <div class="row g-6">
@@ -75,7 +76,7 @@
                                                                 <label class="form-label" for="full-name-1">Url Store</label>
                                                                 <div class="form-control-wrap">
                                                                 <input type="text" wire:model="url" class="form-control" placeholder="Url Store Shopify">
-                                                                 
+                                                                
                                                                  <div>@error('url') {{ $message }} @enderror</div>                                                                </div>
                                                             </div>
                                                         </div>
@@ -85,14 +86,16 @@
                                                                 
                                                                     <div class="form-control-wrap">
                                                                     
-                                                                    <select wire:model="nicheid" class="form-select js-select2">
-                                                                    @foreach ($allniches as $index => $niche)
-                                                                        <option value="{{ $niche->id }}" {{ $index == 0 ? 'selected' : '' }}>{{ $niche->name }}</option>
-                                                                    @endforeach
-                                                                    </select>
-
+                                                                        <select wire:model="nicheoption" name='nicheoption'>
+                                                                        <option value=""></option>
+                                                                        @foreach($allniches as $niche)
+                                                                        <option value="{{ $niche->id }}">{{ $niche->name }}</option>
+                                                                        @endforeach
+                                                                        </select>
+                                                                               
                                                                     </div>
                                                                 </div>
+                                                                   
                                                         </div>
 
                                                         <div class="col-lg-2">
@@ -112,7 +115,7 @@
                                                                 <div class="form-group">
                                                                     <label class="form-label" for="email-address-1"></label>                     
                                                                     <div class="form-control-wrap">
-                                                                    <button class="btn btn-lg btn-primary">Stores {{ $totalstores }}/ {{ $storelimit }}</button>
+                                                                    <a class="btn btn-lg btn-primary">Stores {{ $totalstores }}/ {{ $storelimit }}</a>
                                                                     </div>
                                                                 </div>
                                                         </div>

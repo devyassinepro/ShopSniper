@@ -63,8 +63,6 @@ use App\Livewire\Account\stores\Homestores;
 
 
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes

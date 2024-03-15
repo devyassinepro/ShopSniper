@@ -17,7 +17,7 @@ class AddStore extends Component
 
     public $url = '';
  
-    public $nicheid = '';
+    public $nicheoption = '';
 
     public function render()
     {
@@ -65,14 +65,13 @@ class AddStore extends Component
 
     public function save()
     {
+
         $validated = $this->validate([ 
             'url' => 'required',
-            // 'nicheid' => 'required',
+            'nicheoption' => 'required',
         ]);
-        if ($validationFails) {
-            $this->emit('error', 'Validation failed! Please check your Store Url.');
-        }
-
+      
+  
         if(check_user_type() != 'user')
         {
             return redirect()->route('dashboard')->with('error','You can not access this page.');
@@ -93,7 +92,7 @@ class AddStore extends Component
                     $domain = $parsedUrl['scheme'] . '://' . $parsedUrl['host']. '/' ;
 
                 } else {
-                    return redirect()->route('account.storesearch.index')->with('error','This Store not Supported by Weenify');
+                    return redirect()->route('account.storesearch.index')->with('error','This Store not Supported by Weenify 1');
                 }
 
                 // check if store already added
@@ -112,7 +111,7 @@ class AddStore extends Component
                         ]);
                         Nichestore::create([
                             "stores_id" => $stores->id,
-                            "niche_id" => $this->nicheid,
+                            "niche_id" => $this->nicheoption,
                             "created_at" => now(),
                             "updated_at" => now()
                        ]);
@@ -132,7 +131,7 @@ class AddStore extends Component
 
                         Nichestore::create([
                              "stores_id" => $stores->id,
-                             "niche_id" => $this->nicheid,
+                             "niche_id" => $this->nicheoption,
                              "created_at" => now(),
                              "updated_at" => now()
                         ]);
@@ -155,18 +154,30 @@ class AddStore extends Component
                             'name' => $metas->name,
                             'status' => 1,
                             'sales' => 0,
+                            'tag' => '',
                             'revenue' => 0,
                             'city' => $metas->city,
                             'country' => $metas->country,
                             'currency' => $metas->currency,
                             'shopifydomain' => $metas->myshopify_domain,
                             'allproducts' => $metas->published_products_count,
+                            'todaysales' => 0,
+                            'yesterdaysales' => 0,
+                            'day3sales' => 0,
+                            'day4sales' => 0,
+                            'day5sales' => 0,
+                            'day6sales' => 0,
+                            'day7sales' => 0,
+                            'weeksales' => 0,
+                            'monthsales' => 0,
+                            'dropshipping' => 1,
                             'created_at' => now(),
                             'updated_at' => now(),
                             'user_id' => $user_id
                             ]
                         );
-
+                 
+                       
                         Storeuser::create([
                             "store_id" => $store_id,
                             "user_id" => $user_id,
@@ -176,7 +187,7 @@ class AddStore extends Component
 
                         Nichestore::create([
                              "stores_id" => $store_id,
-                             "niche_id" => $this->nicheid,
+                             "niche_id" => $this->nicheoption,
                              "created_at" => now(),
                              "updated_at" => now()
                         ]);
@@ -201,7 +212,7 @@ class AddStore extends Component
                             }
                         }
                     } catch(\Exception $exception) {
-                        return redirect()->route('account.storesearch.index')->with('error','This Store not Supported by Weenify');
+                        return redirect()->route('account.storesearch.index')->with('error','This Store not Supported by Weenify 2');
 
                         // Log::error($exception->getMessage());
                     }
@@ -231,8 +242,27 @@ function createstore ($store ,$store_id, $i){
         if(isset($product->images[0]->src)){
             $image= $product->images[0]->src;
         }else{
-            $image="default";
+            $image ='';
         }
+        if (isset($product->images[1])) {
+            $image2 = $product->images[1]->src;
+        }else $image2 ='';
+
+        if (isset($product->images[2])) {
+            $image3 = $product->images[2]->src;
+        }else $image3 ='';
+
+        if (isset($product->images[3])) {
+            $image4 = $product->images[3]->src;
+        }else $image4 ='';
+
+        if (isset($product->images[4])) {
+            $image5 = $product->images[4]->src;
+        }else $image5 ='';
+
+        if (isset($product->images[5])) {
+            $image6 = $product->images[5]->src;
+        }else $image6 ='';
 
         $timeconvert = strtotime($product->updated_at);
         $totalsales = 0;
@@ -256,7 +286,17 @@ function createstore ($store ,$store_id, $i){
             "day6sales" => 0,
             "day7sales" => 0,
             "weeksales" => 0,
-            "monthsales" => 0
+            "monthsales" => 0,
+            'dropshipping' => 1,
+            'price_aliexpress'=>0,
+            'description' => $product->body_html,
+            'created_at_shopify' => $product->published_at,
+            'created_at_favorite' => $product->published_at,
+            'image2' => $image2,
+            'image3' => $image3,
+            'image4' => $image4,
+            'image5' => $image5,
+            'image6' => $image6,
         ]);
     }
 }
