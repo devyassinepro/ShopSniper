@@ -15,12 +15,12 @@
                                 popup: 'colored-toast',
                             },
                             showConfirmButton: false,
-                            timer: 1500,
+                            timer: 5000,
                             timerProgressBar: true,
                             })
                             Toast.fire({
                                 icon: 'success',
-                                title: 'Success',
+                                title: 'Niche Added Successfuly',
                             })
                        </script>
                     @endif
@@ -34,12 +34,12 @@
                                 popup: 'colored-toast',
                             },
                             showConfirmButton: false,
-                            timer: 1500,
+                            timer: 5000,
                             timerProgressBar: true,
                             })
                             Toast.fire({
                                 icon: 'error',
-                                title: 'Deleted',
+                                title: 'Niche Deleted',
                             })
                        </script>
                     @endif

@@ -24,7 +24,7 @@
                                 title: {{ $message }},
                             })
                        </script>
-                    @endif
+@endif
                     @if ($message = Session::get('error'))
                        <script>
                        const Toast = Swal.mixin({
@@ -104,8 +104,11 @@
                                                                 
                                                                     <div class="form-control-wrap">
                                                                     
-                                                                    <button type="submit" class="btn btn-lg btn-primary">Start Tracking</button>
-
+                                                                    <button type="submit" class="btn btn-lg btn-primary" wire:loading.remove>Start Tracking</button>
+                                                                    <button class="btn btn-lg btn-primary" type="button" disabled wire:loading.delay>
+                                                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                                                    <span>Loading...</span>
+                                                                    </button>
 
                                                                     </div>
                                                                 </div>
