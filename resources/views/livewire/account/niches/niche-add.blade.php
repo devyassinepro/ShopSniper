@@ -1,12 +1,14 @@
 <div class="card">
-                                        @if(session('status'))
+                        @if(session('status'))
                         <div class="alert alert-success mb-1 mt-1">
                             {{ session('status') }}
                         </div>
                         @endif
                         
                                     
-                                            <div class="card-inner">
+                        <div class="card">
+                        <div class="alert alert-pro alert-primary">
+                            <div class="alert-text">
                                                
                                                 <form wire:submit="save" >
                                                    @csrf
@@ -26,8 +28,8 @@
                                                       
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <button type="submit" class="btn btn-primary" wire:loading.remove>Save Niche</button>
-                                                                <button class="btn btn-primary" type="button" disabled wire:loading.delay>
+                                                                <button type="submit" class="btn btn-lg btn-primary" wire:loading.remove>Save Niche</button>
+                                                                <button class="btn btn-lg btn-primary" type="button" disabled wire:loading.delay>
                                                                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                                                 <span>Loading...</span>
                                                                 </button>
@@ -39,8 +41,11 @@
 
                                                     </div>
                                                 </form>
-                                            </div>
-                            </div>        <!-- Card -->
+                                                </div>
+                            </div>
+                            </div>  <!-- card -->
+                                             
+</div>        <!-- Card -->
 
                  
                       

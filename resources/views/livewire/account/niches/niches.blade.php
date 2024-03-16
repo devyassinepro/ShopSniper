@@ -57,51 +57,43 @@
                                 </div>
                          </div> -->
                          <livewire:account.niches.niche-add />
- 
-                            <div class="table-responsive">
+                         <br><br>
+                            <!-- new one  -->
+                            <div class="nk-block">
+                                    <div class="nk-tb-list is-separate is-medium mb-3">
+                                        <div class="nk-tb-item nk-tb-head">
+                                            <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span>Niche</span></div>
+                                            <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;"><span>Start Added</span></div>
+                                            <div class="nk-tb-col tb-col-md" style="font-size: 16px; font-weight: bold;"><span></span></div>
 
-                                    <table class="table table-fixed">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">Niche</th>
-                                            <th scope="col">Start Added</th>
-                                            <th scope="col"></th>
+                                        </div><!-- .nk-tb-item -->
 
-                                          
-                                            <!-- Add more columns as needed -->
-                                        </tr>
-                                        </thead>
-                                        <tbody>
                                         @foreach ($nicheall as $niche)
-                                        <tr>
-                                            <td>
-                                                 <span class="tb-odr-id"><a href="#">{{ $niche->name }}</a></span>
-                                            </td>
+
+                                        <div class="nk-tb-item">
+
+                                            <div class="nk-tb-col">{{ $niche->name }}   </div>
+                                         
+                                            <div class="nk-tb-col">{{ $niche->created_at }} </div>
                                            
-                                            <td> 
-                                            <span class="amount">{{ $niche->created_at }}</span>
-                                            </td>
-                                            
-                                            <td>   
-                                            <td>
-                                            <!-- <a class="btn btn-danger" wire:click="Remove({{ $niche->id }})" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" wire:loading.delay>Delete</a> -->
-                                                                <button class="btn btn-danger" wire:click="Remove({{ $niche->id }})" type="button" data-toggle="modal" data-target="#exampleModal" wire:loading.remove>
-                                                               DELETE
-                                                                </button>
-                                                                <button class="btn btn-danger" type="button" wire:loading.delay >
-                                                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                                                <span>Loading...</span>
-                                                                </button>
-
-                                        </td>
-                                        </tr>
+                                            <div class="nk-tb-col tb-col-md">
+                                            <button class="btn btn-lg btn-danger" wire:click="Remove({{ $niche->id }})" type="button" data-toggle="modal" data-target="#exampleModal" wire:loading.remove>
+                                            DELETE
+                                            </button>
+                                            <button class="btn btn-lg btn-danger" type="button" wire:loading.delay >
+                                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                            <span>Loading...</span>
+                                            </button>
+                                            </div>
+                                        
+                                   
+                                        </div><!-- .nk-tb-item -->
                                         @endforeach
-                                        </tbody>
-                                    </table>
-                            
+                                    </div><!-- .nk-tb-list -->
+                                    </div> <!-- .END nk-block -->  
 
-                                <!-- Modal -->
-                                        <div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <!-- Modal -->
+                                    <div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -122,8 +114,8 @@
                                             </div>
                                         </div>
                                        <!-- EndModal --> 
-                                </div>
-                            </div>
+
+
                         </div>
                     </div>
                 </div>

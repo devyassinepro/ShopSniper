@@ -41,6 +41,7 @@
                        </script>
                     @endif
                         <livewire:account.stores.add-store/>
+                        <br>
                         <livewire:account.stores.store-search lazy/>
 
 
