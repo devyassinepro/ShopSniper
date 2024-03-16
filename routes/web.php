@@ -113,8 +113,10 @@ Route::group(['middleware' => 'language'], function () {
         return redirect('https://shopify.pxf.io/MmW3NY');
     });
 
-    Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-        return view('dashboard');})->name('dashboard');
+    // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    //     return view('dashboard');})->name('dashboard');
+    Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', Dashboard::class)->name('dashboard.index');;
+
 
     Route::group(['prefix' => '', 'as' => 'account.', 'middleware' => ['auth:sanctum', 'verified']], function () {
        
