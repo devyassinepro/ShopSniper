@@ -20,9 +20,9 @@ class Dashboard extends Component
 
 
         // if not subscribed or not on trial redirect to choose plan 
-        if (!(currentTeam()->Subscribed('default') || currentTeam()->onTrial())) {
-            return redirect()->route('subscription.plans');
-        }
+        // if (!(currentTeam()->Subscribed('default') || currentTeam()->onTrial())) {
+        //     return redirect()->route('subscription.plans');
+        // }
 
         $user_id = Auth::user()->id;
         $storelimit = check_store_limit();
