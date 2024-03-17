@@ -87,7 +87,6 @@
                                                                     <div class="form-control-wrap">
                                                                     
                                                                         <select wire:model="nicheoption" name='nicheoption'>
-                                                                        <option value=""></option>
                                                                         @foreach($allniches as $niche)
                                                                         <option value="{{ $niche->id }}">{{ $niche->name }}</option>
                                                                         @endforeach

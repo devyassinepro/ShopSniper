@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Livewire\Account\Niches;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 use Livewire\Component;
 use App\Models\Niche;
@@ -10,8 +11,10 @@ use Illuminate\Support\Facades\Auth;
 
 class Niches extends Component
 {
-    public $deleteId = '';
 
+    use LivewireAlert;
+
+    public $deleteId = '';
     
     public function render()
     {
@@ -56,12 +59,10 @@ class Niches extends Component
     {
      
         Niche::find($this->deleteId)->delete();
-        // session()->flash('message', 'Niche has been Deleted successfully.'); 
-        session()->flash('message', 'Post successfully updated.');
 
-        // $this->dispatch('success', ['message'=>'Niche has been Deleted successfully']);
+        $this->alert('success', __('Niche has been deleted successfully !'));
 
-        return redirect()->to('/Niches')->with('deleted','Niche has been deleted successfully.');
+        return redirect()->to('/Niches');
 
     }
 

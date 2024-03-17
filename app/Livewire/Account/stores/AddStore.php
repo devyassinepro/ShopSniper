@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Livewire\Account\stores;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 use Livewire\Component;
 use App\Models\Niche;
@@ -14,6 +15,7 @@ use DB;
 use Illuminate\Contracts\Cache\Store;
 class AddStore extends Component
 {
+    use LivewireAlert;
 
     public $url = '';
  
@@ -43,7 +45,11 @@ class AddStore extends Component
         }
         else if(check_store_limit() <= $storeuser)
         {
-            return redirect()->route('storesearch.index')->with('error','You can not add stores more than '.check_store_limit());
+            $storeLimit = check_store_limit();
+            if ($storeLimit) {
+                $this->alert('warning', __('You can not add stores more than :limit', ['limit' => $storeLimit]));
+                return redirect()->route('storesearch.index');
+            }
         }
 
         //to add niche to store
@@ -85,15 +91,17 @@ class AddStore extends Component
             return redirect()->route('account.storesearch.index')->with('error','You can not add stores more than '.check_store_limit());
         }
 
-                //if domaine with url ;;; 
-                $parsedUrl = parse_url($this->url);
+        //if domaine with url ;;; 
+        $parsedUrl = parse_url($this->url);
 
-                if (isset($parsedUrl['host'])) {
-                    $domain = $parsedUrl['scheme'] . '://' . $parsedUrl['host']. '/' ;
+        if (isset($parsedUrl['host'])) {
+            $domain = $parsedUrl['scheme'] . '://' . $parsedUrl['host']. '/' ;
 
-                } else {
-                    return redirect()->route('account.storesearch.index')->with('error','This Store not Supported by Weenify 1');
-                }
+        } else {
+            $this->alert('warning', __('This Store not Supported by Weenify !'));
+
+            return redirect()->route('account.storesearch.index');
+        }
 
                 // check if store already added
                 $stores = stores::where('url', $domain)->first();
@@ -212,14 +220,16 @@ class AddStore extends Component
                             }
                         }
                     } catch(\Exception $exception) {
-                        return redirect()->route('account.storesearch.index')->with('error','This Store not Supported by Weenify 2');
+                        $this->alert('warning', __('This Store not Supported by Weenify !'));
+                        return redirect()->route('account.storesearch.index');
 
                         // Log::error($exception->getMessage());
                     }
                 }
 
         // return redirect()->route('account.stores.index');
-        return redirect()->route('account.storesearch.index')->with('success','Store has been Added successfully , wait Between 2h To 24h to get All Sales');
+        $this->alert('success', __('Store has been Added successfully , wait Between 2h To 24h to get All Sales'));
+        return redirect()->route('account.storesearch.index');
   
 
     }

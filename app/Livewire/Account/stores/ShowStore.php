@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Livewire\Account\Stores;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 use Livewire\Component;
 use App\Models\stores;
@@ -13,6 +14,7 @@ use DB;
 
 class ShowStore extends Component
 {
+    use LivewireAlert;
 
     public $storeId;
     public $deleteId = '';
@@ -79,11 +81,6 @@ class ShowStore extends Component
      
         $store = stores::findorFail($this->deleteId); //searching for object in database using ID
 
-        if(check_user_type() != 'user')
-        {
-            return redirect()->route('dashboard')->with('error','You can not access this page.');
-        }
-
         $user_id = Auth::user()->id;
         $storeuser = Storeuser::where('user_id', $user_id)->where('store_id', $id)->count();
         if($storeuser > 0)
@@ -92,7 +89,8 @@ class ShowStore extends Component
             if(empty($store->user_id))
             {
                 Storeuser::where('user_id', $user_id)->where('store_id', $this->deleteId)->delete();
-                return redirect()->route('account.storesearch.index')->with('success','deleted successfully');
+                $this->alert('success', __('Deleted Successfully'));
+                return redirect()->route('account.storesearch.index');
             }
             else
             {
@@ -100,23 +98,24 @@ class ShowStore extends Component
                 if($store_added_by_total_users > 1)
                 {
                     Storeuser::where('user_id', $user_id)->where('store_id', $this->deleteId)->delete();
-                    return redirect()->route('account.storesearch.index')->with('success','deleted successfully');
+                    $this->alert('success', __('Deleted Successfully'));
+                    return redirect()->route('account.storesearch.index');
 
                 }
                 else
                 {
                     Storeuser::where('user_id', $user_id)->where('store_id', $id)->delete();
                     DB::table('stores')->where('id', $this->deleteId)->update(array('status' => 0));
-                    return redirect()->route('account.storesearch.index')->with('success','deleted successfully');
+                    $this->alert('success', __('Deleted Successfully'));
+                    return redirect()->route('account.storesearch.index');
                 }
             }
         }
         else
         {
-            return redirect()->route('account.storesearch.index')->with('error','Something went wrong');
-        }
-        session()->flash('message', 'Niche has been Deleted successfully.');
- 
+            $this->alert('warning', __('Something went wrong'));
+            return redirect()->route('account.storesearch.index');
+        } 
         return redirect()->to('/account/stores');
 
 
@@ -128,10 +127,6 @@ class ShowStore extends Component
 
         $store = stores::findorFail($this->storeid); //searching for object in database using ID
 
-        if(check_user_type() != 'user')
-        {
-            return redirect()->route('dashboard')->with('error','You can not access this page.');
-        }
 
         $user_id = Auth::user()->id;
         $storeuser = Storeuser::where('user_id', $user_id)->where('store_id', $this->storeid)->count();
@@ -141,7 +136,8 @@ class ShowStore extends Component
             if(empty($store->user_id))
             {
                 Storeuser::where('user_id', $user_id)->where('store_id', $this->storeid)->delete();
-                return redirect()->route('account.storesearch.index')->with('success','deleted successfully');
+                $this->alert('success', __('Deleted successfully !'));
+                return redirect()->route('account.storesearch.index');
             }
             else
             {
@@ -150,20 +146,24 @@ class ShowStore extends Component
                 {
 
                     Storeuser::where('user_id', $user_id)->where('store_id', $this->storeid)->delete();
-                    return redirect()->route('account.storesearch.index')->with('success','deleted successfully');
+                    $this->alert('success', __('Deleted successfully !'));
+                    return redirect()->route('account.storesearch.index');
 
                 }
                 else
                 {
                     Storeuser::where('user_id', $user_id)->where('store_id', $this->storeid)->delete();
                     DB::table('stores')->where('id', $this->storeid)->update(array('status' => 0));
-                    return redirect()->route('account.storesearch.index')->with('success','deleted successfully');
+                    $this->alert('success', __('Deleted successfully !'));
+                    return redirect()->route('account.storesearch.index');
                 }
             }
         }
         else
         {
-            return redirect()->route('account.storesearch.index')->with('error','Something went wrong');
+            $this->alert('warning', __('Something went wrong !'));
+
+            return redirect()->route('account.storesearch.index');
         }
 
     }
@@ -478,7 +478,7 @@ class ShowStore extends Component
         
         // Close the CSV file
         fclose($csvFile);
-        
+        $this->alert('success', __('The product Exported successfully !'));
         // Return the path to the generated CSV file
         return response()->download($csvFilePath)->deleteFileAfterSend(true);
 

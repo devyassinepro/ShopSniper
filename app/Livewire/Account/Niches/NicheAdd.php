@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Livewire\Account\Niches;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 use Livewire\Component;
 use App\Models\Niche;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class NicheAdd extends Component
 {
+    use LivewireAlert;
 
     public $name = '';
 
@@ -41,7 +43,9 @@ class NicheAdd extends Component
             'user_id' => Auth::user()->id
              ]
         );
-        return redirect()->to('/Niches')->with('success','Niche has been created successfully.');
+        $this->alert('success', __('Payment method has been updated !'));
+         return redirect()->to('/Niches');
+        // return redirect()->to('/Niches')->with('success','Niche has been created successfully.');
 
     }
 

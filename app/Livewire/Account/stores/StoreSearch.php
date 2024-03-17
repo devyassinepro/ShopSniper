@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Livewire\Account\stores;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 use Livewire\Component;
 use App\Models\Product;
@@ -12,6 +13,7 @@ use App\Models\Niche;
 use DB;
 class StoreSearch extends Component
 {
+    use LivewireAlert;
 
     use WithPagination;
     public $name;
