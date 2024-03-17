@@ -43,6 +43,6 @@ class Payments extends Component
 
     public function render()
     {
-        return view('livewire.payments')->layout('layouts.app');;
+        return view('livewire.payments');
     }
 }
