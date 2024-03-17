@@ -72,10 +72,20 @@ class AddStore extends Component
     public function save()
     {
 
-        $validated = $this->validate([ 
-            'url' => 'required',
-            'nicheoption' => 'required',
-        ]);
+        try {
+            $validated = $this->validate([
+                'url' => 'required',
+                'nicheoption' => 'required',
+            ]);
+        
+            // Validation passed, continue with your logic
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            // Validation failed, handle the error here
+            $this->alert('warning', __('url not valid!'));
+        
+            // Redirect back to the previous page with the validation errors
+            return redirect()->back()->withErrors($e->validator);
+        }
       
   
         if(check_user_type() != 'user')
@@ -100,7 +110,7 @@ class AddStore extends Component
         } else {
             $this->alert('warning', __('This Store not Supported by Weenify !'));
 
-            return redirect()->route('account.storesearch.index');
+            // return redirect()->route('account.storesearch.index');
         }
 
                 // check if store already added
@@ -221,7 +231,7 @@ class AddStore extends Component
                         }
                     } catch(\Exception $exception) {
                         $this->alert('warning', __('This Store not Supported by Weenify !'));
-                        return redirect()->route('account.storesearch.index');
+                        // return redirect()->route('account.storesearch.index');
 
                         // Log::error($exception->getMessage());
                     }

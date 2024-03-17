@@ -161,10 +161,10 @@
                                                 </div> -->
                                 
                                                         </li>
-                                                        <li class="nk-block-tools-opt">
+                                                        <!-- <li class="nk-block-tools-opt">
                                                             <a href="{{ route('account.AddStore.index') }}" wire:navigate class="btn btn-icon btn-primary d-md-none"><em class="icon ni ni-plus"></em></a>
                                                             <a href="{{ route('account.AddStore.index') }}" wire:navigate class="btn btn-primary d-none d-md-inline-flex"><em class="icon ni ni-plus"></em><span>Add Store</span></a>
-                                                        </li>
+                                                        </li> -->
                                                     </ul>
                                                 </div>
                                             </div>

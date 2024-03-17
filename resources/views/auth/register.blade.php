@@ -104,7 +104,7 @@
                             </ul><!-- nav -->
                         </div>
                         <div class="mt-3">
-                            <p>&copy; 2023 Weenify. All Rights Reserved.</p>
+                            <p>&copy; 2024 Weenify. All Rights Reserved.</p>
                         </div>
                     </div><!-- nk-block -->
                 </div><!-- nk-split-content -->

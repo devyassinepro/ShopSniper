@@ -8,6 +8,7 @@
     <meta name="description" content="Iteck - Multi-Purpose HTML5 Template" />
     <meta name="author" content="Touzani Yassine" />
 
+
         <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -30,12 +31,12 @@
     <!-- endbuild -->
 
     <!--custom css start-->
-    <!-- <link rel="stylesheet" href="assets/css/custom.css">   -->
-    <!-- <link rel="stylesheet" href="{{ asset('assets/css/theme.css?ver=3.2.0') }}" type="text/css"> -->
-    @if(!Request::is('/'))
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+    @if(Request::is('register') || Request::is('login'))
     <link rel="stylesheet" href="{{ asset('assets/css/dashlite.css?ver=3.2.0') }}" type="text/css">
     @endif
-  <!--custom css end-->
+    <!--custom css end-->
 
     @livewireStyles
     @stack('styles')
@@ -47,8 +48,6 @@
             color: #5f6468 !important;
         }
     </style>
-<!-- Meta Pixel Code -->
-
 </head>
 
 <body>
@@ -146,20 +145,7 @@
             </div>
             @endguest
                 <div class="hs-unfold">
-                    
-                  <!-- <a class="pr-0 nav-link btn btn-secondary" href="#" role="button" data-toggle="dropdown" style="background-color:transparent; border:0px;"
-                      aria-haspopup="true" aria-expanded="false">
-                      <div class="media-body d-none d-lg-block">
-                        <img src="{{ asset('saas/svg/flags/'.app()->getLocale().'.svg') }}" alt="United States Flag">
-                        <span>{{ app()->getLocale()  }}</span>
-                      </div>
-                  </a> -->
-
-                  <!-- <div id="footerLanguage" class="hs-unfold-content dropdown-menu dropdown-unfold dropdown-menu-bottom mb-2">
-                    @foreach (language()->allowed() as $code => $name)
-                      <a class="dropdown-item" href="{{ language()->back($code) }}">{{ $name }}</a>
-                    @endforeach
-                        </div> -->
+                
                           </div>
                     @guest
                     <div class="action-btns text-end me-5 me-lg-0 d-none d-md-block d-lg-block">
@@ -171,6 +157,7 @@
                         <a href="/register" class="btn btn-primary">Get Started</a>
                     </div>
                     @endguest
+
                     
                 </div>
             </nav>
@@ -232,7 +219,7 @@
 <!--end header -->
 
         {{ $slot }}
-
+        @unless(Request::is('register') || Request::is('login'))
         <footer class="footer-section">
             <!--footer top start-->
             <!--for light footer add .footer-light class and for dark footer add .bg-dark .text-white class-->
@@ -275,7 +262,7 @@
                                             <li><a href="/privacypolicy" class="text-decoration-none">Privacy Policy</a></li>
                                             <li><a href="https://weenify.firstpromoter.com/" class="text-decoration-none">Affiliate Program</a></li>
                                             <li><a href="/RefundPolicy" class="text-decoration-none">Refund Policy</a></li>
-                                            <li><a href="#pricing" class="text-decoration-none">Pricing</a></li>
+                                            <li><a href="/#pricing" class="text-decoration-none">Pricing</a></li>
 
                                             </li>
                                             <li>
@@ -297,7 +284,7 @@
                     <div class="row justify-content-between align-items-center">
                         <div class="col-md-7 col-lg-7">
                             <div class="copyright-text">
-                                <p class="mb-lg-0 mb-md-0">&copy; 2023 Weenify Rights Reserved. <a href="https://weenify.io/" class="text-decoration-none">Weenify</a></p>
+                                <p class="mb-lg-0 mb-md-0">&copy; 2024 Weenify Rights Reserved. <a href="https://weenify.io/" class="text-decoration-none">Weenify</a></p>
                             </div>
                         </div>
                         <div class="col-md-4 col-lg-4">
@@ -316,8 +303,9 @@
             </div>
             <!--footer bottom end-->
         </footer>
+        @endunless
+        @livewireScripts
 
-    @livewireScripts
     <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>
     <script src="assets/js/vendors/bootstrap.bundle.min.js"></script>
     <script src="assets/js/vendors/swiper-bundle.min.js"></script>
@@ -330,8 +318,20 @@
 	<script src="https://codepen.io/steveg3003/pen/zBVakw.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
 
-    @livewireScripts
-
-
+  <!--Start of Tawk.to Script-->
+  @if (config('saas.demo_mode'))
+  <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/5fbb1a42a1d54c18d8ec4a68/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    @endif
+    <!--End of Tawk.to Script-->
 </body>
 </html>

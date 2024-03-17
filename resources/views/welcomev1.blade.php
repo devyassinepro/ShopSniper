@@ -894,7 +894,7 @@
                 </div>
             </div>
             <div class="foot py-4 border-1 border-top brd-gray text-center">
-                <p>Copyright © 2023 Weenfiy. All Rights Reserved.</p>
+                <p>Copyright © 2024 Weenfiy. All Rights Reserved.</p>
             </div>
         </div>
     </footer>

@@ -135,7 +135,7 @@
                 <div class="nk-footer">
                     <div class="container-fluid">
                         <div class="nk-footer-wrap">
-                            <div class="nk-footer-copyright"> &copy; 2023 <a href="https://weenify.io" target="_blank">Weenify</a>
+                            <div class="nk-footer-copyright"> &copy; 2024 <a href="https://weenify.io" target="_blank">Weenify</a>
                             </div>
                         </div>
                     </div>
