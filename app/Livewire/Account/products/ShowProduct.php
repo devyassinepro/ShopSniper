@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Livewire\Account\Products;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 use Livewire\Component;
 use App\Models\Product;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ShowProduct extends Component
 {
+    use LivewireAlert;
 
     public $productId;
 
@@ -332,7 +334,8 @@ class ShowProduct extends Component
         
         // Close the CSV file
         fclose($csvFile);
-        
+        $this->alert('success', __('The product Exported successfully !'));
+
         // Return the path to the generated CSV file
         return response()->download($csvFilePath)->deleteFileAfterSend(true);
         

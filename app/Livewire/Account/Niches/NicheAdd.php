@@ -43,9 +43,8 @@ class NicheAdd extends Component
             'user_id' => Auth::user()->id
              ]
         );
-        $this->alert('success', __('Payment method has been updated !'));
+        $this->alert('success', __('Niche has been created successfully. !'));
          return redirect()->to('/Niches');
-        // return redirect()->to('/Niches')->with('success','Niche has been created successfully.');
 
     }
 

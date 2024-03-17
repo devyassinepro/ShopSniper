@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Livewire\Account\research;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -13,6 +14,7 @@ use Carbon\Carbon;
 
 class ListProductResearch extends Component
 {
+    use LivewireAlert;
     use WithPagination;
     public $search = "";
     public $filtrePagination = "";
@@ -454,6 +456,8 @@ class ListProductResearch extends Component
         // Close the CSV file
         fclose($csvFile);
         // Return the path to the generated CSV file
+        $this->alert('success', __('The product Exported successfully !'));
+
         return response()->download($csvFilePath)->deleteFileAfterSend(true);
 
     }
