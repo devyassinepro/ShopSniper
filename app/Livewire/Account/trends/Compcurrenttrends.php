@@ -50,7 +50,7 @@ class Compcurrenttrends extends Component
 
         // Get stores of this user and select the COALESCE calculation
         $products = Product::where('title', '>=', 10)
-            ->where('favoris', 1)
+            // ->where('favoris', 1)
             ->select('products.*')
             ->inRandomOrder();
 

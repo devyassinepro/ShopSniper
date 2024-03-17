@@ -11,7 +11,7 @@
 <div class="card">
         <!-- Card header -->
         <div class="card-header">
-            <h3 class="mb-0 text-primary"><i class="fas fa-ticket-alt"></i> {{ __('Create New Ticket') }}</h3>
+            <h2 class="mb-0 text-primary"><i class="fas fa-ticket-alt"></i> {{ __('Create New Ticket') }}</h2>
         </div>
         <!-- Card body -->
         <div class="card-body">
@@ -85,7 +85,7 @@
 
                 <div class="form-group row">
                     <div class="col-md-6 col-md-offset-6">
-                        <button type="submit" class="btn btn-soft-primary btn-sm">
+                        <button type="submit" class="btn btn-lg btn-primary">
                             <i class="fas fa-ticket-alt"></i> {{ __('Open Ticket') }}
                         </button>
                     </div>

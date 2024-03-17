@@ -1,4 +1,5 @@
 <x-account-layout>
+  <br>
     <x-slot name="header">
         <div class="d-none d-lg-block">
             <h1 class="text-white h2">{{ __('Overview') }} 
@@ -80,7 +81,7 @@
                 </button>
               @endif
               <div class="my-2">
-                  <a class="btn btn-ghost-info" href="{{currentTeam()->billingPortalUrl(route('account.subscriptions'))}}"> {{ __('Biling portal') }}</a>
+                  <a class="btn btn btn-primary" href="{{currentTeam()->billingPortalUrl(route('account.subscriptions'))}}"> {{ __('Biling portal') }}</a>
               </div>
             </div>
 

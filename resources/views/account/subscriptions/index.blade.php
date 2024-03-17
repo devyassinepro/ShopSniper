@@ -1,8 +1,4 @@
 <x-account-layout>
-    <!-- Event snippet for Weenify Trial conversion page -->
-<script>
-  gtag('event', 'conversion', {'send_to': 'AW-975957367/IEW0CIv5zJMYEPfar9ED'});
-</script>
 
     <x-slot name="header">
         <div class="d-none d-lg-block">

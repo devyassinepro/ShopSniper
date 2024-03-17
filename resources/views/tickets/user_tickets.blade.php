@@ -15,8 +15,9 @@
         <h5 class="h3 mb-0">
             {{ __('My tickets') }}
         </h5>
+        <br>
         <span class="float-right">
-            <a href="{{ route('ticket.create') }}" class="btn btn-soft-indigo btn-sm">
+            <a href="{{ route('ticket.create') }}" class="btn btn-lg btn-primary">
                 <i class="fas fa-plus"></i> {{ __('Create New Ticket') }}
             </a>
         </span>
