@@ -184,7 +184,7 @@ Route::group(['middleware' => 'language'], function () {
     });
 
     Route::group(['namespace' => 'Subscriptions', 'middleware' => 'auth'], function () {
-        Route::get('plans', [PlanController::class, 'index'])->name('subscription.plans')->middleware('not.subscribed');
+        Route::get('/plans', [PlanController::class, 'index'])->name('subscription.plans')->middleware('not.subscribed');
         Route::get('/subscriptions', ['App\Http\Controllers\Subscriptions\SubscriptionController', 'index'])->name('subscriptions');
         Route::post('/subscriptions', ['App\Http\Controllers\Subscriptions\SubscriptionController', 'store'])->name('subscriptions.store');
 

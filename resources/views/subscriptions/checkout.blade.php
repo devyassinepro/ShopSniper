@@ -1,9 +1,7 @@
-<x-account-layout>
-    <x-slot name="header">
-        <div class="d-none d-lg-block">
-            <h1 class="h2 text-white">{{ __('Checkout')  }}</h1>
-  </div>
-</x-slot>
+@extends('layouts.accountsubscribe')
+@section('title', 'Checkout')
+@section('content')
+
             @if ($message = Session::get('error'))
                     <div class="alert alert-danger">
                         <p>{{ $message }}</p>
@@ -142,5 +140,4 @@
                 <!-- wrap @e -->
             </div>
     
-            
-</x-account-layout>
+@endsection

@@ -136,12 +136,11 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="drodown">
+                                                <!-- <div class="drodown">
                                                     <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-bs-toggle="dropdown">{{ $filtrePagination ? $filtrePagination : 'Items Per Page' }}</a>
                                                     <div class="dropdown-menu dropdown-menu-end">
                                                         <ul class="link-list-opt no-bdr">
-                                                            <!-- Default option without filter -->
-                                                            <!-- Other pagination options -->
+                                                    
                                                             <li>
                                                                 <a href="#" wire:click.prevent="updatePagination('10')" wire:model.live="filtrePagination">
                                                                     <span>10</span>
@@ -159,7 +158,7 @@
                                                             </li>
                                                         </ul>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                 
                                                         </li>
                                                         <li class="nk-block-tools-opt">
