@@ -4,41 +4,41 @@
           <p>{{ __('Cards will be charged either at the end of the month or whenever your balance exceeds the usage threshold. All major credit / debit cards accepted.') }}</p>
         </div>
 
-        <!-- List Group -->
-        <ul class="mb-5 list-group">
+<!-- List Group -->
+<ul class="mb-5 list-group">
           <!-- List Item -->
           @foreach ($paymentMethods as $payment)
           <li class="list-group-item">
             <div class="mb-2">
-              <h5>{{ optional(optional($payment)->billing_details)->name }}
-                @if ($payment->card->last4  == currentTeam()->card_last_four)
+              <h5>{{ $payment['name'] }}
+                @if ($payment['last4'] == currentTeam()->card_last_four)
                    <span class="ml-1 badge badge-success">{{ __('Default') }}</span>
                 @endif
               </h5>
             </div>
 
             <div class="media">
-              <img class="mr-3 avatar-sm" src="{{ asset("saas/svg/brands/". $payment->card->brand.".svg") }}" alt="Image Description">
+              <img class="mr-3 avatar-sm" src="{{ asset("saas/svg/brands/". $payment['brand'] .".svg") }}" alt="Image Description" width="100" height="100">
 
               <div class="media-body">
                 <div class="row">
                   <div class="mb-3 col-sm mb-sm-0">
-                    <span class="d-block text-dark">{{ $payment->card->brand }}•••• {{ $payment->card->last4 }}</span>
-                    <small class="d-block text-muted">{{ __('Checking - Expires') }} {{ $payment->card->exp_month }}/{{ $payment->card->exp_year }}</small>
+                    <span class="d-block text-dark">{{ $payment['brand'] }}•••• {{ $payment['last4'] }}</span>
+                    <small class="d-block text-muted">{{ __('Checking - Expires') }} {{ $payment['exp_month'] }}/{{ $payment['exp_year'] }}</small>
                   </div>
 
                   <div class="col-sm-auto">
-                    @if ($payment->card->last4  != currentTeam()->card_last_four)
-                    <button class="mr-2 btn btn-sm btn-white" wire:click="makeDefault('{{ $payment->id }}')" href="javascript:;">
-                        <span wire:loading.remove wire:target="makeDefault('{{ $payment->id }}')"><i class="mr-1 fas fa-credit-card"></i> {{ __('Make default') }}</span>
-                        <span wire:loading wire:target="makeDefault('{{ $payment->id }}')">
+                    @if ($payment['last4'] != currentTeam()->card_last_four)
+                    <button class="mr-2 btn btn-sm btn-white" wire:click="makeDefault('{{ $payment['id'] }}')" href="javascript:;">
+                        <span wire:loading.remove wire:target="makeDefault('{{ $payment['id'] }}')"><i class="mr-1 fas fa-credit-card"></i> {{ __('Make default') }}</span>
+                        <span wire:loading wire:target="makeDefault('{{ $payment['id'] }}')">
                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                             Processing...
                         </span>
                     </button>
-                    <button type="button" wire:loading.remove wire:target="delete" wire:click="delete('{{ $payment->id }}')" class="btn btn-sm btn-danger">
-                      <span wire:loading.remove wire:target="delete('{{ $payment->id }}')"><i class="mr-1 fas fa-trash-alt"></i> {{ __('Delete') }}</span>
-                        <span wire:loading wire:target="delete('{{ $payment->id }}')">
+                    <button type="button" wire:loading.remove wire:target="delete" wire:click="delete('{{ $payment['id'] }}')" class="btn btn-sm btn-danger">
+                      <span wire:loading.remove wire:target="delete('{{ $payment['id'] }}')"><i class="mr-1 fas fa-trash-alt"></i> {{ __('Delete') }}</span>
+                        <span wire:loading wire:target="delete('{{ $payment['id'] }}')">
                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                             Processing...
                         </span>

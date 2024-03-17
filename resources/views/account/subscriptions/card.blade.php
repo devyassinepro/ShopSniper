@@ -4,9 +4,9 @@
             <h1 class="h2 text-white">{{ __('Payment methods')  }}</h1>
         </div>
     </x-slot>
-    
+    <br>
 <div class="card">
-    <h5 class="card-header">{{ __('My cards') }}</h5>
+    <h3 class="card-header">{{ __('My cards') }}</h3>
     
     <livewire:payments />
 </div>

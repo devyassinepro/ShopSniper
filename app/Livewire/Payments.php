@@ -18,11 +18,19 @@ class Payments extends Component
     }
 
     public function getPayment()
-    {
-        $this->paymentMethods = currentTeam()->paymentMethods()->map(function ($paymentMethod) {
-            return $paymentMethod->asStripePaymentMethod();
-        });
-    }
+      {
+            $this->paymentMethods = currentTeam()->paymentMethods()->map(function ($paymentMethod) {
+                return [
+                    'id' => $paymentMethod->id,
+                    'name' => optional($paymentMethod->billing_details)->name,
+                    'brand' => $paymentMethod->card->brand,
+                    'last4' => $paymentMethod->card->last4,
+                    'exp_month' => $paymentMethod->card->exp_month,
+                    'exp_year' => $paymentMethod->card->exp_year,
+                    // Add other necessary fields here
+                ];
+            });
+        }
 
     public function delete($id)
     {
