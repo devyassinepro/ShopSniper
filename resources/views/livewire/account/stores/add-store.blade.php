@@ -1,68 +1,4 @@
 <div class="nk-block nk-block-lg">
-
-        @if(session('status'))
-        <div class="alert alert-success mb-1 mt-1">
-            {{ session('status') }}
-        </div>
-        @endif
-
-@if ($message = Session::get('success'))    
-                       <script>
-                       const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-right',
-                            iconColor: 'white',
-                            customClass: {
-                                popup: 'colored-toast',
-                            },
-                            showConfirmButton: false,
-                            timer: 5000,
-                            timerProgressBar: true,
-                            })
-                            Toast.fire({
-                                icon: 'success',
-                                title: {{ $message }},
-                            })
-                       </script>
-@endif
-                    @if ($message = Session::get('error'))
-                       <script>
-                       const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-right',
-                            iconColor: 'white',
-                            customClass: {
-                                popup: 'colored-toast',
-                            },
-                            showConfirmButton: false,
-                            timer: 5000,
-                            timerProgressBar: true,
-                            })
-                            Toast.fire({
-                                icon: 'error',
-                                title: '{{ $message }}',
-                            })
-                       </script>
-                    @endif
-                    @if ($message = Session::get('error'))
-                       <script>
-                       const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-right',
-                            iconColor: 'white',
-                            customClass: {
-                                popup: 'colored-toast',
-                            },
-                            showConfirmButton: false,
-                            timer: 5000,
-                            timerProgressBar: true,
-                            })
-                            Toast.fire({
-                                icon: 'error',
-                                title: '{{ $message }}',
-                            })
-                       </script>
-                    @endif
                                                               
                             <div class="card">
                         <div class="alert alert-pro alert-primary">
@@ -88,10 +24,10 @@
                                                                     
                                                                         <select wire:model="nicheoption" name='nicheoption'>
                                                                         @foreach($allniches as $niche)
-                                                                        <option value="{{ $niche->id }}">{{ $niche->name }}</option>
+                                                                        <option value="{{ $niche->id }}">{{ $niche->name }} - {{ $niche->id }}</option>
                                                                         @endforeach
                                                                         </select>
-                                                                               
+       
                                                                     </div>
                                                                 </div>
                                                                    

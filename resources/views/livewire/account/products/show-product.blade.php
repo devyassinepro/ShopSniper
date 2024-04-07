@@ -1,4 +1,3 @@
-
 <div class="nk-content ">
                     <div class="container-fluid">
                         <div class="nk-content-inner">
@@ -15,25 +14,62 @@
                         </div>
                                   
                                   <div class="row g-gs">
-                                            <div class="col-md-6">
+                                  <div class="col-md-4">
                                                 <div class="card card-bordered card-preview">
                                                     <div class="card-inner">
-                                                        <div class="card-head">
-                                                            <h6 class="title">Image</h6>
-                                                        </div>
-                                                        <div class="nk-ck-sm">
-                                                        <td><img src="{{ $products->first()->imageproduct }}" width="200" height="200"></a></td>
+                 
+                                                        <div id="carouselExConInd" class="carousel slide" data-bs-ride="carousel">
+                                                                  <ol class="carousel-indicators">
+                                                                      <li data-bs-target="#carouselExConInd" data-bs-slide-to="0" class="active"></li>
+                                                                      <li data-bs-target="#carouselExConInd" data-bs-slide-to="1"></li>
+                                                                      <li data-bs-target="#carouselExConInd" data-bs-slide-to="2"></li>
+                                                                      <li data-bs-target="#carouselExConInd" data-bs-slide-to="3"></li>
+                                                                      <li data-bs-target="#carouselExConInd" data-bs-slide-to="4"></li>
+                                                                      <li data-bs-target="#carouselExConInd" data-bs-slide-to="5"></li>
 
-                                                        </div>
+                                                                  </ol>
+                                                                  <div class="carousel-inner">
+                                                                      <div class="carousel-item active">
+                                                                          <img src="{{ $products->first()->imageproduct }}" class="d-block w-80" alt="carousel">
+                                                                      </div>
+                                                                      <div class="carousel-item">
+                                                                          <img src="{{ $products->first()->image2 }}" class="d-block w-80" alt="carousel">
+                                                                      </div>
+                                                                      <div class="carousel-item">
+                                                                          <img src="{{ $products->first()->image3 }}" class="d-block w-80" alt="carousel">
+                                                                      </div>
+                                                                      <div class="carousel-item">
+                                                                          <img src="{{ $products->first()->image4 }}" class="d-block w-80" alt="carousel">
+                                                                      </div>
+                                                                      <div class="carousel-item">
+                                                                          <img src="{{ $products->first()->image5 }}" class="d-block w-80" alt="carousel">
+                                                                      </div>
+                                                                      
+                                                                  </div>
+                                                                  <a class="carousel-control-prev" href="#carouselExConInd" role="button" data-bs-slide="prev">
+                                                                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                      <span class="visually-hidden">Previous</span>
+                                                                  </a>
+                                                                  <a class="carousel-control-next" href="#carouselExConInd" role="button" data-bs-slide="next">
+                                                                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                      <span class="visually-hidden">Next</span>
+                                                                  </a>
+                                                              </div>
                                                     </div>
                                                 </div><!-- .card-preview -->
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-8">
                                                 <div class="card card-bordered card-preview">
                                                     <div class="card-inner">
                                                         <div class="card-head">
                                                             <h6 class="title">Product Name : {{$products->first()->title}}</h6>
                                                         </div>
+                                                        <div class="card-head">
+                                                              <div class="limited-text">
+                                                                  <p>{!! strip_tags($products->first()->description) !!}</p>
+                                                              </div>
+                                                              <a href="#" class="read-more">Read More</a>
+                                                             </div>
                                                         <div class="nk-ck-sm">
                                                         <a  class="btn btn-primary"  target="_blank" href="{{$products->first()->url}}">View on Shopify</a>
                                                         <a  class="btn btn-primary"   target="_blank" href="https://www.aliexpress.com/wholesale?SearchText={{urldecode($products->first()->title)}}">Search on AliExpress</a>
@@ -44,43 +80,16 @@
                                                     </div>
                                                 </div><!-- .card-preview -->
                                             </div>
-                                          
-                                           
+                                                
                                         </div>
-
-
-                                  <div class="row g-gs">
-                                  <div class="col-md-6">
-                                                <div class="card h-100">
-                                                <div class="card-inner">
-                                                    <div class="card-title-group align-start gx-3 mb-3">
-                                                        <div class="card-title">
-                                                            <h6 class="title">Revenue Chart ($)</h6>
-                                                        </div>
-                                                    </div>
-                                                    <div class="nk-sales-ck large pt-4">
-                                                        <canvas class="sales-overview-chart" id="revenueOvervieweenify"></canvas>
-                                                    </div>
-                                                </div>
-                                            </div><!-- .card -->
-                                            </div>
-                                            <div class="col-md-6">
-                                            <div class="card h-100">
-                                                <div class="card-inner">
-                                                    <div class="card-title-group align-start gx-3 mb-3">
-                                                        <div class="card-title">
-                                                            <h6 class="title">Sales Overview</h6>
-                                                        </div>
-                                                    </div>
-                                                    <div class="nk-sales-ck large pt-4">
-                                                        <canvas class="sales-overview-chart" id="salesOvervieweenify"></canvas>
-                                                    </div>
-                                                </div>
-                                            </div><!-- .card -->
-                                            </div>
-                                          
-                                           
-                                        </div>
+                                    
+                      <div class="card card-bordered card-preview">
+                          <div class="card-inner">
+                              <div class="nk-ck">
+                                  <canvas class="line-chart" id="solidLineChart"></canvas>
+                              </div>
+                          </div>
+                      </div><!-- .card-preview -->
 
 
           <!-- ALl Affiche -->
@@ -162,22 +171,20 @@
             </div>
           </div>
 
-          </div>
-                </div>
-            </div>    
-          </div>     
+</div>
+</div>
+</div>    
+</div>     
 
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<!-- <script src="{{ asset('assets/js/example-chart.js?ver=3.2.0') }}"></script> -->
-<script src="{{ asset('assets/js/bundle.js?ver=3.2.0') }}"></script>
-<script src="{{ asset('assets/js/scripts.js?ver=3.2.0') }}"></script>
-<script src="{{ asset('assets/js/charts/chart-sales.js?ver=3.2.0') }}"></script>
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script> -->
+      <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+      <script src="{{ asset('assets/js/bundle.js?ver=3.2.0') }}"></script>
+      <script src="{{ asset('assets/js/charts/chart-sales.js?ver=3.2.0') }}"></script>
 
-
-
+      
 <!-- storesrevenue Chart -->
 <script>
+       
               var todaysales_count =  {!! json_encode($products->first()->todaysales)!!};
               var yesterdaysales_count =   {!! json_encode($products->first()->yesterdaysales)!!};
               var day3sales_count =  {!! json_encode($products->first()->day3sales)!!};
@@ -193,83 +200,30 @@
               var day5sales_revenue =  {!! json_encode($products->first()->day5sales * $products->first()->prix)!!};
               var day6sales_revenue =   {!! json_encode($products->first()->day6sales * $products->first()->prix)!!};
               var day7sales_revenue =  {!! json_encode($products->first()->day7sales * $products->first()->prix)!!};
-            var dates =   {!! json_encode($dates)!!};
-    var lineChartCanvas = document.getElementById('revenue-chartaffiche').getContext('2d');
-      var data = {
-         labels: dates,
-        datasets: [
-          {
-            label: 'Revenue',
-            data: [day7sales_revenue,day6sales_revenue,day5sales_revenue,day4sales_revenue,day3sales_revenue,yesterdaysales_revenue,todaysales_revenue],
-            borderColor: [
-              '#6465f1'
-            ],
-            borderWidth: 3,
-            fill: false
-          }
-        ]
-      };
-      var options = {
-        scales: {
-          yAxes: [{
-            gridLines: {
-              drawBorder: false
-            },
-            ticks: {
-              stepSize: 2000,
-              fontColor: "#686868"
-            }
-          }],
-          xAxes: [{
-            display: false,
-            gridLines: {
-              drawBorder: false
-            }
-          }]
-        },
-        legend: {
-          display: false
-        },
-        elements: {
-          point: {
-            radius: 3
-          }
-        },
-        stepsize: 1
-      };
-      var lineChart = new Chart(lineChartCanvas, {
-        type: 'line',
-        data: data,
-        options: options
-      });
+    
+              var dates =   {!! json_encode($dates)!!};
 
 
-</script>
-
-<script>
-
-              var todaysales_count =  {!! json_encode($products->first()->todaysales)!!};
-              var yesterdaysales_count =   {!! json_encode($products->first()->yesterdaysales)!!};
-              var day3sales_count =  {!! json_encode($products->first()->day3sales)!!};
-              var day4sales_count =   {!! json_encode($products->first()->day4sales)!!};
-              var day5sales_count =   {!! json_encode($products->first()->day5sales)!!};
-              var day6sales_count =  {!! json_encode($products->first()->day6sales)!!};
-              var day7sales_count =   {!! json_encode($products->first()->day7sales)!!};
-
-    var salesOvervieweenify = {
-      labels: dates,
-    dataUnit: 'Sales',
-    lineTension: 0.1,
+              var solidLineChart = {
+    labels: dates,
+    dataUnit: ['$', 'sales'], // Updated dataUnit values
+    lineTension: 0.4,
+    legend: true,
     datasets: [{
-      label: "Sales Overview",
-      color: "#9d72ff",
-      background: NioApp.hexRGB('#9d72ff', .3),
-      data: [day7sales_count,day6sales_count,day5sales_count,day4sales_count,day3sales_count,yesterdaysales_count,todaysales_count],
-
+        label: "Total Revenue ($)", // Removed "$" from the label
+        color: "#5ce0aa",
+        background: 'transparent',
+        data: [day7sales_revenue, day6sales_revenue, day5sales_revenue, day4sales_revenue, day3sales_revenue, yesterdaysales_revenue, todaysales_revenue]
+    }, {
+        label: "Total Sales (sales)", // Updated label
+        color: "#9d72ff",
+        background: 'transparent',
+        data: [day7sales_count, day6sales_count, day5sales_count, day4sales_count, day3sales_count, yesterdaysales_count, todaysales_count]
     }]
-  };
-  function lineSalesOverview(selector, set_data) {
-    var $selector = selector ? $(selector) : $('.sales-overview-chart');
+};
+
+  function lineChart(selector, set_data) {
+    var $selector = selector ? $(selector) : $('.line-chart');
     $selector.each(function () {
       var $self = $(this),
         _self_id = $self.attr('id'),
@@ -281,17 +235,17 @@
           label: _get_data.datasets[i].label,
           tension: _get_data.lineTension,
           backgroundColor: _get_data.datasets[i].background,
-          borderWidth: 2,
+          borderWidth: 4,
           borderColor: _get_data.datasets[i].color,
-          pointBorderColor: "transparent",
-          pointBackgroundColor: "transparent",
+          pointBorderColor: _get_data.datasets[i].color,
+          pointBackgroundColor: '#fff',
           pointHoverBackgroundColor: "#fff",
           pointHoverBorderColor: _get_data.datasets[i].color,
           pointBorderWidth: 2,
-          pointHoverRadius: 3,
+          pointHoverRadius: 4,
           pointHoverBorderWidth: 2,
-          pointRadius: 3,
-          pointHitRadius: 3,
+          pointRadius: 4,
+          pointHitRadius: 4,
           data: _get_data.datasets[i].data
         });
       }
@@ -306,7 +260,7 @@
             display: _get_data.legend ? _get_data.legend : false,
             rtl: NioApp.State.isRTL,
             labels: {
-              boxWidth: 30,
+              boxWidth: 12,
               padding: 20,
               fontColor: '#6783b8'
             }
@@ -323,12 +277,12 @@
                 return data.datasets[tooltipItem.datasetIndex]['data'][tooltipItem['index']] + ' ' + _get_data.dataUnit;
               }
             },
-            backgroundColor: '#1c2b46',
-            titleFontSize: 13,
-            titleFontColor: '#fff',
+            backgroundColor: '#eff6ff',
+            titleFontSize: 16,
+            titleFontColor: '#6783b8',
             titleMarginBottom: 6,
-            bodyFontColor: '#fff',
-            bodyFontSize: 12,
+            bodyFontColor: '#9eaecf',
+            bodyFontSize: 16,
             bodySpacing: 4,
             yPadding: 10,
             xPadding: 10,
@@ -338,18 +292,12 @@
           scales: {
             yAxes: [{
               display: true,
-              stacked: _get_data.stacked ? _get_data.stacked : false,
               position: NioApp.State.isRTL ? "right" : "left",
               ticks: {
-                beginAtZero: true,
-                fontSize: 11,
+                beginAtZero: false,
+                fontSize: 12,
                 fontColor: '#9eaecf',
-                padding: 10,
-                callback: function callback(value, index, values) {
-                  return '' + value;
-                },
-                min: 0,
-                stepSize: 3000
+                padding: 10
               },
               gridLines: {
                 color: NioApp.hexRGB("#526484", .2),
@@ -359,18 +307,18 @@
             }],
             xAxes: [{
               display: true,
-              stacked: _get_data.stacked ? _get_data.stacked : false,
               ticks: {
-                fontSize: 9,
+                fontSize: 12,
                 fontColor: '#9eaecf',
                 source: 'auto',
-                padding: 10,
+                padding: 5,
                 reverse: NioApp.State.isRTL
               },
               gridLines: {
                 color: "transparent",
-                tickMarkLength: 0,
-                zeroLineColor: 'transparent'
+                tickMarkLength: 10,
+                zeroLineColor: NioApp.hexRGB("#526484", .2),
+                offsetGridLines: true
               }
             }]
           }
@@ -379,48 +327,16 @@
     });
   }
 
-  // init chart
-  NioApp.coms.docReady.push(function () {
-    lineSalesOverview();
-  });
+  // init line chart
+  lineChart();
 </script>
 
 <script>
-
-    var todaysales_count =  {!! json_encode($products->first()->todaysales)!!};
-    var yesterdaysales_count =   {!! json_encode($products->first()->yesterdaysales)!!};
-    var day3sales_count =  {!! json_encode($products->first()->day3sales)!!};
-    var day4sales_count =   {!! json_encode($products->first()->day4sales)!!};
-    var day5sales_count =   {!! json_encode($products->first()->day5sales)!!};
-    var day6sales_count =  {!! json_encode($products->first()->day6sales)!!};
-    var day7sales_count =   {!! json_encode($products->first()->day7sales)!!};
-
-    var todaysales_revenue =  {!! json_encode($products->first()->todaysales * $products->first()->prix )!!};
-    var yesterdaysales_revenue =  {!! json_encode($products->first()->yesterdaysales * $products->first()->prix )!!};
-    var day3sales_revenue =  {!! json_encode($products->first()->day3sales * $products->first()->prix )!!};
-    var day4sales_revenue =   {!! json_encode($products->first()->day4sales * $products->first()->prix )!!};
-    var day5sales_revenue =  {!! json_encode($products->first()->day5sales * $products->first()->prix)!!};
-    var day6sales_revenue =   {!! json_encode($products->first()->day6sales * $products->first()->prix)!!};
-    var day7sales_revenue =  {!! json_encode($products->first()->day7sales * $products->first()->prix)!!};
-    var dates =   {!! json_encode($dates)!!};
-
-    var revenueOvervieweenify = {
-
-      labels: dates,
-      dataUnit: '$',
-      lineTension: 0.1,
-      datasets: [{
-      label: "Revenue Overview",
-      color: "#9d72ff",
-      background: NioApp.hexRGB('#9d72ff', .3),
-      data: [day7sales_revenue,day6sales_revenue,day5sales_revenue,day4sales_revenue,day3sales_revenue,yesterdaysales_revenue,todaysales_revenue],
-
-          }]
-        };
-              // data: [day7sales_count,day6sales_count,day5sales_count,day4sales_count,day3sales_count,yesterdaysales_count,todaysales_count],
-
-  // init chart
-  NioApp.coms.docReady.push(function () {
-    lineSalesOverview();
-  });
+    $(document).ready(function() {
+        $(".read-more").on("click", function(e) {
+            e.preventDefault();
+            $(".limited-text").toggleClass("show");
+            $(this).hide();
+        });
+    });
 </script>

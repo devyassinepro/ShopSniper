@@ -95,18 +95,17 @@ class ListProductSearch extends Component
 
         if($this->filtrePagination != ""){
 
+            if($this->page > 1){
+                $products = $products->paginate($this->filtrePagination, ['*'], 'page', $this->page);
+            }else{
                 $products =$products->paginate($this->filtrePagination);
+
+            }
         }else{
-            // $products =$products->paginate(5);
-            // $products = $products->paginate($this->filtrePagination ?: 25);
-
-        }
-
-        if($this->page > 1){
-            $products = $products->paginate(25, ['*'], 'page', $this->page);
-        }else {
             $products =  $products->paginate(25);
+
         }
+        
 
         return view('livewire.account.products.list-product-search', [
             'products' => $products,

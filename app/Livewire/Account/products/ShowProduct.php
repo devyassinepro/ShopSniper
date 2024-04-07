@@ -38,7 +38,7 @@ class ShowProduct extends Component
 
 
    $products = $products->get();
-
+  
     return view('livewire.account.products.show-product', compact('products','dates'));
 
     }

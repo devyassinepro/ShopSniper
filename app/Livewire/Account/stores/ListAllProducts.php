@@ -8,7 +8,7 @@ use App\Models\Product;
 use Carbon\Carbon;
 use DB;
 
-class ListStore extends Component
+class ListAllProducts extends Component
 {
 
     public $storeId;
@@ -33,7 +33,7 @@ class ListStore extends Component
                         ->where('totalsales', '>=', $totalsalesmin)
                         ->orderBy('totalsales','desc')->get();
 
-    return view('livewire.account.stores.list-store', compact('products','storedata'))
+    return view('livewire.account.stores.list-all-products', compact('products','storedata'))
     ->with('totalproducts',Product::where('stores_id',$this->storeId)->count());
     }
 }

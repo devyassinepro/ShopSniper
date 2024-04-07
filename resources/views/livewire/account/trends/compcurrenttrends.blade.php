@@ -7,6 +7,15 @@
                                 <div class="nk-block-des text-soft">
                                     <p>You have top Winning Products.</p>
                                 </div>
+                               
+                                <div class="btn-group" aria-label="Basic example">
+                                <button type="button" class="btn btn-primary">Baby</button>
+                                <button type="button" class="btn btn-primary">Tech</button>
+                                <button type="button" class="btn btn-primary">Iphone</button>
+                                <button type="button" class="btn btn-primary">Niche2</button>
+                                </div>
+
+                                
                             </div><!-- .nk-block-head-content -->
                             <div class="nk-block-head-content">
                                 <div class="toggle-wrap nk-block-tools-toggle">

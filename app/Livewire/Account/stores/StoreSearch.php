@@ -91,9 +91,9 @@ class StoreSearch extends Component
 
         if($this->filtreorderby != ""){
             $stores = $stores->orderBy($this->filtreorderby,'desc');
-            }else{
-                $stores = $stores->orderBy('revenue','desc');
-            }
+        }else{
+            $stores = $stores->orderBy('revenue','desc');
+        }
 
         if($this->filtrePagination != ""){
         $stores = $stores->orderBy('revenue','desc')

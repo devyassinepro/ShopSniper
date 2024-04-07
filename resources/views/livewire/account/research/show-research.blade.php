@@ -1,10 +1,16 @@
- 
-<div class="nk-content ">
+ <div class="nk-content ">
                     <div class="container-fluid">
                         <div class="nk-content-inner">
                             <div class="nk-content-body">
                             <div class="nk-block">
-                                  
+                            <div wire:loading.delay>
+                                <div style="display: flex; justify-content: center; align-items: center; background-color:black; position: fixed; top:0px;left:0px;z-index:9999;width:100% ;height:100%; opacity: .75;">
+                                            <div class="la-square-jelly-box la-3x">
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                </div>
+                        </div>
                                   <div class="row g-gs">
                                             
                                             <div class="col-md-5">
@@ -65,7 +71,7 @@
                                                                   <p>{!! strip_tags($products->first()->description) !!}</p>
                                                               </div>
                                                               <a href="#" class="read-more">Read More</a>
-                                                          </div>
+                                                             </div>
 
 
                                             <div class="card-inner pt-0">
@@ -138,33 +144,6 @@
 </div>
 </div>    
 </div>     
-
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<!-- <script src="{{ asset('assets/js/example-chart.js?ver=3.2.0') }}"></script> -->
-<script src="{{ asset('assets/js/bundle.js?ver=3.2.0') }}"></script>
-<script src="{{ asset('assets/js/scripts.js?ver=3.2.0') }}"></script>
-<script src="{{ asset('assets/js/charts/chart-sales.js?ver=3.2.0') }}"></script>
-
-<style>
-.limited-text {
-    max-height: 70px;
-    overflow: hidden;
-}
-
-.read-more {
-    display: none;
-    color: #007BFF;
-    cursor: pointer;
-}
-
-.read-more.show {
-    display: block;
-}
-
-</style>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
     $(document).ready(function() {

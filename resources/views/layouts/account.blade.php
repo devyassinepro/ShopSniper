@@ -25,6 +25,20 @@
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
   <style>
+  .limited-text {
+    max-height: 70px;
+    overflow: hidden;
+}
+
+.read-more {
+    display: none;
+    color: #007BFF;
+    cursor: pointer;
+}
+
+.read-more.show {
+    display: block;
+}
     .colored-toast.swal2-icon-success {
   background-color: #a5dc86 !important;
 }
@@ -155,9 +169,9 @@
             <script src="{{ asset('assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
             <script src="{{ asset('assets/vendor/lavalamp/js/jquery.lavalamp.min.js') }}"></script>
             <script src="{{ asset('assets/js/argon.mine209.js?v=1.0.0') }}"></script>
-            // <!-- Optional JS -->
-            // <!-- Argon JS -->
-                // <!--Start of Tawk.to Script-->
+             <!-- Optional JS -->
+             <!-- Argon JS -->
+             <!--Start of Tawk.to Script-->
 
                 @stack('scripts')
               <!--Start of Tawk.to Script-->
@@ -174,7 +188,7 @@
               })();
               </script>
               @endif
-            // <!--End of Tawk.to Script-->
+             <!--End of Tawk.to Script-->
             <script src="{{ asset('assets/js/bundle.js?ver=3.2.0') }}"></script>
             <script src="{{ asset('assets/js/scripts.js?ver=3.2.0') }}"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
@@ -205,7 +219,7 @@
                     });
             });
 
-               
+      
 </script>
 
 

@@ -10,16 +10,47 @@
                             <div class="nk-block">
                                   
                                   <div class="row g-gs">
-                                            <div class="col-md-6">
+                                  <div class="col-md-5">
                                                 <div class="card card-bordered card-preview">
                                                     <div class="card-inner">
-                                                        <div class="card-head">
-                                                            <h6 class="title">Image</h6>
-                                                        </div>
-                                                        <div class="nk-ck-sm">
-                                                        <td><img src="{{ $products->first()->imageproduct }}" width="200" height="200"></a></td>
+                 
+                                                        <div id="carouselExConInd" class="carousel slide" data-bs-ride="carousel">
+                                                                  <ol class="carousel-indicators">
+                                                                      <li data-bs-target="#carouselExConInd" data-bs-slide-to="0" class="active"></li>
+                                                                      <li data-bs-target="#carouselExConInd" data-bs-slide-to="1"></li>
+                                                                      <li data-bs-target="#carouselExConInd" data-bs-slide-to="2"></li>
+                                                                      <li data-bs-target="#carouselExConInd" data-bs-slide-to="3"></li>
+                                                                      <li data-bs-target="#carouselExConInd" data-bs-slide-to="4"></li>
+                                                                      <li data-bs-target="#carouselExConInd" data-bs-slide-to="5"></li>
 
-                                                        </div>
+                                                                  </ol>
+                                                                  <div class="carousel-inner">
+                                                                      <div class="carousel-item active">
+                                                                          <img src="{{ $products->first()->imageproduct }}" class="d-block w-80" alt="carousel">
+                                                                      </div>
+                                                                      <div class="carousel-item">
+                                                                          <img src="{{ $products->first()->image2 }}" class="d-block w-80" alt="carousel">
+                                                                      </div>
+                                                                      <div class="carousel-item">
+                                                                          <img src="{{ $products->first()->image3 }}" class="d-block w-80" alt="carousel">
+                                                                      </div>
+                                                                      <div class="carousel-item">
+                                                                          <img src="{{ $products->first()->image4 }}" class="d-block w-80" alt="carousel">
+                                                                      </div>
+                                                                      <div class="carousel-item">
+                                                                          <img src="{{ $products->first()->image5 }}" class="d-block w-80" alt="carousel">
+                                                                      </div>
+                                                                      
+                                                                  </div>
+                                                                  <a class="carousel-control-prev" href="#carouselExConInd" role="button" data-bs-slide="prev">
+                                                                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                      <span class="visually-hidden">Previous</span>
+                                                                  </a>
+                                                                  <a class="carousel-control-next" href="#carouselExConInd" role="button" data-bs-slide="next">
+                                                                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                      <span class="visually-hidden">Next</span>
+                                                                  </a>
+                                                              </div>
                                                     </div>
                                                 </div><!-- .card-preview -->
                                             </div>

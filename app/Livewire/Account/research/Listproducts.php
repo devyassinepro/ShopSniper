@@ -26,19 +26,19 @@ class Listproducts extends Component
         return view('skeleton');
     }
 
-//    filters data
-public $title = '';
-public $titleexclude = '';
-public $description = '';
-public $descriptionexlude = '';
-public $url = ''; 
-public $urlexlude = '';
-public $pricemin = '';
-public $pricemax = '';
-public $storemin = '';
-public $storemax = '';
-public $country = '';
-public $currency = '';
+        //    filters data
+        public $title = '';
+        public $titleexclude = '';
+        public $description = '';
+        public $descriptionexlude = '';
+        public $url = ''; 
+        public $urlexlude = '';
+        public $pricemin = '';
+        public $pricemax = '';
+        public $storemin = '';
+        public $storemax = '';
+        public $country = '';
+        public $currency = '';
 
 protected $debug = true;
 
@@ -160,6 +160,58 @@ public function updatedSearch()
     $this->resetPage();
 }
 
+        /**Trackstore from product research
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function trackstore($id)
+    {
+
+        if(check_user_type() != 'user')
+        {
+            return redirect()->route('dashboard')->with('error','You can not access this page.');
+        }
+
+        $user_id = Auth::user()->id;
+        $storeuser = Storeuser::where('user_id', $user_id)->count();
+
+        if(check_store_limit() <= $storeuser)
+        {
+            return redirect()->route('subscription.plans');
+        }
+         $storedata = DB::table('stores')->where('id', $id)->first();
+         $stores = stores::where('url', $storedata->url)->first();
+
+            if($stores)
+            {
+                $storeuser = Storeuser::where('user_id', $user_id)->where('store_id', $stores->id)->count();
+                if($storeuser > 0)
+                {
+                    redirect()->route('account.AddStore.index');
+                }
+                else
+                {
+                    Storeuser::create([
+                        "store_id" => $stores->id,
+                        "user_id" => $user_id,
+                        "created_at" => now(),
+                        "updated_at" => now()
+                    ]);
+
+                        $storeStartTracking = array(
+                        'status' => 1,
+                        );
+                        // if no movement in 7 days Stop Update store
+                    DB::table('stores')->where('id', $id)->update($storeStartTracking);
+                }
+
+            }
+            return redirect()->route('account.storesearch.index');
+
+
+    }
 public function exportToCsv($url)
 {
     $opts = array('http' => array('header' => "User-Agent:MyAgent/1.0\r\n"));

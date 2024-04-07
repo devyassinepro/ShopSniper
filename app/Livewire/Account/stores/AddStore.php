@@ -19,7 +19,7 @@ class AddStore extends Component
 
     public $url = '';
  
-    public $nicheoption = '';
+    public $nicheoption;
 
     public function render()
     {
@@ -71,11 +71,13 @@ class AddStore extends Component
 
     public function save()
     {
+        $user_id = Auth::user()->id;
+        $firstNiche = Niche::where('user_id', $user_id)->first();
+
 
         try {
             $validated = $this->validate([
-                'url' => 'required',
-                'nicheoption' => 'required',
+                'url' => 'required'
             ]);
         
             // Validation passed, continue with your logic
@@ -88,6 +90,11 @@ class AddStore extends Component
         }
       
   
+        if (empty($validated['nicheoption'])) {
+            $nicheoption = $firstNiche->id;
+        }
+
+
         if(check_user_type() != 'user')
         {
             return redirect()->route('dashboard')->with('error','You can not access this page.');

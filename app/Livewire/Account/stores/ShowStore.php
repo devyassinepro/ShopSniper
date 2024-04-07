@@ -7,6 +7,7 @@ use Livewire\Component;
 use App\Models\stores;
 use App\Models\Product;
 use App\Models\Storeuser;
+use Livewire\WithPagination;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +20,11 @@ class ShowStore extends Component
     public $storeId;
     public $deleteId = '';
     public $storeid = '';
-
+    public $filtreorderby = '';
+    public function updateOrderBy($orderBy)
+    {
+        $this->filtreorderby = $orderBy;
+    }
     public function mount($id)
     {
         $this->storeId = $id;
@@ -48,15 +53,20 @@ class ShowStore extends Component
             }
 
         $storedata = DB::table('stores')->where('id', $this->storeId)->get();
-
+        $storeid = $this->storeId;
         $totalsalesmin = 0;
-        // $pagination = 50;
         $products = Product::where('stores_id',$this->storeId)
                         ->where('totalsales', '>=', $totalsalesmin)
-                        ->orderBy('totalsales','desc')->take(10)->get();
+                        ->select('products.*', DB::raw('COALESCE(todaysales, 0) AS calculated_todaysales'), DB::raw('COALESCE(yesterdaysales, 0) AS calculated_yesterdaysales'));
 
-    return view('livewire.account.stores.show-store', compact('products','storedata','dates'))
-    ->with('totalproducts',Product::where('stores_id',$this->storeId)->count());
+            $products = $products->orderBy('totalsales', 'desc')->take(10)->get();
+
+        return view('livewire.account.stores.show-store', [
+            'products' => $products,
+            'storedata' => $storedata,
+            'dates' => $dates,
+            'storeId' => $this->storeId, // Pass the store ID to the view
+        ])->with('totalproducts', Product::where('stores_id', $this->storeId)->count());
 
     }
 

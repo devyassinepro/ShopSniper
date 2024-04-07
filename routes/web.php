@@ -49,7 +49,7 @@ use App\Livewire\Account\Niches\Niches;
 use App\Livewire\Account\Niches\NicheAdd;
 use App\Livewire\Account\stores\AddStore;
 use App\Livewire\Account\stores\ShowStore;
-use App\Livewire\Account\stores\ListStore;
+use App\Livewire\Account\stores\ListAllProducts;
 use App\Livewire\Account\products\ShowProduct;
 use App\Livewire\Account\trends\ShowTrends;
 use App\Livewire\Account\research\ShowResearch;
@@ -143,7 +143,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/skeletonpStores', StoreSearch::class)->name('skeletonpstore.index');
 
         Route::get('/Add-Store', AddStore::class)->name('AddStore.index');
-        Route::get('/liststore/{id}', ListStore::class)->name('liststore.show');
+        Route::get('/liststore/{id}', ListAllProducts::class)->name('liststore.show');
         Route::get('/showstore/{id}', ShowStore::class)->name('storedata.show');
         //
         Route::get('/ProductsTracker', ProductSearch::class)->name('productsearch.index');
