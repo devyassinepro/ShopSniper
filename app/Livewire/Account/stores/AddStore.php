@@ -36,22 +36,6 @@ class AddStore extends Component
         $totalstores = Storeuser::where('user_id', $user_id)->pluck('store_id');
         $totalstores = count($totalstores);
 
-        if(currentTeam()->onTrial()){
-
-            if($storeuser >=3 ){
-                return redirect()->route('storesearch.index')->with('error','You can not add more stores on trial');
-            
-            }
-        }
-        else if(check_store_limit() <= $storeuser)
-        {
-            $storeLimit = check_store_limit();
-            if ($storeLimit) {
-                $this->alert('warning', __('You can not add stores more than :limit', ['limit' => $storeLimit]));
-                return redirect()->route('storesearch.index');
-            }
-        }
-
         //to add niche to store
         $allniches = Niche::where('user_id', $user_id)->get();
 
@@ -103,9 +87,21 @@ class AddStore extends Component
         $user_id = Auth::user()->id;
         $storeuser = Storeuser::where('user_id', $user_id)->count();
 
-        if(check_store_limit() <= $storeuser)
+
+        if(currentTeam()->onTrial()){
+
+            if($storeuser >=3 ){
+                return redirect()->route('account.storesearch.index')->with('error','You can not add more stores on trial');
+            
+            }
+        }
+        else if(check_store_limit() <= $storeuser)
         {
-            return redirect()->route('account.storesearch.index')->with('error','You can not add stores more than '.check_store_limit());
+            $storeLimit = check_store_limit();
+            if ($storeLimit) {
+                $this->alert('warning', __('You can not add stores more than :limit', ['limit' => $storeLimit]));
+                return redirect()->route('account.storesearch.index');
+            }
         }
 
         //if domaine with url ;;; 

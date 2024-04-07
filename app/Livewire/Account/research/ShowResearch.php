@@ -56,16 +56,27 @@ class ShowResearch extends Component
 
         if(check_user_type() != 'user')
         {
-            return redirect()->route('dashboard')->with('error','You can not access this page.');
+            return redirect()->route('dashboard');
+            $this->alert('warning', __('You can not access this page!'));
         }
 
         $user_id = Auth::user()->id;
         $storeuser = Storeuser::where('user_id', $user_id)->count();
 
-        if(check_store_limit() <= $storeuser)
+
+        if(currentTeam()->onTrial()){
+
+            if($storeuser >=3 ){
+                $this->alert('warning', __('You can not add more stores on trial !'));
+                return redirect()->route('account.storesearch.index');
+
+            }
+        }
+        else if(check_store_limit() <= $storeuser)
         {
             return redirect()->route('subscription.plans');
         }
+
          $storedata = DB::table('stores')->where('id', $id)->first();
          $stores = stores::where('url', $storedata->url)->first();
 
