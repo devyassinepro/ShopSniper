@@ -59,6 +59,8 @@ use App\Livewire\Account\trends\Compcurrenttrends;
 use App\Livewire\Account\research\Listproducts;
 use App\Livewire\Account\products\ListProductSearch;
 use App\Livewire\Account\stores\Homestores;
+use App\Livewire\Account\stores\Top10products;
+
 
 
 
@@ -145,6 +147,8 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/Add-Store', AddStore::class)->name('AddStore.index');
         Route::get('/liststore/{id}', ListAllProducts::class)->name('liststore.show');
         Route::get('/showstore/{id}', ShowStore::class)->name('storedata.show');
+        Route::get('/topproducts', Top10products::class)->name('topproducts.show');
+
         //
         Route::get('/ProductsTracker', ProductSearch::class)->name('productsearch.index');
         Route::get('/showproduct/{id}', ShowProduct::class)->name('productdata.show');
