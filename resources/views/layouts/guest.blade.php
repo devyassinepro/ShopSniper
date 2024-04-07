@@ -17,8 +17,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/img/favicon.png" title="Favicon" sizes="16x16" />
 
-    <!-- ====== bootstrap icons cdn ====== -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
 
     <!-- bootstrap 5 -->
     <link rel="stylesheet" href="assets/css/lib/bootstrap.min.css">
@@ -33,9 +32,11 @@
     <!--custom css start-->
     <link rel="stylesheet" href="assets/css/custom.css">
 
-    @if(Request::is('register') || Request::is('login'))
+   
+    @if(Request::is('email/verify'))
     <link rel="stylesheet" href="{{ asset('assets/css/dashlite.css?ver=3.2.0') }}" type="text/css">
     @endif
+
     <!--custom css end-->
 
     @livewireStyles
@@ -69,9 +70,9 @@
                         <img src="assets/img/logo.png" alt="logo" class="img-fluid logo-color" />
                     </a>
                 @else 
-                    <a class="navbar-brand" href="/">
-                    <img src="{{ asset('saas/img/logo.png') }}" class="navbar-brand-img" alt="knine" style="max-height: 3rem;">
-                  </a>
+                    <!-- <a class="navbar-brand" href="/">
+                    <img src="{{ asset('assets/img/logo.png') }}" class="navbar-brand-img" alt="knine" style="max-height: 3rem;">
+                  </a> -->
                 @endif
                     <a class="navbar-toggler position-absolute right-0 border-0" href="#offcanvasWithBackdrop">
                         <i class="flaticon-menu" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"
@@ -96,53 +97,59 @@
             <!-- <li class="discover-link"><a href="/login" class="external">{{ __('Login') }}</a></li> -->
             <!-- <li class="discover-link"><a href="/register" class="external discover-btn">{{ __('Start Free Trial') }}</a></li> -->
             @else
-            <div>
-                <span class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" style="padding-top: 0;" href="#" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="collapse navbar-collapse justify-content-center">
+                        <ul class="nav col-12 col-md-auto justify-content-center main-menu">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                     <span class="avatar rounded-circle">
+                                        <img alt="Image placeholder" class="rounded-circle" width="35" src="{{ Auth::user()->profile_photo_url }}">
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu border-0 rounded-custom shadow py-0 bg-white homepage-list-wrapper">
+                                    <div class="dropdown-grid rounded-custom">
+                                        <div class="dropdown-grid-item bg-white radius-left-side">
+                                        <a class="dropdown-item" href="/dashboard">
+                                                    <span class="dropdown-item-icon">
+                                                    <i class="fas fa-user"></i>
+                                                    </span>
+                                                    {{ __('Dashboard') }}
+                                                </a>
+                                                <a class="dropdown-item" href="{{ route('account.password') }}">
+                                                    <span class="dropdown-item-icon">
+                                                    <i class="fas fa-unlock-alt"></i>
+                                                    </span>
+                                                    {{ __('Password') }}
+                                                </a>
+                                                @role('admin')
+                                                <a class="dropdown-item" target="__blank" href="{{ route('admin.index') }}">
+                                                    <span class="dropdown-item-icon">
+                                                    <i class="fas fa-tachometer-alt"></i>
+                                                    </span>
+                                                    {{ __('Admin panel') }}
+                                                </a>
+                                                @endrole
+                                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                                    <span class="dropdown-item-icon">
+                                                    <i class="fas fa-power-off"></i>
+                                                    </span>
+                                                    {{ __('Logout') }}
+                                                </a>
+                                                <form method="POST" id="logout-form" action="{{ route('logout') }}">
+                                                    @csrf
+                                                </form>
+                            
+                                          
+                                        </div>
+                                       
 
-                        <span class="avatar rounded-circle">
-                            <img alt="Image placeholder" class="rounded-circle" width="35" src="{{ Auth::user()->profile_photo_url }}">
-                        </span>
-                    </a>
 
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <!-- User Account Link -->
-                        <a class="dropdown-item" href="/dashboard">
-                            <span class="dropdown-item-icon">
-                            <i class="fas fa-user"></i>
-                            </span>
-                            {{ __('Dashboard') }}
-                        </a>
-                        <a class="dropdown-item" href="{{ route('account.password') }}">
-                            <span class="dropdown-item-icon">
-                            <i class="fas fa-unlock-alt"></i>
-                            </span>
-                            {{ __('Password') }}
-                        </a>
-                        @role('admin')
-                        <a class="dropdown-item" target="__blank" href="{{ route('admin.index') }}">
-                            <span class="dropdown-item-icon">
-                            <i class="fas fa-tachometer-alt"></i>
-                            </span>
-                            {{ __('Admin panel') }}
-                        </a>
-                        @endrole
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-                            <span class="dropdown-item-icon">
-                            <i class="fas fa-power-off"></i>
-                            </span>
-                            {{ __('Logout') }}
-                        </a>
-                        <form method="POST" id="logout-form" action="{{ route('logout') }}">
-                            @csrf
-                        </form>
-
-                        <div class="dropdown-divider"></div>
+                                    </div>
+                                </div>
+                            </li>
+                           
+                        </ul>
                     </div>
-                </span>
-            </div>
             @endguest
                 <div class="hs-unfold">
                 
@@ -219,7 +226,7 @@
 <!--end header -->
 
         {{ $slot }}
-        @unless(Request::is('register') || Request::is('login'))
+        @unless(Request::is('register') || Request::is('login') || Request::is('email/verify'))
         <footer class="footer-section">
             <!--footer top start-->
             <!--for light footer add .footer-light class and for dark footer add .bg-dark .text-white class-->
@@ -290,10 +297,10 @@
                         <div class="col-md-4 col-lg-4">
                             <div class="footer-single-col text-start text-lg-end text-md-end">
                                 <ul class="list-unstyled list-inline footer-social-list mb-0">
-                                    <li class="list-inline-item"><a href=""><i class="fab fa-facebook-f"></i></a></li>
-                                    <li class="list-inline-item"><a href="https://www.instagram.com/weenifyio"><i class="fab fa-instagram"></i></a></li>
-                                    <li class="list-inline-item"><a href="https://www.tiktok.com/@weenify"><i class="fab fa-tiktok"></i></a></li>
-                                    <li class="list-inline-item"><a href="https://www.youtube.com/channel/UCBuzUBYeBY1NemZE5DFXuaw"><i class="fab fa-youtube"></i></a></li>
+                                    <li class="list-inline-item"><a href="" target=”_blank”><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="https://www.instagram.com/weenifyio" target=”_blank”><i class="fab fa-instagram"></i></a></li>
+                                    <li class="list-inline-item"><a href="https://www.tiktok.com/@weenify" target=”_blank”><i class="fab fa-tiktok"></i></a></li>
+                                    <li class="list-inline-item"><a href="https://www.youtube.com/channel/UCBuzUBYeBY1NemZE5DFXuaw" target=”_blank”><i class="fab fa-youtube"></i></a></li>
                                    
                                 </ul>
                             </div>
@@ -306,32 +313,14 @@
         @endunless
         @livewireScripts
 
+    <script src="assets/js/app.js"></script>
     <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>
     <script src="assets/js/vendors/bootstrap.bundle.min.js"></script>
     <script src="assets/js/vendors/swiper-bundle.min.js"></script>
-    <script src="assets/js/vendors/jquery.magnific-popup.min.js"></script>
     <script src="assets/js/vendors/parallax.min.js"></script>
     <script src="assets/js/vendors/aos.js"></script>
     <script src="assets/js/vendors/massonry.min.js"></script>
-    <script src="assets/js/app.js"></script>
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-	<script src="https://codepen.io/steveg3003/pen/zBVakw.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
 
-  <!--Start of Tawk.to Script-->
-  @if (config('saas.demo_mode'))
-  <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/5fbb1a42a1d54c18d8ec4a68/default';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    @endif
-    <!--End of Tawk.to Script-->
+
 </body>
 </html>
