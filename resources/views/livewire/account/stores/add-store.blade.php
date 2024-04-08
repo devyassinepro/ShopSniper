@@ -24,7 +24,7 @@
                                                                     
                                                                         <select wire:model="nicheoption" name='nicheoption'>
                                                                         @foreach($allniches as $niche)
-                                                                        <option value="{{ $niche->id }}">{{ $niche->name }} - {{ $niche->id }}</option>
+                                                                        <option value="{{ $niche->id }}">{{ $niche->name }}</option>
                                                                         @endforeach
                                                                         </select>
        

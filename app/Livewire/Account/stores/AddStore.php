@@ -75,7 +75,10 @@ class AddStore extends Component
       
   
         if (empty($validated['nicheoption'])) {
-            $nicheoption = $firstNiche->id;
+            // $nicheemty = $firstNiche->id;
+            $nicheoption=$firstNiche->id;
+        }else{
+            $nicheoption=$this->nicheoption;
         }
 
 
@@ -132,7 +135,7 @@ class AddStore extends Component
                         ]);
                         Nichestore::create([
                             "stores_id" => $stores->id,
-                            "niche_id" => $this->nicheoption,
+                            "niche_id" => $nicheoption,
                             "created_at" => now(),
                             "updated_at" => now()
                        ]);
@@ -152,7 +155,7 @@ class AddStore extends Component
 
                         Nichestore::create([
                              "stores_id" => $stores->id,
-                             "niche_id" => $this->nicheoption,
+                             "niche_id" => $nicheoption,
                              "created_at" => now(),
                              "updated_at" => now()
                         ]);
@@ -208,7 +211,7 @@ class AddStore extends Component
 
                         Nichestore::create([
                              "stores_id" => $store_id,
-                             "niche_id" => $this->nicheoption,
+                             "niche_id" => $nicheoption,
                              "created_at" => now(),
                              "updated_at" => now()
                         ]);
