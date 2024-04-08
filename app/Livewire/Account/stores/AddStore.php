@@ -195,6 +195,8 @@ class AddStore extends Component
                             'weeksales' => 0,
                             'monthsales' => 0,
                             'dropshipping' => 1,
+                            'tshirt' => 0,
+                            'digital' => 0,
                             'created_at' => now(),
                             'updated_at' => now(),
                             'user_id' => $user_id
@@ -314,6 +316,8 @@ function createstore ($store ,$store_id, $i){
             "weeksales" => 0,
             "monthsales" => 0,
             'dropshipping' => 1,
+            'tshirt' => 0,
+            'digital' => 0,
             'price_aliexpress'=>0,
             'description' => $product->body_html,
             'created_at_shopify' => $product->published_at,

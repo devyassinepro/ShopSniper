@@ -44,6 +44,9 @@ class stores extends Model
         'weeksales',
         'monthsales',
         'dropshipping',
+        'tshirt',
+        'digital',
+
     ];
     public function niches(){
         return $this->belongsToMany(Niche::class);
