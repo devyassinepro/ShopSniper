@@ -22,6 +22,7 @@ class Compcurrenttrends extends Component
     use WithPagination;
     public $search = "";
     public $filtrePagination = "";
+    public $filtrekeyword = '';
 
     public $productUrl;
 
@@ -34,10 +35,15 @@ class Compcurrenttrends extends Component
         return view('skeleton');
     }
 
-    public function updatePagination($perPage)
+    public function searchKeyword($keyword)
     {
-        $this->filtrePagination = $perPage;
         $this->resetPage(); // Reset to page 1 when changing the items per page.
+        $this->filtrekeyword = $keyword;
+    }
+    public function updateOrderBy($orderBy)
+    {
+        $this->filtreorderby = $orderBy;
+        $this->resetPage(); // Reset to page 1 when changing the sorting order.
 
     }
     public function render()
@@ -59,6 +65,12 @@ class Compcurrenttrends extends Component
             $this->resetPage();
             $products->where("title", "LIKE",  "%". $this->search ."%")
                          ->orWhere("url","LIKE",  "%". $this->search ."%");
+        }
+
+        if($this->filtrekeyword != ""){
+            $this->resetPage();
+            $products->where("title", "LIKE",  "%". $this->filtrekeyword ."%")
+                         ->orWhere("url","LIKE",  "%". $this->filtrekeyword ."%");
         }
 
 

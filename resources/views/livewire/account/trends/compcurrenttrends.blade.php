@@ -5,16 +5,13 @@
                             <div class="nk-block-head-content">
                                 <h3 class="nk-block-title page-title">Current Trends</h3>
                                 <div class="nk-block-des text-soft">
-                                    <p>You have top Winning Products.</p>
+                                    <p>You Have trending Ideas :</p>
                                 </div>
-                               
-                                <div class="btn-group" aria-label="Basic example">
-                                <button type="button" class="btn btn-primary">Baby</button>
-                                <button type="button" class="btn btn-primary">Tech</button>
-                                <button type="button" class="btn btn-primary">Iphone</button>
-                                <button type="button" class="btn btn-primary">Niche2</button>
-                                </div>
-
+                                <a href="#"   wire:click.prevent="searchKeyword('hot')" wire:model.live="filtrekeyword" class="btn btn-dim btn-outline-primary">Trending</a>
+                                <a href="#"  wire:click.prevent="searchKeyword('baby')" wire:model.live="filtrekeyword"class="btn btn-dim btn-outline-primary">Baby</a>
+                                <a href="#" wire:click.prevent="searchKeyword('phone')" wire:model.live="filtrekeyword" class="btn btn-dim btn-outline-primary">Phone</a>
+                                <a href="#"  wire:click.prevent="searchKeyword('garden')" wire:model.live="filtrekeyword" class="btn btn-dim btn-outline-primary">Garden</a>
+                                <a href="#" wire:click.prevent="searchKeyword('phone')" wire:model.live="filtrekeyword" class="btn btn-dim btn-outline-primary">phone</a>
                                 
                             </div><!-- .nk-block-head-content -->
                             <div class="nk-block-head-content">
