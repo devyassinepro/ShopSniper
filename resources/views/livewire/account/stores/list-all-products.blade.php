@@ -18,8 +18,7 @@
                                         <div class="card-inner">
                                         <!-- <h5 class="card-title">Web Store Setting</h5> -->
                                             <!-- <p>Here is your basic store setting of your website.</p> -->
-                                            <h5>Store : {{$storedata->first()->name}}</h5>
-                                              <h6>Url : {{$storedata->first()->shopifydomain}}</h6>
+                                            <h5 class="nk-block-title page-title">{{$storedata->first()->name}}</h5>
                                           
                                        </div>
                                       </div>
@@ -43,12 +42,12 @@
                     <table class="table">
                       <thead>
                         <tr>
-                          <th>Image</th>
-                          <th>Title</th>
-                          <th>Price</th>
-                          <th>Today</th>
-                          <th>Yesterday</th>
-                          <th>Total</th>
+                          <th style="font-size: 18px; font-weight: bold;">Image</th>
+                          <th style="font-size: 18px; font-weight: bold;">Title</th>
+                          <th style="font-size: 18px; font-weight: bold;">Price</th>
+                          <th style="font-size: 18px; font-weight: bold;">Today</th>
+                          <th style="font-size: 18px; font-weight: bold;">Yesterday</th>
+                          <th style="font-size: 18px; font-weight: bold;">Total</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -57,10 +56,10 @@
                           <td class="font-weight-bold">
                               <a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="150" height="150"></a>
                           </td>
-                          <td class="font-weight-bold">
+                          <td class="font-weight-bold" style="font-size: 18px; font-weight: bold;">
                               <a href="{{ route('account.productdata.show',['id' =>$product->id]) }}" wire:navigate>{{ $product->title }}</a>
                           </td>
-                          <td>$ {{ $product->prix }}</td>
+                          <td style="font-size: 18px; font-weight: bold;">$ {{ $product->prix }}</td>
                           <td>
                             <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $product->todaysales * $product->prix }}</span>
                             <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $product->todaysales }}</span>          

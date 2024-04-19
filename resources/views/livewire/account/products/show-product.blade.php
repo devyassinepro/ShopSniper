@@ -10,8 +10,8 @@
                                                 <div></div>
                                                 <div></div>
                                             </div>
-                                </div>
-                        </div>
+                                 </div>
+                            </div>
                                   
                                   <div class="row g-gs">
                                   <div class="col-md-4">
@@ -62,7 +62,7 @@
                                                 <div class="card card-bordered card-preview">
                                                     <div class="card-inner">
                                                         <div class="card-head">
-                                                            <h6 class="title">Product Name : {{$products->first()->title}}</h6>
+                                                            <h6 class="nk-block-title page-title-card">Product Name : {{$products->first()->title}}</h6>
                                                         </div>
                                                         <div class="card-head">
                                                               <div class="limited-text">
@@ -82,14 +82,47 @@
                                             </div>
                                                 
                                         </div>
-                                    
-                      <div class="card card-bordered card-preview">
-                          <div class="card-inner">
-                              <div class="nk-ck">
-                                  <canvas class="line-chart" id="solidLineChart"></canvas>
-                              </div>
-                          </div>
-                      </div><!-- .card-preview -->
+                                        <div class="nk-block">
+                                    <div class="row g-gs">
+                                     
+                                        <div class="col-xxl-6">
+                                            <div class="card h-100">
+                                                <div class="card-inner">
+                                                    <div class="card-title-group align-start gx-3 mb-3">
+                                                        <div class="card-title">
+                                                            <h6 class="title">Revenue Overview</h6>
+                                                            <p>In 7 days sales of product subscription.</p>
+                                                        </div>
+                                                      
+                                                    </div>
+                                                   
+                                                    <div class="nk-sales-ck large pt-4">
+                                                    <canvas class="line-chart" id="RevenueLineChart"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div><!-- .card -->
+                                        </div><!-- .col -->
+
+                                        <div class="col-xxl-6">
+                                            <div class="card h-100">
+                                                <div class="card-inner">
+                                                    <div class="card-title-group align-start gx-3 mb-3">
+                                                        <div class="card-title">
+                                                            <h6 class="title">Sales Overview</h6>
+                                                            <p>In 7 days sales of product subscription.</p>
+                                                        </div>
+                                                      
+                                                    </div>
+                                
+                                                    <div class="nk-sales-ck large pt-4">
+                                                        <canvas class="line-chart" id="SalesLineChart"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div><!-- .card -->
+                                        </div><!-- .col -->
+                                        
+            </div><!-- .col -->
+            </div><!-- .col -->
 
 
           <!-- ALl Affiche -->
@@ -176,8 +209,6 @@
 </div>    
 </div>     
 
-      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script> -->
-      <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
       <script src="{{ asset('assets/js/bundle.js?ver=3.2.0') }}"></script>
       <script src="{{ asset('assets/js/charts/chart-sales.js?ver=3.2.0') }}"></script>
 
@@ -204,20 +235,30 @@
               var dates =   {!! json_encode($dates)!!};
 
 
-              var solidLineChart = {
+//   test chart : 
+
+var RevenueLineChart = {
     labels: dates,
-    dataUnit: ['$', 'sales'], // Updated dataUnit values
+    dataUnit: ['$'], // Updated dataUnit values
     lineTension: 0.4,
     legend: true,
     datasets: [{
         label: "Total Revenue ($)", // Removed "$" from the label
-        color: "#5ce0aa",
-        background: 'transparent',
+        color : "#9d72ff",
+        background : NioApp.hexRGB('#9d72ff',.3),
         data: [day7sales_revenue, day6sales_revenue, day5sales_revenue, day4sales_revenue, day3sales_revenue, yesterdaysales_revenue, todaysales_revenue]
-    }, {
-        label: "Total Sales (sales)", // Updated label
-        color: "#9d72ff",
-        background: 'transparent',
+    }]
+};
+
+var SalesLineChart = {
+    labels: dates,
+    dataUnit: ['Sales'], // Updated dataUnit values
+    lineTension: 0.4,
+    legend: true,
+    datasets: [{
+        label: "Total Sales", // Removed "$" from the label
+        color : "#9d72ff",
+        background : NioApp.hexRGB('#9d72ff',.3),
         data: [day7sales_count, day6sales_count, day5sales_count, day4sales_count, day3sales_count, yesterdaysales_count, todaysales_count]
     }]
 };

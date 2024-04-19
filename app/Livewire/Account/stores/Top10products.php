@@ -41,7 +41,7 @@ class Top10products extends Component
             }
 
         } else {
-            $products = $products->orderBy('totalsales', 'desc')->take(10)->get();
+            $products = $products->orderBy('todaysales', 'desc')->take(10)->get();
         }
         return view('livewire.account.stores.top10products', compact('products','storedata'));
     }

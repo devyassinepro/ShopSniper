@@ -72,9 +72,9 @@
 
                                         <div class="nk-tb-item">
 
-                                            <div class="nk-tb-col">{{ $niche->name }}   </div>
+                                            <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;">{{ $niche->name }}   </div>
                                          
-                                            <div class="nk-tb-col">{{ $niche->created_at }} </div>
+                                            <div class="nk-tb-col" style="font-size: 16px; font-weight: bold;">{{ $niche->created_at }} </div>
                                            
                                             <div class="nk-tb-col tb-col-md">
                                             <button class="btn btn-lg btn-danger" wire:click="Remove({{ $niche->id }})" type="button" data-toggle="modal" data-target="#exampleModal" wire:loading.remove>

@@ -64,7 +64,7 @@
                                                 <div class="card card-bordered card-preview">
                                                       <div class="card-inner">
                                                             <div class="card-head">
-                                                                <h4 class="title">{{$products->first()->title}}</h4>
+                                                                <h4 class="nk-block-title page-title-card">{{$products->first()->title}}</h4>
                                                             </div>
                                                             
                                                             

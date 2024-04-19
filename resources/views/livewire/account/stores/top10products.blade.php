@@ -12,8 +12,8 @@
                             <div class="card-body"> 
                                 <div class="card-title-group pb-3 g-2">
                                     <div class="card-title card-title-sm">
-                                        <h6 class="title">Top 10 Products</h6>
-                                        <p>Sales trending Products.</p>
+                                        <h6 class="nk-block-title page-title">Top 10 Products</h6>
+                                        <h4 style="font-weight: bold;">Trending Products.</4>
                                     </div>
                                     <div class="card-tools shrink-0 d-none d-sm-block">
                                          <ul class="nav nav-switch-s2 nav-tabs bg-white">
@@ -48,9 +48,9 @@
                                           <a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="200" height="200"></a>
                                       </td>
                                       <td class="font-weight-bold">
-                                          <a href="{{ route('account.productdata.show',['id' =>$product->id]) }}" wire:navigate>{{ $product->title }}</a>
+                                          <a  style="font-size: 16px; font-weight: bold;" href="{{ route('account.productdata.show',['id' =>$product->id]) }}" wire:navigate>{{ $product->title }}</a>
                                       </td>
-                                      <td>$ {{ $product->prix }}</td>
+                                      <td style="font-size: 16px; font-weight: bold;">$ {{ $product->prix }}</td>
                                       <td>
                                             <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">$ {{ $product->todaysales * $product->prix }}</span>
                                             <span class="badge badge-sm badge-dot has-bg bg-primary d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">{{ $product->todaysales }}</span>          

@@ -20,7 +20,7 @@
                                           </div>
                                     
                                     <div class="user-info">
-                                    <h3>Welcome Back, {{ Auth::user()->name }}!</h3>
+                                    <h3 class="nk-block-title page-title">Welcome Back, {{ Auth::user()->name }}!</h3>
                                         <h6>Here’s an overview of your account </h6>
                                     </div>
                              </div>

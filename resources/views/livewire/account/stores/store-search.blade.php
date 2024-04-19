@@ -29,8 +29,8 @@
                                                 </div>
 
                                                 <div class="user-info">
-                                                    <h3>Sales Tracker</h3>
-                                                    <h6>Track sales of stores</h6>
+                                                <h4 class="nk-block-title page-title">Sales Tracker</h4>
+                                                    <h6>Track sales of products</h6>
                                                 </div>
                                     </div>
 
@@ -214,7 +214,7 @@
 
                                                 </div>
                                             <div class="nk-tb-col">
-                                                <span class="tb-lead"><a href="{{ route('account.storedata.show',['id' =>$store->id]) }}" wire:navigate>{{ $store->name }}</a></span>
+                                                <span class="tb-lead" style="font-size: 16px; font-weight: bold;"><a href="{{ route('account.storedata.show',['id' =>$store->id]) }}" wire:navigate>{{ $store->name }}</a></span>
                                             </div>
                                             <div class="nk-tb-col tb-col-md">
                                                 <span class="tb-sub" style="font-size: 15px; font-weight: bold;">{{ $store->currency }}</span>

@@ -168,7 +168,7 @@
                                                     <!-- <ul class="product-tags">
                                                         <li><a href="#">Smart Watch</a></li>
                                                     </ul> -->
-                                                    <h5 class="product-title"><a href="{{ route('account.trenddata.show',['id' =>$product->id]) }}" wire:navigate>{{ $product->title }}</a></h5>
+                                                    <h5 class="product-title" style="font-size: 16px; font-weight: bold;"><a href="{{ route('account.trenddata.show',['id' =>$product->id]) }}" wire:navigate>{{ $product->title }}</a></h5>
                                                     <div class="product-price text-primary h5">$ {{ $product->price_aliexpress }}  -  $ {{ $product->prix }}
                                                     <div class="drodown">
                                                                 <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 me-n1" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>

@@ -26,7 +26,7 @@
                         <div class="card">
                             <div class="card-body">
                               
-                                <h4 class="card-title">
+                                <h4 class="card-title" style="font-size: 16px; font-weight: bold;">
                                     <i class="fas fa-search"></i>
                                     Search For Competitors
                                 </h4>
@@ -413,7 +413,7 @@
                                                 <a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="100" height="100"></a>
                                             </div>
                                             <div class="nk-tb-col">
-                                                    <a href="{{ route('account.researchdata.show',['id' =>$product->id]) }}" wire:navigate><h6>{{ $product->title }} ({{ $product->created_at_shopify }})</h6></a>
+                                                    <a href="{{ route('account.researchdata.show',['id' =>$product->id]) }}" wire:navigate><h6 style="font-size: 16px; font-weight: bold;">{{ $product->title }} ({{ $product->created_at_shopify }})</h6></a>
                                                     <a target="_blank" href="{{ $product->url }}">{{ parse_url($product->url, PHP_URL_HOST) }}</a>
                                                     <!-- <a>{{ $product->created_at }}</a> -->
 
@@ -425,18 +425,18 @@
                                       
                                             </div>
                                             <div class="nk-tb-col tb-col-sm">
-                                                       <h6>$ {{ $product->prix }}</h6> 
+                                                       <h6 style="font-size: 16px; font-weight: bold;">$ {{ $product->prix }}</h6> 
                                             </div>
                                             <div class="nk-tb-col tb-col-sm">
-                                                         <h6>{{ $product->stores->allproducts }}</h6> 
-                                            </div>
-
-                                            <div class="nk-tb-col tb-col-sm">
-                                                   <h6>{{ $product->stores->currency }}</h6> 
+                                                         <h6 style="font-size: 16px; font-weight: bold;">{{ $product->stores->allproducts }}</h6> 
                                             </div>
 
                                             <div class="nk-tb-col tb-col-sm">
-                                                   <h6>{{ $product->stores->country }}</h6> 
+                                                   <h6 style="font-size: 16px; font-weight: bold;">{{ $product->stores->currency }}</h6> 
+                                            </div>
+
+                                            <div class="nk-tb-col tb-col-sm">
+                                                   <h6 style="font-size: 16px; font-weight: bold;">{{ $product->stores->country }}</h6> 
                                            </div>
 
         

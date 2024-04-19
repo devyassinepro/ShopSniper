@@ -22,7 +22,7 @@
                                                         </div>
 
                                                 <div class="user-info">
-                                                    <h3>Sales Tracker</h3>
+                                                    <h4 class="nk-block-title page-title">Sales Tracker</h4>
                                                     <h6>Track sales of products</h6>
                                                 </div>
                                                 </div>
@@ -159,7 +159,7 @@
                                                 <a href="{{ $product->url }}" target="_blank"><img src="{{ $product->imageproduct }}" width="100" height="100"></a>
                                             </div>
                                             <div class="nk-tb-col">
-                                                    <a href="{{ route('account.productdata.show',['id' =>$product->id]) }}" wire:navigate><h6>{{ $product->title }}</h6></a>
+                                                    <a href="{{ route('account.productdata.show',['id' =>$product->id]) }}" wire:navigate><h4 style="font-size: 18px; font-weight: bold;">{{ $product->title }}</h4></a>
                                                     <a target="_blank" href="{{ $product->url }}">{{ parse_url($product->url, PHP_URL_HOST) }}</a>
                                             </div>
                                             <div class="nk-tb-col tb-col-md">
@@ -169,7 +169,7 @@
                                       
                                             </div>
                                             <div class="nk-tb-col tb-col-sm">
-                                                       <h6>$ {{ $product->prix }}</h6> 
+                                                       <h6 style="font-size: 18px; font-weight: bold;">$ {{ $product->prix }}</h6> 
                                             </div>
                                             <div class="nk-tb-col tb-col-sm">
                                                       <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex" style="font-size: 16px; font-weight: bold;">${{ $product->todaysales * $product->prix }}</span>
