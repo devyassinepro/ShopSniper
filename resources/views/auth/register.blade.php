@@ -43,7 +43,7 @@
                                 <div class="col-sm-12">
                                     <label for="email" class="mb-1">Email <span class="text-danger">*</span></label>
                                     <div class="input-group mb-3">
-                                        <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Enter your email address or username" required>
+                                        <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Enter your email address" required>
                                     </div>
                                     @error('email')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -57,7 +57,7 @@
                                             <em class="passcode-icon icon-show icon ni ni-eye"></em>
                                             <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
                                         </a>
-                                        <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Enter your passcode" required>
+                                        <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Enter your password" required>
                                     </div>
                                     @error('password')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -71,7 +71,7 @@
                                             <em class="passcode-icon icon-show icon ni ni-eye"></em>
                                             <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
                                         </a>
-                                        <input type="password" class="form-control form-control-lg" id="repassword" name="password_confirmation" placeholder="Renter your passcode" required>
+                                        <input type="password" class="form-control form-control-lg" id="repassword" name="password_confirmation" placeholder="Renter your password" required>
                                    </div>
                                    @error('password')
                                    <div class="invalid-feedback">{{ $message }}</div>

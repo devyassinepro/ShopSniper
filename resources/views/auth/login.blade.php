@@ -34,7 +34,7 @@
                                     <label for="email" class="mb-1">Email <span class="text-danger">*</span></label>
                                     <div class="input-group mb-3">
                                         <x-jet-input class="{{ $errors->has('email') ? 'is-invalid' : '' }}" type="email"
-                                            name="email" :value="old('email')" required />
+                                        placeholder="Enter your email" name="email" :value="old('email')" required />
                                       <x-jet-input-error for="email"></x-jet-input-error>
                                     </div>
                                 </div>

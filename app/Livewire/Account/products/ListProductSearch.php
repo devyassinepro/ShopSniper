@@ -87,10 +87,13 @@ class ListProductSearch extends Component
             if($this->filtreorderby == 'totalsales') {
                 $products =$products->orderBy($this->filtreorderby,'desc');
             }
-
+            
+            if($this->filtreorderby == 'revenue') {
+                $products =$products->orderBy('revenue','desc');
+            }
 
         } else {
-            $products = $products->orderBy('revenue', 'desc');
+            $products = $products->orderBy('calculated_todaysales', 'desc');
         }
 
         if($this->filtrePagination != ""){
