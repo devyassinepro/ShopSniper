@@ -110,6 +110,17 @@ Route::group(['middleware' => 'language'], function () {
         return view('pages.TermsandConditions');
     })->name('TermsandConditions');
 
+    Route::get('/blog', function () {
+        return view('blog.blog');
+    })->name('blog');
+
+    Route::get('blog/article1', function () {
+        return view('blog.article1');
+    })->name('article1');
+
+    Route::get('blog/article2', function () {return view('blog.article2');
+    })->name('article2');
+    
 // redirect link
     Route::get('/shopify', function () {
         return redirect('https://shopify.pxf.io/MmW3NY');

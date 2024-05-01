@@ -14,8 +14,10 @@
                 <div class="col-lg-5 col-md-8 col-12">
                     <a href="/" class="mb-4 d-block text-center"><img src="assets/img/logo.png" alt="logo" class="img-fluid"></a>
                     <div class="register-wrap p-5 bg-light-subtle shadow rounded-custom">
-                        <h1 class="h3">Try Weenify.io For Free</h1>
-                        <p class="text-muted">Get started - it's quick</p>
+                        <h1 class="h3">Register</h1>
+                        <!-- <h2 class="h6">Try Weenify.io For Free</h2> -->
+
+                        <p class="text-muted">Try Weenify.io For Free - Get started - it's quick</p>
 
                         <div class="action-btns">
                             <a href="#" class="btn google-btn bg-white shadow-sm mt-4 d-block d-flex align-items-center text-decoration-none justify-content-center">

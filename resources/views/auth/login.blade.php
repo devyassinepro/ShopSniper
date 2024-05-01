@@ -13,10 +13,9 @@
                 <div class="col-lg-5 col-md-8 col-12">
                     <a href="/" class="mb-4 d-block text-center"><img src="assets/img/logo.png" alt="logo" class="img-fluid"></a>
                     <div class="register-wrap p-5 bg-light-subtle shadow rounded-custom">
-                        <h1 class="h3">Nice to Seeing You Again</h1>
+                        <h1 class="h3">Login</h1>
                         <p class="text-muted">Please log in to access your account web-enabled methods of innovative
                             niches.</p>
-
                         <div class="action-btns">
                             <a href="#" class="btn google-btn bg-white shadow-sm mt-4 d-block d-flex align-items-center text-decoration-none justify-content-center">
                                 <img src="assets/img/google-icon.svg" alt="google" class="me-3">

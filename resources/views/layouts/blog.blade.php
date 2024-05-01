@@ -1,78 +1,52 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="light">
+<html lang="en" data-bs-theme="light">
+
 <head>
-<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="keywords" content="Weenify , store shopify tracking ,store shopify,product spying, keyword research, search engine optimization, search engine marketing" />
-    <meta name="description" content="Iteck - Multi-Purpose HTML5 Template" />
-    <meta name="author" content="Touzani Yassine" />
+    <!--required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!--meta-->
+    <meta name="description" content="">
+    <meta name="author" content="ThemeTags">
 
-        <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!--favicon icon-->
+    <link rel="icon" href="assets/img/favicon.png" type="image/png" sizes="16x16">
 
-    <title>{{ config('app.name') }} - Track winning stores Shopify</title>
+    <!--title-->
+    <title>{{ config('app.name') }} - Blog</title>
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/img/favicon.png" title="Favicon" sizes="16x16" />
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lily+Script+One&display=swap" rel="stylesheet">
+    <!-- Font -->
 
-
-
-    <!-- bootstrap 5 -->
-    <link rel="stylesheet" href="assets/css/lib/bootstrap.min.css">
-
-    <!-- ====== font family ====== -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"rel="stylesheet">
-
-        <!--build:css-->
-        <link rel="stylesheet" href="assets/css/main.css">
+    <!--build:css-->
+    <link rel="stylesheet" href="assets/css/main.css">
     <!-- endbuild -->
 
     <!--custom css start-->
     <link rel="stylesheet" href="assets/css/custom.css">
-
-    @if(Request::is('email/verify'))
-    <link rel="stylesheet" href="{{ asset('assets/css/dashlite.css?ver=3.2.0') }}" type="text/css">
-    @endif
-
     <!--custom css end-->
 
-    @livewireStyles
-    @stack('styles')
-    <style>
-        .card-body{
-            border-top:none;
-        }
-        .navbar-fixed-top .navbar-nav .current a{
-            color: #5f6468 !important;
-        }
-    </style>
 </head>
 
 <body>
-
-    <!-- ======== End Navbar ======== -->
-    <!--preloader end-->
     <!--main content wrapper start-->
     <div class="main-wrapper">
 
         <!--header section start-->
-        <!--header start-->
+
         <script> configObj = {"text":"\nLaunch Your Store on Shopify for Only $1 !","bannerURL":"https://weenify.io/shopify","selectedBackgroundColor":"#0037b8","selectedTextColor":"#ffffff","bannerHeight":"48px","fontSize":"16px"};function createBanner(obj, pageSimulator) {        var swBannerLink = obj.bannerURL;        var swBannerTarget = "_blank";        var swBannerText = obj.text;        var body = document.body;        var swBanner = document.createElement('a');        var centerDiv = document.createElement('div');        var text = document.createElement('span');        swBanner.href = swBannerLink;        swBanner.target = swBannerTarget;        swBanner.style.display = "flex";        swBanner.style.justifyContent = "center";        swBanner.style.alignItems = "center";        swBanner.style.width = "100%";        swBanner.style.minHeight = "48px";        swBanner.style.maxHeight = "72px";        swBanner.style.paddingTop = "8px";        swBanner.style.paddingBottom = "8px";        swBanner.style.lineHeight = "18px";        swBanner.style.textAlign = "center";        swBanner.style.textDecoration = "none";        swBanner.style.height = obj.bannerHeight;        swBanner.style.fontSize = obj.fontSize;        text.innerHTML = swBannerText;        swBanner.style.backgroundColor = obj.selectedBackgroundColor;        swBanner.style.color = obj.selectedTextColor;        swBanner.id = 'sw-banner';        swBanner.classList.add('sw-banner');        centerDiv.classList.add('center');        centerDiv.append(text);        swBanner.append(centerDiv);        if(!pageSimulator) {          body.insertBefore(swBanner, body.firstChild);        } else {          pageSimulator.insertBefore(swBanner, pageSimulator.firstChild);        }    };document.addEventListener("DOMContentLoaded", function() { createBanner(configObj, null); });</script>      
         <header class="main-header position-absolute w-100">
             <nav class="navbar navbar-expand-xl navbar-dark z-10">
                 <div class="container d-flex align-items-center justify-content-lg-between position-relative">
-                @if(Request::is('/'))
                     <a href="/" class="navbar-brand d-flex align-items-center mb-md-0 text-decoration-none">
                         <img src="assets/img/logo.png" alt="logo" class="img-fluid logo-white" />
                         <img src="assets/img/logo.png" alt="logo" class="img-fluid logo-color" />
                     </a>
-                @else 
-                    <!-- <a class="navbar-brand" href="/">
-                    <img src="{{ asset('assets/img/logo.png') }}" class="navbar-brand-img" alt="knine" style="max-height: 3rem;">
-                  </a> -->
-                @endif
+                   
                     <a class="navbar-toggler position-absolute right-0 border-0" href="#offcanvasWithBackdrop">
                         <i class="flaticon-menu" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"
                      data-bs-toggle="offcanvas" role="button"></i>
@@ -81,7 +55,6 @@
                     <div class="collapse navbar-collapse justify-content-center">
                         <ul class="nav col-12 col-md-auto justify-content-center main-menu">
                         @if(Request::is('/'))
-
                             <li><a href="/" class="nav-link">{{ __('Home') }}</a></li>
                             <li><a href="#faq" class="nav-link">{{ __('FAQ') }}</a></li>
                             <li><a href="#pricing" class="nav-link">{{ __('Pricing') }}</a></li>
@@ -92,10 +65,7 @@
                 </ul>
                 </div>
                 @guest
-            <!-- {{-- <a href="/login" role="button" class="btn-1">Login</a> --}} -->
-            <!-- <li class="discover-link"><a href="/login" class="external">{{ __('Login') }}</a></li> -->
-            <!-- <li class="discover-link"><a href="/register" class="external discover-btn">{{ __('Start Free Trial') }}</a></li> -->
-            @else
+           @else
             <div class="collapse navbar-collapse justify-content-center">
                         <ul class="nav col-12 col-md-auto justify-content-center main-menu">
                             <li class="nav-item dropdown">
@@ -221,11 +191,16 @@
             </div>
             <!--offcanvas menu end-->
         </header>
-<!--begin header -->
-<!--end header -->
 
-        {{ $slot }}
-        @unless(Request::is('register') || Request::is('login') || Request::is('email/verify'))
+        <!--blog section start-->
+
+        @yield('content')
+
+        <!--blog section end-->
+
+
+        <!--footer section start-->
+        <!--footer section start-->
         <footer class="footer-section">
             <!--footer top start-->
             <!--for light footer add .footer-light class and for dark footer add .bg-dark .text-white class-->
@@ -283,8 +258,6 @@
                 </div>
             </div>
             <!--footer top end-->
-
-            <!--footer bottom start-->
             <div class="footer-bottom  bg-gradient text-white py-4">
                 <div class="container">
                     <div class="row justify-content-between align-items-center">
@@ -309,17 +282,20 @@
             </div>
             <!--footer bottom end-->
         </footer>
-        @endunless
-        @livewireScripts
+        <!--footer section end--> <!--footer section end-->
 
-    <script src="assets/js/app.js"></script>
+    </div>
+
+    <!--build:js-->
     <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>
     <script src="assets/js/vendors/bootstrap.bundle.min.js"></script>
     <script src="assets/js/vendors/swiper-bundle.min.js"></script>
+    <script src="assets/js/vendors/jquery.magnific-popup.min.js"></script>
     <script src="assets/js/vendors/parallax.min.js"></script>
     <script src="assets/js/vendors/aos.js"></script>
     <script src="assets/js/vendors/massonry.min.js"></script>
-
-
+    <script src="assets/js/app.js"></script>
+    <!--endbuild-->
 </body>
+
 </html>
