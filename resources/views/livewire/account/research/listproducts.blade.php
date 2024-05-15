@@ -119,6 +119,67 @@
 
                                             <div class="row g-3 align-center">
                                                 <div class="col-lg-3">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="site-name">Include Pixel Ads</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-9">
+                                                    <div class="form-group">
+                                                        <div class="form-control-wrap">
+                                                          <label class="form-label" for="site-name"><img src="{{ asset('assets/images/icon-facebook.png') }}" width="30" height= "30"></label>
+                                                          <input type="checkbox" wire:model="filtermeta" id="filter-meta">
+                                                          <label class="form-label" for="site-name"><img src="{{ asset('assets/images/icon-google.png') }}" width="30" height= "30"></label>
+                                                          <input type="checkbox" wire:model="filtergoogle" id="filter-googleads">
+                                                          <label class="form-label" for="site-name"><img src="{{ asset('assets/images/icon-snapchat.png') }}" width="30" height= "30"></label>
+                                                          <input type="checkbox" wire:model="filtersnapchat" id="filter-snapchat">
+                                                          <label class="form-label" for="site-name"><img src="{{ asset('assets/images/icon-tiktok.png') }}" width="30" height= "30"></label>
+                                                          <input type="checkbox" wire:model="filtertiktok" id="filter-tiktok">
+                                                          <label class="form-label" for="site-name"><img src="{{ asset('assets/images/icon-pinterest.png') }}" width="30" height= "30"></label>
+                                                          <input type="checkbox" wire:model="filterpinterest" id="filter-pinterest">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="col-lg-2">
+                                                    <div class="form-group">
+                                                        <div class="form-control-wrap">
+                                                             <label class="form-label" for="site-name">Dropshipping</label>
+                                                               <input type="checkbox" wire:model="filterDropshipping" id="filter-dropshipping">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <div class="form-group">
+                                                        <div class="form-control-wrap">
+                                                         <input type="checkbox" wire:model="filterDropshipping" id="filter-dropshipping">
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                                <!-- <div class="col-lg-2">
+                                                    <div class="form-group">
+                                                        <div class="form-control-wrap">
+                                                         <input type="checkbox" wire:model="filterDropshipping" id="filter-dropshipping">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <div class="form-group">
+                                                        <div class="form-control-wrap">
+                                                        <input type="checkbox" wire:model="filterDropshipping" id="filter-dropshipping">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <div class="form-group">
+                                                        <div class="form-control-wrap">
+                                                        <input type="checkbox" wire:model="filterDropshipping" id="filter-dropshipping">
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                             
+                                            </div>
+
+                                            <div class="row g-3 align-center">
+                                                <div class="col-lg-3">
                                                     <div class="form-control-wrap">
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">

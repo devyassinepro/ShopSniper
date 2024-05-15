@@ -35,11 +35,41 @@
                                                     <ul class="nk-block-tools g-3">
                                                     <!-- <li class="nk-block-tools-opt"><a  class="btn btn-primary"  target="_blank" href="{{$storedata->first()->url}}">View on Shopify</a></li> -->
                                                     <li class="nk-block-tools-opt"><h6 class="title"><span class="name" style="font-weight: bold;">Shopify</span> : <span class="name"><a target="_blank" href="https://{{$storedata->first()->shopifydomain}}">{{$storedata->first()->shopifydomain}}</a></span></h6></li>
-                                                    <li class="nk-block-tools-opt"><h6 class="title"><span class="name" style="font-weight: bold;">URL</span> : <span class="name"><a target="_blank" href="{{$storedata->first()->url}}">View on Shopify</a></span></h6></li>
+                                                    <li class="nk-block-tools-opt"><h6 class="title"><span class="name" style="font-weight: bold;">URL</span> : <span class="name"><a target="_blank" href="{{$storedata->first()->url}}">{{$storedata->first()->url}}</a></span></h6></li>
                                                     <li class="nk-block-tools-opt"><h6 class="title"><span class="name" style="font-weight: bold;">City</span> : <span class="name">{{$storedata->first()->city}}</span></h6></li>
                                                     <li class="nk-block-tools-opt"><h6 class="title"><span class="name" style="font-weight: bold;">Country</span> : <span class="name">{{$storedata->first()->country}}</span></h6></li>
                                                     <li class="nk-block-tools-opt"><h6 class="title"><span class="name" style="font-weight: bold;">Currency</span> : <span class="name">{{$storedata->first()->currency}}</span></h6></li>   
+                                               
+
                                                     </ul>
+                                                    <ul class="nk-block-tools g-3">
+                                                    @if($storedata->first()->facebookusername)
+                                                    <li class="nk-block-tools-opt"><a href="{{$storedata->first()->facebookusername}}" target=”_blank”><img src="{{ asset('assets/images/icon-facebook.png') }}" width="40" height= "40"></a></li>   
+                                                    @endif
+                                                    @if($storedata->first()->instagramusername)
+                                                    <li class="nk-block-tools-opt"><a href="{{$storedata->first()->instagramusername}}" target=”_blank”><img src="{{ asset('assets/images/icon-instagram.png') }}" width="40" height= "40"></a></li>   
+                                                    @endif
+                                                    @if($storedata->first()->pinterestusername)
+                                                    <li class="nk-block-tools-opt"><a href="{{$storedata->first()->pinterestusername}}" target=”_blank”><img src="{{ asset('assets/images/icon-pinterest.png') }}" width="40" height= "40"></a></li>  
+                                                    @endif
+                                                    @if($storedata->first()->youtubeusername)
+                                                    <li class="nk-block-tools-opt"><a href="{{$storedata->first()->youtubeusername}}" target=”_blank”><img src="{{ asset('assets/images/icon-youtube.png') }}" width="40" height= "40"></a></li>    
+                                                    @endif
+                                                    @if($storedata->first()->snapchatusername)
+                                                    <li class="nk-block-tools-opt"><a href="{{$storedata->first()->snapchatusername}}" target=”_blank”><img src="{{ asset('assets/images/icon-snapchat.png') }}" width="40" height= "40"></a></li>  
+                                                    @endif
+                                                    @if($storedata->first()->tiktokusername)
+                                                    <li class="nk-block-tools-opt"><a href="{{$storedata->first()->tiktokusername}}" target=”_blank”><img src="{{ asset('assets/images/icon-tiktok.png') }}" width="40" height= "40"></a></li>  
+                                                    @endif   
+                                                </ul>
+                                                    <br>
+                                                    <a href="{{$storedata->first()->facebookusername}}" target=”_blank”></a>
+
+                                                    <!-- <li class="nk-block-tools-opt"><h6 class="title"><span class="name" style="font-weight: bold;">{{$storedata->first()->title}}</span> </h6></li>    -->
+                                                    <li class="nk-block-tools-opt"><h6 class="title"><span class="name" style="font-weight: bold;">{{$storedata->first()->description}}</span> </h6></li>   
+                                                    <!-- <li class="nk-block-tools-opt"><h6 class="title"><span class="name" style="font-weight: bold;">theme :{{$storedata->first()->theme}}</span> </h6></li> -->
+
+                       
                                                         </div>
                                                     </div>
                                                 </div>

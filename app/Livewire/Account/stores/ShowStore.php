@@ -43,6 +43,11 @@ class ShowStore extends Component
             return redirect()->route('dashboard')->with('error','You can not access this page.');
         }
 
+        if (!isset($this->storeId) || empty($this->storeId)) {
+            // Redirect to a specific route if storeId is not set
+            return redirect()->route('account.storesearch.index');
+        }
+
         $user_id = Auth::user()->id;
         $storeuser = Storeuser::where('user_id', $user_id)->count();
 
@@ -53,6 +58,7 @@ class ShowStore extends Component
             }
 
         $storedata = DB::table('stores')->where('id', $this->storeId)->get();
+
         $storeid = $this->storeId;
         $totalsalesmin = 0;
         $products = Product::where('stores_id',$this->storeId)

@@ -139,7 +139,6 @@ Route::group(['middleware' => 'language'], function () {
             return view('account.plan', ['team' => $team]);
         })->name('plan');
 
-
         // controllers
         Route::resource('/product', AccountProductController::class);
         Route::resource('/stores', AccountStoresController::class);

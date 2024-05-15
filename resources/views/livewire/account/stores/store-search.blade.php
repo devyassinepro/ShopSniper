@@ -242,14 +242,14 @@
 
                                             <div class="nk-tb-col nk-tb-col-tools">
                                                 <ul class="nk-tb-actions gx-1">
-                                                    <li class="nk-tb-action-hidden"><a href="{{ route('account.storedata.show',['id' =>$store->id]) }}" wire:navigate class="btn btn-icon btn-trigger btn-tooltip" title="Show Charts">
+                                                    <li class="nk-tb-action-hidden"><a href="{{ route('account.storedata.show',['id' =>$store->id]) }}" wire:navigate class="btn btn-icon btn-trigger btn-tooltip" title="Show Charts" target=”_blank”>
                                                             <em class="icon ni ni-eye"></em></a></li>
                                                     <li>
                                                         <div class="drodown me-n1">
                                                             <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                             <div class="dropdown-menu dropdown-menu-end">
                                                                 <ul class="link-list-opt no-bdr">
-                                                                    <li><a href="{{ route('account.storedata.show',['id' =>$store->id]) }}" wire:navigate><em class="icon ni ni-eye"></em><span>Show Charts</span></a></li>
+                                                                    <li><a href="{{ route('account.storedata.show',['id' =>$store->id]) }}" wire:navigate><em class="icon ni ni-eye" target=”_blank”></em><span>Show Charts</span></a></li>
                                                                     <button type="button" wire:click="trackstore('{{ $store->id }}')" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Untrack Store</button>
 
                                                                                                                                

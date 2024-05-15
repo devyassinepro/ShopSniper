@@ -20,6 +20,14 @@ class ListProductResearch extends Component
     public $filtrePagination = "";
 
     public $filterDropshipping = true;
+
+    public $filtermeta = false;
+    public $filtergoogle = false;
+    public $filtersnapchat = false;
+    public $filtertiktok = false;
+    public $filterpinterest = false;
+
+
     
     public function placeholder()
     {
@@ -124,6 +132,22 @@ class ListProductResearch extends Component
         }
         if ($this->filterDropshipping) {
             $products->where('dropshipping', 1); // Assuming 'dropshipping' is a boolean column
+        }
+
+        if ($this->filtermeta) {
+            $products->where('facebookpixel', 1); // Assuming 'dropshipping' is a boolean column
+        }
+        if ($this->filtergoogle) {
+            $products->where('googlepixel', 1); // Assuming 'dropshipping' is a boolean column
+        }
+        if ($this->filtersnapchat) {
+            $products->where('snapchatpixel', 1); // Assuming 'dropshipping' is a boolean column
+        }
+        if ($this->filtertiktok) {
+            $products->where('tiktokpixel', 1); // Assuming 'dropshipping' is a boolean column
+        }
+        if ($this->filterpinterest) {
+            $products->where('pinterestpixel', 1); // Assuming 'dropshipping' is a boolean column
         }
 
 
