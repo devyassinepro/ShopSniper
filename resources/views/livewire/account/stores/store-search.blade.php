@@ -59,7 +59,7 @@
                                                                         placeholder="Search by Store"
                                                                         class="form-control"
                                                                     >
-                                                        </div>
+                                                            </div>
                                                         </li>
                                                     <div class="drodown">
                                                         <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-bs-toggle="dropdown">{{ $filtreNiche ? $niches->where('id', $filtreNiche)->first()->name : 'Select Niche' }}</a>

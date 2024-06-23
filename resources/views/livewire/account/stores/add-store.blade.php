@@ -1,12 +1,12 @@
 <div class="nk-block nk-block-lg">
                                                               
                             <div class="card">
-                        <div class="alert alert-pro alert-primary">
+                            <div class="alert alert-pro alert-primary">
                             <div class="alert-text">
                          
                             <form wire:submit="save">
                                                   @csrf
-                                                    <div class="row g-6">
+                                                    <div class="row g-6">   
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
                                                                 <label class="form-label" for="full-name-1">Url Store</label>
