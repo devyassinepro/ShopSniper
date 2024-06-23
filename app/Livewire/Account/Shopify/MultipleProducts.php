@@ -40,7 +40,7 @@ class MultipleProducts extends Component
              return redirect()->back()->withErrors($e->validator);
          }
  
-         Log::info('$this->url:'.$this->url);
+        //  Log::info('$this->url:'.$this->url);
          $url = $this->url;
  
         // JSON string
@@ -61,7 +61,7 @@ class MultipleProducts extends Component
          $products = json_decode($html)->products;
  
          $totalProducts = count($products);
-         Log::info('Shopify totalProducts:'.$totalProducts);
+        //  Log::info('Shopify totalProducts:'.$totalProducts);
  
          $processedProducts = 0;
  
@@ -84,7 +84,7 @@ class MultipleProducts extends Component
                  $payload = ['query' => $mutation];
      
                  $response = $this->makeAnAPICallToShopify('POST', $endpoint, null, $headers, $payload);
-                 Log::info('Shopify API Response:', ['response' => $response]);
+                //  Log::info('Shopify API Response:', ['response' => $response]);
  
                  // $processedProducts++;
                  // $this->progress = round(($processedProducts / $totalProducts) * 100);
@@ -111,7 +111,7 @@ class MultipleProducts extends Component
                  }
  
              } catch (Exception $e) {
-                 Log::error('Error in publishProductUrl:', ['message' => $e->getMessage()]);
+                //  Log::error('Error in publishProductUrl:', ['message' => $e->getMessage()]);
                  return back()->with('error', 'Product creation failed: ' . $e->getMessage());
              }
          }

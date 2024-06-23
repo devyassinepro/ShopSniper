@@ -57,17 +57,17 @@ class SingleProduct extends Component
                 product { id }
                 userErrors { field message }
             }';
-            Log::info("Json file " . $productCreateMutation);
+            // Log::info("Json file " . $productCreateMutation);
             $mutation = 'mutation { ' . $productCreateMutation . ' }';
             
             $endpoint = getShopifyURLForStore('graphql.json', $store);
-            Log::info('Shopify endpoint:'.$endpoint);
+            // Log::info('Shopify endpoint:'.$endpoint);
 
             $headers = getShopifyHeadersForStore($store);
             $payload = ['query' => $mutation];
             
             $response = $this->makeAnAPICallToShopify('POST', $endpoint, null, $headers, $payload);
-            Log::info('Shopify API Response:', ['response' => $response]);
+            // Log::info('Shopify API Response:', ['response' => $response]);
             
             // Check the response
             if (isset($response['statusCode']) && $response['statusCode'] == 200) {
@@ -87,7 +87,7 @@ class SingleProduct extends Component
                 return back()->with('error', 'Product creation failed!');
             }
         } catch (Exception $e) {
-            Log::error('Error in publishProductUrl:', ['message' => $e->getMessage()]);
+            // Log::error('Error in publishProductUrl:', ['message' => $e->getMessage()]);
             return back()->with('error', 'Product creation failed: ' . $e->getMessage());
         }
     }
