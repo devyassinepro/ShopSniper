@@ -60,7 +60,11 @@ use App\Livewire\Account\research\Listproducts;
 use App\Livewire\Account\products\ListProductSearch;
 use App\Livewire\Account\stores\Homestores;
 use App\Livewire\Account\stores\Top10products;
-use App\Livewire\Account\Shopify;
+use App\Livewire\Account\Shopify\Home;
+use App\Livewire\Account\Shopify\SingleProduct;
+use App\Livewire\Account\Shopify\MultipleProducts;
+use App\Livewire\Account\Shopify\Wizard;
+
 
 
 
@@ -179,7 +183,10 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/skeletonResearch', Listproducts::class)->name('researchdirect.index');
         Route::get('/researchshow/{id}', ShowResearch::class)->name('researchdata.show');
 
-        Route::get('/Shopify', Shopify::class)->name('shopify.index');
+        Route::get('/Shopify', Home::class)->name('homeshopify.index');
+        Route::get('/Singleproduct', SingleProduct::class)->name('singleproduct.index');
+        Route::get('/multipleproduct', MultipleProducts::class)->name('multipleproduct.index');
+        Route::get('/Wizard', Wizard::class)->name('wizard.index');
 
         //
         Route::get('/Tutorial', Tuto::class)->name('tutorial.index');

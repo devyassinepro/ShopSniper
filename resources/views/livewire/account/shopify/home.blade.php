@@ -118,14 +118,22 @@
                                     </div><!-- .nk-block -->
                                 </div>
                        
+                                <div wire:loading.delay>
+                                <div style="display: flex; justify-content: center; align-items: center; background-color:black; position: fixed; top:0px;left:0px;z-index:9999;width:100% ;height:100%; opacity: .75;">
+                                            <div class="la-square-jelly-box la-3x">
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                </div>
+                        </div>  
             <!-- Test Content -->
 <!-- content @e -->
 <div class="nk-block-head-content">
                             <h3 class="nk-block-title page-title">Product Importer</h3>
                         </div><!-- .nk-block-head-content -->
         <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#tabItem5"><em class="icon ni ni-grid-fill"></em><span>Import Product</span></a>
+            <li class="nav-item active">
+                <a class="nav-link" data-toggle="tab" href="#tabItem9"><em class="icon ni ni-grid-fill"></em><span>Import Product</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#tabItem6"><em class="icon ni ni-crosshair"></em><span>Import Store</span></a>
@@ -136,69 +144,13 @@
 
         </ul>
         <div class="tab-content">
-            <div class="tab-pane active" id="tabItem5">
-            <form wire:submit.prevent="importsingleproduct" class="gy-3 form-settings">
-                                        @csrf
-                                        <div class="row g-3 align-center">
-                                            <div class="col-lg-3">
-                                                <div class="form-group">
-                                                    <label class="form-label" for="url-single-product">Product URL</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-5">
-                                                <div class="form-group">
-                                                    <div class="form-control-wrap">
-                                                        <input type="text" id="url-single-product" wire:model="urlsingle" class="form-control" placeholder="Url Product">
-                                                        <div>@error('urlsingle') {{ $message }} @enderror</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label class="form-label"></label>
-                                                    <div class="form-control-wrap">
-                                                        <button type="submit" class="btn btn-lg btn-primary" wire:loading.remove>Import</button>
-                                                        <button class="btn btn-lg btn-primary" type="button" disabled wire:loading.delay>
-                                                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                                            <span>Loading...</span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
+             
+            <div class="tab-pane active" id="tabItem9">
+            <form> </form>
+                    <livewire:account.shopify.single-product/>
             </div>
             <div class="tab-pane" id="tabItem6">
-            <form wire:submit.prevent="importstore" class="gy-3 form-settings">
-                                        @csrf
-                                        <div class="row g-3 align-center">
-                                            <div class="col-lg-3">
-                                                <div class="form-group">
-                                                    <label class="form-label" for="url-store">Store URL</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-5">
-                                                <div class="form-group">
-                                                    <div class="form-control-wrap">
-                                                        <input type="text" id="url-store" wire:model="url" class="form-control" placeholder="Url Store">
-                                                        <div>@error('url') {{ $message }} @enderror</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label class="form-label"></label>
-                                                    <div class="form-control-wrap">
-                                                        <button type="submit" class="btn btn-lg btn-primary" wire:loading.remove>Import</button>
-                                                        <button class="btn btn-lg btn-primary" type="button" disabled wire:loading.delay>
-                                                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                                            <span>Loading...</span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
+                    <livewire:account.shopify.multiple-products/>
             </div>
             <div class="tab-pane" id="tabItem7">
                

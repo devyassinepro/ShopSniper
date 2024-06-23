@@ -64,7 +64,7 @@
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="{{ route('account.shopify.index') }}" wire:navigate class="nk-menu-link {{ return_if(on_page('account.shopify.index'), ' active') }}">
+                                    <a href="{{ route('account.homeshopify.index') }}" wire:navigate class="nk-menu-link {{ return_if(on_page('account.homeshopify.index'), ' active') }}">
                                         <span class="nk-menu-icon"><em class="icon ni ni-copy"></em></span>
                                         <span class="nk-menu-text">{{ __('Product Importer') }}</span>
                                     </a>
