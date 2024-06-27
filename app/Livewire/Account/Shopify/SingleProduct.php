@@ -25,6 +25,109 @@ class SingleProduct extends Component
         return view('livewire.account.shopify.single-product');
     }
 
+    // public function importsingleproduct() {
+
+    //     $accessToken = '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';
+    //     $shop = 'de6f9f-5d.myshopify.com';
+        
+    //     $images = [
+    //         'https://cdn.shopify.com/s/files/1/0075/7547/0191/products/rejuvene-appareil-anti-age-par-traitement-led-5-en-1-nouveaute-2019-appareil-anti-age-par-traitement-led-1-rejuvene-7181158219887.png?v=1559812289',
+    //         'https://cdn.shopify.com/s/files/1/0075/7547/0191/products/rejuvene-appareil-anti-age-par-traitement-led-5-en-1-nouveaute-2019-appareil-anti-age-par-traitement-led-1-rejuvene-7181157892207.png?v=1559812289',
+    //         // Add more image URLs as needed
+    //     ];
+        
+    //     $variants = [
+    //         [
+    //             'title' => '1 Rejuvene™',
+    //             'price' => '94.99',
+    //             'sku' => '9902',
+    //             'position' => 1,
+    //             'image' => $images[0]
+    //         ],
+    //         [
+    //             'title' => '1 Rejuvene™ + 1 Sérum Hydra™',
+    //             'price' => '119.99',
+    //             'sku' => '9902-1-HC6360',
+    //             'position' => 2,
+    //             'image' => $images[1]
+    //         ],
+    //         // Add more variants as needed
+    //     ];
+        
+    //     $variantStrings = [];
+        
+    //     foreach ($variants as $variant) {
+    //         $variantStrings[] = '{
+    //             title: "' . $variant['title'] . '",
+    //             price: "' . $variant['price'] . '",
+    //             sku: "' . $variant['sku'] . '",
+    //             position: ' . $variant['position'] . ',
+    //             inventoryManagement: null,
+    //             inventoryPolicy: DENY,
+    //             image: {
+    //                 src: "' . $variant['image'] . '"
+    //             }
+    //         }';
+    //     }
+        
+    //     $variantsJson = implode(',', $variantStrings);
+        
+    //     $mutation = 'mutation {
+    //       productCreate(input: {
+    //         title: "REJUVENE PRO ™",
+    //         bodyHtml: "<meta charset=\"utf-8\"><p style=\"text-align: center;\" class=\"p1\"><strong> LES SOINS DU VISAGE, LES SALONS ET LES CURES THERMALES VOUS COÛTENT UNE FORTUNE ?</strong></p>...",
+    //         vendor: "Shebuel",
+    //         productType: "Appareil Anti-Âge par Traitement LED - 5 en 1 (Nouveauté 2020)",
+    //         tags: ["Anti-Âge", "antirides", "best-seller", "REJUVENE", "Traitement LED", "visage"],
+    //         variants: [' . $variantsJson . ']
+    //       }) {
+    //         product {
+    //           id
+    //           variants(first: 100) {
+    //             edges {
+    //               node {
+    //                 id
+    //                 title
+    //                 image {
+    //                   src
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         }
+    //         userErrors {
+    //           field
+    //           message
+    //         }
+    //       }
+    //     }';
+        
+    //     $ch = curl_init();
+    //     curl_setopt($ch, CURLOPT_URL, "https://$shop/admin/api/2023-04/graphql.json");
+    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    //     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(['query' => $mutation]));
+    //     curl_setopt($ch, CURLOPT_POST, 1);
+        
+    //     $headers = [
+    //         'Content-Type: application/json',
+    //         'X-Shopify-Access-Token: ' . $accessToken
+    //     ];
+        
+    //     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        
+    //     $result = curl_exec($ch);
+    //     if (curl_errno($ch)) {
+    //         echo 'Error:' . curl_error($ch);
+    //     }
+    //     curl_close($ch);
+        
+    //     $response = json_decode($result, true);
+    //     Log::info('Shopify API Response:', ['response' => $response]);
+
+    //     print_r($response);
+    // }
+
+
     public function importsingleproduct() {
 
 
@@ -54,20 +157,31 @@ class SingleProduct extends Component
 
         try {
             $productCreateMutation = 'productCreate (input: {' . $this->getGraphQLPayloadForProductPublishUrl($store, $this->urlsingle) . '}) { 
-                product { id }
+                product {
+                    id
+                    variants(first: 100) {
+                        edges {
+                            node {
+                                id
+                                title
+                                position
+                            }
+                        }
+                    }
+                }
                 userErrors { field message }
             }';
-            // Log::info("Json file " . $productCreateMutation);
+            Log::info("Json file " . $productCreateMutation);
             $mutation = 'mutation { ' . $productCreateMutation . ' }';
             
             $endpoint = getShopifyURLForStore('graphql.json', $store);
-            // Log::info('Shopify endpoint:'.$endpoint);
+            Log::info('Shopify endpoint:'.$endpoint);
 
             $headers = getShopifyHeadersForStore($store);
             $payload = ['query' => $mutation];
             
             $response = $this->makeAnAPICallToShopify('POST', $endpoint, null, $headers, $payload);
-            // Log::info('Shopify API Response:', ['response' => $response]);
+            Log::info('Shopify API Response:', ['response' => $response]);
             
             // Check the response
             if (isset($response['statusCode']) && $response['statusCode'] == 200) {
@@ -81,7 +195,94 @@ class SingleProduct extends Component
 
                 $this->alert('success', __('Product Imported successfully'));
 
+                            // Capture the product ID and variant IDs
+            $productID = $response['body']['data']['productCreate']['product']['id'];
+            $variantIDs = [];
+            foreach ($response['body']['data']['productCreate']['product']['variants']['edges'] as $variant) {
+                $variantIDs[$variant['node']['position']] = $variant['node']['id'];
+            }
+            Log::info('variantIDs:', ['variantIDs' => $variantIDs]);
 
+            // Upload images to the product
+            $images = [
+                'https://cdn.shopify.com/s/files/1/0075/7547/0191/products/rejuvene-appareil-anti-age-par-traitement-led-5-en-1-nouveaute-2019-appareil-anti-age-par-traitement-led-1-rejuvene-7181158219887.png?v=1559812289',
+                'https://cdn.shopify.com/s/files/1/0075/7547/0191/products/rejuvene-appareil-anti-age-par-traitement-led-5-en-1-nouveaute-2019-appareil-anti-age-par-traitement-led-1-rejuvene-7181157892207.png?v=1559812289',
+                // Add more image URLs as needed
+            ];
+
+            $imageIDs = [];
+            foreach ($images as $imageURL) {
+                $imageUploadMutation = 'mutation {
+                    productUpdate(input: {
+                        id: "' . $productID . '",
+                        images: {
+                            src: "' . $imageURL . '"
+                        }
+                    }) {
+                        product {
+                            id
+                            images(first: 10) {
+                                edges {
+                                    node {
+                                        id
+                                        src
+                                    }
+                                }
+                            }
+                        }
+                        userErrors {
+                            field
+                            message
+                        }
+                    }
+                }';
+
+                $payload = ['query' => $imageUploadMutation];
+                $imageUploadResponse = $this->makeAnAPICallToShopify('POST', $endpoint, null, $headers, $payload);
+                Log::info('Shopify Image Upload Response:', ['response' => $imageUploadResponse]);
+
+                if (isset($imageUploadResponse['statusCode']) && $imageUploadResponse['statusCode'] == 200) {
+                    $imagesData = $imageUploadResponse['body']['data']['productUpdate']['product']['images']['edges'];
+                    foreach ($imagesData as $imageData) {
+                        $imageIDs[] = $imageData['node']['id'];
+                    }
+                } else {
+                    Log::error('Failed to upload image:', ['response' => $imageUploadResponse]);
+                }
+            }
+
+            // Associate images with variants
+            foreach ($variantIDs as $position => $variantID) {
+                if (isset($imageIDs[$position - 1])) {
+                    $imageID = $imageIDs[$position - 1];
+                    $updateMutation = 'mutation {
+                        productVariantUpdate(input: {
+                            id: "' . $variantID . '",
+                            imageId: "' . $imageID . '"
+                        }) {
+                            productVariant {
+                                id
+                                image {
+                                    id
+                                    src
+                                }
+                            }
+                            userErrors {
+                                field
+                                message
+                            }
+                        }
+                    }';
+
+                    $payload = ['query' => $updateMutation];
+                    $updateResponse = $this->makeAnAPICallToShopify('POST', $endpoint, null, $headers, $payload);
+                    Log::info('Shopify Variant Image Update Response:', ['response' => $updateResponse]);
+
+                    if (isset($updateResponse['statusCode']) && $updateResponse['statusCode'] != 200) {
+                        Log::error('Failed to update variant image:', ['variantID' => $variantID, 'response' => $updateResponse]);
+                    }
+                }
+            }
                 // return back()->with('success', 'Product Created!');
             } else {
                 return back()->with('error', 'Product creation failed!');
@@ -91,7 +292,6 @@ class SingleProduct extends Component
             return back()->with('error', 'Product creation failed: ' . $e->getMessage());
         }
     }
-
     
     private function getGraphQLPayloadForProductPublishUrl($store, $url) {
   
@@ -171,15 +371,14 @@ class SingleProduct extends Component
                 $str[] = '{
                     taxable: false,
                     title: "'.$variant['title'].'",
+                    price: '.$variant['price'].',
                     ' . $compareAtPriceField . '
                     sku: "'.$variant['sku'].'",
                     options: [" '.$formattedOptionValues.' "],
                     position: '.$variant['position'].',
-                    imageSrc: "'.$variant['image_id'].'",
                     inventoryItem: {cost: '.$variant['price'].', tracked: false},
                     inventoryManagement: null,
-                    inventoryPolicy: DENY,
-                    price: '.$variant['price'].'
+                    inventoryPolicy: DENY
                 }';
             }
             return implode(',', $str); 

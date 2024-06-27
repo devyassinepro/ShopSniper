@@ -45,15 +45,7 @@ class MultipleProducts extends Component
             $this->alert('error', __('Product fetch failed: ') . $e->getMessage());
         }
     }
-    public function selectAllProducts()
-    {
-        $this->selectedProducts = array_map(function($product) {
-            return $product->id;
-        }, $this->products);
 
-        $this->addSelectedProducts();
-
-    }
     private function fetchShopifyProducts($url)
     {
         $opts = array('http' => array('header' => "User-Agent:MyAgent/1.0\r\n"));
@@ -73,21 +65,19 @@ class MultipleProducts extends Component
         try {
             $user_id = Auth::user()->id;
             $store = Shopifystores::where('user_id', $user_id)
-                                    ->where('status', 'active')
-                                    ->firstOrFail(); 
-    
-            foreach ($this->selectedProducts as $productId) {
-                $product = $this->findProductById($productId);
-                if ($product) {
-                    $productArray = json_decode(json_encode($product), true);
-                    Log::info('Product:', ['product' => $productArray]);
-    
-                    $this->createShopifyProduct($productArray, $store);
+                                   ->where('status', 'active')
+                                   ->firstOrFail(); 
+
+                    foreach ($this->selectedProducts as $productId) {
+                    $product = $this->findProductById($productId);
+            if ($product) {
+                 Log::info('Product:', ['product' => json_decode(json_encode($product), true)]);
+
+               }
                 }
-            }
-    
+
             $this->alert('success', __('Products imported successfully'));
-    
+
         } catch (Exception $e) {
             Log::error('Error importing products:', ['message' => $e->getMessage()]);
             $this->alert('error', __('Product import failed: ') . $e->getMessage());
@@ -104,53 +94,19 @@ class MultipleProducts extends Component
         return null;
     }
 
-
-    function getShopifyURLForStore($endpoint, $store) {
-        return checkIfStoreIsPrivate($store) ? 
-            'https://'.$store['api_key'].':'.$store['api_secret_key'].'@'.$store['myshopify_domain'].'/admin/api/'.config('custom.shopify_api_version').'/'.$endpoint 
-            :
-            'https://'.$store['myshopify_domain'].'/admin/api/'.config('custom.shopify_api_version').'/'.$endpoint;
-    }
-    
-    function getShopifyHeadersForStore($store, $method = 'GET') {
-        return $method == 'GET' ? [
-            'Content-Type' => 'application/json',
-            'X-Shopify-Access-Token' => $store['access_token']
-        ] : [
-            'Content-Type: application/json',
-            'X-Shopify-Access-Token: '.$store['access_token']
-        ];
-    }
-
-    private function createShopifyProduct($productArray, $store)
-{
-    try {
-        $productCreateMutation = 'productCreate (input: {' . $this->getGraphQLPayloadForProductPublishUrl($store, $productArray) . '}) { 
-            product {
-                id
-                variants(first: 100) {
-                    edges {
-                        node {
-                            id
-                            title
-                            position
-                        }
-                    }
-                }
-            }
+    private function createShopifyProduct($product, $store)
+    {
+        $productCreateMutation = 'productCreate (input: {' . $this->getGraphQLPayloadForStorePublishUrl($product) . '}) { 
+            product { id }
             userErrors { field message }
         }';
-        Log::info("Json file " . $productCreateMutation);
 
         $mutation = 'mutation { ' . $productCreateMutation . ' }';
         $endpoint = $this->getShopifyURLForStore('graphql.json', $store);
-        Log::info('Shopify endpoint:'.$endpoint);
-
         $headers = $this->getShopifyHeadersForStore($store);
         $payload = ['query' => $mutation];
 
         $response = $this->makeAnAPICallToShopify('POST', $endpoint, null, $headers, $payload);
-        Log::info('Shopify API Response:', ['response' => $response]);
 
         if (isset($response['statusCode']) && $response['statusCode'] == 200) {
             if (isset($response['body']['data']['productCreate']['userErrors']) && !empty($response['body']['data']['productCreate']['userErrors'])) {
@@ -160,97 +116,10 @@ class MultipleProducts extends Component
                 }, $errors);
                 throw new Exception('Product creation failed: ' . implode(', ', $errorMessages));
             }
-
-            $this->alert('success', __('Product Imported successfully'));
         } else {
             throw new Exception('Product creation failed!');
         }
-    } catch (Exception $e) {
-        Log::error('Error in publishProductUrl:', ['message' => $e->getMessage()]);
-        throw $e;
     }
-}
-
-    private function getGraphQLPayloadForProductPublishUrl($store, $productData) 
-    {
-        $temp = [];
-        $temp[] = 'title: "' . addslashes($productData['title']) . '"';
-        $temp[] = 'published: true';
-        $temp[] = 'vendor: "' . addslashes($productData['vendor']) . '"';
-        
-        if (isset($productData['body_html']) && $productData['body_html'] !== null) {
-            $escapedDescriptionHtml = json_encode($productData['body_html']);
-            $temp[] = 'descriptionHtml: ' . $escapedDescriptionHtml;
-        }
-    
-        if (isset($productData['product_type'])) {
-            $temp[] = 'productType: "' . addslashes($productData['product_type']) . '"';
-        }
-    
-        // if (isset($productData['tags'])) {
-        //     $temp[] = 'tags: ["' . implode('", "', explode(',', $productData['tags'])) . '"]';
-        // }
-    
-        if (isset($productData['options']) && is_array($productData['options'])) {
-            $options = [];
-            foreach ($productData['options'] as $option) {
-                $optionValues = implode(',', array_map('addslashes', $option['values']));
-                $options[] = '"' . $optionValues . '"';
-            }
-            $temp[] = 'options: [' . implode(', ', $options) . ']';
-        }
-    
-        if (isset($productData['variants']) && is_array($productData['variants'])) {
-            $temp[] = 'variants: [' . $this->getVariantsGraphQLConfigUrl($productData['variants']) . ']';
-        }
-    
-        if (isset($productData['images']) && is_array($productData['images'])) {
-            $temp[] = 'images: [' . $this->getImagesGraphQLConfigUrl($productData['images']) . ']';
-        }
-    
-        return implode(', ', $temp);
-    }
-    
-
-    private function getVariantsGraphQLConfigUrl($variants) 
-    {
-        $str = [];
-        foreach ($variants as $variant) {
-            $compareAtPriceField = !empty($variant['compare_at_price']) ? 'compareAtPrice: "' . $variant['compare_at_price'] . '",' : '';
-            $optionValues = [];
-            if (isset($variant['option1'])) $optionValues[] = addslashes($variant['option1']);
-            if (isset($variant['option2'])) $optionValues[] = addslashes($variant['option2']);
-            if (isset($variant['option3'])) $optionValues[] = addslashes($variant['option3']);
-            $formattedOptionValues = implode('", "', $optionValues);
-    
-            $str[] = '{
-                taxable: false,
-                title: "' . addslashes($variant['title']) . '",
-                price: ' . $variant['price'] . ',
-                ' . $compareAtPriceField . '
-                sku: "' . addslashes($variant['sku']) . '",
-                options: ["' . $formattedOptionValues . '"],
-                position: ' . $variant['position'] . ',
-                inventoryItem: {cost: ' . $variant['price'] . ', tracked: false},
-                inventoryManagement: null,
-                inventoryPolicy: DENY
-            }';
-        }
-        return implode(', ', $str);
-    }
-
-
-    private function getImagesGraphQLConfigUrl($images) 
-    {
-        $str = [];
-        foreach ($images as $image) {
-            $str[] = '{
-                src: "' . addslashes($image['src']) . '"
-            }';
-        }
-        return implode(', ', $str);
-    }
-
      public function importstore()
      {
  
@@ -305,9 +174,9 @@ class MultipleProducts extends Component
  
                  $mutation = 'mutation { ' . $productCreateMutation . ' }';
      
-                 $endpoint = $this->getShopifyURLForStore('graphql.json', $store);
+                 $endpoint = getShopifyURLForStore('graphql.json', $store);
  
-                 $headers = $this->getShopifyHeadersForStore($store);
+                 $headers = getShopifyHeadersForStore($store);
  
                  $payload = ['query' => $mutation];
      
@@ -346,4 +215,79 @@ class MultipleProducts extends Component
  
      }
       
+    //  private function getGraphQLPayloadForStorePublishUrl($product) {
+    //      $temp = [];
+    //      $temp[] = 'title: "' . addslashes($product->title) . '"';
+    //      $temp[] = 'published: true';
+    //      $temp[] = 'vendor: "' . addslashes($product->vendor) . '"';
+     
+    //      if (isset($product->body_html)) {
+    //          $escapedDescriptionHtml = json_encode($product->body_html);
+    //          $temp[] = 'descriptionHtml: ' . $escapedDescriptionHtml;
+    //      }
+     
+    //      if (isset($product->product_type)) {
+    //          $temp[] = 'productType: "' . addslashes($product->product_type) . '"';
+    //      }
+     
+     
+    //      if (isset($product->options) && is_array($product->options)) {
+    //          $options = [];
+    //          foreach ($product->options as $option) {
+    //              $optionValues = implode(',', array_map('addslashes', $option->values));
+    //              $options[] = '"' . $optionValues . '"';
+    //          }
+    //          $temp[] = 'options: [' . implode(', ', $options) . ']';
+ 
+    //      }
+     
+    //      if (isset($product->variants) && is_array($product->variants)) {
+    //          $temp[] = 'variants: [' . $this->getVariantsGraphQLConfigUrlStore($product->variants) . ']';
+    //      }
+     
+    //      if (isset($product->images) && is_array($product->images)) {
+    //          $temp[] = 'images: [' . $this->getImagesGraphQLConfigUrlStore($product->images) . ']';
+    //      }
+     
+    //      return implode(', ', $temp);
+    //  }
+     
+    //  private function getVariantsGraphQLConfigUrlStore($variants) {
+    //      $str = [];
+    //      foreach ($variants as $variant) {
+    //          $compareAtPriceField = !empty($variant->compare_at_price) ? 'compareAtPrice: "' . $variant->compare_at_price . '",' : '';
+     
+    //          // Ensure option values are correctly set
+    //          $optionValues = [];
+    //          if (isset($variant->option1)) $optionValues[] = addslashes($variant->option1);
+    //          if (isset($variant->option2)) $optionValues[] = addslashes($variant->option2);
+    //          if (isset($variant->option3)) $optionValues[] = addslashes($variant->option3);
+    //          $formattedOptionValues = implode('", "', $optionValues);
+     
+    //          $str[] = '{
+    //              taxable: false,
+    //              title: "' . addslashes($variant->title) . '",
+    //              ' . $compareAtPriceField . '
+    //              sku: "' . addslashes($variant->sku) . '",
+    //              options: ["' . $formattedOptionValues . '"],
+    //              position: ' . $variant->position . ',
+    //              inventoryItem: {cost: ' . $variant->price . ', tracked: false},
+    //              inventoryManagement: null,
+    //              inventoryPolicy: DENY,
+    //              price: ' . $variant->price . '
+    //          }';
+    //      }
+    //      return implode(', ', $str);
+    //  }
+     
+    //  private function getImagesGraphQLConfigUrlStore($images) {
+    //      $str = [];
+    //      foreach ($images as $image) {
+    //          $str[] = '{
+    //              src: "' . addslashes($image->src) . '"
+    //          }';
+    //      }
+    //      return implode(', ', $str);
+    //  }
+ 
 }
