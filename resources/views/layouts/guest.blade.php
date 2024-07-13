@@ -311,7 +311,9 @@
         </footer>
         @endunless
         @livewireScripts
-
+        
+    <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
     <script src="assets/js/app.js"></script>
     <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>
     <script src="assets/js/vendors/bootstrap.bundle.min.js"></script>
