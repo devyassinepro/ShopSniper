@@ -312,15 +312,16 @@
         @endunless
         @livewireScripts
         
-    <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>
+        <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
-    <script src="assets/js/app.js"></script>
-    <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>
-    <script src="assets/js/vendors/bootstrap.bundle.min.js"></script>
+    <!-- <script src="assets/js/vendors/bootstrap.bundle.min.js"></script> -->
     <script src="assets/js/vendors/swiper-bundle.min.js"></script>
     <script src="assets/js/vendors/parallax.min.js"></script>
+    <script src="assets/js/vendors/jquery.magnific-popup.min.js"></script>
     <script src="assets/js/vendors/aos.js"></script>
     <script src="assets/js/vendors/massonry.min.js"></script>
+    <script src="https://codepen.io/steveg3003/pen/zBVakw.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
 
 
 </body>
